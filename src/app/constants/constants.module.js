@@ -5,7 +5,7 @@ angular
     .module('constants', [
 
     ])
-    .constant('APP_VERSION', '1.0.0')
+    .constant('APP_VERSION', '1.0.1')
 
     .constant('USER_AGENT', UserAgentDetection())
 

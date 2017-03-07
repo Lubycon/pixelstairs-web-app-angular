@@ -5,6 +5,7 @@ import { toastrConfig } from './toastr.config';
 import { cookieConfig } from './cookie.config';
 import { locationConfig } from './location.config';
 import { restangularConfig } from './restangular.config';
+import { translateConfig } from './translate.config';
 
 angular
     .module('config', [
@@ -19,4 +20,6 @@ angular
     .config(locationConfig)
 
     .config(restangularConfig)
+
+    .config(translateConfig)
     ;

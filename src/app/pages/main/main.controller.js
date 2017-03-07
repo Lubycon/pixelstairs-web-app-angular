@@ -1,9 +1,10 @@
 
 export class MainController {
-    constructor ($log) {
+    constructor ($log, CookieService) {
         'ngInject';
 
-        this.testCode = 'Hello World!';
-        $log.debug(this.testCode);
+        this.testCode = 'Hello World! 안녕 세계! 居時氣';
+
+        console.log(CookieService._encode('test'))
     }
 }

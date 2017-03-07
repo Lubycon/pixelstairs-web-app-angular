@@ -4,6 +4,7 @@ import { run } from './app.run';
 
 import './config/config.module';
 import './constants/constants.module';
+import './services/services.module';
 import './pages/pages.module';
 
 angular
@@ -18,9 +19,13 @@ angular
         'ui.router', // STATE CONTROL MODULE FOR SPA
         'ui.bootstrap', // BOOTSTRAP MODULE
         'toastr', // TOAST
+        'pascalprecht.translate', // TRANSLATE FOR LANGUAGE PACK MODULE
+        'ngFileUpload', // FILE UPLOAD MODULE
+        'infinite-scroll', // INFINITE SCROLL
 
         'config', // APP CONFIG MODULE
         'constants', // APP CONSTANTS MODULE
+        'services',
 
         'app.pages' // PAGE MODULE
     ])
