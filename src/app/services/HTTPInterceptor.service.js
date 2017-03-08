@@ -1,5 +1,3 @@
-
-
 export class HTTPInterceptorService {
     constructor(
         $rootScope, $injector

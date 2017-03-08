@@ -1,5 +1,3 @@
-
-
 export class HistoryService {
     constructor(
         $rootScope

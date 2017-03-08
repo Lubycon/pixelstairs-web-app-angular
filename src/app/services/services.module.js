@@ -6,6 +6,7 @@ import { Base64Service } from './Base64.service';
 import { CookieService } from './Cookie.service';
 import { AppSettingService } from './AppSetting.service';
 import { HistoryService } from './History.service';
+import { UUIDService } from './UUID.service';
 
 
 angular
@@ -24,4 +25,6 @@ angular
     .service('AppSettingService', AppSettingService)
 
     .service('HistoryService', HistoryService)
+
+    .service('UUIDService', UUIDService)
     ;

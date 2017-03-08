@@ -2,7 +2,7 @@
 
 export function run (
     $rootScope, $log, AppSettingService, HistoryService,
-    $anchorScroll, $window, $document, USER_AGENT
+    $anchorScroll, $window, $document, USER_AGENT, UUIDService
 ) {
     'ngInject';
 
