@@ -8,6 +8,8 @@ angular
     ])
     .constant('APP_VERSION', '1.0.1')
 
+    .constant('CUSTOM_HEADER_PREFIX', 'X-lubycon-')
+
     .constant('USER_AGENT', UserAgentDetection())
 
     .constant('API_CONFIG', APIDetection())
