@@ -1,7 +1,5 @@
 export class UTF8Service {
-    constructor (
-        $rootScope
-    ) {
+    constructor () {
         'ngInject';
     }
 
@@ -32,7 +30,7 @@ export class UTF8Service {
     decode(utfString) {
         let string = '',
             i = 0,
-            c = 0, c1 = 0, c2 = 0, c3 = 0;
+            c = 0, c2 = 0, c3 = 0;
 
         while(i < utfString.length) {
             c = utfString.charCodeAt(i);

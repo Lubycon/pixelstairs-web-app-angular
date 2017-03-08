@@ -43,8 +43,6 @@ export class Base64Service {
         }
         while(i < string.length);
 
-        console.log(output);
-
         return output;
     }
 

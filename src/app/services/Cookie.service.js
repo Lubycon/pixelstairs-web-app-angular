@@ -27,7 +27,6 @@ export class CookieService {
     }
 
     getAll() {
-        key = this._encode(key);
         return this.$cookies.getAll();
     }
 
@@ -55,7 +54,7 @@ export class CookieService {
 
 
     /*@PRIVATE*/
-    
+
     _encode(key) {
         if(!key) return null;
 
@@ -66,8 +65,7 @@ export class CookieService {
     _encodeValue(value) {
         if(!value) return null;
 
-        const type = value.constructor.name;
-        value = JSON.stringify(value);
+        value = value.toJSON();
 
         return this.Base64Service.encode(value);
     }
@@ -82,8 +80,8 @@ export class CookieService {
     _decodeValue(value) {
         if(!value) return null;
 
-        value = Base64Service.decode(value);
-        value = JSON.parse(value);
+        value = this.Base64Service.decode(value);
+        value = value.fromJSON();
 
         return value;
     }

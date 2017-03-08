@@ -1,8 +1,13 @@
 
 
-export function run ($log) {
+export function run ($rootScope, $log, AppSettingService) {
     'ngInject';
 
 
-    $log.debug('======== RUN BLOCK END =========');
+
+    AppSettingService.init();
+
+    $log.debug('ROOT SCOPE => ', $rootScope);
+
+    $log.debug('================================ RUN BLOCK END ================================');
 }

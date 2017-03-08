@@ -6,6 +6,7 @@ import { cookieConfig } from './cookie.config';
 import { locationConfig } from './location.config';
 import { restangularConfig } from './restangular.config';
 import { translateConfig } from './translate.config';
+import { logConfig } from './log.config';
 
 angular
     .module('config', [
@@ -22,4 +23,6 @@ angular
     .config(restangularConfig)
 
     .config(translateConfig)
+
+    .config(logConfig)
     ;

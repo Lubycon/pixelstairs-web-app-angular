@@ -1,5 +1,6 @@
 
 import { UserAgentDetection } from './ua.constant.js';
+import { APIDetection } from './api.constant.js';
 
 angular
     .module('constants', [
@@ -9,10 +10,7 @@ angular
 
     .constant('USER_AGENT', UserAgentDetection())
 
-    .constant('API_CONFIG', {
-        'host': 'http://api.lubycon.com/v1',
-        'appkey': 'lubycon-back'
-    })
+    .constant('API_CONFIG', APIDetection())
 
     .constant('APP_LANGUAGES', [{
         name: 'LANGUAGES.ENGLISH',
@@ -21,8 +19,6 @@ angular
         name: 'LANGUAGES.KOREAN',
         key: 'ko-KR'
     }])
-
-    .constant('CONSOLE_LOG', true)
 
     .constant('SNS_KEYS', {
 
