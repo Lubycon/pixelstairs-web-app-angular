@@ -4,6 +4,7 @@ import { run } from './app.run';
 
 import './config/config.module';
 import './constants/constants.module';
+import './layouts/layout.module';
 import './services/services.module';
 import './pages/pages.module';
 
@@ -23,9 +24,10 @@ angular
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
 
-        'config', // APP CONFIG MODULE
-        'constants', // APP CONSTANTS MODULE
-        'services',
+        'app.config', // APP CONFIG MODULE
+        'app.constants', // APP CONSTANTS MODULE
+        'app.layouts', // APP LAYOUT MODULE
+        'app.services', // APP SERVICE MODULE
 
         'app.pages' // PAGE MODULE
     ])

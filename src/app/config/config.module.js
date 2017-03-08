@@ -10,8 +10,8 @@ import { translateConfig } from './translate.config';
 import { logConfig } from './log.config';
 
 angular
-    .module('config', [
-        'constants'
+    .module('app.config', [
+        'app.constants'
     ])
     .config(httpConfig)
 

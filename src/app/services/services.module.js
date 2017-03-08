@@ -1,5 +1,3 @@
-import '../constants/constants.module';
-
 import { HTTPInterceptorService } from './HTTPInterceptor.service';
 import { UTF8Service } from './UTF8.service';
 import { Base64Service } from './Base64.service';
@@ -12,8 +10,8 @@ import { StateAuthenticationService } from './StateAuthentication.service';
 
 
 angular
-    .module('services', [
-        'constants'
+    .module('app.services', [
+
     ])
 
     .service('HTTPInterceptorService', HTTPInterceptorService)
@@ -32,5 +30,5 @@ angular
 
     .service('TrackerService', TrackerService)
 
-    .service('StateAuthenticationService', StateAuthenticationService);
+    .service('StateAuthenticationService', StateAuthenticationService)
     ;

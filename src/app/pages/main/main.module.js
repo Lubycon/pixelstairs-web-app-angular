@@ -1,4 +1,3 @@
-
 import { routerConfig } from './main.route';
 import { MainController } from './main.controller';
 

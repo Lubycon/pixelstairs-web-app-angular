@@ -3,7 +3,7 @@ export function routerConfig ($stateProvider) {
     'ngInject';
 
     $stateProvider
-        .state('main', {
+        .state('common.default.main', {
             url: '/',
             templateUrl: 'app/pages/main/main.tmpl.html',
             controller: 'MainController',

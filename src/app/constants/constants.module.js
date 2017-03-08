@@ -3,7 +3,7 @@ import { UserAgentDetection } from './ua.constant.js';
 import { APIDetection } from './api.constant.js';
 
 angular
-    .module('constants', [
+    .module('app.constants', [
 
     ])
     .constant('APP_VERSION', '1.0.1')
