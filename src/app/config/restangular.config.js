@@ -29,7 +29,7 @@ export function restangularConfig(
 // PRIVATE METHOD
 
 function getLanguage() {
-
+    /*ALLOW BROWSER SETTING*/
     let result = 'en-US';
 
     const browserLanguage = navigator.language;

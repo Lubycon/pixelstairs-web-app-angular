@@ -22,7 +22,7 @@ export function APIDetection() {
     else api = null;
 
     output.host = api;
-    if(api === DEV_API_SERVER) output.appKey = DEV_APPKEY;
+    if(api === DEV_API_SERVER) output.appkey = DEV_APPKEY;
 
     return output;
 }
