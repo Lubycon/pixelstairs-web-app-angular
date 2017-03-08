@@ -9,6 +9,7 @@ export class HistoryService {
         this.$rootScope = $rootScope;
     }
 
+
     push(history) {
         if(!this.$rootScope.stateHistory) this.$rootScope.stateHistory = [];
         this.$rootScope.stateHistory.push(history);

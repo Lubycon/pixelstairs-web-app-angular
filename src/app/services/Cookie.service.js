@@ -8,7 +8,7 @@ export class CookieService {
         this.Base64Service = Base64Service;
     }
 
-    /*@PUBLIC*/
+
     get(key) {
         key = _encode(this.Base64Service, key);
         return this.$cookies.getObject(key);

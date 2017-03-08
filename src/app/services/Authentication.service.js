@@ -33,7 +33,7 @@ export class AuthenticationService {
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
     }
 
-    /*@PUBLIC*/
+
     set(token, reload) {
         if(!token) {
             this.$log.error('There is no token :: AuthenticationService');

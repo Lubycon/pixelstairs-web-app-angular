@@ -17,6 +17,7 @@ export class AppSettingService {
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
     }
 
+
     init() {
         const STORED_DATA = this.CookieService.get('setting');
 

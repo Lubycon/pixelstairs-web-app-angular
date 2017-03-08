@@ -1,5 +1,6 @@
 import '../constants/constants.module';
 
+import { HTTPInterceptorService } from './HTTPInterceptor.service';
 import { UTF8Service } from './UTF8.service';
 import { Base64Service } from './Base64.service';
 import { CookieService } from './Cookie.service';
@@ -11,6 +12,8 @@ angular
     .module('services', [
         'constants'
     ])
+
+    .service('HTTPInterceptorService', HTTPInterceptorService)
 
     .service('UTF8Service', UTF8Service)
 
