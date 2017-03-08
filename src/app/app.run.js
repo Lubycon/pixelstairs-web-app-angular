@@ -2,7 +2,7 @@
 
 export function run (
     $rootScope, $log, AppSettingService, HistoryService,
-    TrackerService,
+    TrackerService, StateAuthenticationService,
     $anchorScroll, $window, $document, USER_AGENT
 ) {
     'ngInject';
@@ -33,7 +33,7 @@ export function run (
         });
 
         TrackerService.post(toState, fromState);
-        // StateAuthentication.detect(toState);
+        StateAuthenticationService.detect(toState);
 
         $anchorScroll();
     });
