@@ -7,6 +7,7 @@ import { CookieService } from './Cookie.service';
 import { AppSettingService } from './AppSetting.service';
 import { HistoryService } from './History.service';
 import { UUIDService } from './UUID.service';
+import { TrackerService } from './Tracker.service';
 
 
 angular
@@ -27,4 +28,6 @@ angular
     .service('HistoryService', HistoryService)
 
     .service('UUIDService', UUIDService)
+
+    .service('TrackerService', TrackerService)
     ;

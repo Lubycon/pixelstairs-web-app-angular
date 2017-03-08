@@ -1,6 +1,6 @@
-
-/*@PRIVATE MEMEBER*/
+/* @PRIVATE MEMEBER */
 const IP_API = 'https://freegeoip.net/json?callback=JSON_CALLBACK';
+/* @PRIVATE MEMEBER */
 
 export class AppSettingService {
     constructor (
@@ -23,7 +23,7 @@ export class AppSettingService {
 
         if(STORED_DATA) {
             this.$rootScope.setting = STORED_DATA;
-            _setSetting(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+            this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
         }
         else {
             this.$http({
@@ -34,7 +34,7 @@ export class AppSettingService {
                 this.$rootScope.setting = res.data;
                 this.CookieService.put('setting', res.data);
 
-                _setSetting(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+                this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
             });
         }
 
@@ -56,7 +56,7 @@ export class AppSettingService {
             tmp[headerKey] = value;
 
             if(key === 'country') {
-                tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = setLanguage(value);
+                tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = __setLanguage__(value);
             }
 
             defaultHeaders = angular.extend({}, defaultHeaders, tmp);
@@ -70,28 +70,32 @@ export class AppSettingService {
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
     }
-}
 
 
-/* @PRIVATE METHOD */
-function _setSetting($rootScope, Restangular, CUSTOM_HEADER_PREFIX) {
-    let tmp = {};
 
-    switch($rootScope.setting.country_code) {
-        case 'KR' : $rootScope.setting.language = 'ko'; break;
-        default : $rootScope.setting.language = 'en'; break;
+
+
+
+    /* @PRIVATE METHOD */
+    __setSetting__() {
+        let tmp = {};
+
+        switch(this.$rootScope.setting.country_code) {
+            case 'KR' : this.$rootScope.setting.language = 'ko'; break;
+            default : this.$rootScope.setting.language = 'en'; break;
+        }
+
+        tmp[this.CUSTOM_HEADER_PREFIX + 'country'] = this.$rootScope.setting.country_code;
+
+        let defaultHeaders = angular.extend({}, this.Restangular.defaultHeaders, tmp);
+
+        this.Restangular.setDefaultHeaders(defaultHeaders);
     }
 
-    tmp[CUSTOM_HEADER_PREFIX + 'country'] = $rootScope.setting.country_code;
-
-    let defaultHeaders = angular.extend({}, Restangular.defaultHeaders, tmp);
-
-    Restangular.setDefaultHeaders(defaultHeaders);
-}
-
-function setLanguage(country) {
-    switch(country) {
-        case 'KR': return 'ko-KR';
-        default: return 'en-US';
+    __setLanguage__(country) {
+        switch(country) {
+            case 'KR': return 'ko-KR';
+            default: return 'en-US';
+        }
     }
 }
