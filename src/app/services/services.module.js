@@ -6,6 +6,7 @@ import { AppSettingService } from './AppSetting.service';
 import { HistoryService } from './History.service';
 import { UUIDService } from './UUID.service';
 import { TrackerService } from './Tracker.service';
+import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
 
 
@@ -29,6 +30,8 @@ angular
     .service('UUIDService', UUIDService)
 
     .service('TrackerService', TrackerService)
+
+    .service('AuthenticationService', AuthenticationService)
 
     .service('StateAuthenticationService', StateAuthenticationService)
     ;

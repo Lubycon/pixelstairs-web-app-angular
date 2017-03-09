@@ -12,7 +12,9 @@ export function routerConfig ($stateProvider) {
             abstract: true,
             views: {
                 header: {
-
+                    templateUrl: 'app/components/header/header.tmpl.html',
+                    controller: 'HeaderController',
+                    controllerAs: 'MainHeader'
                 },
                 content: {
                     template: '<div ui-view></div>'
