@@ -26,6 +26,7 @@ export function run (
         toState.params = toParams;
         fromState = generateURL(fromState, $document);
         toState = generateURL(toState, $document);
+        console.log(fromState, toState);
 
         HistoryService.push({
             from : fromState,
@@ -60,8 +61,9 @@ function hideModalWindow() {
 }
 
 function generateURL(param, $document) {
-    var key = Object.keys(param.params),
-        url = url === '^' ? $document.referrer : param.url;
+    const key = Object.keys(param.params);
+    let url = param.url;
+        url = url === '^' ? $document[0].referrer : param.url;
 
     url = url.replace(/\:/g,'');
     key.forEach(v => {

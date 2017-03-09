@@ -6,6 +6,7 @@ import './constants/constants.module';
 import './layouts/layout.module';
 import './components/components.module';
 import './services/services.module';
+import './filters/filters.module';
 import './pages/pages.module';
 
 angular
@@ -29,13 +30,10 @@ angular
         'app.layouts', // APP LAYOUT MODULE
         'app.components', // APP COMPONENTS MODULE
         'app.services', // APP SERVICE MODULE
+        'app.filters',
 
         'app.pages' // PAGE MODULE
     ])
     .config(routerConfig)
     .run(run)
     ;
-// .service('githubContributor', GithubContributorService)
-// .service('webDevTec', WebDevTecService)
-// .directive('acmeNavbar', NavbarDirective)
-// .directive('acmeMalarkey', MalarkeyDirective);
