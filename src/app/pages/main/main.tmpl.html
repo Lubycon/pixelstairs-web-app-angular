@@ -1,3 +1,30 @@
 <div class="container">
-    {{MainCtrl.testCode}}
+    <div class="sub-header row">
+        <h4 class="col-lg-12">Connect Your Creativity with the World</h4>
+        <div class="sort-filter col-lg-12">
+            <ul>
+                <li
+                    class="btn"
+                    ng-repeat="filter in MainCtrl.sortFilter"
+                    ng-click="MainCtrl.load(filter.value)"
+                >
+                    {{filter.name}}
+                </li>
+            </ul>
+        </div>
+        <div class="view-mode col-lg-12">
+            <ul>
+                <li
+                    class="btn"
+                    ng-repeat="mode in MainCtrl.viewMode"
+                    ng-click="MainCtrl.changeView(mode.name)"
+                >
+                    <i class="{{mode.icon}}"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-body row">
+        PAGE BODY
+    </div>
 </div>

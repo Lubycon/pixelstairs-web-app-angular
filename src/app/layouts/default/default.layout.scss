@@ -3,8 +3,9 @@
 }
 
 #container {
-    background: #eee;
-    padding: 70px 0px;
+    &.with-header {
+        margin-top: $global-header-height;
+    }
 }
 
 [ui-view='footer'] {

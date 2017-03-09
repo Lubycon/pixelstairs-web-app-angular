@@ -1,3 +1,35 @@
-<div>
-    HEADER
-</div>
+<nav
+    class="navbar navbar-fixed-top global-header"
+    role="navigation"
+>
+    <!--@LOGO-->
+    <div class="global-logo">
+        <a href="/">
+            <img
+                src="https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/logo/title_black.png"
+                alt="global-logo"
+            >
+        </a>
+    </div>
+    <!--@LOGO END-->
+
+    <div class="global-menu-wrapper">
+        <ul>
+            <li
+                class="global-menu"
+                ng-repeat="link in GlobalHeader.linkList"
+            >
+                <a ui-sref="link.link">
+                    {{link.name}}
+                </a>
+            </li>
+            <li
+                class="sign-menu"
+            >
+                <a ui-sref="sign-in">
+                    Sign in
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

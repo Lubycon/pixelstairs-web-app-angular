@@ -1,0 +1,27 @@
+@media (min-width: 1280px){
+    .container {
+        width: 1280px;
+    }
+}
+
+// BUTTON
+.btn {
+    border: none;
+    border-radius: 0;
+    padding: 10px 15px;
+    font-weight: 200;
+    background-color: transparent;
+    color: $dark-grey-color;
+    transition: all 0.3s ease-in-out;
+    outline: 0 !important;
+    margin: 0;
+
+    &:hover,&:focus,&.focus {
+        color: $silver-grey-color;
+        border: none;
+    }
+
+    a {
+        color: $dark-grey-color;
+    }
+}

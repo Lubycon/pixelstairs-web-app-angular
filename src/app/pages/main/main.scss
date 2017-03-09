@@ -1,0 +1,32 @@
+.state-main {
+    .sub-header {
+        h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            text-align: center;
+        }
+
+        .sort-filter {
+            ul {
+                li.btn {
+                    margin: 0 20px;
+                }
+            }
+        }
+        .view-mode {
+            ul {
+                li.btn {
+                    i {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+    .page-body {
+
+    }
+}

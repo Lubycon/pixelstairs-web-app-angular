@@ -1,0 +1,27 @@
+.global-header {
+    min-height: $global-header-height;
+    .global-logo {
+        width: 120px;
+        @include floatToCenter;
+        img {
+            width: 100%;
+        }
+    }
+
+    .global-menu-wrapper {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        ul {
+            li {
+                display: inline-block;
+                margin: 0 5px;
+                padding: 5px 10px;
+                &.global-menu {
+                    border: 1px solid $dark-grey-color;
+                }
+            }
+        }
+    }
+}

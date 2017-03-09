@@ -14,7 +14,7 @@ export function routerConfig ($stateProvider) {
                 header: {
                     templateUrl: 'app/components/header/header.tmpl.html',
                     controller: 'HeaderController',
-                    controllerAs: 'MainHeader'
+                    controllerAs: 'GlobalHeader'
                 },
                 content: {
                     template: '<div ui-view></div>'

@@ -19,6 +19,9 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 // injector
 // endinjector
 
-// custom injector
-@import './styles/_form.scss';
-// end custom injector
+
+/* DEBUG */
+// * {
+//     border: 1px solid #ff0000 !important;
+//     box-sizing: border-box !important;
+// }
