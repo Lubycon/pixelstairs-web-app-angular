@@ -4,12 +4,16 @@ export function APIDetection() {
 
     const ORIGIN = location.origin;
 
+    /* ===================== WEB SERVER ==================== */
     const PRO_WEB_SERVER = 'www.lubycon.com';
     const DEV_WEB_SERVER = 'dev.lubycon.com';
     const LOCAL_WEB_SERVER = 'localhost';
+    /* ===================================================== */
 
-    const PRO_API_SERVER = 'http://api.lubycon.com';
-    const DEV_API_SERVER = 'http://api.lubycon.com';
+    /* ===================== API SERVER ==================== */
+    const PRO_API_SERVER = 'http://api.lubycon.com/v1';
+    const DEV_API_SERVER = 'http://api.lubycon.com/v1';
+    /* ===================================================== */
 
     const DEV_APPKEY = 'lubycon-back';
 

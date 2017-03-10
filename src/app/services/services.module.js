@@ -8,6 +8,7 @@ import { UUIDService } from './UUID.service';
 import { TrackerService } from './Tracker.service';
 import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
+import { APIService } from './API.service';
 
 
 angular
@@ -34,4 +35,6 @@ angular
     .service('AuthenticationService', AuthenticationService)
 
     .service('StateAuthenticationService', StateAuthenticationService)
+
+    .service('APIService', APIService)
     ;

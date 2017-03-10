@@ -3,9 +3,16 @@
 export function run (
     $rootScope, $log, AppSettingService, HistoryService,
     TrackerService, StateAuthenticationService,
-    $anchorScroll, $window, $document, USER_AGENT
+    $anchorScroll, $window, $document, USER_AGENT,
+    APIService // TEST
 ) {
     'ngInject';
+
+    // TEST
+    APIService.resource('creators').get().then(res => {
+        $log.debug(res);
+    });
+    // TEST END
 
     $rootScope.deviceInfo = USER_AGENT;
 
@@ -26,7 +33,6 @@ export function run (
         toState.params = toParams;
         fromState = generateURL(fromState, $document);
         toState = generateURL(toState, $document);
-        console.log(fromState, toState);
 
         HistoryService.push({
             from : fromState,
@@ -40,7 +46,7 @@ export function run (
     });
 
     /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
-    /*@LOG*/ $log.debug('================================ RUN BLOCK END ================================');
+    /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
 }
 
 
