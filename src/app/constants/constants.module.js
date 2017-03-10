@@ -6,7 +6,7 @@ angular
     .module('app.constants', [
 
     ])
-    .constant('APP_VERSION', '1.0.1')
+    .constant('APP_VERSION', '1.0.0')
 
     .constant('CUSTOM_HEADER_PREFIX', 'X-lubycon-')
 
