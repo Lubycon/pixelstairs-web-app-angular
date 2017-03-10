@@ -17,7 +17,7 @@ const API_LIST = {
             }
         };
     },
-    creators: 'creator'
+    contents: 'contents/{category}'
 };
 /* @API CONSTANT */
 
@@ -92,11 +92,11 @@ export class APIService {
             }
             else tmp[v] = API_LIST[v];
         });
-        console.log(tmp);
+
         return tmp;
     }
 
-    __setParamsToAPI__(uri, id) {
+    __setParamsToAPI__(uri, uriParams) {
         const regx = /\{.+\}/gi;
         const braket_regx = /[\{|\}]/g;
 
@@ -105,8 +105,8 @@ export class APIService {
             return uri;
         }
 
-        params.forEach(v => {
-            v.replace(braket_regx, '');
+        params = params.map(v => {
+            return v.replace(braket_regx, '');
         });
 
         uri = uri.split('/').map(v => {
@@ -115,8 +115,7 @@ export class APIService {
 
         params.forEach(v => {
             let position = uri.indexOf(v);
-
-            if(position > -1) uri[position] = id[v];
+            if(position > -1) uri[position] = uriParams[v];
         });
 
         return uri.join('/');

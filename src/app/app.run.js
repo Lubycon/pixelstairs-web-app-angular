@@ -8,12 +8,6 @@ export function run (
 ) {
     'ngInject';
 
-    // TEST
-    APIService.resource('creators').get().then(res => {
-        $log.debug(res);
-    });
-    // TEST END
-
     $rootScope.deviceInfo = USER_AGENT;
 
     /*@INIT*/

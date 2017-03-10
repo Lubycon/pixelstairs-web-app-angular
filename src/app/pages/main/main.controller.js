@@ -1,9 +1,10 @@
 
 export class MainController {
-    constructor ($log) {
+    constructor ($log, APIService) {
         'ngInject';
 
         this.$log = $log;
+        this.APIService = APIService;
 
         this.viewMode = [{
             name: 'Wide',
