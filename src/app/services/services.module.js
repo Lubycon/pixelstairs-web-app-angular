@@ -10,6 +10,8 @@ import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
 
+import { DummyService } from './Dummy.service';
+
 
 angular
     .module('app.services', [
@@ -37,4 +39,6 @@ angular
     .service('StateAuthenticationService', StateAuthenticationService)
 
     .service('APIService', APIService)
+
+    .service('DummyService', DummyService)
     ;

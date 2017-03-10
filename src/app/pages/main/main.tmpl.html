@@ -25,6 +25,18 @@
         </div>
     </div>
     <div class="page-body row">
-        PAGE BODY
+        <!-- <div
+            class="infinite-scroll-wrapper"
+            infinite-scroll="vm.onScroll()"
+            infinite-scroll-disabled="vm.scrollDisabled"
+            infinite-scroll-distance="0"
+        >
+
+        </div> -->
+        <ul>
+            <li ng-repeat="data in MainCtrl.dummy">
+                <art-card data="data"></art-card>
+            </li>
+        </ul>
     </div>
 </div>

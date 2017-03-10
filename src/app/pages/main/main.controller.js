@@ -1,10 +1,9 @@
 
 export class MainController {
-    constructor ($log, APIService) {
+    constructor ($log, DummyService) {
         'ngInject';
 
         this.$log = $log;
-        this.APIService = APIService;
 
         this.viewMode = [{
             name: 'Wide',
@@ -21,6 +20,16 @@ export class MainController {
             name: 'LATEST',
             value: 'latest'
         }];
+
+        this.dummy = DummyService.get('contents');
+
+        this.scrollDisabled = true;
+
+        (this.init)();
+    }
+
+    init() {
+        console.log('INIT');
     }
 
     changeView(mode) {
