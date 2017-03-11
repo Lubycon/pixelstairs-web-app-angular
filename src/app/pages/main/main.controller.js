@@ -18,10 +18,10 @@ export class MainController {
         }];
 
         this.sortFilter = [{
-            name: 'MONTHLY HOT',
+            name: 'Featured',
             value: 'hot'
         },{
-            name: 'LATEST',
+            name: 'Latest',
             value: 'latest'
         }];
 

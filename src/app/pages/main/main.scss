@@ -1,9 +1,16 @@
 .state-main {
     .sub-header {
-        h4 {
-            text-align: center;
-            margin-bottom: 20px;
+        .description {
+            margin: 10px 0;
+            * {
+                font-family: $inconsolata;
+                text-align: center;
+            }
+            h4 {
+                margin-bottom: 20px;
+            }
         }
+
 
         ul {
             text-align: center;
@@ -33,6 +40,10 @@
         }
     }
     .page-body {
-
+        &>ul {
+            &>li {
+                padding: 0 10px;
+            }
+        }
     }
 }

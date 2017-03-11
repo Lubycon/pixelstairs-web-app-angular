@@ -1,27 +1,44 @@
 .art-card {
     position: relative;
     margin: 10px 0;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     .art-background {
         img {
             width: 100%;
         }
     }
     .art-info {
+        opacity: 0;
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
         height: 100%;
-        padding: 5px;
+        background-color: rgba(0,0,0,0.5);
+        transition: all 0.5s ease-in-out;
+        * {
+            color: $white-color;
+            font-family: $inconsolata;
+        }
         header {
+            position: absolute;
             width: 100%;
+            top: 0;
+            left: 0;
+            padding: 5px 10px;
             .member-profile {
                 @include circleFrame(35px);
                 display: inline-block;
                 vertical-align: middle;
                 margin-right: 5px;
-                img {
+                .member-profile-img {
                     width: 100%;
-                    vertical-align: middle;
+                    height: 100%;
+                    background: {
+                        size: cover;
+                        position: 50% 50%;
+                    }
                 }
             }
             .member-info {
@@ -30,8 +47,28 @@
             }
         }
         footer {
+            position: absolute;
             width: 100%;
-
+            bottom: 0;
+            left: 0;
+            padding: 5px 10px;
+            ul {
+                li {
+                    display: inline-block;
+                    i {
+                        vertical-align: middle;
+                        font-size: 1.4em;
+                    }
+                    span {
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+    &:hover {
+        .art-info {
+            opacity: 1;
         }
     }
 }
