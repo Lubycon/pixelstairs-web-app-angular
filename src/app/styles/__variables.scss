@@ -13,6 +13,13 @@
     transform: translateX(-50%) translateY(-50%);
 }
 
+@mixin circleFrame($length) {
+    width: $length;
+    height: $length;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 /* @METHOD */
 
 
@@ -22,6 +29,7 @@ $global-header-height: 50px;
 
 /* @COLORS */
 
-$dark-grey-color: #2A2627;
+$dark-grey-color: #333;
 $silver-grey-color: #aaa;
 $light-grey-color: #ddd;
+$white-color: #fff;

@@ -6,11 +6,15 @@ export class MainController {
         this.$log = $log;
 
         this.viewMode = [{
-            name: 'Wide',
-            icon: 'xi-layout-full'
-        },{
             name: 'Grid',
-            icon: 'xi-apps'
+            icon: 'xi-apps',
+            width: 3,
+            selected: true
+        },{
+            name: 'Wide',
+            icon: 'xi-layout-full',
+            width: 12,
+            selected: false
         }];
 
         this.sortFilter = [{
@@ -22,6 +26,7 @@ export class MainController {
         }];
 
         this.dummy = DummyService.get('contents');
+        this.columnWidth = this.getViewMode().width;
 
         this.scrollDisabled = true;
 
@@ -29,11 +34,19 @@ export class MainController {
     }
 
     init() {
-        console.log('INIT');
+
     }
 
     changeView(mode) {
         /* @LOG */ this.$log.debug('test', mode);
+        this.getViewMode().selected = false;
+        mode.selected = true;
+        this.columnWidth = this.getViewMode().width;
+    }
 
+    getViewMode() {
+        return this.viewMode.filter(v => {
+            return v.selected;
+        })[0];
     }
 }

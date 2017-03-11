@@ -1,3 +1,25 @@
 <div class="art-card">
-    {{ArtCard.data}}
+    <div class="art-background">
+        <img ng-src="{{ArtCard.data.picture.image.file}}" alt="{{'art-img-' + ArtCard.data.id}}">
+    </div>
+    <div class="art-info">
+        <header><!--MEMBER INFO-->
+            <span class="member-profile">
+                <img
+                    ng-src="{{ArtCard.data.member.profileImg.file}}"
+                    alt="{{'member-profile-' + ArtCard.data.member.id}}"
+                >
+            </span>
+            <span class="member-info">
+                <h4>{{ArtCard.data.member.name}}</h4>
+            </span>
+        </header>
+        <footer><!--ART INFO-->
+            <h4>{{ArtCard.data.picture.title}}</h4>
+            <ul>
+                <li><i class="xi-heart-o"></i></li>
+                <li><i class="xi-eye-o"></i></li>
+            </ul>
+        </footer>
+    </div>
 </div>

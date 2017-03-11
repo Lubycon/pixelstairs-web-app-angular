@@ -1,5 +1,6 @@
 .global-header {
     min-height: $global-header-height;
+    background-color: $white-color;
     .global-logo {
         width: 120px;
         @include floatToCenter;

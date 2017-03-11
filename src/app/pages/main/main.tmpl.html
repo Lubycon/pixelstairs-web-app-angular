@@ -16,8 +16,9 @@
             <ul>
                 <li
                     class="btn"
+                    ng-class="{'selected': mode.selected}"
                     ng-repeat="mode in MainCtrl.viewMode"
-                    ng-click="MainCtrl.changeView(mode.name)"
+                    ng-click="MainCtrl.changeView(mode)"
                 >
                     <i class="{{mode.icon}}"></i>
                 </li>
@@ -34,7 +35,7 @@
 
         </div> -->
         <ul>
-            <li ng-repeat="data in MainCtrl.dummy">
+            <li class="col-lg-{{MainCtrl.columnWidth}}" ng-repeat="data in MainCtrl.dummy">
                 <art-card data="data"></art-card>
             </li>
         </ul>

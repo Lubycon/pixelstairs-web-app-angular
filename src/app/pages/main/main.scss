@@ -21,6 +21,12 @@
                 li.btn {
                     i {
                         font-size: 20px;
+                        color: $light-grey-color;
+                    }
+                    &.selected {
+                        i {
+                            color: $dark-grey-color;
+                        }
                     }
                 }
             }

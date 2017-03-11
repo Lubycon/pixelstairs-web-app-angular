@@ -13,12 +13,13 @@ export class DummyService {
     /* @PRIVATE METHOD */
     __ContentDummy__() {
         let dummy = {
+            id: null,
             member: {
                 id: null,
                 name: 'Test User',
                 profileImg: {
                     id: null,
-                    file: 'https://unsplash.it/640/480/?random',
+                    file: 'https://source.unsplash.com/random',
                     index: null
                 }
             },
@@ -26,7 +27,7 @@ export class DummyService {
                 title: 'Test Title',
                 image: {
                     id: null,
-                    file: 'https://unsplash.it/1920/1080/?random',
+                    file: 'https://source.unsplash.com/random',
                     index: null
                 },
                 view: null,
@@ -36,9 +37,9 @@ export class DummyService {
 
         let resultList = [];
 
-        for(let i = 0; i < 50; i++) {
+        for(let i = 0; i < 100; i++) {
             resultList[i] = angular.copy(dummy);
-
+            resultList[i].id = i;
             resultList[i].member.id = this.__getRandomVal__(10);
             resultList[i].member.profileImg.id = this.__getRandomVal__(99999);
 

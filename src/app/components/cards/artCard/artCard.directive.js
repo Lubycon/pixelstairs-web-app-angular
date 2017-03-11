@@ -19,6 +19,5 @@ class ArtCardController {
     constructor() {
         'ngInject';
 
-        console.log(this.data);
     }
 }
