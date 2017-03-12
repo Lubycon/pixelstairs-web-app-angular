@@ -38,7 +38,7 @@ export class MainController {
     }
 
     changeView(mode) {
-        /* @LOG */ this.$log.debug('test', mode);
+        /* @LOG */ this.$log.debug('VIEW MODE CHANGE', mode);
         this.getViewMode().selected = false;
         mode.selected = true;
         this.columnWidth = this.getViewMode().width;

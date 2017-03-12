@@ -4,9 +4,9 @@ export function routerConfig ($stateProvider) {
     $stateProvider
         .state('common', {
             abstract: true,
-            templateUrl: 'app/layouts/default/default.layout.html',
+            templateUrl: 'app/layouts/common.layout.html',
             controller: 'DefaultLayoutController',
-            controllerAs: 'layout',
+            controllerAs: 'layout'
         })
         .state('common.default', {
             abstract: true,
@@ -21,6 +21,20 @@ export function routerConfig ($stateProvider) {
                 },
                 footer: {
 
+                }
+            }
+        })
+        .state('full', {
+            abstract: true,
+            templateUrl: 'app/layouts/common.layout.html',
+            controller: 'FullLayoutController',
+            controllerAs: 'layout'
+        })
+        .state('full.default', {
+            abstract: true,
+            views: {
+                content: {
+                    template: '<div ui-view></div>'
                 }
             }
         })

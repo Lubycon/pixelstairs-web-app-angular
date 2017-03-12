@@ -1,4 +1,4 @@
-export class DefaultLayoutController {
+export class FullLayoutController {
     constructor($rootScope) {
         'ngInject';
 
