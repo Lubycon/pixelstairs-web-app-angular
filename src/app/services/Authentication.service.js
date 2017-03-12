@@ -1,16 +1,7 @@
-/* ====== API CONST ====== */
-const MEMBER_API           = 'members/';
-const MEMBER_SIMPLE_API    = MEMBER_API + 'simple';
-const MEMBER_SIGN_IN_API   = MEMBER_API + 'signin';
-const MEMBER_SIGN_UP_API   = MEMBER_API + 'signup';
-const MEMBER_SIGN_OUT_API  = MEMBER_API + 'signout';
-const MEMBER_SIGN_DROP_API = MEMBER_API + 'signdrop';
-/* ====== API CONST ====== */
-
 export class AuthenticationService {
     constructor(
-        $rootScope, $window, $location, $state, $filter, $log,
-        CookieService, Restangular, HistoryService, AppSettingService,
+        $rootScope, $window, $location, $state, $filter, $log, Restangular,
+        CookieService, APIService, HistoryService, AppSettingService,
         toastr,
         CUSTOM_HEADER_PREFIX
     ) {
@@ -22,9 +13,10 @@ export class AuthenticationService {
         this.$state = $state;
         this.$filter = $filter;
         this.$log = $log;
+        this.Restangular = Restangular;
 
         this.CookieService = CookieService;
-        this.Restangular = Restangular;
+        this.APIService = APIService;
         this.HistoryService = HistoryService;
         this.AppSettingService = AppSettingService;
 
@@ -40,7 +32,7 @@ export class AuthenticationService {
             return false;
         }
 
-        let isExistBackState = this.HistoryService.get().from.url !== '^';
+        let isExistBackState = this.HistoryService.get().from.name.length > 0 && this.HistoryService.get().from.url !== '^';
         let tmp = {};
             tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = token;
 
@@ -53,7 +45,7 @@ export class AuthenticationService {
         this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
 
         // SET TOKEN TO HTTP HEADER
-        defaultHeaders = this.Restangular.defaultHeaders;
+        let defaultHeaders = this.Restangular.defaultHeaders;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
         this.Restangular.setDefaultHeaders(defaultHeaders);
 
@@ -61,10 +53,7 @@ export class AuthenticationService {
 
         // GET MEMBER DATA
 
-        this.Restangular.all(MEMBER_SIMPLE_API).customGET()
-        .then(res => {
-            /*@LOG*/ this.$log.debug(res);
-
+        this.APIService.resource('members.simple').get().then(res => {
             if(res.status.code === '0000') {
                 this.$rootScope.member = res.result;
                 /*@LOG*/ this.$log.debug(res.result);
@@ -83,11 +72,9 @@ export class AuthenticationService {
                     else this.$staet.go(STATE_NAME);
                 }
                 // GO TO MAIN PAGE
-                else $state.go('common.default.main');
+                else this.$state.go('common.default.main');
             }
-            else {
-                this.clear('reload');
-            }
+            else this.clear('reload');
         }, err => {
             this.clear('reload');
         });

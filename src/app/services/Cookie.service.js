@@ -21,7 +21,7 @@ export class CookieService {
 
     getDecrypt(key) {
         key = this.__encode__(key);
-        let value = _decodeValue(this.$cookies.get(key));
+        let value = this.__decodeValue__(this.$cookies.get(key));
 
         return value;
     }
@@ -42,7 +42,7 @@ export class CookieService {
 
     putEncrypt(key, value, options) {
         key = this.__encode__(key);
-        value = _encodeValue(this.Base64Service, value);
+        value = this.__encodeValue__(value);
         return this.$cookies.put(key, value, options);
     }
 
@@ -64,8 +64,7 @@ export class CookieService {
 
     __encodeValue__(value) {
         if(!value) return null;
-
-        value = value.toJSON();
+        value = JSON.stringify(value);
 
         return this.Base64Service.encode(value);
     }
@@ -74,7 +73,7 @@ export class CookieService {
         if(!value) return null;
 
         value = this.Base64Service.decode(value);
-        value = value.fromJSON();
+        value = JSON.parse(value);
 
         return value;
     }

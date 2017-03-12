@@ -8,7 +8,7 @@ const API_LIST = {
             signup: prefix + '/signup',
             signdrop: prefix + '/signdrop',
 
-            simple: prefix + '/simple/{id}',
+            simple: prefix + '/simple',
             detail: prefix + '/detail/{id}',
 
             pwd: {
@@ -36,9 +36,9 @@ export class APIService {
     resource(api, id) {
         return {
             get: (params) => this.__get__(api, id, params),
-            post: () => this.__post__(api, params),
-            put: () => this.__put__(api, params),
-            delete: () => this.__delete__(api)
+            post: (data) => this.__post__(api, id, data),
+            put: (data) => this.__put__(api, params),
+            delete: () => this.__delete__(api, id)
         };
     }
 
@@ -49,19 +49,23 @@ export class APIService {
         return this.Restangular.all(api).customGET('', params);
     }
 
-    __post__(api, data) {
+    __post__(api, id, data) {
+        api = this.__getURI__(api, id);
+        this.$log.debug(api);
         return this.Restangular.all(api).customPOST(data, undefined, undefined, {
             'Content-Type': 'application/json'
         });
     }
 
-    __put__(api, data) {
+    __put__(api, id, data) {
+        api = this.__getURI__(api, id);
         return this.Restangular.all(api).customPUT(data, undefined, undefined, {
             'Content-Type': 'application/json'
         });
     }
 
-    __delete__(api, params) {
+    __delete__(api, id) {
+        api = this.__getURI__(api, id);
         return this.Restangular.all(api).customDELETE();
     }
 

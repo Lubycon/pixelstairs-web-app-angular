@@ -2,9 +2,9 @@ export class DefaultLayoutController {
     constructor($rootScope) {
         'ngInject';
 
-        this.header = false;
+        this.header = true;
         this.aside = false;
-        this.footer = false;
+        this.footer = true;
         this.isMobile = $rootScope.deviceInfo.isMobile;
     }
 }

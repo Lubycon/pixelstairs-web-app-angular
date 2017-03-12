@@ -1,0 +1,19 @@
+.global-logo {
+    img {
+        width: 100%;
+    }
+}
+
+.full-width {
+    width: 100%;
+}
+
+// FIELDSET
+.fieldset {
+    input.form-control {
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid $dark-grey-color;
+        color: $dark-grey-color;
+    }
+}

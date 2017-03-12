@@ -56,7 +56,7 @@ export class AppSettingService {
             tmp[headerKey] = value;
 
             if(key === 'country') {
-                tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = __setLanguage__(value);
+                tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = this.__setLanguage__(value);
             }
 
             defaultHeaders = angular.extend({}, defaultHeaders, tmp);

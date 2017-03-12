@@ -1,0 +1,30 @@
+.state-signin,
+.state-signup {
+    * {font-family: $inconsolata;}
+    header {
+        text-align: center;
+        .global-logo {
+            width: 150px;
+            margin: 0 auto;
+        }
+    }
+    .sign-box {
+        border: 1px solid $dark-grey-color;
+        margin-top: 20px;
+        padding: 20px;
+        text-align: center;
+        form {
+            .input-group {
+                padding: 0 10px;
+                input {
+                    margin: 10px 0;
+                }
+            }
+
+            .signin-btn {
+                margin-top: 30px;
+                border: 1px solid $dark-grey-color;
+            }
+        }
+    }
+}

@@ -4,9 +4,6 @@
     .global-logo {
         width: 120px;
         @include floatToCenter;
-        img {
-            width: 100%;
-        }
     }
 
     .global-menu-wrapper {
