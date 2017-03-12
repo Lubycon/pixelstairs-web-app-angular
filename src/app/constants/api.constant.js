@@ -5,8 +5,8 @@ export function APIDetection() {
     const ORIGIN = location.origin;
 
     /* ===================== WEB SERVER ==================== */
-    const PRO_WEB_SERVER = 'www.lubycon.com';
-    const DEV_WEB_SERVER = 'dev.lubycon.com';
+    const PRO_WEB_SERVER = 'www.pixelstairs.com';
+    const DEV_WEB_SERVER = 'dev.pixelstairs.com';
     const LOCAL_WEB_SERVER = 'localhost';
     /* ===================================================== */
 
