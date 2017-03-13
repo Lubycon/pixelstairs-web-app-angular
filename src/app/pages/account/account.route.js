@@ -9,5 +9,11 @@ export function routerConfig ($stateProvider) {
             controller: 'SignInController',
             controllerAs: 'SignInCtrl'
         })
+        .state('full.default.signup', {
+            url: '/signup',
+            templateUrl: 'app/pages/account/signup.tmpl.html',
+            controller: 'SignUpController',
+            controllerAs: 'SignUpCtrl'
+        })
         ;
 }

@@ -8,6 +8,13 @@
     width: 100%;
 }
 
+.hidden {
+    position: absolute;
+    top: -10000px;
+    right: -10000px;
+    z-index: 0;
+}
+
 // FIELDSET
 .fieldset {
     input.form-control {

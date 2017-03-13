@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <header>
+            <div class="global-logo">
+                <a href="/">
+                    <img
+                        src="https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/logo/text_b.png"
+                        alt="global-logo"
+                    >
+                </a>
+            </div>
+            <p>Connect Your Creativity with the World</p>
+        </header>
+        <div
+            class="sign-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+        >
+            <div class="fieldset">
+                <form name="signUpForm">
+                    <div class="input-wrapper full-width">
+                        <input
+                            name="email"
+                            type="email"
+                            class="form-control"
+                            placeholder="Email"
+                            ng-model="SignUpCtrl.signData.email"
+                        />
+                        <input
+                            name="mobile"
+                            type="tel"
+                            class="form-control"
+                            placeholder="Mobile"
+                            ng-model="SignUpCtrl.signData.mobile"
+                        >
+                        <input
+                            name="password"
+                            type="password"
+                            class="form-control"
+                            placeholder="Password"
+                            ng-model="SignUpCtrl.signData.password.origin"
+                        >
+                        <input
+                            name="passwordAgain"
+                            type="password"
+                            class="form-control"
+                            placeholder="Password Again"
+                            ng-model="SignUpCtrl.signData.password.repeat"
+                            ng-keyup="SignUpCtrl.checkPasswordAgain()"
+                        >
+                        <input
+                            name="nickname"
+                            type="text"
+                            class="form-control"
+                            placeholder="nickname"
+                            ng-model="SignUpCtrl.signData.nickname"
+                        >
+                        <datepicker
+                            ng-model="SignUpCtrl.signData.birthday"
+                            placeholder="Birthday"
+                        ></datepicker>
+                    </div>
+
+                    <button
+                        class="signin-btn btn full-width"
+                        ng-click="SignUpCtrl.postData()"
+                    >
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

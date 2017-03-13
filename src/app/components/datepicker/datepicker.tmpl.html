@@ -1,0 +1,17 @@
+<div class="pixel-datepicker input-group">
+    <input
+        type="text"
+        uib-datepicker-popup="yyyy/MM/dd"
+        is-open="Datepicker.isOpen"
+        class="form-control"
+        placeholder="{{Datepicker.placeholder}}"
+        ng-model="Datepicker.ngModel"
+        ng-focus="Datepicker.popupOpen()"
+    >
+    <input
+        class="hidden mobile-datepicker"
+        type="date"
+        ng-if="Datepicker.isMobile"
+        ng-model="Datepicker.ngModel"
+    >
+</div>

@@ -25,7 +25,8 @@
     "angular-translate-loader-partial": "^2.11.1",
     "angular-translate-storage-cookie": "^2.11.1",
     "angular-translate-storage-local": "^2.11.1",
-    "xeicon": "^2.2.0"
+    "xeicon": "^2.2.0",
+    "angular-ui-select2": "^0.0.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"
