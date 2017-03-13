@@ -9,7 +9,7 @@
 }
 
 .hidden-float {
-    position: absolute;
+    position: fixed;
     top: -10000px;
     right: -10000px;
     z-index: 0;
