@@ -6,8 +6,10 @@
         class="form-control"
         placeholder="{{Datepicker.placeholder}}"
         ng-model="Datepicker.ngModel"
-        ng-focus="Datepicker.popupOpen(); $event.stopPropagation();"
     >
+    <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="Datepicker.popupOpen()">TEST</button>
+    </span>
     <input
         class="hidden mobile-datepicker"
         type="date"
