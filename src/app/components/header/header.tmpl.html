@@ -25,10 +25,24 @@
             </li>
             <li
                 class="sign-menu"
+                ng-if="!GlobalHeader.$rootScope.memberState.sign"
             >
                 <a ui-sref="full.default.signin">
                     Sign in
                 </a>
+            </li>
+            <li
+                class="member-menu"
+                ng-if="GlobalHeader.$rootScope.memberState.sign"
+            >
+                {{GlobalHeader.$rootScope.member.nickname}}
+            </li>
+            <li
+                class="signout-btn"
+                ng-if="GlobalHeader.$rootScope.memberState.sign"
+                ng-click="GlobalHeader.signout()"
+            >
+                Sign out
             </li>
         </ul>
     </div>

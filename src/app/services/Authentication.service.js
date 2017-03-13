@@ -86,8 +86,7 @@ export class AuthenticationService {
     }
 
     update(state) {
-        this.Restangular.all(MEMBER_SIMPLE_API).customGET()
-        .then(res => {
+        this.APIService.resource('member.simple').get().then(res => {
             if(res.state.code === '0000') {
                 this.$rootScope.member = res.result;
                 this.CookieService.put('member', this.$rootScope.member);
@@ -104,13 +103,13 @@ export class AuthenticationService {
 
     clear(reload, state = '/main') {
         if(this.$rootScope.memberState.sign && this.$rootScope.member) {
-            this.Restangular.all(MEMBER_SIGN_OUT_API).customPUT()
+            this.APIService.resource('members.signout').put()
             .then(res => {
                 delete this.$rootScope.member;
 
                 //DESTROY TOKEN AND AUTH DATA
                 this.CookieService.remove('auth');
-                this.$rootScope.memberState = false;
+                this.$rootScope.memberState.sign = false;
 
                 this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
 
@@ -118,7 +117,7 @@ export class AuthenticationService {
 
                 this.$state.go('common.default.main');
 
-                if(reload === 'reload') $window.location.realod();
+                if(reload === 'reload') this.$window.location.reload();
             }, err => {
                 this.$log.error('AUTH CLEAR METHOD IS NOT WORKED :: AuthenticationService');
                 return false;

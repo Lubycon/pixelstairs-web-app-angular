@@ -71,7 +71,6 @@ export class CookieService {
 
     __decodeValue__(value) {
         if(!value) return null;
-
         value = this.Base64Service.decode(value);
         value = JSON.parse(value);
 

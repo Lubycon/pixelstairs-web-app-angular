@@ -1,11 +1,12 @@
 export class SignUpController {
     constructor(
-        $log, APIService
+        $log, APIService, AuthenticationService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.APIService = APIService;
+        this.AuthenticationService = AuthenticationService;
 
         this.signData = {
             email: null,
@@ -16,7 +17,10 @@ export class SignUpController {
             },
             nickname: null,
             gender: null,
-            birthday: null
+            birthday: null,
+            snsCode: '0100',
+            country: 'KR',
+            newsletter: false
         };
 
         this.datePopup = {
@@ -42,7 +46,24 @@ export class SignUpController {
     }
 
     postData() {
-        /*@LOG*/ this.$log.debug(this.signData);
+        let data = angular.copy(this.signData);
+            data.password = data.password.origin;
+        /*@LOG*/ this.$log.debug(data);
+        // TEST
+        delete data.birthday;
+        delete data.gender;
+        delete data.mobile;
+        // TEST
+        this.APIService.resource('members.signup').post(data).then(res => {
+            if(res && res.status.code === '0000') {
+                this.AuthenticationService.set(res.result.token);
+            }
+            else {
+                /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', res);
+            }
+        }, err => {
+            /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', err);
+        });
     }
 
     checkPasswordAgain() {

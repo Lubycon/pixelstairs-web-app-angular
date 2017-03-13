@@ -37,7 +37,7 @@ export class APIService {
         return {
             get: (params) => this.__get__(api, id, params),
             post: (data) => this.__post__(api, id, data),
-            put: (data) => this.__put__(api, params),
+            put: (data) => this.__put__(api, id, data),
             delete: () => this.__delete__(api, id)
         };
     }

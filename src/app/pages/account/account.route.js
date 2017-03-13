@@ -7,13 +7,15 @@ export function routerConfig ($stateProvider) {
             url: '/signin',
             templateUrl: 'app/pages/account/signin.tmpl.html',
             controller: 'SignInController',
-            controllerAs: 'SignInCtrl'
+            controllerAs: 'SignInCtrl',
+            authenticate: 'visitor'
         })
         .state('full.default.signup', {
             url: '/signup',
             templateUrl: 'app/pages/account/signup.tmpl.html',
             controller: 'SignUpController',
-            controllerAs: 'SignUpCtrl'
+            controllerAs: 'SignUpCtrl',
+            authenticate: 'visitor'
         })
         ;
 }

@@ -1,16 +1,20 @@
 export class HeaderController {
     constructor(
-        $rootScope, $stateParams,
+        $rootScope, $log,
         AuthenticationService
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
-        this.$stateParams = $stateParams;
+        this.$log = $log;
         this.AuthenticationService = AuthenticationService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
         this.linkList = this.__getMenuList__(this.isMobile);
+    }
+
+    signout() {
+        this.AuthenticationService.clear('reload');
     }
 
     /* @PRIVATE METHOD */
