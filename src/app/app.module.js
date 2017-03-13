@@ -25,6 +25,7 @@ angular
         'pascalprecht.translate', // TRANSLATE FOR LANGUAGE PACK MODULE
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
+        'ui.select2', // SELECT BOX MODULE
 
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE

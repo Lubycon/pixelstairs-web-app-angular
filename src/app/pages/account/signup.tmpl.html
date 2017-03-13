@@ -53,6 +53,13 @@
                             placeholder="nickname"
                             ng-model="SignUpCtrl.signData.nickname"
                         >
+                        <select
+                            ui-select2="SignUpCtrl.selectBoxOption"
+                            ng-change="SignUpCtrl.setGender()"
+                            ng-model="SignUpCtrl.signData.gender"
+                            ng-options="gender.code as gender.name for gender in SignUpCtrl.genders"
+                        >
+                        </select>
                         <datepicker
                             ng-model="SignUpCtrl.signData.birthday"
                             placeholder="Birthday"
