@@ -45,6 +45,7 @@ class DatepickerController {
     __openMobileDatePicker__() {
         this.$log.debug('MOBILE COMPONENT IS FOCUSED');
         const ELEMENT = this.$el.find('.mobile-datepicker');
-        ELEMENT.triggerHandler('click');
+        this.$log.debug(ELEMENT);
+        ELEMENT.trigger('focus');
     }
 }
