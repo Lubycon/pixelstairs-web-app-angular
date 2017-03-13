@@ -5,11 +5,12 @@
         is-open="Datepicker.isOpen"
         class="form-control"
         placeholder="{{Datepicker.placeholder}}"
+        ng-focus="Datepicker.popupOpen()"
         ng-model="Datepicker.ngModel"
     >
-    <span class="input-group-btn">
+    <!-- <span class="input-group-btn">
         <button class="btn btn-default" ng-click="Datepicker.popupOpen()">TEST</button>
-    </span>
+    </span> -->
     <input
         class="hidden-float mobile-datepicker"
         type="date"
