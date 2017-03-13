@@ -1,10 +1,7 @@
-
-
 export function run (
     $rootScope, $log, AppSettingService, HistoryService,
     TrackerService, StateAuthenticationService,
-    $anchorScroll, $window, $document, USER_AGENT,
-    APIService // TEST
+    $anchorScroll, $window, $document, USER_AGENT
 ) {
     'ngInject';
 
@@ -13,20 +10,20 @@ export function run (
     /*@INIT*/
     AppSettingService.init();
 
-    disableScrollBySpace($window, $document);
+    __disableScrollBySpace__($window, $document);
 
     /*@STATE*/
     $rootScope.$on('$stateChangeStart',
     () => {
-        hideModalWindow();
+        __hideModalWindow__();
     });
 
     $rootScope.$on('$stateChangeSuccess',
     (event, toState, toParams, fromState, fromParams) => {
         fromState.params = fromParams;
         toState.params = toParams;
-        fromState = generateURL(fromState, $document);
-        toState = generateURL(toState, $document);
+        fromState = __generateURL__(fromState, $document);
+        toState = __generateURL__(toState, $document);
 
         HistoryService.push({
             from : fromState,
@@ -45,7 +42,7 @@ export function run (
 
 
 /*@PRIVATE METHOD*/
-function disableScrollBySpace($window, $document) {
+function __disableScrollBySpace__($window, $document) {
     $window.onkeydown = event => {
         if(event.keyCode === 32 && event.target == $document.body) {
             event.preventDefault();
@@ -54,13 +51,13 @@ function disableScrollBySpace($window, $document) {
     };
 }
 
-function hideModalWindow() {
+function __hideModalWindow__() {
     // angular.element('.modal[role="dialog"]').modal('hide');
     // angular.element('body').removeClass('modal modal-open');
     // angular.element('.modal-backdrop').remove();
 }
 
-function generateURL(param, $document) {
+function __generateURL__(param, $document) {
     const key = Object.keys(param.params);
     let url = param.url;
         url = url === '^' ? $document[0].referrer : param.url;
