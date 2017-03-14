@@ -4,7 +4,8 @@ const IP_API = 'https://freegeoip.net/json?callback=JSON_CALLBACK';
 
 export class AppSettingService {
     constructor (
-        $rootScope, $http, $log, Restangular, CookieService,
+        $rootScope, $http, $log, $q,
+        Restangular, CookieService,
         CUSTOM_HEADER_PREFIX
     ) {
         'ngInject';
@@ -12,6 +13,7 @@ export class AppSettingService {
         this.$rootScope = $rootScope;
         this.$http = $http;
         this.$log = $log;
+        this.$q = $q;
         this.Restangular = Restangular;
         this.CookieService = CookieService;
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
@@ -19,11 +21,14 @@ export class AppSettingService {
 
 
     init() {
+        let defer = this.$q.defer();
+
         const STORED_DATA = this.CookieService.get('setting');
 
         if(STORED_DATA) {
             this.$rootScope.setting = STORED_DATA;
             this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+            defer.resolve();
         }
         else {
             this.$http({
@@ -35,10 +40,15 @@ export class AppSettingService {
                 this.CookieService.put('setting', res.data);
 
                 this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+                defer.resolve();
+            }, err => {
+                defer.reject('App Setting Error!');
             });
         }
 
         /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
+
+        return defer.promise;
     }
 
     set(key, value) {

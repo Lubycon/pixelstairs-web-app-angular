@@ -1,6 +1,7 @@
 export class AuthenticationService {
     constructor(
-        $rootScope, $window, $location, $state, $filter, $log, Restangular,
+        $rootScope, $window, $location, $state, $filter,
+        $log, Restangular, $q,
         CookieService, APIService, HistoryService, AppSettingService,
         toastr,
         CUSTOM_HEADER_PREFIX
@@ -14,6 +15,7 @@ export class AuthenticationService {
         this.$filter = $filter;
         this.$log = $log;
         this.Restangular = Restangular;
+        this.$q = $q;
 
         this.CookieService = CookieService;
         this.APIService = APIService;
@@ -25,6 +27,43 @@ export class AuthenticationService {
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
     }
 
+    init() {
+        let defer = this.$q.defer();
+
+        let defaultHeaders = this.Restangular.defaultHeaders,
+            authData = this.CookieService.getDecrypt('auth'),
+            memberState = this.CookieService.getDecrypt('memberState');
+
+        const isSigned = authData && memberState.sign;
+
+        if(isSigned) {
+            defaultHeaders[this.CUSTOM_HEADER_PREFIX + 'token'] = authData;
+            this.Restangular.setDefaultHeaders(defaultHeaders);
+            this.$rootScope.memberState = memberState;
+
+            this.APIService.resource('members.simple').get()
+            .then(res => {
+                if(res && res.status.code === '0000') {
+                    /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
+                    
+                    this.$rootScope.member = res.result;
+                    this.CookieService.put('member', this.$rootScope.member);
+                    if(this.$rootScope.member.country) this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
+                }
+                else {
+                    this.clear('reload');
+                }
+
+                defer.resolve();
+            }, err => {
+                this.clear('reload');
+                defer.reject('Authentication init Error!');
+            });
+        }
+        else defer.resolve();
+
+        return defer.promise;
+    }
 
     set(token, reload) {
         if(!token) {

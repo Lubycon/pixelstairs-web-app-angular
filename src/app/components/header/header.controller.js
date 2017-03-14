@@ -48,7 +48,7 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Setting',
-                link: 'common.default.main'
+                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})'
             }];
         }
 

@@ -1,6 +1,5 @@
 import { routerConfig } from './app.route';
 import { run } from './app.run';
-import { authenticationDetect } from './app.auth';
 
 import './config/config.module';
 import './constants/constants.module';
@@ -26,6 +25,7 @@ angular
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
         'ui.select2', // SELECT BOX MODULE
+        'ngCropper', // IMAGE CROPPING MODULE
 
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE
@@ -38,5 +38,4 @@ angular
     ])
     .config(routerConfig)
     .run(run)
-    .run(authenticationDetect)
     ;

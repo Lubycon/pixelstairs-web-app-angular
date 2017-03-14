@@ -19,7 +19,7 @@
                 class="global-menu"
                 ng-repeat="link in GlobalHeader.linkList"
             >
-                <a ui-sref="link.link">{{link.name}}</a>
+                <a ui-sref="{{link.link}}">{{link.name}}</a>
             </li>
             <li
                 class="sign-menu"
@@ -40,7 +40,7 @@
                     class="dropdown-menu dropdown-menu-right"
                 >
                     <li ng-repeat="link in GlobalHeader.memberLinkList">
-                        <a ui-sref="link.link">{{link.name}}</a>
+                        <a ui-sref="{{link.link}}">{{link.name}}</a>
                     </li>
                     <li>
                         <a ng-click="GlobalHeader.signout()">Sign out</a>

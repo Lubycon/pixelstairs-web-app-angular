@@ -1,6 +1,6 @@
 export function run (
-    $rootScope, $log, AppSettingService, HistoryService,
-    TrackerService, StateAuthenticationService,
+    $rootScope, $log, $q, AppSettingService, HistoryService,
+    TrackerService, StateAuthenticationService, AuthenticationService,
     $anchorScroll, $window, $document, USER_AGENT
 ) {
     'ngInject';
@@ -8,36 +8,43 @@ export function run (
     $rootScope.deviceInfo = USER_AGENT;
 
     /*@INIT*/
-    AppSettingService.init();
+    let initPromise = $q.all;
+    initPromise({
+        appSetting: AppSettingService.init(),
+        authenticate: AuthenticationService.init()
+    }).then(res => {
+        console.log('APP INIT IS DONE!!', res);
+        $rootScope.Initialized = true;
 
-    __disableScrollBySpace__($window, $document);
+        __disableScrollBySpace__($window, $document);
 
-    /*@STATE*/
-    $rootScope.$on('$stateChangeStart',
-    () => {
-        __hideModalWindow__();
-    });
-
-    $rootScope.$on('$stateChangeSuccess',
-    (event, toState, toParams, fromState, fromParams) => {
-        fromState.params = fromParams;
-        toState.params = toParams;
-        fromState = __generateURL__(fromState, $document);
-        toState = __generateURL__(toState, $document);
-
-        HistoryService.push({
-            from : fromState,
-            to : toState
+        /*@STATE*/
+        $rootScope.$on('$stateChangeStart',
+        () => {
+            __hideModalWindow__();
         });
 
-        TrackerService.post(toState, fromState);
-        StateAuthenticationService.detect(toState);
+        $rootScope.$on('$stateChangeSuccess',
+        (event, toState, toParams, fromState, fromParams) => {
+            fromState.params = fromParams;
+            toState.params = toParams;
+            fromState = __generateURL__(fromState, $document);
+            toState = __generateURL__(toState, $document);
 
-        $anchorScroll();
+            HistoryService.push({
+                from : fromState,
+                to : toState
+            });
+
+            TrackerService.post(toState, fromState);
+            StateAuthenticationService.detect(toState);
+
+            $anchorScroll();
+        });
+
+        /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
+        /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
     });
-
-    /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
-    /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
 }
 
 
