@@ -11,6 +11,7 @@ export class HeaderController {
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
         this.linkList = this.__getMenuList__(this.isMobile);
+        this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
 
     signout() {
@@ -29,6 +30,24 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Submit Artwork',
+                link: 'common.default.main'
+            }];
+        }
+
+        return linkList;
+    }
+
+    __getMemberMenuList__(isMobile) {
+        let linkList = [];
+
+        if(isMobile) {
+            /*@MOBILE MENU*/
+            linkList = [];
+        }
+        else {
+            /*@DESKTOP MENU*/
+            linkList = [{
+                name: 'Setting',
                 link: 'common.default.main'
             }];
         }

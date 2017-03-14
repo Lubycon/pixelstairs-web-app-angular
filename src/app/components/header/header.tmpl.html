@@ -19,9 +19,7 @@
                 class="global-menu"
                 ng-repeat="link in GlobalHeader.linkList"
             >
-                <a ui-sref="link.link">
-                    {{link.name}}
-                </a>
+                <a ui-sref="link.link">{{link.name}}</a>
             </li>
             <li
                 class="sign-menu"
@@ -32,17 +30,22 @@
                 </a>
             </li>
             <li
+                uib-dropdown
                 class="member-menu"
                 ng-if="GlobalHeader.$rootScope.memberState.sign"
             >
-                {{GlobalHeader.$rootScope.member.nickname}}
-            </li>
-            <li
-                class="signout-btn"
-                ng-if="GlobalHeader.$rootScope.memberState.sign"
-                ng-click="GlobalHeader.signout()"
-            >
-                Sign out
+                <a uib-dropdown-toggle>{{GlobalHeader.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                <ul
+                    uib-dropdown-menu
+                    class="dropdown-menu dropdown-menu-right"
+                >
+                    <li ng-repeat="link in GlobalHeader.memberLinkList">
+                        <a ui-sref="link.link">{{link.name}}</a>
+                    </li>
+                    <li>
+                        <a ng-click="GlobalHeader.signout()">Sign out</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
