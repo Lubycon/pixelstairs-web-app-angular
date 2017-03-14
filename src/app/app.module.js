@@ -3,6 +3,7 @@ import { run } from './app.run';
 
 import './config/config.module';
 import './constants/constants.module';
+import './directives/directives.module';
 import './layouts/layout.module';
 import './components/components.module';
 import './services/services.module';
@@ -25,14 +26,14 @@ angular
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
         'ui.select2', // SELECT BOX MODULE
-        'ngCropper', // IMAGE CROPPING MODULE
 
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE
         'app.layouts', // APP LAYOUT MODULE
         'app.components', // APP COMPONENTS MODULE
         'app.services', // APP SERVICE MODULE
-        'app.filters',
+        'app.filters', // APP FILTER MODULE
+        'app.directives', // APP DIRECTIVE MODULE
 
         'app.pages' // PAGE MODULE
     ])

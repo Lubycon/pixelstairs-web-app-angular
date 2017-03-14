@@ -10,6 +10,7 @@ export class MemberSettingController {
         this.$uibModal = $uibModal;
 
         this.memberData = getMemberRsv.result.userData;
+        this.memberData.profile = this.memberData.profile || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};
 
         this.genders = [{
             name: 'Male',
@@ -31,7 +32,7 @@ export class MemberSettingController {
     }
 
     openCropModal() {
-        this.$uibModal.open({
+        let modal = this.$uibModal.open({
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
@@ -46,6 +47,13 @@ export class MemberSettingController {
                     };
                 }
             }
+        });
+
+        modal.result.then(res => {
+            /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', res);
+            this.memberData.profile = {
+                file: res.cropped
+            };
         });
     }
 }

@@ -45,7 +45,6 @@ export class APIService {
 
     /* @PRIVATE METHOD */
     __get__(api, id, params) {
-        console.log(api, id, params);
         api = this.__getURI__(api, id);
         return this.Restangular.all(api).customGET('', params);
     }

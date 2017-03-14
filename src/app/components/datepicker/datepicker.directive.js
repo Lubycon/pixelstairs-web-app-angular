@@ -6,12 +6,14 @@ export function DatepickerDirective() {
         templateUrl: 'app/components/datepicker/datepicker.tmpl.html',
         scope: {
             ngModel: '=',
-            placeholder: '@'
+            placeholder: '@',
+            class: '@'
         },
         link: link,
         controller: DatepickerController,
         controllerAs: 'Datepicker',
-        bindToController: true
+        bindToController: true,
+        replace: true
     };
 
     return directive;

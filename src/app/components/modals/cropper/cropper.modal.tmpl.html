@@ -4,14 +4,16 @@
 
 <div class="modal-body" id="modal-body">
     <img
+        class="cropper"
+        cropper
+        cropping="true"
         ng-if="CropperCtrl.data.img"
         ngf-src="CropperCtrl.data.img"
         ngf-no-object-url="true"
-        ng-cropper
         alt="cropping-image"
     >
 </div>
 
 <div class="modal-footer">
-    FOOTER
+    <button class="btn" ng-click="CropperCtrl.crop()">CROP</button>
 </div>

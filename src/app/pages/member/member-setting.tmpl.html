@@ -7,7 +7,7 @@
             class="sign-box col-xs-12 col-sm-12 col-md-12 col-lg-12"
         >
             <div class="fieldset">
-                <div>
+                <div class="user-profile">
                     <div
                         ngf-select
                         type="file"
@@ -18,59 +18,48 @@
                         ngf-max-size="10MB"
                         ngf-max-files="1"
                         ngf-fix-orientation="true"
+                        ng-style="{'background-image':'url('+SettingCtrl.memberData.profile.file+')'}"
                     >
-                        test(crop)
                     </div>
                 </div>
-                <div class="input-wrapper full-width">
-                    <input
-                        name="email"
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                        ng-model="SettingCtrl.memberData.email"
-                    />
-                    <input
-                        name="mobile"
-                        type="tel"
-                        class="form-control"
-                        placeholder="Mobile"
-                        ng-model="SettingCtrl.memberData.mobile"
-                    >
-                    <input
-                        name="password"
-                        type="password"
-                        class="form-control"
-                        placeholder="Password"
-                        ng-model="SettingCtrl.memberData.password.origin"
-                    >
-                    <input
-                        name="passwordAgain"
-                        type="password"
-                        class="form-control"
-                        placeholder="Password Again"
-                        ng-model="SettingCtrl.memberData.password.repeat"
-                        ng-keyup="SettingCtrl.checkPasswordAgain()"
-                    >
-                    <input
-                        name="nickname"
-                        type="text"
-                        class="form-control"
-                        placeholder="nickname"
-                        ng-model="SettingCtrl.memberData.nickname"
-                    >
-                    <select
-                        ui-select2="SettingCtrl.selectBoxOption"
-                        ng-change="SettingCtrl.setGender()"
-                        ng-model="SettingCtrl.memberData.gender"
-                        ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
-                    >
-                    </select>
-                    <datepicker
-                        ng-model="SettingCtrl.memberData.birthday"
-                        placeholder="Birthday"
-                    ></datepicker>
-                </div>
+                <form name="settingForm">
+                    <div class="input-wrapper full-width">
+                        <input
+                            name="email"
+                            type="email"
+                            class="form-control"
+                            placeholder="Email"
+                            ng-model="SettingCtrl.memberData.email"
+                        />
+                        <input
+                            name="mobile"
+                            type="tel"
+                            class="form-control"
+                            placeholder="Mobile"
+                            ng-model="SettingCtrl.memberData.mobile"
+                        >
+                        <input
+                            name="nickname"
+                            type="text"
+                            class="form-control"
+                            placeholder="nickname"
+                            ng-model="SettingCtrl.memberData.nickname"
+                        >
+                        <select
+                            class="full-width"
+                            ui-select2="SettingCtrl.selectBoxOption"
+                            ng-change="SettingCtrl.setGender()"
+                            ng-model="SettingCtrl.memberData.gender"
+                            ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
+                        >
+                        </select>
+                        <datepicker
+                            class="full-width"
+                            ng-model="SettingCtrl.memberData.birthday"
+                            placeholder="Birthday"
+                        ></datepicker>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
