@@ -8,6 +8,7 @@ export class MemberSettingController {
         this.$rootScope = $rootScope;
         this.$log = $log;
         this.$uibModal = $uibModal;
+        this.APIService = APIService;
 
         this.memberData = getMemberRsv.result.userData;
         this.memberData.profile = this.memberData.profile || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};
@@ -27,6 +28,7 @@ export class MemberSettingController {
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
+        if(files.length < 1) return false;
         /*@LOG*/ this.$log.debug(files, file, newFiles, invalidFiles);
         this.openCropModal();
     }
@@ -54,6 +56,15 @@ export class MemberSettingController {
             this.memberData.profile = {
                 file: res.cropped
             };
+        });
+    }
+
+    postData() {
+        let data = angular.copy(this.memberData);
+        /*@LOG*/ this.$log.debug(data);
+        this.APIService.resource('members.detail', { id: data.id }).post(data)
+        .then(res => {
+            this.$log.debug(res);
         });
     }
 }
