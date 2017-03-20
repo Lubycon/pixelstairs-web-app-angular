@@ -3,11 +3,11 @@ export class DummyService {
         'ngInject';
     }
 
-    get(name) {
-        switch(name) {
-            case 'contents': return this.__ContentDummy__();
-            default: return null;
-        }
+    get() {
+        return {
+            contents: this.__ContentDummy__(),
+            content: this.__ContentDetailDummy__()
+        };
     }
 
     /* @PRIVATE METHOD */
@@ -55,6 +55,32 @@ export class DummyService {
         }
 
         return resultList;
+    }
+
+    __ContentDetailDummy__() {
+        let dummy = {
+            id: '0',
+            title: 'Test Title',
+            image: {
+                id: '0',
+                file: 'http://scontent.cdninstagram.com/t51.2885-15/s480x480/e15/10895414_380670642057741_645582069_n.jpg?ig_cache_key=OTA3NTc3NzM0MTAzMjcxOTQ0.2',
+                index: null
+            },
+            like: this.__getRandomVal__(10000) * 1,
+            tags: ['Tag1', 'Tag2', 'Tag3', 'Tag4', 'Tag5', 'Tag6'],
+            member: {
+                id: null,
+                name: 'Test User',
+                profileImg: {
+                    id: null,
+                    file: 'https://source.unsplash.com/random',
+                    index: null
+                }
+            }
+        };
+        dummy.view = dummy.like * (this.__getRandomVal__(7) * 1);
+
+        return dummy;
     }
 
     /* @PRIVATE METHOD */

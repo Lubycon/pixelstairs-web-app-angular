@@ -29,7 +29,7 @@ export class MainController {
             value: 'latest'
         }];
 
-        this.dummy = DummyService.get('contents');
+        this.dummy = DummyService.get().contents;
         this.columnWidth = this.getViewMode().width;
 
         this.scrollDisabled = true;
