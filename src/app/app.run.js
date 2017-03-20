@@ -19,13 +19,14 @@ export function run (
         __disableScrollBySpace__($window, $document);
 
         /*@STATE*/
-        $rootScope.$on('$stateChangeStart',
-        () => {
+        $rootScope.$on('$stateChangeStart', () => {
+            console.log(1);
             __hideModalWindow__();
         });
 
-        $rootScope.$on('$stateChangeSuccess',
-        (event, toState, toParams, fromState, fromParams) => {
+        $rootScope.$on('$stateChangeSuccess', (
+            event, toState, toParams, fromState, fromParams
+        ) => {
             fromState.params = fromParams;
             toState.params = toParams;
             fromState = __generateURL__(fromState, $document);

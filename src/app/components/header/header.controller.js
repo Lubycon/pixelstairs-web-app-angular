@@ -30,7 +30,7 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Submit Artwork',
-                link: 'common.default.main'
+                link: 'common.default.contents-upload'
             }];
         }
 
@@ -39,6 +39,7 @@ export class HeaderController {
 
     __getMemberMenuList__(isMobile) {
         let linkList = [];
+        if(!this.$rootScope.memberState) return linkList;
 
         if(isMobile) {
             /*@MOBILE MENU*/
