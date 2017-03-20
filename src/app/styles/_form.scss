@@ -16,11 +16,56 @@
 }
 
 // FIELDSET
+.form-box {
+    border: 1px solid $dark-grey-color;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+
+    form {
+        .input-wrapper {
+            padding: 0 10px;
+            input {
+                margin: 10px 0;
+            }
+        }
+    }
+}
+
 .fieldset {
-    input.form-control {
+    .form-control {
         border-radius: 0;
         box-shadow: none;
         border: 1px solid $dark-grey-color;
         color: $dark-grey-color;
+    }
+
+    tags-input.form-control {
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid $dark-grey-color;
+        color: $dark-grey-color;
+        padding: 0 5px;
+        .host {
+            margin: 0;
+            .tags {
+                border: none;
+                box-shadow: none;
+                .tag-list {
+                    .tag-item {
+                        padding: 0 10px;
+                        line-height: 23px;
+                        border: none;
+                        border-radius: 200px;
+                        background: $dark-grey-color;
+                        color: $white-color;
+                        font-weight: 200;
+                        .remove-button {
+                            color: $white-color;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

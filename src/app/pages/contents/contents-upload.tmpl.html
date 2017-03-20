@@ -3,8 +3,60 @@
         <header>
             <p>Submit Artwork</p>
         </header>
-        <div class="form-box">
+        <div class="form-box row">
+            <div class="uploader-info col-lg-12">
+                <h3>Submit Your Artwork!</h3>
+                <p>
+                    Your artwork will be posted under the terms of Pixelstairs Service<br>
+                    and will be subject to the Creative Commons license as stipulated.
+                </p>
+            </div>
+            <div class="uploader-btn-wrapper col-lg-12">
+                <button
+                    class="icon-btn btn"
+                    ngf-select
+                    type="file"
+                    ngf-change="ContentsUploadCtrl.changedFile($files,$file,$newFiles,$invalidFiles)"
+                    ngf-accept="'image/*'"
+                    ngf-max-size="30MB"
+                    ngf-max-files="1"
+                    ngf-fix-orientation="true"
+                    ng-model="ContentsUploadCtrl.uploadedImg"
+                >
+                    <div class="icon-wrapper">
+                        <i class="xi-cloud-upload-o"></i>
+                    </div>
+                </button>
+            </div>
 
+            <div class="uploader-form fieldset col-lg-10 col-lg-offset-1">
+                <!-- TITLE, TAG, DESC -->
+                <div class="input-wrapper">
+                    <label>TITLE</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Write down title of your artwork"
+                        ng-model="ContentsUploadCtrl.contentData.title"
+                    >
+                </div>
+                <div class="input-wrapper">
+                    <label>TAGS</label>
+                    <tags-input
+                        class="form-control"
+                        ng-model="ContentsUploadCtrl.contentData.tags"
+                    ></tags-input>
+                </div>
+                <div class="input-wrapper">
+                    <label>DESCRIPTION</label>
+                    <textarea
+                        class="form-control"
+                        rows="6"
+                        placeholder="Write down the description of your artwork"
+                        ng-model="ContentsUploadCtrl.contentData.desc"
+                    ></textarea>
+                </div>
+            </div>
         </div>
     </div>
 </div>

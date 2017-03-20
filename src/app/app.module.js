@@ -26,6 +26,7 @@ angular
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
         'ui.select2', // SELECT BOX MODULE
+        'ngTagsInput', // TAG ELEMENT MODULE
 
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE
