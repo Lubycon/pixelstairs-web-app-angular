@@ -19,6 +19,7 @@
         .sort-filter {
             ul {
                 li.btn {
+                    border: none;
                     margin: 0 20px;
                 }
             }
@@ -26,6 +27,7 @@
         .view-mode {
             ul {
                 li.btn {
+                    border: none;
                     i {
                         font-size: 20px;
                         color: $light-grey-color;

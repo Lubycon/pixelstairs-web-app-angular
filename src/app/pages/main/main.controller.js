@@ -1,9 +1,13 @@
 
 export class MainController {
-    constructor ($log, DummyService) {
+    constructor (
+        $log, DummyService, angularGridInstance
+    ) {
         'ngInject';
 
         this.$log = $log;
+        this.angularGridInstance = angularGridInstance;
+        console.log(angularGridInstance);
 
         this.viewMode = [{
             name: 'Grid',
@@ -42,6 +46,7 @@ export class MainController {
         this.getViewMode().selected = false;
         mode.selected = true;
         this.columnWidth = this.getViewMode().width;
+        this.angularGridInstance.gallery.refresh();
     }
 
     getViewMode() {

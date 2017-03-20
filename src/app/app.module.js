@@ -27,6 +27,7 @@ angular
         'infinite-scroll', // INFINITE SCROLL
         'ui.select2', // SELECT BOX MODULE
         'ngTagsInput', // TAG ELEMENT MODULE
+        'angularGrid', // GRID LAYOUT MODULE
 
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE

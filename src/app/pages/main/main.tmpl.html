@@ -40,7 +40,11 @@
         >
 
         </div> -->
-        <ul>
+        <ul
+            angular-grid="MainCtrl.dummy"
+            ag-css-grid="true"
+            angular-grid-id="gallery"
+        >
             <li class="col-lg-{{MainCtrl.columnWidth}}" ng-repeat="data in MainCtrl.dummy">
                 <art-card data="data"></art-card>
             </li>
