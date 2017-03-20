@@ -20,4 +20,8 @@ export class ContentsUploadController {
         /*@LOG*/ this.$log.debug(files, file, newFiles, invalidFiles);
         this.contentData.img = this.uploadedImg;
     }
+
+    postData() {
+        /*@LOG*/ this.$log.debug(this.contentData);
+    }
 }

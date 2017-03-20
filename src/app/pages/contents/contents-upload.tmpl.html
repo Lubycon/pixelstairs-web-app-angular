@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
-        <header>
+        <!-- <header>
             <p>Submit Artwork</p>
-        </header>
+        </header> -->
         <div class="form-box row">
             <div class="uploader-info col-lg-12">
                 <h3>Submit Your Artwork!</h3>
@@ -30,32 +30,36 @@
             </div>
 
             <div class="uploader-form fieldset col-lg-10 col-lg-offset-1">
-                <!-- TITLE, TAG, DESC -->
-                <div class="input-wrapper">
-                    <label>TITLE</label>
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Write down title of your artwork"
-                        ng-model="ContentsUploadCtrl.contentData.title"
-                    >
-                </div>
-                <div class="input-wrapper">
-                    <label>TAGS</label>
-                    <tags-input
-                        class="form-control"
-                        ng-model="ContentsUploadCtrl.contentData.tags"
-                    ></tags-input>
-                </div>
-                <div class="input-wrapper">
-                    <label>DESCRIPTION</label>
-                    <textarea
-                        class="form-control"
-                        rows="6"
-                        placeholder="Write down the description of your artwork"
-                        ng-model="ContentsUploadCtrl.contentData.desc"
-                    ></textarea>
-                </div>
+                <form ng-submit="ContentsUploadCtrl.postData()">
+                    <!-- TITLE, TAG, DESC -->
+                    <div class="input-wrapper">
+                        <label>TITLE</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Write down title of your artwork"
+                            ng-model="ContentsUploadCtrl.contentData.title"
+                        >
+                    </div>
+                    <div class="input-wrapper">
+                        <label>TAGS</label>
+                        <tags-input
+                            class="form-control"
+                            ng-model="ContentsUploadCtrl.contentData.tags"
+                        ></tags-input>
+                    </div>
+                    <div class="input-wrapper">
+                        <label>DESCRIPTION</label>
+                        <textarea
+                            class="form-control"
+                            rows="8"
+                            placeholder="Write down the description of your artwork"
+                            ng-model="ContentsUploadCtrl.contentData.desc"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">SUBMIT</button>
+                </form>
             </div>
         </div>
     </div>
