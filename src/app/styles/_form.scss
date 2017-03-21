@@ -50,6 +50,9 @@
         border: 1px solid $dark-grey-color;
         color: $dark-grey-color;
         padding: 0 5px;
+        * {
+            font-family: $inconsolata;
+        }
         .host {
             margin: 0;
             .tags {
@@ -61,7 +64,7 @@
                 .tag-list {
                     .tag-item {
                         padding: 0 10px;
-                        line-height: 23px;
+                        line-height: 25px;
                         border: none;
                         border-radius: 200px;
                         background: $dark-grey-color;
