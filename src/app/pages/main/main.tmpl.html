@@ -24,14 +24,14 @@
                     class="btn"
                     ng-class="{'selected': mode.selected}"
                     ng-repeat="mode in MainCtrl.viewMode"
-                    ng-click="MainCtrl.changeView(mode)"
+                    ng-click="MainCtrl.setViewMode(mode.name)"
                 >
                     <i class="{{mode.icon}}"></i>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="page-body row">
+    <div class="page-body row {{MainCtrl.getViewMode()+'-mode'}}">
         <!-- <div
             class="infinite-scroll-wrapper"
             infinite-scroll="vm.onScroll()"

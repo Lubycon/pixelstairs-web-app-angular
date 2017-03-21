@@ -16,8 +16,14 @@ export function ArtCardDirective() {
 }
 
 class ArtCardController {
-    constructor() {
+    constructor(
+        $log, CookieService
+    ) {
         'ngInject';
 
+        this.$log = $log;
+        this.CookieService = CookieService;
+
+        $log.debug(this.CookieService.get('viewmode'));
     }
 }
