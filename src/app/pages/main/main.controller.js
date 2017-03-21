@@ -3,7 +3,8 @@ export class MainController {
     constructor (
         $log, $timeout,
         DummyService, CookieService,
-        angularGridInstance
+        angularGridInstance,
+        MAIN_GRID_INIT
     ) {
         'ngInject';
 
@@ -12,9 +13,11 @@ export class MainController {
         this.CookieService = CookieService;
         this.angularGridInstance = angularGridInstance;
 
-        this.currentViewMode = this.getViewMode();
+        this.MAIN_GRID_INIT = MAIN_GRID_INIT;
 
-        this.viewMode = [{
+        this.currentViewmode = this.getViewmode();
+
+        this.viewmode = [{
             name: 'grid',
             icon: 'xi-apps',
             width: 3,
@@ -42,14 +45,14 @@ export class MainController {
 
     init() {
         this.$timeout(() => {
-            this.setViewMode(this.currentViewMode);
+            this.setViewmode(this.currentViewmode);
         });
     }
 
-    setViewMode(mode) {
+    setViewmode(mode) {
         /* @LOG */ this.$log.debug('SET VIEW MODE', mode);
 
-        this.viewMode.forEach(v => {
+        this.viewmode.forEach(v => {
             if(v.name === mode) {
                 v.selected = true;
                 this.columnWidth = v.width;
@@ -57,14 +60,14 @@ export class MainController {
             else v.selected = false;
         });
 
-        this.currentViewMode = mode;
-        this.CookieService.put('viewmode', this.currentViewMode);
+        this.currentViewmode = mode;
+        this.CookieService.put('Viewmode', this.currentViewmode);
 
         this.angularGridInstance.gallery.refresh();
     }
 
-    getViewMode() {
-        let grid = this.CookieService.get('viewmode') || 'grid';
+    getViewmode() {
+        let grid = this.CookieService.get('Viewmode') || this.MAIN_GRID_INIT;
 
         return grid;
     }

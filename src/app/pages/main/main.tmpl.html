@@ -23,15 +23,15 @@
                 <li
                     class="btn"
                     ng-class="{'selected': mode.selected}"
-                    ng-repeat="mode in MainCtrl.viewMode"
-                    ng-click="MainCtrl.setViewMode(mode.name)"
+                    ng-repeat="mode in MainCtrl.viewmode"
+                    ng-click="MainCtrl.setViewmode(mode.name)"
                 >
                     <i class="{{mode.icon}}"></i>
                 </li>
             </ul>
         </div>
     </div>
-    <div class="page-body row {{MainCtrl.getViewMode()+'-mode'}}">
+    <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
         <!-- <div
             class="infinite-scroll-wrapper"
             infinite-scroll="vm.onScroll()"
@@ -46,7 +46,7 @@
             angular-grid-id="gallery"
         >
             <li class="col-lg-{{MainCtrl.columnWidth}}" ng-repeat="data in MainCtrl.dummy">
-                <art-card data="data"></art-card>
+                <art-card data="data" viewmode="MainCtrl.currentViewmode"></art-card>
             </li>
         </ul>
     </div>

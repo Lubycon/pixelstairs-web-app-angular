@@ -26,5 +26,5 @@ angular
 
     })
 
-    .constant()
+    .constant('MAIN_GRID_INIT', 'grid')
     ;

@@ -5,25 +5,31 @@ export function ArtCardDirective() {
         restrict: 'EA',
         templateUrl: 'app/components/cards/artCard/artCard.tmpl.html',
         scope: {
-            data: '='
+            data: '=',
+            viewmode: '='
         },
+        link: link,
         controller: ArtCardController,
         controllerAs: 'ArtCard',
         bindToController: true
     };
 
     return directive;
+
+    function link($scope) {
+        $scope.$watch('ArtCard.viewmode', (newVal) => {
+            if(newVal) $scope.ArtCard.viewmode = newVal;
+        });
+    }
 }
 
 class ArtCardController {
     constructor(
-        $log, CookieService
+        $log, CookieService, MAIN_GRID_INIT
     ) {
         'ngInject';
 
         this.$log = $log;
         this.CookieService = CookieService;
-
-        $log.debug(this.CookieService.get('viewmode'));
     }
 }
