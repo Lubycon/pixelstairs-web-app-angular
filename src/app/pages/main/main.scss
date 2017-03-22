@@ -45,24 +45,27 @@
         &>ul {
             &>li {
                 padding: 0 10px;
+                &.sticky-element {
+                    border: 1px solid #f00;
+                }
             }
         }
 
         &.wide-mode {
             .art-card {
-                .art-background {
-                    position: relative;
-                    padding-top: 56.25%;
-                    overflow: hidden;
-                    img {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translateX(-50%) translateY(-50%);
-                    }
-                }
+                // .art-background {
+                //     position: relative;
+                //     padding-top: 56.25%;
+                //     overflow: hidden;
+                //     img {
+                //         position: absolute;
+                //         top: 50%;
+                //         left: 50%;
+                //         transform: translateX(-50%) translateY(-50%);
+                //     }
+                // }
                 .art-info {
-                    
+
                 }
             }
         }

@@ -11,7 +11,8 @@ export function ArtCardDirective() {
         link: link,
         controller: ArtCardController,
         controllerAs: 'ArtCard',
-        bindToController: true
+        bindToController: true,
+        replace: true
     };
 
     return directive;

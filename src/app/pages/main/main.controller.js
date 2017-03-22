@@ -1,7 +1,7 @@
 
 export class MainController {
     constructor (
-        $log, $timeout,
+        $log, $timeout, $uibPosition,
         DummyService, CookieService,
         angularGridInstance,
         MAIN_GRID_INIT
@@ -10,6 +10,7 @@ export class MainController {
 
         this.$log = $log;
         this.$timeout = $timeout;
+        this.$uibPosition = $uibPosition;
         this.CookieService = CookieService;
         this.angularGridInstance = angularGridInstance;
 
@@ -47,6 +48,8 @@ export class MainController {
         this.$timeout(() => {
             this.setViewmode(this.currentViewmode);
         });
+
+
     }
 
     setViewmode(mode) {
@@ -61,13 +64,13 @@ export class MainController {
         });
 
         this.currentViewmode = mode;
-        this.CookieService.put('Viewmode', this.currentViewmode);
+        this.CookieService.put('viewmode', this.currentViewmode);
 
         this.angularGridInstance.gallery.refresh();
     }
 
     getViewmode() {
-        let grid = this.CookieService.get('Viewmode') || this.MAIN_GRID_INIT;
+        let grid = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
 
         return grid;
     }
