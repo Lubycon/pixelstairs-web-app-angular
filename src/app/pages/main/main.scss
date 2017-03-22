@@ -41,11 +41,25 @@
             }
         }
     }
+
+    .wide-sub-header {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        height: 30px;
+        z-index: 100000000;
+        .body {
+            height: 100%;
+            background: $white-color;
+        }
+    }
+
     .page-body {
         &>ul {
             &>li {
                 padding: 0 10px;
-                &.sticky-element {
+                &.shown-element {
                     border: 1px solid #f00;
                 }
             }

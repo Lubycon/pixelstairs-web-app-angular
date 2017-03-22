@@ -1,13 +1,14 @@
 
 export class MainController {
     constructor (
-        $log, $timeout, $uibPosition,
+        $scope, $log, $timeout, $uibPosition,
         DummyService, CookieService,
         angularGridInstance,
         MAIN_GRID_INIT
     ) {
         'ngInject';
 
+        this.$scope = $scope;
         this.$log = $log;
         this.$timeout = $timeout;
         this.$uibPosition = $uibPosition;
@@ -48,8 +49,6 @@ export class MainController {
         this.$timeout(() => {
             this.setViewmode(this.currentViewmode);
         });
-
-
     }
 
     setViewmode(mode) {

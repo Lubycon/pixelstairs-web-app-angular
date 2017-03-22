@@ -31,6 +31,11 @@
             </ul>
         </div>
     </div>
+
+    <div class="wide-sub-header" ng-if="MainCtrl.currentViewmode === 'wide'">
+        <div class="body" ng-if="data.sticky" ng-repeat="data in MainCtrl.dummy">{{data.id}} - {{data.picture.title}}</div>
+    </div>
+
     <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
         <!-- <div
             class="infinite-scroll-wrapper"
@@ -46,13 +51,13 @@
             angular-grid-id="gallery"
         >
             <li sticky
+                offset="50"
                 ng-model="data"
                 class="col-lg-{{MainCtrl.columnWidth}}"
-                ng-class="{'sticky-element': data.sticky}"
+                ng-class="{'shown-element': data.sticky}"
                 ng-repeat="data in MainCtrl.dummy"
-            >    
+            >
                 <art-card data="data" viewmode="MainCtrl.currentViewmode"></art-card>
-                {{data.sticky}}
             </li>
         </ul>
     </div>

@@ -4,22 +4,15 @@ export function StickyDirective() {
     let directive = {
         restrict: 'A',
         scope: {
-            ngModel: '='
+            ngModel: '=',
+            offset: '=?'
         },
-        link: link,
         controller: StickyController,
         controllerAs: 'Sticky',
         bindToController: true
     };
 
     return directive;
-
-    function link($scope, $element, $attr) {
-        $scope.$watchCollection('Sticky.ngModel.sticky', (newVal) => {
-            console.log(newVal);
-            if(newVal) console.log(newVal);
-        });
-    }
 }
 
 class StickyController {
@@ -37,8 +30,10 @@ class StickyController {
     }
 
     run() {
+        let offset = this.offset || 0;
+
         angular.element(this.$window).on('scroll', () => {
-            let scrollTop = angular.element(this.$window).scrollTop(),
+            let scrollTop = angular.element(this.$window).scrollTop() + offset,
                 elementBottomPosition = this.$uibPosition.offset(this.$element).top + this.$element.height();
 
             const OLD_VAL = angular.copy(this.ngModel.sticky);
