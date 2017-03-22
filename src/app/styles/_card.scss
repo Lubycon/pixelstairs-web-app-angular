@@ -1,0 +1,27 @@
+.card {
+    position: relative;
+    margin: 10px 0;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    background-color: $white-color;
+
+    .card-header {
+        position: relative;
+        width: 100%;
+        padding: 5px 10px;
+        background-color: $white-color;
+        border-bottom: 1px solid $light-grey-color;
+    }
+    .card-body {
+        position: relative;
+        width: 100%;
+        padding: 5px 10px;
+        background-color: $white-color;
+    }
+    .card-footer {
+        position: relative;
+        width: 100%;
+        padding: 5px 10px;
+        background-color: $white-color;
+        border-top: 1px solid $light-grey-color;
+    }
+}

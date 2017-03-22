@@ -1,36 +1,58 @@
-<div class="art-card {{ArtCard.viewmode}}">
-    <div class="art-background">
-        <img ng-src="{{ArtCard.data.picture.image.file}}" alt="{{'art-img-' + ArtCard.data.id}}">
+<div class="card art-card {{ArtCard.viewmode}}">
+    <div class="card-header row" ng-if="ArtCard.viewmode === 'wide'">
+        <div class="member-info col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div
+                ng-style="{'background-image': 'url('+ArtCard.data.member.profileImg.file+')'}"
+                class="member-profile"
+            >
+            </div>
+            <h4>{{ArtCard.data.member.name}}</h4>
+        </div>
+        <div class="art-title col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <h3>{{ArtCard.data.picture.title}}</h3>
+        </div>
+        <div class="art-info col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <ul>
+                <li><i class="xi-heart-o"></i> <span>{{ArtCard.data.picture.like | numberSuffixFilter:1}}</span></li>
+                <li><i class="xi-eye-o"></i> <span>{{ArtCard.data.picture.view | numberSuffixFilter:1}}</span></li>
+            </ul>
+        </div>
     </div>
-    <div class="art-info">
 
-        <div ng-if="ArtCard.viewmode === 'grid'">
-            <!--MEMBER INFO-->
-            <header>
-                <span class="member-profile">
-                    <div
-                        ng-style="{'background-image': 'url('+ArtCard.data.member.profileImg.file+')'}"
-                        class="member-profile-img"
-                    ></div>
-                </span>
-                <span class="member-info">
-                    <h4>{{ArtCard.data.member.name}}</h4>
-                </span>
-            </header>
-            <div class="divider"></div>
-            <!--ART INFO-->
-            <footer>
-                <h4>{{ArtCard.data.picture.title}}</h4>
-                <ul>
-                    <li><i class="xi-heart-o"></i> <span>{{ArtCard.data.picture.like | numberSuffixFilter:1}}</span></li>
-                    <li><i class="xi-eye-o"></i> <span>{{ArtCard.data.picture.view | numberSuffixFilter:1}}</span></li>
-                </ul>
-            </footer>
+    <div class="card-body">
+        <div class="art-background">
+            <img ng-src="{{ArtCard.data.picture.image.file}}" alt="{{'art-img-' + ArtCard.data.id}}">
         </div>
+        <div class="art-info">
 
-        <div ng-if="ArtCard.viewmode === 'wide'">
-            <i class="zoom-in-icon xi-zoom-in"></i>
+            <div ng-if="ArtCard.viewmode === 'grid'">
+                <!--MEMBER INFO-->
+                <header>
+                    <span class="member-profile">
+                        <div
+                            ng-style="{'background-image': 'url('+ArtCard.data.member.profileImg.file+')'}"
+                            class="member-profile-img"
+                        ></div>
+                    </span>
+                    <span class="member-info">
+                        <h4>{{ArtCard.data.member.name}}</h4>
+                    </span>
+                </header>
+                <div class="divider"></div>
+                <!--ART INFO-->
+                <footer>
+                    <h4>{{ArtCard.data.picture.title}}</h4>
+                    <ul>
+                        <li><i class="xi-heart-o"></i> <span>{{ArtCard.data.picture.like | numberSuffixFilter:1}}</span></li>
+                        <li><i class="xi-eye-o"></i> <span>{{ArtCard.data.picture.view | numberSuffixFilter:1}}</span></li>
+                    </ul>
+                </footer>
+            </div>
+
+            <div ng-if="ArtCard.viewmode === 'wide'">
+                <i class="zoom-in-icon xi-zoom-in"></i>
+            </div>
+
         </div>
-
     </div>
 </div>

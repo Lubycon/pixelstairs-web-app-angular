@@ -16,8 +16,8 @@ export class MainController {
         this.angularGridInstance = angularGridInstance;
 
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
-
         this.currentViewmode = this.getViewmode();
+        this.selectedModel = {};
 
         this.viewmode = [{
             name: 'grid',

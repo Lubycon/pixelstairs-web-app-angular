@@ -18,6 +18,10 @@
     height: $length;
     border-radius: 50%;
     overflow: hidden;
+    background: {
+        size: cover;
+        position: 50% 50%;
+    }
 }
 
 /* @METHOD */

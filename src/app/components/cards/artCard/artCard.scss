@@ -8,81 +8,120 @@
     }
     &.wide {
         cursor: zoom-in;
+        margin: 0;
     }
-    .art-background {
-        img {
-            width: 100%;
-        }
-    }
-    .art-info {
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.5);
-        transition: all 0.5s ease-in-out;
-        * {
-            color: $white-color;
-            font-family: $inconsolata;
-        }
-        header {
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            padding: 5px 10px;
+
+    .card-header {
+        margin: 0;
+        padding: 10px;
+        .member-info {
+            text-align: left;
             .member-profile {
-                @include circleFrame(35px);
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 5px;
-                .member-profile-img {
-                    width: 100%;
-                    height: 100%;
-                    background: {
-                        size: cover;
-                        position: 50% 50%;
-                    }
-                }
-            }
-            .member-info {
+                @include circleFrame(30px);
                 display: inline-block;
                 vertical-align: middle;
             }
-        }
-        footer {
-            position: absolute;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            padding: 5px 10px;
-            ul {
-                li {
-                    display: inline-block;
-                    i {
-                        vertical-align: middle;
-                        font-size: 1.4em;
-                    }
-                    span {
-                        vertical-align: middle;
-                    }
-                }
+            h4 {
+                display: inline-block;
+                vertical-align: middle;
             }
         }
 
-        .zoom-in-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-50%);
-            font-size: 80px;
+        .art-title {
+            h3 {
+                text-align: center;
+            }
+        }
+
+        .art-info {
+            ul {
+                text-align: right;
+                li {
+                    display: inline-block;
+                }
+            }
         }
     }
-    &:hover {
+
+    .card-body {
+        padding: 0;
+
+        .art-background {
+            img {
+                width: 100%;
+            }
+        }
+
         .art-info {
-            opacity: 1;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+            transition: all 0.5s ease-in-out;
+            * {
+                color: $white-color;
+                font-family: $inconsolata;
+            }
+            header {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                left: 0;
+                padding: 5px 10px;
+                .member-profile {
+                    @include circleFrame(35px);
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 5px;
+                    .member-profile-img {
+                        width: 100%;
+                        height: 100%;
+                        background: {
+                            size: cover;
+                            position: 50% 50%;
+                        }
+                    }
+                }
+                .member-info {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+            footer {
+                position: absolute;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                padding: 5px 10px;
+                ul {
+                    li {
+                        display: inline-block;
+                        i {
+                            vertical-align: middle;
+                            font-size: 1.4em;
+                        }
+                        span {
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+
+            .zoom-in-icon {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                font-size: 80px;
+            }
+        }
+        &:hover {
+            .art-info {
+                opacity: 1;
+            }
         }
     }
 }

@@ -1,21 +1,22 @@
-export function StickyDirective() {
+export function ScrollSelectorDirective() {
     'ngInject';
 
     let directive = {
         restrict: 'A',
         scope: {
             ngModel: '=',
-            offset: '=?'
+            offset: '=?',
+            detectDisabled: '='
         },
-        controller: StickyController,
-        controllerAs: 'Sticky',
+        controller: ScrollSelectorController,
+        controllerAs: 'ScrollSelector',
         bindToController: true
     };
 
     return directive;
 }
 
-class StickyController {
+class ScrollSelectorController {
     constructor($scope, $element, $window, $uibPosition) {
         'ngInject';
 
@@ -33,15 +34,16 @@ class StickyController {
         let offset = this.offset || 0;
 
         angular.element(this.$window).on('scroll', () => {
+            if(this.detectDisabled) return false;
+
             let scrollTop = angular.element(this.$window).scrollTop() + offset,
                 elementBottomPosition = this.$uibPosition.offset(this.$element).top + this.$element.height();
 
-            const OLD_VAL = angular.copy(this.ngModel.sticky);
             const NEW_VAL =
                 scrollTop >= this.$uibPosition.offset(this.$element).top &&
                 scrollTop < elementBottomPosition;
 
-            if(OLD_VAL !== NEW_VAL) {
+            if(this.ngModel.sticky !== NEW_VAL) {
                 this.ngModel.sticky = NEW_VAL;
                 this.$scope.$apply();
             }
