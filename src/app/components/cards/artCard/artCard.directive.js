@@ -55,10 +55,9 @@ class ArtCardController {
     setFixedHeader() {
         this.$timeout(() => {
             let header = this.$element.find('.card-header');
+            header.addClass('sticky-header');
             header.css({
-                'position': 'sticky',
-                'top': this.headerOffset || 0,
-                'z-index': 1
+                'top': this.headerOffset || 0
             });
         });
     }

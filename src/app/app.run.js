@@ -20,7 +20,6 @@ export function run (
 
         /*@STATE*/
         $rootScope.$on('$stateChangeStart', () => {
-            $log.debug(1);
             __hideModalWindow__();
         });
 

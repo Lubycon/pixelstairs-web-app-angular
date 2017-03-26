@@ -52,7 +52,7 @@ export class MainController {
     }
 
     setViewmode(mode) {
-        /* @LOG */ this.$log.debug('SET VIEW MODE', mode);
+        /* @LOG */ this.$log.debug('SET VIEW MODE => ', mode);
 
         this.viewmode.forEach(v => {
             if(v.name === mode) {

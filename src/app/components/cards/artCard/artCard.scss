@@ -14,6 +14,12 @@
     .card-header {
         margin: 0;
         padding: 10px;
+
+        &.sticky-header {
+            @include stickyPosition;
+            z-index: 1
+        }
+
         .member-info {
             text-align: left;
             .member-profile {
