@@ -7,7 +7,7 @@ export class UUIDService {
 
     generate(type) {
         let now = new Date().getMilliseconds();
-        const isExistPerformance = this.$window.performance && angular.isFuncion(this.$window.performance.now);
+        const isExistPerformance = this.$window.performance && angular.isFunction(this.$window.performance.now);
 
         if(isExistPerformance) {
             now += this.$window.performance.now();
