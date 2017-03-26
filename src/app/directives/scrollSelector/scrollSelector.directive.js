@@ -4,7 +4,6 @@ export function ScrollSelectorDirective() {
     let directive = {
         restrict: 'A',
         scope: {
-            ngModel: '=',
             offset: '=?',
             detectDisabled: '='
         },
@@ -25,8 +24,6 @@ class ScrollSelectorController {
         this.$window = $window;
         this.$uibPosition = $uibPosition;
 
-        this.ngModel.sticky = false;
-
         (this.run)();
     }
 
@@ -43,10 +40,10 @@ class ScrollSelectorController {
                 scrollTop >= this.$uibPosition.offset(this.$element).top &&
                 scrollTop < elementBottomPosition;
 
-            if(this.ngModel.sticky !== NEW_VAL) {
-                this.ngModel.sticky = NEW_VAL;
-                this.$scope.$apply();
+            if(NEW_VAL) {
+                this.$element.addClass('test');
             }
+            else if(NEW_VAL && this.$element.hasClass('test')) console.log(2);
         });
     }
 }

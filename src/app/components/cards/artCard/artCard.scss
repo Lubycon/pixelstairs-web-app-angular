@@ -3,6 +3,24 @@
     margin: 10px 0;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 
+    .sticky-header {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .sticky-header-absolute {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+    }
+
+    .sticky-bottom {
+
+    }
+
     &.grid {
         cursor: pointer;
     }
@@ -14,11 +32,6 @@
     .card-header {
         margin: 0;
         padding: 10px;
-
-        &.sticky-header {
-            @include stickyPosition;
-            z-index: 1
-        }
 
         .member-info {
             text-align: left;
