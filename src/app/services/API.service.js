@@ -74,11 +74,11 @@ export class APIService {
         uri = uri;
 
         if(list[tmp[index]]) {
-            if(typeof list[tmp[index]] === 'string') {
+            if(angular.isString(list[tmp[index]])) {
                 uri = list[tmp[index]];
                 return this.__setParamsToAPI__(uri, id);
             }
-            else if(typeof list[tmp[index]] === 'object') {
+            else if(angular.isObject(list[tmp[index]])) {
                 return this.__getURI__(api, id, tmp[index], list[tmp[index]], index+1);
             }
         }
@@ -91,7 +91,7 @@ export class APIService {
         let tmp = {};
 
         Object.keys(API_LIST).forEach((v) => {
-            if(typeof API_LIST[v] === 'function') {
+            if(angular.isFunction(API_LIST[v])) {
                 tmp[v] = API_LIST[v]();
             }
             else tmp[v] = API_LIST[v];

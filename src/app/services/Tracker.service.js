@@ -58,7 +58,7 @@ export class TrackerService {
         let tracker = this.getCopiedTracker(),
             isValid = false;
 
-        if(typeof params === 'number') tracker.action = params;
+        if(angular.isNumber(params)) tracker.action = params;
         else {
             const keys = Object.keys(params);
             isValid = keys.every(v => this.__validator__(v));

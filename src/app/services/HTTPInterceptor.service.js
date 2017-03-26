@@ -26,7 +26,7 @@ export class HTTPInterceptorService extends HTTPInterceptor {
     }
 
     responseError(res) {
-        const $state = this.$injector.get('$state');
+        // const $state = this.$injector.get('$state');
         const $log = this.$injector.get('$log');
         $log.debug('========================== !!!GET RESPONSE ERROR!!! ============================');
         $log.debug('status : ',res.status,' -> ',res.statusText);
@@ -37,12 +37,12 @@ export class HTTPInterceptorService extends HTTPInterceptor {
 
         res.data.httpStatus = res.status;
 
-        if(res.status < 0) { // CATCH CORS ERROR
-
-        }
-        else {
-
-        }
+        // if(res.status < 0) { // CATCH CORS ERROR
+        //
+        // }
+        // else {
+        //
+        // }
 
         return res;
     }

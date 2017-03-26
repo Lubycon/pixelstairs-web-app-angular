@@ -13,14 +13,14 @@ export function run (
         appSetting: AppSettingService.init(),
         authenticate: AuthenticationService.init()
     }).then(res => {
-        console.log('APP INIT IS DONE!!', res);
+        $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
 
         __disableScrollBySpace__($window, $document);
 
         /*@STATE*/
         $rootScope.$on('$stateChangeStart', () => {
-            console.log(1);
+            $log.debug(1);
             __hideModalWindow__();
         });
 

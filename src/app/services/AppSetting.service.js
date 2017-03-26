@@ -42,6 +42,7 @@ export class AppSettingService {
                 this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
                 defer.resolve();
             }, err => {
+                /*@LOG*/ this.$log.debug(err);
                 defer.reject('App Setting Error!');
             });
         }

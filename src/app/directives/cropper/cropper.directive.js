@@ -14,7 +14,7 @@ export function CropperDirective() {
 
     return directive;
 
-    function link($scope, $element, $attrs) {
+    function link($scope, $element) {
         $.fn.cropper.setDefaults({
             minCanvasWidth: 150,
             minCanvasHeight: 150,

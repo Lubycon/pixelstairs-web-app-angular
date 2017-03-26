@@ -19,7 +19,7 @@ export function ArtCardDirective() {
 
     return directive;
 
-    function link($scope, $element) {
+    function link($scope) {
         $scope.$watch('ArtCard.viewmode', (newVal) => {
             if(newVal) {
                 $scope.ArtCard.viewmode = newVal;

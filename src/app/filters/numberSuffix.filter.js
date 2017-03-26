@@ -20,8 +20,7 @@
 export function numberSuffixFilter() {
     const result = (input, decimals) => {
         const suffixes = ['k', 'M', 'G', 'T', 'P', 'E'];
-        let exp,
-            rounded;
+        let exp;
 
         if(isNaN(input)) return false;
         if(input < 1000) return input;
