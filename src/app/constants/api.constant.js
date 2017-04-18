@@ -11,8 +11,8 @@ export function APIDetection() {
     /* ===================================================== */
 
     /* ===================== API SERVER ==================== */
-    const PRO_API_SERVER = 'http://api.lubycon.com/v1';
-    const DEV_API_SERVER = 'http://api.lubycon.com/v1';
+    const PRO_API_SERVER = 'http://apidev.pixelstairs.com/v1';
+    const DEV_API_SERVER = 'http://apidev.pixelstairs.com/v1';
     /* ===================================================== */
 
     const DEV_APPKEY = 'lubycon-back';

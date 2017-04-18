@@ -17,7 +17,13 @@ const API_LIST = {
             }
         };
     },
-    contents: 'contents/{category}'
+    contents: () => {
+        const prefix = 'contents';
+        return {
+            list: prefix + '',
+            item: prefix + ''
+        };
+    }
 };
 /* @API CONSTANT */
 

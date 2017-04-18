@@ -2,7 +2,7 @@
 export class MainController {
     constructor (
         $scope, $log, $timeout, $uibPosition,
-        DummyService, CookieService,
+        APIService, CookieService,
         angularGridInstance,
         MAIN_GRID_INIT
     ) {
@@ -12,6 +12,8 @@ export class MainController {
         this.$log = $log;
         this.$timeout = $timeout;
         this.$uibPosition = $uibPosition;
+
+        this.APIService = APIService;
         this.CookieService = CookieService;
         this.angularGridInstance = angularGridInstance;
 
@@ -39,7 +41,6 @@ export class MainController {
             value: 'latest'
         }];
 
-        this.dummy = DummyService.get().contents;
         this.scrollDisabled = true;
 
         (this.init)();
@@ -49,6 +50,8 @@ export class MainController {
         this.$timeout(() => {
             this.setViewmode(this.currentViewmode);
         });
+
+        this.getContents();
     }
 
     setViewmode(mode) {
@@ -72,5 +75,12 @@ export class MainController {
         let grid = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
 
         return grid;
+    }
+
+    getContents() {
+        this.APIService.resource('contents.list').get()
+        .then(res => {
+            console.log('======MAIN PAGE CONTENT CALLED => ', res, '======');
+        });
     }
 }

@@ -6,9 +6,9 @@ angular
     .module('app.constants', [
 
     ])
-    .constant('APP_VERSION', '1.0.0')
+    .constant('APP_VERSION', '1.0.1')
 
-    .constant('CUSTOM_HEADER_PREFIX', 'X-lubycon-')
+    .constant('CUSTOM_HEADER_PREFIX', 'X-pixel-')
 
     .constant('USER_AGENT', UserAgentDetection())
 
