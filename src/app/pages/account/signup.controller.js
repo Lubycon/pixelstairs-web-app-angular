@@ -10,7 +10,6 @@ export class SignUpController {
 
         this.signData = {
             email: null,
-            mobile: null,
             password: {
                 origin: null,
                 repeat: null
@@ -50,6 +49,8 @@ export class SignUpController {
             data.password = data.password.origin;
         /*@LOG*/ this.$log.debug(data);
         // TEST
+        data.newsletterAccepted = true;
+        data.termsOfServiceAccepted = true;
         delete data.birthday;
         delete data.gender;
         delete data.mobile;
