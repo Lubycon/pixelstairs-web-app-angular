@@ -1,7 +1,25 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        CONTENT DETAIL
-        model => <br>
-        {{ContentsDetailCtrl.dummy}}
+        <div class="content-wrapper col-lg-12">
+            <div class="content-title">
+                <p>"{{ContentsDetailCtrl.dummy.title}}"</p>
+            </div>
+            <div class="content-image">
+                <img ng-src="{{ContentsDetailCtrl.dummy.image.file}}" alt="{{'content-'+ContentsDetailCtrl.dummy.id}}">
+            </div>
+        </div>
+
+        <div class="content-info-wrapper col-lg-12">
+            <div class="col-lg-6 info-card">
+                <div class="card">
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card user-card">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

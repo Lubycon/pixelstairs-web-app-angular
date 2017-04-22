@@ -50,6 +50,7 @@
                 class="col-lg-{{MainCtrl.columnWidth}}"
                 ng-class="{'shown-element': data.sticky}"
                 ng-repeat="data in MainCtrl.dummy"
+                ui-sref="common.default.contents-detail({ id: data.id })"
             >
                 <art-card
                     data="data"
