@@ -10,10 +10,10 @@
         </div>
 
         <div class="content-info-wrapper col-lg-12">
-            <div class="col-lg-6 info-card">
+            <div class="col-lg-6 info-card left-card">
                 <div class="card">
                     <div class="like-counter">
-                        <button class="btn" ng-click="ContentsDetailCtrl.postLike()">
+                        <button class="btn like-btn" ng-click="ContentsDetailCtrl.postLike()">
                             <i class="xi-heart-o"></i>
                         </button>
                         <p>{{ContentsDetailCtrl.data.like}}</p>
@@ -28,8 +28,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="card member-card">
+            <div class="col-lg-6 info-card right-card">
+                <div class="card">
                     <p>Artwork by</p>
                     <div class="member-info">
                         <img ng-src="{{ContentsDetailCtrl.data.member.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
