@@ -21,8 +21,9 @@ const API_LIST = {
     contents: () => {
         const prefix = 'contents';
         return {
+            upload: `${prefix}`,
             list: `${prefix}`,
-            item: `${prefix}/{id}`
+            detail: `${prefix}/{id}`
         };
     }
 };

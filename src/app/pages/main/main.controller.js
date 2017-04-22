@@ -4,6 +4,7 @@ export class MainController {
         $scope, $log, $timeout, $uibPosition,
         APIService, CookieService,
         angularGridInstance,
+        DummyService,
         MAIN_GRID_INIT
     ) {
         'ngInject';
@@ -24,7 +25,7 @@ export class MainController {
         this.viewmode = [{
             name: 'grid',
             icon: 'xi-apps',
-            width: 3,
+            width: 4,
             selected: false
         },{
             name: 'wide',
@@ -43,6 +44,8 @@ export class MainController {
 
         this.scrollDisabled = true;
 
+        this.dummy = DummyService.get().contents;
+
         (this.init)();
     }
 
@@ -51,7 +54,7 @@ export class MainController {
             this.setViewmode(this.currentViewmode);
         });
 
-        this.getContents();
+        // this.getContents();
     }
 
     setViewmode(mode) {
