@@ -71,14 +71,16 @@ export class DummyService {
             like: this.__getRandomVal__(10000) * 1,
             tags: ['Tag1', 'Tag2', 'Tag3', 'Tag4', 'Tag5', 'Tag6'],
             member: {
-                id: null,
+                id: '0',
                 name: 'Test User',
                 profileImg: {
                     id: null,
                     file: 'https://images.unsplash.com/profile-fb-1487395192-9eb133efa8b3.jpg?dpr=2&auto=compress,format&fit=crop&w=64&h=64&q=80&cs=tinysrgb&crop=faces&bg=fff',
                     index: null
                 }
-            }
+            },
+            description: 'Mattis sit penatibus habitasse? Ultrices ac elementum augue. Vel elit pulvinar. Adipiscing urna tristique montes, placerat penatibus sed, et ac etiam nunc! Dis arcu, aliquam et enim elit! Porta ultricies, ultrices etiam amet enim mus amet, in montes et lundium? Penatibus placerat, montes facilisis, dis, dapibus, dis purus? Augue et porttitor nec a.',
+            createdAt: '2017-03-12T11:24:00'
         };
         dummy.view = dummy.like * (this.__getRandomVal__(7) * 1);
 

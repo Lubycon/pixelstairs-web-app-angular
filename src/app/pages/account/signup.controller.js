@@ -58,7 +58,7 @@ export class SignUpController {
         // TEST
 
         this.isExistMember(data.email);
-        
+
         this.APIService.resource('members.signup').post(data).then(res => {
             if(res && res.status.code === '0000') {
                 this.AuthenticationService.set(res.result.token);
@@ -78,7 +78,7 @@ export class SignUpController {
 
     isExistMember(email) {
         this.APIService.resource('members.isExist').post(email).then(res => {
-            console.log(res);
+            this.$log.debug(res);
         });
     }
 }

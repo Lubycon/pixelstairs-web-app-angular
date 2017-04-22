@@ -25,7 +25,7 @@ export class MainController {
         this.viewmode = [{
             name: 'grid',
             icon: 'xi-border-all',
-            width: 3,
+            width: 6,
             selected: false
         },{
             name: 'wide',
@@ -83,7 +83,7 @@ export class MainController {
     getContents() {
         this.APIService.resource('contents.list').get()
         .then(res => {
-            console.log('======MAIN PAGE CONTENT CALLED => ', res, '======');
+            this.$log.debug('======MAIN PAGE CONTENT CALLED => ', res, '======');
         });
     }
 }

@@ -43,7 +43,6 @@ class ScrollSelectorController {
             if(NEW_VAL) {
                 this.$element.addClass('test');
             }
-            else if(NEW_VAL && this.$element.hasClass('test')) console.log(2);
         });
     }
 }

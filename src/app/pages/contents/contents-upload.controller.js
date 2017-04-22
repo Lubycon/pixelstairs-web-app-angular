@@ -32,7 +32,7 @@ export class ContentsUploadController {
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 
         this.APIService.resource('contents.upload').post(data).then(res => {
-            console.log(res);
+            /*@LOG*/this.$log.debug(res);
         });
     }
 }

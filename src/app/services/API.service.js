@@ -23,7 +23,8 @@ const API_LIST = {
         return {
             upload: `${prefix}`,
             list: `${prefix}`,
-            detail: `${prefix}/{id}`
+            detail: `${prefix}/{id}`,
+            like: `${prefix}/{id}/like`
         };
     }
 };

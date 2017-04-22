@@ -1,11 +1,34 @@
 export class ContentsDetailController {
-    constructor($log, getContentRsv) {
+    constructor(
+        $log, $stateParams,
+        APIService, getContentRsv
+    ) {
         'ngInject';
 
         this.$log = $log;
+        this.$stateParams = $stateParams;
+        this.APIService = APIService;
 
-        this.dummy = getContentRsv;
+        this.data = getContentRsv;
 
-        $log.debug('CONTENT DETAIL PAGE IS LOADED', this.dummy);
+        $log.debug('CONTENT DETAIL PAGE IS LOADED', this.data);
+
+        this.init();
+    }
+
+    init() {
+        this.data.createdAt = this.getDate(this.data.createdAt);
+        /*LOG*/this.$log.debug(this.data);
+    }
+
+    postLike() {
+        const id = this.$stateParams.id;
+        this.APIService.resource('contents.like', { id: id }).post().then(res => {
+            /*@LOG*/this.$log.debug('LIKE => ',res);
+        });
+    }
+
+    getDate(date){
+        return new Date(date);
     }
 }
