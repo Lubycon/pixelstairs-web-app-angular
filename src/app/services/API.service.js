@@ -9,7 +9,7 @@ const API_LIST = {
             signdrop: `${prefix}signdrop`,
 
             simple: `${prefix}simple`,
-            detail: `${prefix}detail/{id}`,
+            detail: `${prefix}{id}/detail`,
 
             isExist: `${prefix}isexist`,
             pwd: {

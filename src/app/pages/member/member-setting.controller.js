@@ -10,8 +10,8 @@ export class MemberSettingController {
         this.$uibModal = $uibModal;
         this.APIService = APIService;
 
-        this.memberData = getMemberRsv.result.userData;
-        this.memberData.profile = this.memberData.profile || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};
+        this.memberData = getMemberRsv.result;
+        this.memberData.profileImg = this.memberData.profileImg || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};
 
         this.genders = [{
             name: 'Male',
