@@ -23,12 +23,12 @@ export class MainController {
 
         this.viewmode = [{
             name: 'grid',
-            icon: 'xi-apps',
+            icon: 'xi-border-all',
             width: 3,
             selected: false
         },{
             name: 'wide',
-            icon: 'xi-layout-full',
+            icon: 'xi-layout-full-o',
             width: 12,
             selected: false
         }];

@@ -21,7 +21,6 @@
 
 // FIELDSET
 .form-box {
-    border: 1px solid $dark-grey-color;
     margin-top: 20px;
     padding: 20px;
     text-align: center;
@@ -40,14 +39,14 @@
     .form-control {
         border-radius: 0;
         box-shadow: none;
-        border: 1px solid $dark-grey-color;
+        border: 2px solid $dark-grey-color;
         color: $dark-grey-color;
     }
 
     tags-input.form-control {
         border-radius: 0;
         box-shadow: none;
-        border: 1px solid $dark-grey-color;
+        border: 2px solid $dark-grey-color;
         color: $dark-grey-color;
         padding: 0 5px;
         * {
