@@ -48,6 +48,7 @@ export class SignUpController {
         let data = angular.copy(this.signData);
             data.password = data.password.origin;
         /*@LOG*/ this.$log.debug(data);
+
         // TEST
         data.newsletterAccepted = true;
         data.termsOfServiceAccepted = true;
@@ -55,6 +56,9 @@ export class SignUpController {
         delete data.gender;
         delete data.mobile;
         // TEST
+
+        this.isExistMember(data.email);
+        
         this.APIService.resource('members.signup').post(data).then(res => {
             if(res && res.status.code === '0000') {
                 this.AuthenticationService.set(res.result.token);
@@ -70,5 +74,11 @@ export class SignUpController {
     checkPasswordAgain() {
         let isMatched = this.signData.password.origin === this.signData.password.repeat;
         /*@LOG*/ this.$log.debug(this.signData.password.origin, this.signData.password.repeat, isMatched);
+    }
+
+    isExistMember(email) {
+        this.APIService.resource('members.isExist').post(email).then(res => {
+            console.log(res);
+        });
     }
 }

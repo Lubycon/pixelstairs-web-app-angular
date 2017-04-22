@@ -13,37 +13,39 @@ export function run (
         appSetting: AppSettingService.init(),
         authenticate: AuthenticationService.init()
     }).then(res => {
-        $log.debug('APP INIT IS DONE!!', res);
+        /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
 
         __disableScrollBySpace__($window, $document);
 
-        /*@STATE*/
-        $rootScope.$on('$stateChangeStart', () => {
-            __hideModalWindow__();
-        });
-
-        $rootScope.$on('$stateChangeSuccess', (
-            event, toState, toParams, fromState, fromParams
-        ) => {
-            fromState.params = fromParams;
-            toState.params = toParams;
-            fromState = __generateURL__(fromState, $document);
-            toState = __generateURL__(toState, $document);
-
-            HistoryService.push({
-                from : fromState,
-                to : toState
-            });
-
-            TrackerService.post(toState, fromState);
-            StateAuthenticationService.detect(toState);
-
-            $anchorScroll();
-        });
-
         /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
         /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
+    });
+
+    /*@STATE*/
+    $rootScope.$on('$stateChangeStart', (
+        event, toState, toParams, fromState, fromParams
+    ) => {
+        __hideModalWindow__();
+    });
+
+    $rootScope.$on('$stateChangeSuccess', (
+        event, toState, toParams, fromState, fromParams
+    ) => {
+        fromState.params = fromParams;
+        toState.params = toParams;
+        fromState = __generateURL__(fromState, $document);
+        toState = __generateURL__(toState, $document);
+
+        HistoryService.push({
+            from : fromState,
+            to : toState
+        });
+
+        TrackerService.post(toState, fromState);
+        StateAuthenticationService.detect(toState);
+
+        $anchorScroll();
     });
 }
 

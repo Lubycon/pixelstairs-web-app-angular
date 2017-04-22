@@ -1,27 +1,28 @@
 /* @API CONSTANT */
 const API_LIST = {
     members: () => {
-        const prefix = 'members';
+        const prefix = 'members/';
         return {
-            signin: prefix + '/signin',
-            signout: prefix + '/signout',
-            signup: prefix + '/signup',
-            signdrop: prefix + '/signdrop',
+            signin: `${prefix}signin`,
+            signout: `${prefix}signout`,
+            signup: `${prefix}signup`,
+            signdrop: `${prefix}signdrop`,
 
-            simple: prefix + '/simple',
-            detail: prefix + '/detail/{id}',
+            simple: `${prefix}simple`,
+            detail: `${prefix}detail/{id}`,
 
+            isExist: `${prefix}isexist`,
             pwd: {
-                mail: prefix + '/pwd/mail',
-                reset: prefix + '/pwd/reset'
+                mail: `${prefix}pwd/mail`,
+                reset: `${prefix}pwd/reset`
             }
         };
     },
     contents: () => {
         const prefix = 'contents';
         return {
-            list: prefix + '',
-            item: prefix + ''
+            list: `${prefix}`,
+            item: `${prefix}/{id}`
         };
     }
 };
