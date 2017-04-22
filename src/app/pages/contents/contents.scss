@@ -28,6 +28,9 @@
                     font-size: 30px;
                 }
             }
+            a.change-file-btn {
+                text-decoration: underline;
+            }
         }
         .uploader-form {
             .input-wrapper {
@@ -38,5 +41,26 @@
                 };
             }
         }
+    }
+}
+
+.state-contents-detail {
+    .content-wrapper {
+        .content-title {
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+        }
+        .content-image {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .content-info-wrapper {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

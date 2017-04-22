@@ -1,14 +1,17 @@
 export class ContentsUploadController {
-    constructor($log) {
+    constructor(
+        $log, APIService
+    ) {
         'ngInject';
 
         this.$log = $log;
+        this.APIService = APIService;
 
         this.contentData = {
-            img: null,
+            images: null,
             title: null,
-            tags: [],
-            desc: null
+            hashTags: [],
+            description: null
         };
 
         this.uploadedImg = null;
@@ -18,10 +21,18 @@ export class ContentsUploadController {
         if(files.length < 1) return false;
         /*@LOG*/ this.$log.debug(this.uploadedImg);
         /*@LOG*/ this.$log.debug(files, file, newFiles, invalidFiles);
-        this.contentData.img = this.uploadedImg;
+        this.contentData.images = this.uploadedImg;
     }
 
     postData() {
-        /*@LOG*/ this.$log.debug(this.contentData);
+        let data = angular.copy(this.contentData);
+        // TEST
+        data.licenseCode = '0100';
+
+        /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
+
+        this.APIService.resource('contents.upload').post(data).then(res => {
+            console.log(res);
+        });
     }
 }
