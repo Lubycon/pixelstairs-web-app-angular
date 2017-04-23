@@ -43,8 +43,11 @@ export class MainController {
         }];
 
         this.scrollDisabled = true;
-
-        this.dummy = DummyService.get().contents;
+        this.busyInterval = 1000;
+        this.contentsData = {
+            list: [],
+            totalCount: 0
+        };
 
         (this.init)();
     }
@@ -54,7 +57,7 @@ export class MainController {
             this.setViewmode(this.currentViewmode);
         });
 
-        // this.getContents();
+        this.getContents();
     }
 
     setViewmode(mode) {
@@ -80,10 +83,29 @@ export class MainController {
         return grid;
     }
 
+    onScroll() {
+        this.scrollDisabled = true;
+        if(this.contentsData.list.length >= this.contentsData.totalCount) return false;
+        this.getContents();
+    }
+
     getContents() {
         this.APIService.resource('contents.list').get()
         .then(res => {
-            this.$log.debug('======MAIN PAGE CONTENT CALLED => ', res, '======');
+            if(res.result && res.result.contents) {
+                this.__addContentToList__(res.result);
+            }
         });
+    }
+
+    __addContentToList__(data) {
+        this.contentsData.list = $.merge(this.contentsData.list, data.contents);
+        this.contentsData.totalCount = data.totalCount;
+
+        this.pageIndex++;
+
+        this.$timeout(() => {
+            this.scrollDisabled = false;
+        }, this.busyInterval);
     }
 }

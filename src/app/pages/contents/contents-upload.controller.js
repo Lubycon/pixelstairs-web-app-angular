@@ -8,7 +8,7 @@ export class ContentsUploadController {
         this.APIService = APIService;
 
         this.contentData = {
-            images: null,
+            images: [],
             title: null,
             hashTags: [],
             description: null
@@ -21,6 +21,7 @@ export class ContentsUploadController {
         if(files.length < 1) return false;
         /*@LOG*/ this.$log.debug(this.uploadedImg);
         /*@LOG*/ this.$log.debug(files, file, newFiles, invalidFiles);
+
         this.contentData.images = this.uploadedImg;
     }
 

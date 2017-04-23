@@ -33,32 +33,30 @@
     </div>
 
     <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
-        <!-- <div
+        <div
             class="infinite-scroll-wrapper"
-            infinite-scroll="vm.onScroll()"
-            infinite-scroll-disabled="vm.scrollDisabled"
+            infinite-scroll="MainCtrl.onScroll()"
+            infinite-scroll-disabled="MainCtrl.scrollDisabled"
             infinite-scroll-distance="0"
         >
-
-        </div> -->
-        <ul
-            angular-grid="MainCtrl.dummy"
-            ag-css-grid="true"
-            angular-grid-id="gallery"
-        >
-            <li
-                class="col-lg-{{MainCtrl.columnWidth}}"
-                ng-class="{'shown-element': data.sticky}"
-                ng-repeat="data in MainCtrl.dummy"
-                ui-sref="common.default.contents-detail({ id: data.id })"
+            <ul
+                angular-grid="MainCtrl.contentsData.list"
+                ag-css-grid="true"
+                angular-grid-id="gallery"
             >
-                <art-card
-                    data="data"
-                    viewmode="MainCtrl.currentViewmode"
-                    fixed-header="$index === 0"
-                    header-offset="50"
-                ></art-card>
-            </li>
-        </ul>
+                <li
+                    class="col-lg-{{MainCtrl.columnWidth}}"
+                    data-ng-repeat="data in MainCtrl.contentsData.list"
+                    ui-sref="common.default.contents-detail({ id: data.id })"
+                >
+                    <art-card
+                        data="data"
+                        viewmode="MainCtrl.currentViewmode"
+                        fixed-header="$index === 0"
+                        header-offset="50"
+                    ></art-card>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
