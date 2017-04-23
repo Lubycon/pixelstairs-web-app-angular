@@ -1,10 +1,11 @@
 export class Base64Service {
     constructor (
-        $rootScope, $log, UTF8Service
+        $rootScope, $log, UTF8Service, $q
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$q = $q;
         this.UTF8Service = UTF8Service;
 
         this.KEY_STR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -90,5 +91,21 @@ export class Base64Service {
         while (i < string.length);
 
         return this.UTF8Service.decode(output);
+    }
+
+    convertToBase64FromImage(img) {
+        let defer = this.$q.defer();
+        const reader = new FileReader();
+
+        reader.readAsDataURL(img);
+
+        reader.onload = () => {
+            defer.resolve(reader.result);
+        };
+        reader.onError = () => {
+            defer.reject('Failed converting image to base 64');
+        };
+
+        return defer.promise;
     }
 }
