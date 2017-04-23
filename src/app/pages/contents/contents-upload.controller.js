@@ -37,6 +37,9 @@ export class ContentsUploadController {
             return v.text;
         });
 
+        /*TEST*/
+        data.licenseCode = '0100';
+
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 
         this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' }).then(res => {
