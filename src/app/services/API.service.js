@@ -1,30 +1,30 @@
 /* @API CONSTANT */
 const API_LIST = {
     members: () => {
-        const prefix = 'members/';
+        const prefix = 'members';
         return {
-            signin: `${prefix}signin`,
-            signout: `${prefix}signout`,
-            signup: `${prefix}signup`,
-            signdrop: `${prefix}signdrop`,
+            signin: `${prefix}/signin`,
+            signout: `${prefix}/signout`,
+            signup: `${prefix}/signup`,
+            signdrop: `${prefix}/signdrop`,
 
-            simple: `${prefix}simple`,
-            detail: `${prefix}{id}/detail`,
+            simple: `${prefix}/simple`,
+            detail: `${prefix}/{id}/detail`,
 
-            isExist: `${prefix}isexist`,
+            isExist: `${prefix}/isexist`,
             pwd: {
-                mail: `${prefix}pwd/mail`,
-                reset: `${prefix}pwd/reset`
+                mail: `${prefix}/pwd/mail`,
+                reset: `${prefix}/pwd/reset`
             }
         };
     },
     contents: () => {
-        const prefix = 'contents/';
+        const prefix = 'contents';
         return {
             upload: `${prefix}`,
             list: `${prefix}`,
-            detail: `${prefix}{id}`,
-            like: `${prefix}{id}/like`
+            detail: `${prefix}/{id}`,
+            like: `${prefix}/{id}/like`
         };
     }
 };

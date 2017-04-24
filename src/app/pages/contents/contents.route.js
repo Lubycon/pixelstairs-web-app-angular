@@ -20,7 +20,8 @@ export function routeConfig ($stateProvider) {
             url: '/contents/upload',
             templateUrl: 'app/pages/contents/contents-upload.tmpl.html',
             controller: 'ContentsUploadController',
-            controllerAs: 'ContentsUploadCtrl'
+            controllerAs: 'ContentsUploadCtrl',
+            authenticate: 'member'
         })
         ;
 }
