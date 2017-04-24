@@ -17,5 +17,11 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'SignUpCtrl',
             authenticate: 'visitor'
         })
+        .state('common.default.signout', {
+            url: '/signout',
+            templateUrl: 'app/pages/account/signout.tmpl.html',
+            controller: 'SignOutController',
+            controllerAs: 'SignOutCtrl'
+        })
         ;
 }
