@@ -32,8 +32,10 @@
                 <div class="card">
                     <p>Artwork by</p>
                     <div class="member-info">
-                        <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
-                        <span>{{ContentsDetailCtrl.data.user.nickname}}</span>
+                        <span class="member-profile">
+                            <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
+                        </span>
+                        <p>{{ContentsDetailCtrl.data.user.nickname}}</p>
                     </div>
 
                     <p class="content-desc">
@@ -44,6 +46,12 @@
                         uploaded at {{ContentsDetailCtrl.data.createdAt | date:'MMM.dd yyyy'}}
                     </p>
                 </div>
+            </div>
+
+            <div class="col-lg-12">
+                <button class="btn" ui-sref="common.default.main">
+                    Back to list
+                </button>
             </div>
         </div>
     </div>

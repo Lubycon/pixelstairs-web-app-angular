@@ -98,7 +98,20 @@
                 }
             }
             &.right-card {
-
+                .member-info {
+                    .member-profile {
+                        display: inline-block;
+                        vertical-align: middle;
+                        @include circleFrame(30px)
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    p {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+                }
             }
         }
     }
