@@ -13,17 +13,33 @@ export function APIDetection() {
     /* ===================== API SERVER ==================== */
     const PRO_API_SERVER = 'http://apidev.pixelstairs.com/v1';
     const DEV_API_SERVER = 'http://apidev.pixelstairs.com/v1';
+    const LOCAL_API_SERVER = 'http://pixel.api/v1'; // FOR DANIEL
     /* ===================================================== */
 
     const DEV_APPKEY = 'lubycon-back';
 
     let api = null;
     let output = {};
+    output.isValid = false;
+    output.isDev = true;
 
-    if(ORIGIN.indexOf(PRO_WEB_SERVER) > -1) api = PRO_API_SERVER;
-    else if(ORIGIN.indexOf(DEV_WEB_SERVER) > -1) api = DEV_API_SERVER;
-    else if(ORIGIN.indexOf(LOCAL_WEB_SERVER) > -1) api = DEV_API_SERVER;
-    else api = null;
+    if(ORIGIN.indexOf(PRO_WEB_SERVER) > -1) {
+        api = PRO_API_SERVER;
+        output.isValid = true;
+        output.isDev = false;
+    }
+    else if(ORIGIN.indexOf(DEV_WEB_SERVER) > -1) {
+        api = DEV_API_SERVER;
+        output.isValid = true;
+    }
+    else if(ORIGIN.indexOf(LOCAL_WEB_SERVER) > -1) {
+        api = DEV_API_SERVER;
+        output.isValid = true;
+    }
+    else {
+        api = null;
+        output.isDev = false;
+    }
 
     output.host = api;
     if(api === DEV_API_SERVER) output.appkey = DEV_APPKEY;
