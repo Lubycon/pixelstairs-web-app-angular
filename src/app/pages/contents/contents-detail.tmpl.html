@@ -16,12 +16,12 @@
                         <button class="btn like-btn" ng-click="ContentsDetailCtrl.postLike()">
                             <i class="xi-heart-o"></i>
                         </button>
-                        <p>{{ContentsDetailCtrl.data.like}}</p>
+                        <p>{{ContentsDetailCtrl.data.counts.like}}</p>
                     </div>
                     <div class="tag-wrapper">
                         <h6><i class="xi-tag"></i> tags</h6>
                         <ul class="tags">
-                            <li ng-repeat="tag in ContentsDetailCtrl.data.tags">
+                            <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
                                 {{tag}}
                             </li>
                         </ul>
@@ -32,8 +32,8 @@
                 <div class="card">
                     <p>Artwork by</p>
                     <div class="member-info">
-                        <img ng-src="{{ContentsDetailCtrl.data.member.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
-                        <span>{{ContentsDetailCtrl.data.member.name}}</span>
+                        <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
+                        <span>{{ContentsDetailCtrl.data.user.nickname}}</span>
                     </div>
 
                     <p class="content-desc">

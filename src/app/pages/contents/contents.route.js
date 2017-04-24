@@ -11,8 +11,8 @@ export function routeConfig ($stateProvider) {
                 id: null
             },
             resolve: {
-                getContentRsv: (DummyService) => {
-                    return DummyService.get().content;
+                getContentRsv: (APIService, $stateParams) => {
+                    return APIService.resource('contents.detail', { id: $stateParams.id }).get().then();
                 }
             }
         })

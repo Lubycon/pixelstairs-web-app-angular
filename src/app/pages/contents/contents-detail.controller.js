@@ -9,7 +9,7 @@ export class ContentsDetailController {
         this.$stateParams = $stateParams;
         this.APIService = APIService;
 
-        this.data = getContentRsv;
+        this.data = getContentRsv.result;
 
         $log.debug('CONTENT DETAIL PAGE IS LOADED', this.data);
 
