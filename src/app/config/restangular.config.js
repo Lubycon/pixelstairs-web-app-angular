@@ -7,6 +7,7 @@ export function restangularConfig(
     'ngInject';
 
     let defaultHeaders = RestangularProvider.defaultHeaders;
+    const $log = angular.injector(['ng']).get('$log');
 
     defaultHeaders['Content-Type'] = 'application/json';
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'version'] = APP_VERSION;
@@ -21,4 +22,16 @@ export function restangularConfig(
 
     RestangularProvider.setDefaultHeaders(defaultHeaders);
     RestangularProvider.setBaseUrl(API_CONFIG.host);
+
+    /* SET ERROR INTERCEPTOR */
+    RestangularProvider.setErrorInterceptor(function(res) {
+        $log.debug('========================== !!!GET RESPONSE ERROR!!! ============================');
+        $log.debug('status : ',res.status,' -> ',res.statusText);
+        $log.debug('url : ', res.config.url);
+        $log.debug('method : ',res.config.method);
+        $log.debug('data : ',res.data);
+        $log.debug('=================================================================================');
+
+        return true;
+    });
 }

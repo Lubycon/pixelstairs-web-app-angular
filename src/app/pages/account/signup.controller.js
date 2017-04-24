@@ -77,7 +77,7 @@ export class SignUpController {
     }
 
     isExistMember(email) {
-        this.APIService.resource('members.isExist').post(email).then(res => {
+        this.APIService.resource('members.isExist').post({ email }).then(res => {
             this.$log.debug(res);
         });
     }
