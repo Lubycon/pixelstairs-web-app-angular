@@ -4,7 +4,7 @@ const IP_API = 'https://freegeoip.net/json?callback=JSON_CALLBACK';
 
 export class AppSettingService {
     constructor (
-        $rootScope, $http, $log, $q,
+        $rootScope, $http, $log, $q, $translate,
         Restangular, CookieService,
         CUSTOM_HEADER_PREFIX
     ) {
@@ -14,8 +14,11 @@ export class AppSettingService {
         this.$http = $http;
         this.$log = $log;
         this.$q = $q;
+        this.$translate = $translate;
+
         this.Restangular = Restangular;
         this.CookieService = CookieService;
+
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
     }
 
@@ -69,6 +72,7 @@ export class AppSettingService {
             if(key === 'country') {
                 tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = this.__setLanguage__(value);
             }
+            else if(key === 'language') $translate.use(value);
 
             defaultHeaders = angular.extend({}, defaultHeaders, tmp);
         }
@@ -98,6 +102,10 @@ export class AppSettingService {
 
         tmp[this.CUSTOM_HEADER_PREFIX + 'country'] = this.$rootScope.setting.country_code;
 
+        /* TEST */
+        this.$rootScope.setting.language = 'en';
+        /* ==== */
+        this.$translate.use(this.$rootScope.setting.language);
         let defaultHeaders = angular.extend({}, this.Restangular.defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);

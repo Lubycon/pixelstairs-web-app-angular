@@ -51,7 +51,7 @@
         "PREV" : "이전",
         "FINISH" : "완료",
         "CONTINUE" : "계속",
-        "CHANGE" : "변경",
+        "CHANGE" : "변경"
     },
     "HTTP" : {
         "DEFAULT" : "알 수 없는 오류가 발생하였습니다",

@@ -12,7 +12,7 @@ export function translateConfig(
         each module will have a il8n folder that will contain its translations
     */
 
-    $translateProvider.useLoader('$translatePartialLoaderProvider', {
+    $translateProvider.useLoader('$translatePartialLoader', {
         urlTemplate: 'app/il8n/{lang}.json'
     });
 
@@ -25,9 +25,8 @@ export function translateConfig(
     $translateProvider.useLoaderCache(true);
 
     let languageTemp = APP_LANGUAGES.map((v) => {
-        return v.key;
+        return v.key.split('-')[0];
     });
-
     /**
      *  try to detect the users language by checking the following
      *      navigator.language
@@ -35,9 +34,10 @@ export function translateConfig(
      *      navigator.systemLanguage
      *      navigator.userLanguage
      */
+
     $translateProvider.registerAvailableLanguageKeys(languageTemp, {
-        'ko_KR' : 'ko',
-        'en_*' : 'en'
+        'ko_KR': 'ko',
+        'en_*': 'en'
     }).determinePreferredLanguage();
 
     $translateProvider.useLocalStorage();
