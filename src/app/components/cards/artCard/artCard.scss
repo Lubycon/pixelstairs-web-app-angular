@@ -3,24 +3,6 @@
     margin: 10px 0;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 
-    .sticky-header {
-        position: fixed;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .sticky-header-absolute {
-        position: absolute;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    .sticky-bottom {
-
-    }
-
     &.grid {
         cursor: pointer;
     }
@@ -32,6 +14,12 @@
     .card-header {
         margin: 0;
         padding: 10px;
+        display: table;
+        &>div {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+        }
 
         .member-info {
             text-align: left;
@@ -43,12 +31,15 @@
             h4 {
                 display: inline-block;
                 vertical-align: middle;
+                font-size: 14px;
             }
         }
 
         .art-title {
             h3 {
                 text-align: center;
+                font-size: 18px;
+                vertical-align: middle;
             }
         }
 
@@ -89,9 +80,9 @@
                 width: 100%;
                 top: 0;
                 left: 0;
-                padding: 5px 10px;
+                padding: 10px;
                 .member-profile {
-                    @include circleFrame(35px);
+                    @include circleFrame(30px);
                     display: inline-block;
                     vertical-align: middle;
                     margin-right: 5px;
@@ -107,6 +98,9 @@
                 .member-info {
                     display: inline-block;
                     vertical-align: middle;
+                    h4 {
+                        font-size: 14px;
+                    }
                 }
             }
             footer {
@@ -115,9 +109,15 @@
                 bottom: 0;
                 left: 0;
                 padding: 5px 10px;
+
+                h4 {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
                 ul {
                     li {
                         display: inline-block;
+                        margin-right: 8px;
                         i {
                             vertical-align: middle;
                             font-size: 1.4em;

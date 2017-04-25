@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        <div class="content-info-wrapper col-lg-12">
+        <div class="content-info-wrapper col-lg-12 row row-eq-height">
             <div class="col-lg-6 info-card left-card">
                 <div class="card">
                     <div class="like-counter">
@@ -30,7 +30,7 @@
             </div>
             <div class="col-lg-6 info-card right-card">
                 <div class="card">
-                    <p>Artwork by</p>
+                    <h6>Artwork by</h6>
                     <div class="member-info">
                         <span class="member-profile">
                             <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
@@ -39,20 +39,20 @@
                     </div>
 
                     <p class="content-desc">
-                        {{ContentsDetailCtrl.data.description}}
+                        {{ContentsDetailCtrl.data.description + 'sajkfjsajfoisajfoiqwjofijwqoifjqwoifwoqijfjsaiofjoaisjfoisajfoisajfoijsaifjoisajfiosajfoiasjoifjoai'}}
                     </p>
 
                     <p class="content-date">
-                        uploaded at {{ContentsDetailCtrl.data.createdAt | date:'MMM.dd yyyy'}}
+                        uploaded at <span>{{ContentsDetailCtrl.data.createdAt | date:'MMM.dd yyyy'}}</span>
                     </p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-lg-12">
-                <button class="btn" ui-sref="common.default.main">
-                    Back to list
-                </button>
-            </div>
+        <div class="col-lg-12">
+            <button class="btn" ui-sref="common.default.main">
+                Back to list
+            </button>
         </div>
     </div>
 </div>

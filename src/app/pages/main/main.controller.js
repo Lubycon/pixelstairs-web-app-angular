@@ -74,7 +74,9 @@ export class MainController {
         this.currentViewmode = mode;
         this.CookieService.put('viewmode', this.currentViewmode);
 
-        this.angularGridInstance.gallery.refresh();
+        this.$timeout(() => {
+            this.angularGridInstance.gallery.refresh();
+        });
     }
 
     getViewmode() {

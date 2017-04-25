@@ -50,6 +50,7 @@
             text-align: center;
             padding: 10px 0;
             font-weight: 600;
+            font-size: 18px;
         }
         .content-image {
             img {
@@ -66,7 +67,12 @@
 
         .info-card {
             text-align: center;
-            padding: 15px 20px;
+            padding: 15px 10px;
+            .card {
+                padding: 15px;
+                height: 100%;
+            }
+
             &.left-card {
                 .like-counter {
                     .btn.like-btn {
@@ -98,6 +104,9 @@
                 }
             }
             &.right-card {
+                h6 {
+                    margin-bottom: 10px;
+                }
                 .member-info {
                     .member-profile {
                         display: inline-block;
@@ -110,6 +119,20 @@
                     p {
                         display: inline-block;
                         vertical-align: middle;
+                        font-size: 16px;
+                    }
+                }
+
+                .content-desc {
+                    padding: 0 20px;
+                    margin: 30px 0;
+                    font-size: 13px;
+                    word-break: break-word;
+                    text-align: left;
+                }
+                .content-date {
+                    span {
+                        font-weight: 600;
                     }
                 }
             }

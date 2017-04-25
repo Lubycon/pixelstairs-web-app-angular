@@ -4,6 +4,14 @@
     }
 }
 
+// GRID MODE
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+}
+
 // BUTTON
 .btn {
     border: {
