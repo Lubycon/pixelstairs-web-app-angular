@@ -21,7 +21,8 @@
         .sort-filter {
             ul {
                 li.btn {
-                    border: none;
+                    background-color: transparent;
+                    color: $dark-grey-color;
                     margin: 0 20px;
                 }
             }
@@ -30,6 +31,7 @@
             ul {
                 li.btn {
                     border: none;
+                    background-color: transparent;
                     i {
                         font-size: 20px;
                         color: $light-grey-color;
