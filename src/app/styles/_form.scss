@@ -37,10 +37,7 @@
 
 .fieldset {
     .form-control {
-        border-radius: 0;
         box-shadow: none;
-        border: 2px solid $dark-grey-color;
-        color: $dark-grey-color;
     }
 
     tags-input.form-control {
@@ -74,6 +71,36 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.wiseword-form {
+     * {
+         text-align: center;
+     }
+
+     .message-box {
+        margin-bottom: 30px;
+
+        .main-message {
+            margin-bottom: 30px;
+            h3 {
+                font-size: 25px;
+            }
+        }
+        .wiseword-message {
+            h6 {
+                font-style: italic;
+                font-weight: 600;
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            p {
+                color: $silver-grey-color;
+                font-weight: 400;
+                font-size: 12px;
             }
         }
     }
