@@ -67,73 +67,70 @@
 
         .info-card {
             text-align: center;
-            padding: 15px 10px;
-            .card {
-                padding: 15px;
-                height: 100%;
-            }
+            padding: 30px 0;
 
-            &.left-card {
-                .like-counter {
-                    .btn.like-btn {
-                        border: none;
-                        i {
-                            font-size: 4em;
-                            color: $silver-grey-color;
-                        }
-                    }
-                    p {
-                        font-weight: 600;
-                        font-size: 1.5em;
-                    }
+            h6.attr-title {
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 15px;
+                i {
+                    vertical-align: middle;
                 }
-
-                .tag-wrapper {
-                    h6 {
-                        font-weight: 600;
-                        font-size: 1.2em;
-                    }
-                    ul.tags {
-                        li {
-                            display: inline-block;
-                            margin: 0 5px;
-                            padding: 2px 10px;
-                            border: 1px solid $dark-grey-color;
-                        }
-                    }
+                span {
+                    vertical-align: middle;
                 }
             }
-            &.right-card {
-                h6 {
-                    margin-bottom: 10px;
-                }
-                .member-info {
-                    .member-profile {
-                        display: inline-block;
-                        vertical-align: middle;
-                        @include circleFrame(30px)
-                        img {
-                            width: 100%;
-                        }
-                    }
-                    p {
-                        display: inline-block;
-                        vertical-align: middle;
-                        font-size: 16px;
-                    }
-                }
+            h6.artwork-by {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
 
-                .content-desc {
-                    padding: 0 20px;
-                    margin: 30px 0;
+            .member-info {
+                .member-profile {
+                    display: inline-block;
+                    @include circleFrame(50px)
+                    img {
+                        width: 100%;
+                    }
+                }
+                p {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+            }
+
+            .content-date {
+                margin: 40px 0px;
+                span {
+                    font-weight: 600;
+                }
+            }
+
+            .tag-wrapper {
+                margin-bottom: 20px;
+                ul.tags {
+                    li {
+                        display: inline-block;
+                        margin: 0 5px;
+                        padding: 2px 10px;
+                        border: 1px solid $dark-grey-color;
+                    }
+                }
+            }
+            .content-desc {
+                p {
                     font-size: 13px;
                     word-break: break-word;
-                    text-align: left;
                 }
-                .content-date {
-                    span {
-                        font-weight: 600;
-                    }
+                padding: 0 20px;
+            }
+
+
+            .like-counter {
+                margin: 80px 0;
+                p {
+                    font-size: 5em;
+                    letter-spacing: 1px;
                 }
             }
         }
