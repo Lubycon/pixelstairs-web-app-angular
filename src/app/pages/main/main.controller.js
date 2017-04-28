@@ -3,8 +3,6 @@ export class MainController {
     constructor (
         $scope, $log, $timeout, $location,
         APIService, CookieService,
-        angularGridInstance,
-        DummyService,
         MAIN_GRID_INIT
     ) {
         'ngInject';
@@ -16,10 +14,9 @@ export class MainController {
 
         this.APIService = APIService;
         this.CookieService = CookieService;
-        this.angularGridInstance = angularGridInstance;
 
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
-        this.currentViewmode = this.getViewmode();
+        this.currentViewmode = this.getViewmodeName();
 
         this.viewmode = [{
             name: 'grid',
@@ -33,6 +30,11 @@ export class MainController {
             selected: false
         }];
 
+        this.viewmodeKey = this.viewmode.reduce((a, b) => {
+            a[b.name] = b;
+            return a;
+        }, {});
+
         this.sortFilter = [{
             name: 'Featured',
             value: 'hot'
@@ -44,6 +46,8 @@ export class MainController {
         this.scrollDisabled = true;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
+
+        this.gridWidth = this.__getGridWidth__();
 
         (this.init)();
     }
@@ -68,11 +72,8 @@ export class MainController {
         });
 
         this.currentViewmode = mode;
+        this.gridWidth = this.__getGridWidth__();
         this.CookieService.put('viewmode', this.currentViewmode);
-
-        this.$timeout(() => {
-            this.angularGridInstance.gallery.refresh();
-        });
     }
 
     setFilter(mode) {
@@ -82,10 +83,14 @@ export class MainController {
         this.getContents();
     }
 
-    getViewmode() {
-        let grid = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
+    getViewmodeName() {
+        let mode = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
 
-        return grid;
+        return mode;
+    }
+
+    getCurrentViewmode() {
+        return this.viewmodeKey[this.currentViewmode];
     }
 
     onScroll() {
@@ -103,6 +108,13 @@ export class MainController {
                 this.__addContentToList__(res.result);
             }
         });
+    }
+
+    __getGridWidth__() {
+        let gridWidth = this.getCurrentViewmode().width,
+            documentWidth = angular.element('.page-body').width();
+
+        return documentWidth / (12 / gridWidth) - 100;
     }
 
     __addContentToList__(data) {
