@@ -1,13 +1,17 @@
 .state-signin .container,
 .state-signup .container {
+    .row {
+        transform: translateY(30%);
+    }
     header {
         text-align: center;
         .global-logo {
             width: 150px;
-            margin: 0 auto;
+            margin: 0 auto 10px;
         }
     }
     .form-box {
+        margin-top: 0;
         form {
             .signin-btn {
                 margin-top: 30px;
@@ -15,6 +19,10 @@
                 background: $dark-grey-color;
                 color: $white-color;
             }
+        }
+        .signup-btn {
+            margin-top: 10px;
+            text-decoration: underline;
         }
     }
 }
