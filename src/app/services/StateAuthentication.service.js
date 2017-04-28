@@ -39,7 +39,7 @@ export class StateAuthenticationService {
     /* @PRIVATE METHOD */
     __stateChangeReject__(target, params) {
         this.$timeout(() => {
-            if(!target) this.$state.go('common.default.signin');
+            if(!target) this.$state.go('full.default.signin');
             else this.$state.go(target, params);
         });
     }
