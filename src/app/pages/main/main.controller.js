@@ -1,7 +1,7 @@
 
 export class MainController {
     constructor (
-        $scope, $log, $timeout, $uibPosition,
+        $scope, $log, $timeout, $location,
         APIService, CookieService,
         angularGridInstance,
         DummyService,
@@ -12,7 +12,7 @@ export class MainController {
         this.$scope = $scope;
         this.$log = $log;
         this.$timeout = $timeout;
-        this.$uibPosition = $uibPosition;
+        this.$location = $location;
 
         this.APIService = APIService;
         this.CookieService = CookieService;
@@ -20,7 +20,6 @@ export class MainController {
 
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
         this.currentViewmode = this.getViewmode();
-        this.selectedModel = {};
 
         this.viewmode = [{
             name: 'grid',
@@ -44,10 +43,7 @@ export class MainController {
 
         this.scrollDisabled = true;
         this.busyInterval = 1000;
-        this.contentsData = {
-            list: [],
-            totalCount: 0
-        };
+        this.contentsData = this.__initList__();
 
         (this.init)();
     }
@@ -79,6 +75,13 @@ export class MainController {
         });
     }
 
+    setFilter(mode) {
+        this.$log.debug('SET FILTER TO => ', mode);
+        this.contentsData = this.__initList__();
+        // this.$location.search({ sort: mode });
+        this.getContents();
+    }
+
     getViewmode() {
         let grid = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
 
@@ -92,6 +95,8 @@ export class MainController {
     }
 
     getContents() {
+        // const searcher = this.$location.search();
+
         this.APIService.resource('contents.list').get()
         .then(res => {
             if(res.result && res.result.contents) {
@@ -109,5 +114,12 @@ export class MainController {
         this.$timeout(() => {
             this.scrollDisabled = false;
         }, this.busyInterval);
+    }
+
+    __initList__() {
+        return {
+            list: [],
+            totalCount: 0
+        };
     }
 }

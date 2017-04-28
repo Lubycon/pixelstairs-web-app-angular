@@ -12,7 +12,7 @@
                 <li
                     class="btn"
                     ng-repeat="filter in MainCtrl.sortFilter"
-                    ng-click="MainCtrl.load(filter.value)"
+                    ng-click="MainCtrl.setFilter(filter.value)"
                 >
                     {{filter.name}}
                 </li>
