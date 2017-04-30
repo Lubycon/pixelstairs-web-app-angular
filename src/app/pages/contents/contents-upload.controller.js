@@ -1,10 +1,11 @@
 export class ContentsUploadController {
     constructor(
-        $log, APIService, ImageService
+        $log, $q, APIService, ImageService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$q = $q;
         this.APIService = APIService;
         this.ImageService = ImageService;
 
@@ -20,13 +21,22 @@ export class ContentsUploadController {
 
     changedFile(files, file, newFiles, invalidFiles) {
         if(files.length < 1) return false;
-        this.ImageService.convertToBase64(this.uploadedImg).then(res => {
-            this.contentData.image.file = res;
-        });
 
-        /*@LOG*/ this.$log.debug('model => ', this.uploadedImg);
-        /*@LOG*/ this.$log.debug('files => ', files, file, newFiles, invalidFiles);
-        /*@LOG*/ this.$log.debug('final => ', this.contentData.image.file);
+        this.$q.all([
+            this.ImageService.isTransparency(this.uploadedImg),
+            this.ImageService.convertToBase64(this.uploadedImg)
+        ])
+        .then(res => {
+            if(res[0]) {
+                this.uploadedImg = null;
+                return false;
+            }
+            this.contentData.image.file = res[1];
+
+            /*@LOG*/ this.$log.debug('model => ', this.uploadedImg);
+            /*@LOG*/ this.$log.debug('files => ', files, file, newFiles, invalidFiles);
+            /*@LOG*/ this.$log.debug('final => ', this.contentData.image.file);
+        });
     }
 
     postData() {

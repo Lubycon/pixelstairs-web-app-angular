@@ -12,12 +12,42 @@ export class ImageService {
 
     convertToBase64(img) {
         let defer = this.$q.defer();
-        const canvasLoader = this.__getCanvas__(img);
+        const loader = this.__getCanvas__(img);
 
-        canvasLoader.then(res => {
-            defer.resolve(res.toDataURL());
+        loader.then(res => {
+            defer.resolve(res.canvas.toDataURL());
         }, err => {
             defer.reject('Failed Converting to base64');
+        });
+
+        return defer.promise;
+    }
+
+    isTransparency(img) {
+        let defer = this.$q.defer(),
+            counter = 0;
+        const loader = this.__getCanvas__(img);
+
+        loader.then(res => {
+            return res.context.getImageData(0, 0, res.img.width, res.img.height);
+        }, err => {
+            defer.reject('Get canvas failed exception: imageService');
+        }).then(imgData => {
+            /*
+                data[0] = r
+                data[1] = g
+                data[2] = b
+                data[3] = a
+            */
+            const pixelData = imgData.data;
+            for(let i = 0; i < pixelData.length; i+=4) {
+                if(pixelData[i+3] < 255) counter++;
+                else continue;
+            }
+
+            defer.resolve(counter > 0 ? true : false);
+        }, err => {
+            defer.reject('Detect transparency pixel exception: imageService');
         });
 
         return defer.promise;
@@ -35,7 +65,11 @@ export class ImageService {
             canvas.width = this.width;
             canvas.height = this.height;
             ctx.drawImage(this, 0, 0, this.width, this.height);
-            defer.resolve(canvas);
+            defer.resolve({
+                img: this,
+                canvas: canvas,
+                context: ctx
+            });
         };
         imgObj.onError = function() {
             defer.reject('Failed loading to canvas');

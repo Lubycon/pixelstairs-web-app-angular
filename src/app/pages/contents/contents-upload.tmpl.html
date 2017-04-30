@@ -13,13 +13,12 @@
             </div>
 
             <div class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
-                <img ngf-src="ContentsUploadCtrl.uploadedImg" alt="uploaded-img">
-                <!-- <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}"> -->
+                <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}" alt="uploaded-img">
             </div>
 
             <div class="uploader-btn-wrapper col-lg-12">
                 <button
-                    ng-if="!ContentsUploadCtrl.uploadedImg"
+                    ng-if="!ContentsUploadCtrl.contentData.image.file"
                     class="icon-btn btn"
                     ngf-select
                     type="file"
@@ -36,7 +35,7 @@
                 </button>
 
                 <a
-                    ng-if="ContentsUploadCtrl.uploadedImg"
+                    ng-if="ContentsUploadCtrl.contentData.image.file"
                     class="change-file-btn"
                     ngf-select
                     type="file"
