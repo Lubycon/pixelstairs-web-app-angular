@@ -48,6 +48,8 @@
                 text-align: right;
                 li {
                     display: inline-block;
+                    font-size: 15px;
+                    margin: 4px;
                 }
             }
         }
@@ -74,6 +76,9 @@
             * {
                 color: $white-color;
                 font-family: $inconsolata;
+                h4 {
+                    margin: 5px auto;
+                }
             }
             header {
                 position: absolute;
@@ -117,7 +122,7 @@
                 ul {
                     li {
                         display: inline-block;
-                        margin-right: 8px;
+                        margin: 0 0 8px 5px;
                         i {
                             vertical-align: middle;
                             font-size: 1.4em;
@@ -134,7 +139,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translateX(-50%) translateY(-50%);
-                font-size: 80px;
+                font-size: 60px;
             }
         }
         &:hover {

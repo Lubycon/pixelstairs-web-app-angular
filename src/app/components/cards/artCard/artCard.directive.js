@@ -32,7 +32,7 @@ class ArtCardController {
     constructor(
         $scope, $element, $log, $window,
         $timeout, $uibPosition,
-        CookieService
+        CookieService, ImageResolutionService
     ) {
         'ngInject';
 
@@ -44,13 +44,16 @@ class ArtCardController {
         this.$uibPosition = $uibPosition;
 
         this.CookieService = CookieService;
+        this.ImageResolutionService = ImageResolutionService;
 
         this.position = this.$uibPosition.offset(this.$element);
+        console.log(ImageResolutionService);
+
 
         (this.init)();
     }
 
     init() {
-
+        this.data.image.file = this.ImageResolutionService.setResolution(this.data.image, '1920');
     }
 }
