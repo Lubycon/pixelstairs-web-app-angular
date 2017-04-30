@@ -3,28 +3,35 @@
         text-align: center;
     }
     .form-box {
-        .user-profile {
-            &>div {
-                @include circleFrame(150px);
-                background: {
-                    color: $silver-grey-color;
-                    size: cover;
-                    position: 50% 50%;
-                }
-                margin: 0 auto;
-                box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
-                cursor: pointer;
-                transition: all 0.3s ease-in-out;
-                &:hover {
-                    opacity: 0.8;
+        .fieldset{
+            width:40%;
+            margin:0px auto;
+            .user-profile {
+                margin:45px;
+                    &>div {
+                        @include circleFrame(100px);
+                        background: {
+                            color: $silver-grey-color;
+                            size: cover;
+                            position: 50% 50%;
+                        }
+                        margin: 0 auto;
+                        box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+                        cursor: pointer;
+                        transition: all 0.3s ease-in-out;
+                        &:hover {
+                            opacity: 0.8;
+                        }
+                    }
                 }
             }
-        }
-
-        form {
+    form {
             .signin-btn {
                 margin-top: 30px;
             }
+        }
+        button{
+            margin-top:20px;
         }
     }
 }
