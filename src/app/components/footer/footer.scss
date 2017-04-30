@@ -1,0 +1,36 @@
+footer{
+    .footer-nev-wrapper{
+        width: 60%;
+        margin: 0 auto;
+        padding: 20px 0;
+        .footer-nev{
+            text-align: center;
+            p{
+            display:inline-block;
+            width: 20%;
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            }
+            p:hover{
+                color: $silver-grey-color;
+            }
+        }
+    }
+    .footer-info{
+        text-align: center;
+        .footer{
+            width: 250px;
+            display: block;
+            margin: 9px auto;
+        }
+        span{
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        p{
+            color: $silver-grey-color;
+        }
+    }
+}
