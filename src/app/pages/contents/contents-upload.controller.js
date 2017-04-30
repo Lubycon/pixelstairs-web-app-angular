@@ -1,12 +1,12 @@
 export class ContentsUploadController {
     constructor(
-        $log, APIService, Base64Service
+        $log, APIService, ImageService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.APIService = APIService;
-        this.Base64Service = Base64Service;
+        this.ImageService = ImageService;
 
         this.contentData = {
             image: {},
@@ -20,7 +20,7 @@ export class ContentsUploadController {
 
     changedFile(files, file, newFiles, invalidFiles) {
         if(files.length < 1) return false;
-        this.Base64Service.convertToBase64FromImage(this.uploadedImg).then(res => {
+        this.ImageService.convertToBase64(this.uploadedImg).then(res => {
             this.contentData.image.file = res;
         });
 

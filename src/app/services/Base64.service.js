@@ -92,20 +92,4 @@ export class Base64Service {
 
         return this.UTF8Service.decode(output);
     }
-
-    convertToBase64FromImage(img) {
-        let defer = this.$q.defer();
-        const reader = new FileReader();
-
-        reader.readAsDataURL(img);
-
-        reader.onload = () => {
-            defer.resolve(reader.result);
-        };
-        reader.onError = () => {
-            defer.reject('Failed converting image to base 64');
-        };
-
-        return defer.promise;
-    }
 }
