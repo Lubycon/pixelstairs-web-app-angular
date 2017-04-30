@@ -1,14 +1,11 @@
-<footer>
-    <div class="footer-nev-wrapper">
-        <li class="footer-nev">
-            <p>about us</p>
-            <p>contact</p>
-            <p>privacy policy</p>
-            <p>terms of service</p>
+<footer class="navbar global-footer">
+    <ul class="nav-wrapper">
+        <li ng-repeat="link in GlobalFooterCtrl.linkList">
+            <a ui-sref="{{link.link}}">{{link.name}}</a>
         </li>
-    </div>
-    <div class="footer-info">
-        <div class="footer global-logo">
+    </ul>
+    <div class="service-info">
+        <div class="global-logo">
             <a href="/">
                 <img
                     src="https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/logo/text_b.png"

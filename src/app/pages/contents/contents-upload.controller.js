@@ -29,6 +29,7 @@ export class ContentsUploadController {
         .then(res => {
             if(res[0]) {
                 this.uploadedImg = null;
+                alert('You can not upload transparency image');
                 return false;
             }
             this.contentData.image.file = res[1];

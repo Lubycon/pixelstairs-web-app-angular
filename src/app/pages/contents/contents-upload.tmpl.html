@@ -12,7 +12,7 @@
                 </p>
             </div>
 
-            <div class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
+            <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
                 <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}" alt="uploaded-img">
             </div>
 
