@@ -8,6 +8,7 @@ import { TrackerService } from './Tracker.service';
 import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
+import { ImageResolutionService } from './ImageResolution.service';
 
 import { DummyService } from './Dummy.service';
 
@@ -36,6 +37,8 @@ angular
     .service('StateAuthenticationService', StateAuthenticationService)
 
     .service('APIService', APIService)
+
+    .service('ImageResolutionService', ImageResolutionService)
 
     .service('DummyService', DummyService)
     ;
