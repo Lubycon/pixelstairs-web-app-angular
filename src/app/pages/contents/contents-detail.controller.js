@@ -1,13 +1,14 @@
 export class ContentsDetailController {
     constructor(
         $log, $stateParams,
-        APIService, getContentRsv
+        ImageService,
+        getContentRsv
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$stateParams = $stateParams;
-        this.APIService = APIService;
+        this.ImageService = ImageService;
 
         this.data = getContentRsv.result;
 
@@ -17,6 +18,7 @@ export class ContentsDetailController {
     }
 
     init() {
+        this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
         this.data.createdAt = this.getDate(this.data.createdAt);
         /*LOG*/this.$log.debug(this.data);
     }
