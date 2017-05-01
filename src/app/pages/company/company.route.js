@@ -8,5 +8,17 @@ export function routeConfig($stateProvider) {
             controller: 'AboutusController',
             controllerAs: 'AboutusCtrl'
         })
+        .state('common.default.terms', {
+            url: '/docs/terms',
+            templateUrl: 'app/pages/company/terms.tmpl.html',
+            controller: 'DocsController',
+            controllerAs: 'DocsCtrl'
+        })
+        .state('common.default.privacy-policy', {
+            url: '/docs/privacypolicy',
+            templateUrl: 'app/pages/company/privacyPolicy.tmpl.html',
+            controller: 'DocsController',
+            controllerAs: 'DocsCtrl'
+        })
         ;
 }

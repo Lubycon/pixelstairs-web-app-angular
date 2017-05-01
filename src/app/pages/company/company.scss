@@ -1,0 +1,43 @@
+.state-terms, .state-privacy-policy {
+    .docs {
+        .doc-title {
+
+        }
+        .doc-desc {
+
+        }
+        .doc-body {
+            margin: 50px 0;
+            padding-right: 70px;
+
+            .doc-subtitle {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .doc-content {
+                font-size: 15px;
+                font-weight: 400;
+
+                p {
+                    margin-bottom: 20px;
+                }
+                a {
+                    text-decoration: underline;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                ol {
+                    margin: 15px 0;
+                    margin-left: 20px;
+
+                    li {
+                        list-style: square;
+                    }
+                }
+            }
+        }
+    }
+}
