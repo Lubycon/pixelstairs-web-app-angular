@@ -9,7 +9,7 @@
                 @include circleFrame(100px);
                 position: relative;
                 background: {
-                    color: $silver-grey-color;
+                    color: $silver-grey;
                     size: cover;
                     position: 50% 50%;
                 }
@@ -29,7 +29,7 @@
                     font-family: 'xeicon';
                     font-size: 20px;
                     content: "\e9c5";
-                    color: $white-color;
+                    color: $white;
                     background-color: rgba(0, 0, 0, 0.3);
                     transition: all 0.3s ease-in-out;
                     opacity: 0;

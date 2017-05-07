@@ -22,19 +22,19 @@
     };
     padding: 10px 15px;
     font-weight: 200;
-    background-color: $dark-grey-color;;
-    color: $white-color;
+    background-color: $dark-grey;;
+    color: $white;
     transition: all 0.3s ease-in-out;
     outline: 0 !important;
     margin: 0;
 
     &:hover,&:focus,&.focus {
-        color: $white-color;
+        color: $white;
         opacity: 0.6;
     }
 
     a {
-        color: $dark-grey-color;
+        color: $dark-grey;
     }
 
     &.icon-btn {

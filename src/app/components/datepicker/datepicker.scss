@@ -1,16 +1,16 @@
 .pixel-datepicker {
     .uib-datepicker-popup {
-        border: 1px solid $dark-grey-color;
+        border: 1px solid $dark-grey;
         border-radius: 0;
         &.dropdown-menu {
             padding: 0;
         }
         .btn {
             background-color: transparent;
-            color: $dark-grey-color;
+            color: $dark-grey;
             &.active {
-                background-color: $dark-grey-color;
-                color: $white-color;
+                background-color: $dark-grey;
+                color: $white;
                 box-shadow: none;
             }
             &.uib-left {
@@ -27,12 +27,12 @@
             }
             &:hover {
                 opacity: 1;
-                background-color: $light-grey-color;
-                color: $dark-grey-color;
+                background-color: $light-grey;
+                color: $dark-grey;
             }
         }
         .btn[disabled] {
-            color: $silver-grey-color;
+            color: $silver-grey;
         }
     }
 }
