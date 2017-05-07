@@ -14,10 +14,10 @@ export class FooterController {
             link: 'common.default.main'
         },{
             name: 'privacy policy',
-            link: 'common.default.main'
+            link: 'common.default.privacy-policy'
         },{
             name: 'terms of service',
-            link: 'common.default.main'
+            link: 'common.default.terms'
         }];
     }
 }
