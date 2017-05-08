@@ -26,6 +26,12 @@ const API_LIST = {
             detail: `${prefix}/{id}`,
             like: `${prefix}/{id}/like`
         };
+    },
+    tracker: () => {
+        const prefix = '';
+        return {
+            tracker: 'tracker'
+        };
     }
 };
 /* @API CONSTANT */

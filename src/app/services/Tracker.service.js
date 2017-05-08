@@ -5,7 +5,7 @@ const TRACKER_API = 'tracker';
 export class TrackerService {
     constructor(
         $rootScope, $state, $filter, $log,
-        CookieService, Restangular, UUIDService,
+        CookieService, Restangular, UUIDService, APIService,
         CUSTOM_HEADER_PREFIX
     ) {
         'ngInject';
@@ -18,6 +18,7 @@ export class TrackerService {
         this.CookieService = CookieService;
         this.Restangular = Restangular;
         this.UUIDService = UUIDService;
+        this.APIService = APIService;
 
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
 
@@ -47,9 +48,9 @@ export class TrackerService {
 
         this.setTracker(tracker);
 
-        // this.__postAPI__(__tracker__).then(res => {
-        //     this.__trace__(__tracker__);
-        // });
+        this.__postAPI__(tracker).then(res => {
+            this.__trace__(tracker);
+        });
 
         this.__trace__(tracker);
     }
@@ -73,9 +74,9 @@ export class TrackerService {
                 return false;
             }
 
-            // this.__postAPI__(tracker).then(res => {
-            //     this.__trace__(tracker, 'custom');
-            // });
+            this.__postAPI__(tracker).then(res => {
+                this.__trace__(tracker, 'custom');
+            });
 
             this.__trace__(tracker, 'custom');
         }
@@ -136,7 +137,7 @@ export class TrackerService {
     }
 
     __postAPI__(tracker) {
-        return this.Restangular.all(TRACKER_API).customPOST(tracker);
+        return this.APIService.resource('tracker').post(tracker);
     }
 
     __trace__(tracker, isCustom) {
