@@ -35,7 +35,7 @@
 .fieldset {
     .input-container {
         position: relative;
-        .form-control.ng-invalid {
+        .form-control.ng-invalid.ng-dirty {
             border-color: $red;
         }
         .form-control.ng-invalid+.error-msg {

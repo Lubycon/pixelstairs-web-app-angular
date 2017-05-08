@@ -24,6 +24,12 @@ export class MemberSettingController {
             code: 'E'
         }];
 
+        this.selectBoxOption = {
+            containerCssClass: 'custom-select2 full-width',
+            dropdownCssClass: 'custom-select2',
+            minimumResultsForSearch: -1
+        };
+
         this.uploadedProfile = null;
     }
 

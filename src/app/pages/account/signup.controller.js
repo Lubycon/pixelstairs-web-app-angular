@@ -61,8 +61,6 @@ export class SignUpController {
         data.newsletterAccepted = true;
         data.termsOfServiceAccepted = true;
 
-        if(!this.validate(data)) return false;
-
         this.APIService.resource('members.signup').post(data).then(res => {
             if(res && res.status.code === '0000') {
                 this.AuthenticationService.set(res.result.token);
@@ -76,8 +74,7 @@ export class SignUpController {
     }
 
     checkPasswordAgain() {
-        let isMatched = this.signData.password.origin === this.signData.password.repeat;
-        /*@LOG*/ this.$log.debug(this.signData.password.origin, this.signData.password.repeat, isMatched);
+        this.form.passwordAgain.$setValidity('notMatched', this.signData.password.origin === this.signData.password.repeat);
     }
 
     calcPasswordLevel() {
@@ -102,9 +99,5 @@ export class SignUpController {
         }
 
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
-    }
-
-    validate(data) {
-
     }
 }

@@ -15,7 +15,7 @@
             class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
         >
             <div class="fieldset">
-                <form name="signUpForm">
+                <form name="SignUpCtrl.form" ng-init="SignUpCtrl.form = SignUpCtrl.form">
                     <div class="input-container full-width">
                         <input
                             name="email"
@@ -25,7 +25,7 @@
                             ng-model="SignUpCtrl.signData.email"
                             ng-pattern="SignUpCtrl.FormRegxService.getRegx('email')"
                         />
-                        <div ng-messages="signUpForm.email.$error" class="error-msg">
+                        <div ng-messages="SignUpCtrl.form.email.$error" class="error-msg">
                             <p ng-message="pattern">Email pattern error</p>
                         </div>
                     </div>
@@ -51,7 +51,11 @@
                             ng-model="SignUpCtrl.signData.password.repeat"
                             ng-keyup="SignUpCtrl.checkPasswordAgain()"
                         >
-                        <div class="error-msg"></div>
+                        <div ng-messages="SignUpCtrl.form.passwordAgain.$error" class="error-msg">
+                            <p ng-message="notMatched">
+                                It is different! Please make sure your password
+                            </p>
+                        </div>
                     </div>
                     <div class="input-container full-width">
                         <input
@@ -60,8 +64,14 @@
                             class="form-control"
                             placeholder="nickname"
                             ng-model="SignUpCtrl.signData.nickname"
+                            min-length="5"
+                            max-length="30"
+                            ng-pattern="SignUpCtrl.FormRegxService.getRegx('specialChars')"
+                            required
                         >
-                        <div class="error-msg"></div>
+                        <div ng-messages="SignUpCtrl.form.nickname.$error" class="error-msg">
+                            <p ng-message="pattern">Some characters are unavailable</p>
+                        </div>
                     </div>
                     <div class="input-container full-width">
                         <select
@@ -92,6 +102,7 @@
                     <button
                         class="signin-btn btn full-width"
                         ng-click="SignUpCtrl.postData()"
+                        ng-disabled="SignUpCtrl.form.$invalid || !SignUpCtrl.form.$dirty"
                     >
                         Submit &amp; Start as a Member
                     </button>
