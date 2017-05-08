@@ -1,7 +1,7 @@
 .state-signin .container,
 .state-signup .container {
     .row {
-        transform: translateY(30%);
+        transform: translateY(10%);
     }
     header {
         text-align: center;
@@ -29,6 +29,40 @@
         .signup-btn {
             margin-top: 10px;
             text-decoration: underline;
+        }
+
+        .password-score {
+            height: 5px;
+            margin-top: 0px;
+            background: $silver-grey;
+            text-align: left;
+            .score-bar {
+                vertical-align: top;
+                height: 100%;
+                display: inline-block;
+                background-color: $dark-grey;
+                transition: width 0.3s ease-out;
+                &[data-status='low'] {
+                    background-color: $red;
+                }
+                &[data-status='mid'] {
+                    background-color: $yellow;
+                }
+                &[data-status='high'] {
+                    background-color: $green;
+                }
+                &[data-status='perfect'] {
+                    background-color: $blue;
+                }
+            }
+        }
+    }
+
+    .form-desc {
+        a {
+            text-align: left;
+            text-decoration: underline;
+            font-weight: 600;
         }
     }
 }

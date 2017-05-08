@@ -26,16 +26,29 @@
     text-align: center;
 
     form {
-        .input-wrapper {
-            padding: 0 10px;
-            input {
-                margin: 10px 0;
-            }
+        .input-container {
+            padding-bottom: 25px;
         }
     }
 }
 
 .fieldset {
+    .input-container {
+        position: relative;
+        .form-control.ng-invalid {
+            border-color: $red;
+        }
+        .form-control.ng-invalid+.error-msg {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            p {
+                color: $red;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
     .form-control {
         box-shadow: none;
         border: 2px solid $dark-grey;

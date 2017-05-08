@@ -16,21 +16,33 @@
         >
             <div class="fieldset">
                 <form name="signUpForm">
-                    <div class="input-wrapper full-width">
+                    <div class="input-container full-width">
                         <input
                             name="email"
                             type="email"
                             class="form-control"
                             placeholder="Email"
                             ng-model="SignUpCtrl.signData.email"
+                            ng-pattern="SignUpCtrl.FormRegxService.getRegx('email')"
                         />
+                        <div ng-messages="signUpForm.email.$error" class="error-msg">
+                            <p ng-message="pattern">Email pattern error</p>
+                        </div>
+                    </div>
+                    <div class="input-container full-width">
                         <input
                             name="password"
                             type="password"
                             class="form-control"
                             placeholder="Password"
                             ng-model="SignUpCtrl.signData.password.origin"
+                            ng-keyup="SignUpCtrl.calcPasswordLevel()"
                         >
+                        <div class="password-score">
+                            <div class="score-bar" data-status="{{SignUpCtrl.passwordScore.status}}" ng-style="{'width': SignUpCtrl.passwordScore.score+'%'}"></div>
+                        </div>
+                    </div>
+                    <div class="input-container full-width">
                         <input
                             name="passwordAgain"
                             type="password"
@@ -39,6 +51,9 @@
                             ng-model="SignUpCtrl.signData.password.repeat"
                             ng-keyup="SignUpCtrl.checkPasswordAgain()"
                         >
+                        <div class="error-msg"></div>
+                    </div>
+                    <div class="input-container full-width">
                         <input
                             name="nickname"
                             type="text"
@@ -46,6 +61,9 @@
                             placeholder="nickname"
                             ng-model="SignUpCtrl.signData.nickname"
                         >
+                        <div class="error-msg"></div>
+                    </div>
+                    <div class="input-container full-width">
                         <select
                             class="form-control"
                             ui-select2="SignUpCtrl.selectBoxOption"
@@ -55,12 +73,21 @@
                             placeholder="select your gender"
                         >
                         </select>
+                    </div>
+                    <div class="input-container full-width">
                         <datepicker
                             class="full-width"
                             ng-model="SignUpCtrl.signData.birthday"
                             placeholder="Birthday"
                         ></datepicker>
                     </div>
+
+                    <p class="form-desc">
+                        If you press the button below, it is assumed that you have agreed to our
+                        <a ui-sref="common.default.terms" target="_blank">terms of service</a>
+                        and
+                        <a ui-sref="common.default.privacy-policy" target="_blank">privacy policy</a>.
+                    </p>
 
                     <button
                         class="signin-btn btn full-width"

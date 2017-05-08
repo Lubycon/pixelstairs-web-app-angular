@@ -9,6 +9,7 @@ import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
 import { ImageService } from './Image.service';
+import { FormRegxService } from './FormRegx.service';
 
 import { DummyService } from './Dummy.service';
 
@@ -39,6 +40,8 @@ angular
     .service('APIService', APIService)
 
     .service('ImageService', ImageService)
+
+    .service('FormRegxService', FormRegxService)
 
     .service('DummyService', DummyService)
     ;
