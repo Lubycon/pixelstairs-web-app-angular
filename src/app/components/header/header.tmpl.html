@@ -26,7 +26,7 @@
                 ng-if="!GlobalHeaderCtrl.$rootScope.memberState.sign"
             >
                 <a ui-sref="full.default.signin">
-                    Sign in
+                    {{'LABEL.SIGNIN' | translate}}
                 </a>
             </li>
             <li
@@ -43,7 +43,9 @@
                         <a ui-sref="{{link.link}}">{{link.name}}</a>
                     </li>
                     <li>
-                        <a ng-click="GlobalHeaderCtrl.signout()">Sign out</a>
+                        <a ng-click="GlobalHeaderCtrl.signout()">
+                            {{'LABEL.SIGNOUT' | translate}}
+                        </a>
                     </li>
                 </ul>
             </li>

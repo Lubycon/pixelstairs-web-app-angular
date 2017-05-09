@@ -9,7 +9,7 @@
                     >
                 </a>
             </div>
-            <p>Connect Your Creativity with the World</p>
+            <p>{{'MOTO' | translate}}</p>
         </header>
         <div
             class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
@@ -21,12 +21,13 @@
                             name="email"
                             type="email"
                             class="form-control"
-                            placeholder="Email"
+                            placeholder="{{'LABEL.EMAIL' | translate}}"
                             ng-model="SignUpCtrl.signData.email"
                             ng-pattern="SignUpCtrl.FormRegxService.getRegx('email')"
+                            required
                         />
                         <div ng-messages="SignUpCtrl.form.email.$error" class="error-msg">
-                            <p ng-message="pattern">Email pattern error</p>
+                            <p ng-message="pattern">{{'FORM_ERROR.WRONG_EMAIL' | translate}}</p>
                         </div>
                     </div>
                     <div class="input-container full-width">
@@ -34,9 +35,10 @@
                             name="password"
                             type="password"
                             class="form-control"
-                            placeholder="Password"
+                            placeholder="{{'LABEL.PASSWORD' | translate}}"
                             ng-model="SignUpCtrl.signData.password.origin"
                             ng-keyup="SignUpCtrl.calcPasswordLevel()"
+                            required
                         >
                         <div class="password-score">
                             <div class="score-bar" data-status="{{SignUpCtrl.passwordScore.status}}" ng-style="{'width': SignUpCtrl.passwordScore.score+'%'}"></div>
@@ -47,13 +49,14 @@
                             name="passwordAgain"
                             type="password"
                             class="form-control"
-                            placeholder="Password Again"
+                            placeholder="{{'LABEL.PASSWORD_REPEAT' | translate}}"
                             ng-model="SignUpCtrl.signData.password.repeat"
                             ng-keyup="SignUpCtrl.checkPasswordAgain()"
+                            required
                         >
                         <div ng-messages="SignUpCtrl.form.passwordAgain.$error" class="error-msg">
                             <p ng-message="notMatched">
-                                It is different! Please make sure your password
+                                {{'FORM_ERROR.WRONG_REPEAT_PASSWORD' | translate}}
                             </p>
                         </div>
                     </div>
@@ -62,7 +65,7 @@
                             name="nickname"
                             type="text"
                             class="form-control"
-                            placeholder="nickname"
+                            placeholder="{{'LABEL.NICKNAME' | translate}}"
                             ng-model="SignUpCtrl.signData.nickname"
                             min-length="5"
                             max-length="30"
@@ -79,7 +82,8 @@
                             ui-select2="SignUpCtrl.selectBoxOption"
                             ng-model="SignUpCtrl.signData.gender"
                             ng-options="gender.code as gender.name for gender in SignUpCtrl.genders"
-                            placeholder="select your gender"
+                            placeholder="{{'LABEL.GENDER' | translate}}"
+                            required
                         >
                         </select>
                     </div>
@@ -87,7 +91,8 @@
                         <datepicker
                             class="full-width"
                             ng-model="SignUpCtrl.signData.birthday"
-                            placeholder="Birthday"
+                            placeholder="{{'LABEL.BIRTHDAY' | translate}}"
+                            required
                         ></datepicker>
                     </div>
 
@@ -103,7 +108,7 @@
                         ng-click="SignUpCtrl.postData()"
                         ng-disabled="SignUpCtrl.form.$invalid"
                     >
-                        Submit &amp; Start as a Member
+                        {{'FORM.SIGNUP_BTN' | translate}}
                     </button>
                 </form>
             </div>

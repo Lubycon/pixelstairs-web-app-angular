@@ -1,4 +1,9 @@
 {
+    "MOTO": "Connect your creativity with the World",
+    "HELLO_INFO": {
+        "00": "The Pixelstairs is dedicated to providing better opportunities",
+        "01": "for their works and another inspired interaction with every artist in the world."
+    },
     "LANGUAGE" : {
         "KO" : {
             "TXT" : "Korean",
@@ -16,22 +21,34 @@
             "NATIVE" : "中文"
         }
     },
-    "LABEL" : {
-
-    },
     "SNS_NAME" : {
-        "0100" : "이메일",
-        "0101" : "페이스북",
-        "0102" : "구글"
+        "0100" : "E-mail"
+    },
+    "LABEL" : {
+        "EMAIL": "E-mail",
+        "PASSWORD": "Password",
+        "PASSWORD_REPEAT": "Password Again",
+        "NICKNAME": "Nickname",
+        "GENDER": "Gender",
+        "BIRTHDAY": "Birthday",
+
+        "SIGNIN": "Sign in",
+        "SIGNUP": "Sign up",
+        "SIGNOUT": "Sign out",
+        "SUBMIT_ARTWORK": "Submit artwork",
+
+        "TITLE": "Title",
+        "TAGS": "Tags",
+        "DESCRIPTION": "Description"
     },
     "LICENSE" : {
-        "1000" : "크리에이티브 커먼스 라이센스",
+        "1000" : "Creative Commons license",
         "1100" : "상업적 이용불가",
         "1110" : "상업적이용 / 임의수정 및 배포 불가",
         "1010" : "임의수정 및 배포 불가",
         "1001" : "수정판 배포 가능",
         "1101" : "상업적이용 불가 / 수정판 배포 가능",
-        "0" : "라이센스 없음",
+        "0000" : "No lincese",
         "DESCRIPTION" : {
             "CC" : "크리에이티브 커먼스 라이센스 사용",
             "BY" : "자유롭게 공유, 수정가능. 단 제작자를 표기해야합니다",
@@ -41,17 +58,36 @@
             "WITHOUT" : "제작자 동의없이 사용할 수 없습니다"
         }
     },
+    "SCRIPT": {
+        "SIGNIN_HEADER": "\"We welcome you and your inspiration!\"",
+        "GO_TO_SIGNUP": "Not yet a member? Join now!!",
+        "HELP_CONTENT_UPLOAD": {
+            "H3": "Upload your Awwwesome Artwork to Pixelstairs",
+            "P": "Your artwork will be posted under the terms of Pixelstairs Service<br>and will be subject to the Creative Commons license as stipulated."
+        }
+    },
     "FORM" : {
-        "SUBMIT" : "등록",
-        "CONFIRM" : "확인",
-        "CANCLE" : "취소",
-        "DELETE" : "삭제",
-        "MODIFY" : "수정",
-        "NEXT" : "다음",
-        "PREV" : "이전",
-        "FINISH" : "완료",
-        "CONTINUE" : "계속",
-        "CHANGE" : "변경"
+        "SUBMIT" : "Submit",
+        "CONFIRM" : "Confirm",
+        "CANCLE" : "Cancel",
+        "DELETE" : "Delete",
+        "MODIFY" : "Modify",
+        "NEXT" : "Next",
+        "PREV" : "Prev",
+        "FINISH" : "Finish",
+        "CONTINUE" : "Continue",
+        "CHANGE" : "Change",
+        "SIGNUP_BTN": "Submit & Start as a member",
+        "BACK_TO_LIST": "Back to list"
+    },
+    "FORM_ERROR": {
+        "WRONG_EMAIL": "It is not a email address.",
+        "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again."
+    },
+    "PLACEHOLDER": {
+        "TITLE": "Write down the title of your artwork",
+        "TAGS": "Add a tag",
+        "DESCRIPTION": "Write down the description of you artwork"
     },
     "HTTP" : {
         "DEFAULT" : "알 수 없는 오류가 발생하였습니다",

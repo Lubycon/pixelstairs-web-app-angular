@@ -5,11 +5,8 @@
         </header> -->
         <div class="form-box row">
             <div class="uploader-info col-lg-12">
-                <h3>Upload your Awwwesome Artwork to Pixelstairs</h3>
-                <p>
-                    Your artwork will be posted under the terms of Pixelstairs Service<br>
-                    and will be subject to the Creative Commons license as stipulated.
-                </p>
+                <h3>{{'SCRIPT.HELP_CONTENT_UPLOAD.H3' | translate}}</h3>
+                <p translate="{{'SCRIPT.HELP_CONTENT_UPLOAD.P' | translate}}"></p>
             </div>
 
             <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
@@ -54,12 +51,12 @@
                 <form name="ContentsUploadCtrl.form" ng-submit="ContentsUploadCtrl.postData()">
                     <!-- TITLE, TAG, DESC -->
                     <div class="input-container">
-                        <label><i class="xi-pen-o"></i>TITLE</label>
+                        <label><i class="xi-pen-o"></i>{{'LABEL.TITLE' | translate}}</label>
                         <input
                             name="title"
                             type="text"
                             class="form-control"
-                            placeholder="Write down title of your artwork"
+                            placeholder="{{'PLACEHOLDER.TITLE' | translate}}"
                             ng-model="ContentsUploadCtrl.contentData.title"
                             ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('title')"
                             required
@@ -69,20 +66,21 @@
                         </div>
                     </div>
                     <div class="input-container">
-                        <label><i class="xi-tags"></i>TAGS</label>
+                        <label><i class="xi-tags"></i>{{'LABEL.TAGS' | translate}}</label>
                         <tags-input
                             class="form-control"
                             ng-model="ContentsUploadCtrl.contentData.hashTags"
                             allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
+                            placeholder="{{'PLACEHOLDER.TAGS' | translate}}"
                             required
                         ></tags-input>
                     </div>
                     <div class="input-container">
-                        <label><i class="xi-info-o"></i>DESCRIPTION</label>
+                        <label><i class="xi-info-o"></i>{{'LABEL.DESCRIPTION' | translate}}</label>
                         <textarea
                             class="form-control"
                             rows="8"
-                            placeholder="Write down the description of your artwork"
+                            placeholder="{{'PLACEHOLDER.DESCRIPTION' | translate}}"
                             ng-model="ContentsUploadCtrl.contentData.description"
                             ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('context')"
                             required
@@ -93,7 +91,7 @@
                         type="submit"
                         class="btn"
                         ng-disabled="ContentsUploadCtrl.form.$invalid"
-                    >SUBMIT</button>
+                    >{{'FORM.SUBMIT' | translate}}</button>
                 </form>
             </div>
         </div>

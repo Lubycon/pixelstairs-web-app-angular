@@ -9,21 +9,21 @@
                     >
                 </a>
             </div>
-            <p>Connect Your Creativity with the World</p>
+            <p>{{'MOTO' | translate}}</p>
         </header>
         <div
             class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
         >
             <div class="fieldset">
                 <p class="fieldset-hint">
-                    "We welcome you and your inspiration"
+                    {{'SCRIPT.SIGNIN_HEADER' | translate}}
                 </p>
                 <form>
                     <div class="input-container full-width">
                         <input
                             type="email"
                             class="form-control"
-                            placeholder="Email"
+                            placeholder="{{'LABEL.EMAIL' | translate}}"
                             ng-model="SignInCtrl.signData.email"
                         />
                     </div>
@@ -31,7 +31,7 @@
                         <input
                             type="password"
                             class="form-control"
-                            placeholder="Password"
+                            placeholder="{{'LABEL.PASSWORD' | translate}}"
                             ng-model="SignInCtrl.signData.password"
                         >
                     </div>
@@ -40,12 +40,12 @@
                         class="signin-btn btn full-width"
                         ng-click="SignInCtrl.postData()"
                     >
-                        Sign In
+                        {{'LABEL.SIGNIN' | translate}}
                     </button>
                 </form>
 
                 <p class="fieldset-hint signup-btn">
-                    <a ui-sref="full.default.signup">Not yet a member? Join Now!!</a>
+                    <a ui-sref="full.default.signup">{{'SCRIPT.GO_TO_SIGNUP' | translate}}</a>
                 </p>
             </div>
         </div>
