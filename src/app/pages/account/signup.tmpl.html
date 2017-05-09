@@ -66,7 +66,7 @@
                             ng-model="SignUpCtrl.signData.nickname"
                             min-length="5"
                             max-length="30"
-                            ng-pattern="SignUpCtrl.FormRegxService.getRegx('specialChars')"
+                            ng-pattern="SignUpCtrl.FormRegxService.getRegx('nickname')"
                             required
                         >
                         <div ng-messages="SignUpCtrl.form.nickname.$error" class="error-msg">
@@ -101,7 +101,7 @@
                     <button
                         class="signin-btn btn full-width"
                         ng-click="SignUpCtrl.postData()"
-                        ng-disabled="SignUpCtrl.form.$invalid || !SignUpCtrl.form.$dirty"
+                        ng-disabled="SignUpCtrl.form.$invalid"
                     >
                         Submit &amp; Start as a Member
                     </button>

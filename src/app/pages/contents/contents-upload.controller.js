@@ -1,6 +1,7 @@
 export class ContentsUploadController {
     constructor(
-        $log, $q, APIService, ImageService
+        $log, $q, APIService, ImageService,
+        FormRegxService
     ) {
         'ngInject';
 
@@ -8,6 +9,7 @@ export class ContentsUploadController {
         this.$q = $q;
         this.APIService = APIService;
         this.ImageService = ImageService;
+        this.FormRegxService = FormRegxService;
 
         this.contentData = {
             image: {},

@@ -43,7 +43,8 @@
                             ng-model="SettingCtrl.memberData.nickname"
                             min-length="5"
                             max-length="30"
-                            ng-pattern="SettingCtrl.FormRegxService.getRegx('specialChars')"
+                            ng-pattern="SettingCtrl.FormRegxService.getRegx('nickname')"
+                            required
                         >
                         <div ng-messages="SettingCtrl.form.nickname.$error" class="error-msg">
                             <p ng-message="pattern">Some characters are unavailable</p>
@@ -69,7 +70,7 @@
                     <button
                         class="btn full-width"
                         ng-click="SettingCtrl.postData()"
-                        ng-disabled="SettingCtrl.form.$invalid || !SettingCtrl.form.$dirty"
+                        ng-disabled="SettingCtrl.form.$invalid"
                     >
                         Update setting
                     </button>
