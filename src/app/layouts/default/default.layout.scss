@@ -3,6 +3,7 @@
 }
 
 #container {
+    min-height: 100vh;
     &.with-header {
         margin-top: $global-header-height;
     }

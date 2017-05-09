@@ -32,6 +32,8 @@
         </div>
     </div>
 
+    <div ng-if="MainCtrl.contentsData.list.length < 1">Loading...</div>
+
     <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
         <div
             class="infinite-scroll-wrapper"
