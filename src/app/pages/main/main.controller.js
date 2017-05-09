@@ -43,6 +43,7 @@ export class MainController {
             value: 'latest'
         }];
 
+        this.pageIndex = 0;
         this.scrollDisabled = true;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
@@ -102,10 +103,11 @@ export class MainController {
     getContents() {
         // const searcher = this.$location.search();
 
-        this.APIService.resource('contents.list').get()
+        this.APIService.resource('contents.list').get({pageIndex: this.pageIndex})
         .then(res => {
             if(res.result && res.result.contents) {
                 this.__addContentToList__(res.result);
+                this.pageIndex++;
             }
         });
     }
@@ -125,6 +127,7 @@ export class MainController {
 
         this.$timeout(() => {
             this.scrollDisabled = false;
+            console.log(this.scrollDisabled);
         }, this.busyInterval);
     }
 
