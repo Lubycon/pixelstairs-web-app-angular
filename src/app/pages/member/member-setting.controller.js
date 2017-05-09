@@ -1,7 +1,7 @@
 export class MemberSettingController {
     constructor(
         $rootScope, $log, $uibModal,
-        APIService, getMemberRsv
+        APIService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
 
@@ -9,6 +9,7 @@ export class MemberSettingController {
         this.$log = $log;
         this.$uibModal = $uibModal;
         this.APIService = APIService;
+        this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
         this.memberData.profileImg = this.memberData.profileImg || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};

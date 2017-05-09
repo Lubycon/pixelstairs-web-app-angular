@@ -22,37 +22,43 @@
                     >
                     </div>
                 </div>
-                <form name="settingForm">
-                    <div class="input-wrapper full-width">
+                <form name="SettingCtrl.form">
+
+                    <div class="input-container">
                         <input
                             name="email"
                             type="email"
                             class="form-control"
                             placeholder="Email"
                             ng-model="SettingCtrl.memberData.email"
+                            disabled
                         />
-                        <input
-                            name="mobile"
-                            type="tel"
-                            class="form-control"
-                            placeholder="Mobile"
-                            ng-model="SettingCtrl.memberData.mobile"
-                        >
+                    </div>
+                    <div class="input-container">
                         <input
                             name="nickname"
                             type="text"
                             class="form-control"
                             placeholder="nickname"
                             ng-model="SettingCtrl.memberData.nickname"
+                            min-length="5"
+                            max-length="30"
+                            ng-pattern="SettingCtrl.FormRegxService.getRegx('specialChars')"
                         >
+                        <div ng-messages="SettingCtrl.form.nickname.$error" class="error-msg">
+                            <p ng-message="pattern">Some characters are unavailable</p>
+                        </div>
+                    </div>
+                    <div class="input-container">
                         <select
                             class="full-width form-control"
                             ui-select2="SettingCtrl.selectBoxOption"
-                            ng-change="SettingCtrl.setGender()"
                             ng-model="SettingCtrl.memberData.gender"
                             ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
                         >
                         </select>
+                    </div>
+                    <div class="input-container">
                         <datepicker
                             class="full-width"
                             ng-model="SettingCtrl.memberData.birthday"
@@ -63,6 +69,7 @@
                     <button
                         class="btn full-width"
                         ng-click="SettingCtrl.postData()"
+                        ng-disabled="SettingCtrl.form.$invalid || !SettingCtrl.form.$dirty"
                     >
                         Update setting
                     </button>

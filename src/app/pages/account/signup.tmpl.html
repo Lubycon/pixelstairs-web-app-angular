@@ -77,7 +77,6 @@
                         <select
                             class="form-control"
                             ui-select2="SignUpCtrl.selectBoxOption"
-                            ng-change="SignUpCtrl.setGender()"
                             ng-model="SignUpCtrl.signData.gender"
                             ng-options="gender.code as gender.name for gender in SignUpCtrl.genders"
                             placeholder="select your gender"
