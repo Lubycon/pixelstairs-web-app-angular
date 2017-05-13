@@ -32,6 +32,10 @@
         </div>
     </div>
 
+    <div ng-if="MainCtrl.contentsData.list.length < 1 || 1">
+        <loading-icon icon="1"></loading-icon>
+    </div>
+
     <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
         <div
             class="infinite-scroll-wrapper"
@@ -61,5 +65,5 @@
         </div>
     </div>
 
-    <div ng-if="MainCtrl.contentsData.list.length < 1">Loading...</div>
+
 </div>
