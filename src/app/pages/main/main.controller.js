@@ -107,7 +107,6 @@ export class MainController {
         .then(res => {
             if(res.result && res.result.contents) {
                 this.__addContentToList__(res.result);
-                this.pageIndex++;
             }
         });
     }
@@ -127,7 +126,6 @@ export class MainController {
 
         this.$timeout(() => {
             this.scrollDisabled = false;
-            console.log(this.scrollDisabled);
         }, this.busyInterval);
     }
 
