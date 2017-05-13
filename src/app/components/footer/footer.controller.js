@@ -8,10 +8,10 @@ export class FooterController {
 
         this.linkList = [{
             name: 'about us',
-            link: 'common.default.main'
+            link: 'common.default.aboutus'
         },{
             name: 'contact',
-            link: 'common.default.main'
+            link: 'common.default.aboutus'
         },{
             name: 'privacy policy',
             link: 'common.default.privacy-policy'
