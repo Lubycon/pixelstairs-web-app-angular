@@ -8,11 +8,11 @@ export class FormRegxService {
             email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
             title: /[a-zA-Z\d-\_\~\&\/\:\!\.\,\s]$/,
             nickname: /[a-zA-Z\d-\_]$/,
-            passwordSpecialChars: /([\!\@\#\$\%\^\*\+\-\_\.\,\`])$/,
+            passwordSpecialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`]/,
             passwordMinLength: /^.{8,}$/,
-            lowercase: /([a-z])$/,
-            uppercase: /([A-Z])$/,
-            number: /([0-9])$/,
+            lowercase: /[a-z]/,
+            uppercase: /[A-Z]/,
+            number: /[0-9]/,
             ignoreRepeatWord: /^(?:(.)(?!\1\1))*$/,
             context: /[a-zA-Z\d\.\,\!\@]$/
         };
@@ -50,11 +50,11 @@ export class FormRegxService {
     calcPasswordLevel(password, max) {
         let score = 0;
 
-        if(password.length > 0) {
+        if(password && password.length > 0) {
             /*LOG*/ this.$log.debug('================== REGX ================');
             this.getPasswordTestList().forEach(v => {
-                /*LOG*/ this.$log.debug(password, v.regx, v.score, password.match(v.regx));
-                if(password.match(v.regx) && password.match(v.regx)) score += v.score;
+                /*LOG*/ this.$log.debug(password, v.regx, v.score, v.regx.test(password));
+                if(v.regx.test(password)) score += v.score;
                 else score -= v.score;
             });
             /*LOG*/ this.$log.debug('========================================');
