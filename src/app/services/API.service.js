@@ -27,6 +27,15 @@ const API_LIST = {
             like: `${prefix}/{id}/like`
         };
     },
+    certs: () => {
+        const prefix = 'certs';
+        return {
+            signup: {
+                time: `${prefix}/signup/time`,
+                code: `${prefix}/signup/code`
+            }
+        };
+    },
     tracker: () => {
         const prefix = '';
         return {
