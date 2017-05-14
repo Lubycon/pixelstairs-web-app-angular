@@ -8,7 +8,7 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/member/member-setting.tmpl.html',
             controller: 'MemberSettingController',
             controllerAs: 'SettingCtrl',
-            authenticate: 'member',
+            authenticate: 'member:active',
             params: {
                 memberId: null
             },

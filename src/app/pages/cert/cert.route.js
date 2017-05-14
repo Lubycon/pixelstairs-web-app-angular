@@ -14,7 +14,7 @@ export function routeConfig($stateProvider) {
             resolve: {
 
             },
-            authenticate: 'member'
+            authenticate: 'member:active'
         })
     ;
 }

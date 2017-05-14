@@ -22,8 +22,12 @@ export class StateAuthenticationService {
                 if(!IS_SIGNED) this.__stateChangeResolve__(toState);
                 else this.__stateChangeReject__('common.default.main');
             break;
-            case 'member':
+            case 'member:active':
                 if(IS_SIGNED) this.__stateChangeResolve__(toState);
+                else this.__stateChangeReject__();
+            break;
+            case 'member:inactive':
+                if(IS_SIGNED) this._stateChangeResolve__(toState);
                 else this.__stateChangeReject__();
             break;
             case 'close':
