@@ -32,4 +32,8 @@ export class CertMailController {
             console.log(res);
         });
     }
+
+    sendMailAgain() {
+        console.log('send email again');
+    }
 }
