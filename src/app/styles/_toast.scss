@@ -1,0 +1,21 @@
+#toast-container {
+    .toast {
+        * {
+            color: $white;
+        }
+
+        &.toast-location-change {
+            background: $dark-grey;
+            background-image: none !important;
+            &::before {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-family: 'xeicon';
+                font-size: 26px;
+                content: "\eae2";
+            }
+        }
+    }
+}

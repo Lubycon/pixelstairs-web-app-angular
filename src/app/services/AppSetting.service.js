@@ -1,13 +1,11 @@
-import regeneratorRuntime from 'regenerator-runtime';
-
 /* @PRIVATE MEMEBER */
 const IP_API = 'https://freegeoip.net/json?callback=JSON_CALLBACK';
 /* @PRIVATE MEMEBER */
 
 export class AppSettingService {
     constructor (
-        $rootScope, $http, $log, $q, $translate,
-        Restangular, CookieService,
+        $rootScope, $http, $log, $q, $translate, $window,
+        Restangular, CookieService, toastr,
         CUSTOM_HEADER_PREFIX
     ) {
         'ngInject';
@@ -17,42 +15,33 @@ export class AppSettingService {
         this.$log = $log;
         this.$q = $q;
         this.$translate = $translate;
+        this.$window = $window;
 
         this.Restangular = Restangular;
         this.CookieService = CookieService;
 
+        this.toastr = toastr;
+
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
     }
-
 
     init() {
         let defer = this.$q.defer();
 
         const STORED_DATA = this.CookieService.get('setting');
 
-        if(STORED_DATA) {
-            this.$rootScope.setting = STORED_DATA;
-            this.__setSetting__();
-            console.log('STORED SETTING => ',STORED_DATA);
+        this.$http({
+            method: 'jsonp',
+            url: IP_API,
+            responseType: 'json'
+        }).then(res => {
+            console.log('IP LOCATION=> ', res);
+            this.__setSetting__(res.data, STORED_DATA);
             defer.resolve();
-        }
-        else {
-            this.$http({
-                method: 'jsonp',
-                url: IP_API,
-                responseType: 'json'
-            }).then(res => {
-                console.log('IP LOCATION=> ', res);
-                this.$rootScope.setting = res.data;
-                this.CookieService.put('setting', res.data);
-
-                this.__setSetting__();
-                defer.resolve();
-            }, err => {
-                /*@LOG*/ this.$log.debug(err);
-                defer.reject('App Setting Error!');
-            });
-        }
+        }, err => {
+            /*@LOG*/ this.$log.debug(err);
+            defer.reject('App Setting Error!');
+        });
 
         return defer.promise;
     }
@@ -94,7 +83,31 @@ export class AppSettingService {
 
 
     /* @PRIVATE METHOD */
-    __setSetting__() {
+    __setSetting__(data, storedData) {
+        /*
+            0. 쿠키에서 기존 세팅값이 있는 지 검색
+            1. 기존 세팅값이 있다면 -> 기존 세팅 값과 현재 받아온 접속 위치의 국가코드가 다르다면 토스트 렌더
+            2. 기존 접속위치와 현재 접속위치가 달라졌습니다. 언어를 현재 접속 위치에 맞게 바꾸시겠습니까?
+            3. boolean -> exit 0
+        */
+        if(storedData && data.country_code !== storedData.country_code) {
+            this.toastr.warning(`Your Location is changed from <br>${storedData.country_code} to ${data.country_code}.<br>If you want to change to new language, click this message`, '', {
+                timeOut: false,
+                closeButton: true,
+                extendedTimeOut: 100000,
+                toastClass: 'toast toast-location-change',
+                tapToDismiss: false,
+                onTap: () => { this.__removeStoredData__('reload'); }
+            });
+            this.$rootScope.setting = storedData;
+        }
+        else if(storedData && data.country_code === storedData.country_code) {
+            this.$rootScope.setting = storedData;
+        }
+        else this.$rootScope.setting = data;
+
+        console.log('SETTING DATA => ', this.$rootScope.setting);
+
         let tmp = {},
             lang = this.__setLanguage__(this.$rootScope.setting.country_code);
 
@@ -107,7 +120,14 @@ export class AppSettingService {
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
 
+        this.CookieService.put('setting', this.$rootScope.setting);
+
         /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
+    }
+
+    __removeStoredData__(reload) {
+        this.CookieService.remove('setting');
+        if(reload === 'reload') this.$window.location.reload();
     }
 
     __setLanguage__(country) {
