@@ -35,7 +35,6 @@ export class AppSettingService {
             url: IP_API,
             responseType: 'json'
         }).then(res => {
-            console.log('IP LOCATION=> ', res);
             this.__setSetting__(res.data, STORED_DATA);
             defer.resolve();
         }, err => {
@@ -106,7 +105,7 @@ export class AppSettingService {
         }
         else this.$rootScope.setting = data;
 
-        console.log('SETTING DATA => ', this.$rootScope.setting);
+        /*LOG*/ this.$log.debug('SETTING DATA => ', this.$rootScope.setting);
 
         let tmp = {},
             lang = this.__setLanguage__(this.$rootScope.setting.country_code);
@@ -114,7 +113,8 @@ export class AppSettingService {
         this.$rootScope.setting.language = lang;
         tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
         tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = this.$rootScope.setting.country_code;
-        this.$translate.use(this.$rootScope.setting.language);
+
+        this.$translate.use(this.$rootScope.setting.language.split('-')[0]);
 
         let defaultHeaders = angular.extend({}, this.Restangular.defaultHeaders, tmp);
 
