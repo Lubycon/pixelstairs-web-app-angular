@@ -16,7 +16,14 @@ function webpackWrapper(watch, test, callback) {
         module: {
             // PRELOADER -> LINT
             // preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'eslint-loader'}],
-            loaders: [{ test: /\.js$/, exclude: /node_modules/, loaders: ['ng-annotate', 'babel-loader?presets[]=es2015']}]
+            loaders: [{
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: [
+                    'ng-annotate',
+                    'babel-loader'
+                ]
+            }]
         },
         output: { filename: 'app.module.js' }
     };

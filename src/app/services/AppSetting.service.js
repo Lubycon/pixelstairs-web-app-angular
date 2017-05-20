@@ -1,3 +1,5 @@
+import regeneratorRuntime from 'regenerator-runtime';
+
 /* @PRIVATE MEMEBER */
 const IP_API = 'https://freegeoip.net/json?callback=JSON_CALLBACK';
 /* @PRIVATE MEMEBER */
@@ -30,7 +32,8 @@ export class AppSettingService {
 
         if(STORED_DATA) {
             this.$rootScope.setting = STORED_DATA;
-            this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+            this.__setSetting__();
+            console.log('STORED SETTING => ',STORED_DATA);
             defer.resolve();
         }
         else {
@@ -39,18 +42,17 @@ export class AppSettingService {
                 url: IP_API,
                 responseType: 'json'
             }).then(res => {
+                console.log('IP LOCATION=> ', res);
                 this.$rootScope.setting = res.data;
                 this.CookieService.put('setting', res.data);
 
-                this.__setSetting__(this.$rootScope, this.Restangular, this.CUSTOM_HEADER_PREFIX);
+                this.__setSetting__();
                 defer.resolve();
             }, err => {
                 /*@LOG*/ this.$log.debug(err);
                 defer.reject('App Setting Error!');
             });
         }
-
-        /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
 
         return defer.promise;
     }
@@ -64,7 +66,7 @@ export class AppSettingService {
         let defaultHeaders = this.Restangular.defaultHeaders;
         let tmp = {};
 
-        /*@LOG*/ this.$log.debug(key, value);
+        /*@LOG*/ this.$log.debug('AppSettingService.set => ', key, value);
         if(ALLOW_PARAMS.indexOf(key) > -1) {
             let headerKey = this.CUSTOM_HEADER_PREFIX + key;
             tmp[headerKey] = value;
@@ -93,22 +95,19 @@ export class AppSettingService {
 
     /* @PRIVATE METHOD */
     __setSetting__() {
-        let tmp = {};
+        let tmp = {},
+            lang = this.__setLanguage__(this.$rootScope.setting.country_code);
 
-        switch(this.$rootScope.setting.country_code) {
-            case 'KR' : this.$rootScope.setting.language = 'ko'; break;
-            default : this.$rootScope.setting.language = 'en'; break;
-        }
-
-        tmp[this.CUSTOM_HEADER_PREFIX + 'country'] = this.$rootScope.setting.country_code;
-
-        /* TEST */
-        this.$rootScope.setting.language = 'en';
-        /* ==== */
+        this.$rootScope.setting.language = lang;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = this.$rootScope.setting.country_code;
         this.$translate.use(this.$rootScope.setting.language);
+
         let defaultHeaders = angular.extend({}, this.Restangular.defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
+
+        /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
     }
 
     __setLanguage__(country) {

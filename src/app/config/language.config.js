@@ -1,6 +1,7 @@
 
 
 export function languageConfig(RestangularProvider, CUSTOM_HEADER_PREFIX) {
+    // USE BROWSER LANGUAGE
     'ngInject';
 
     let lang = 'en-US';
@@ -17,6 +18,7 @@ export function languageConfig(RestangularProvider, CUSTOM_HEADER_PREFIX) {
     }
 
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'language'] = lang;
+    console.log('IN CONFIG',lang);
 
     RestangularProvider.setDefaultHeaders(defaultHeaders);
 }
