@@ -2,7 +2,7 @@
 export class ErrorPageController {
     constructor(
         $log, $state, $stateParams, $translate,
-        $location
+        $location, getQuotesRsv
     ) {
         'ngInject';
 
@@ -14,24 +14,24 @@ export class ErrorPageController {
         this.httpStatus = $stateParams.httpStatus;
         this.errorMsg = $translate.instant(`HTTP.${this.httpStatus}`);
         this.wiseword = {
-            text: 'Imagination is more important than knowledge. Knowedge is limited. Imagination encircles the world',
-            author: 'Albert einstein [Smithsonian, February 1979]'
+            text: getQuotesRsv.result.message,
+            author: getQuotesRsv.result.author
         };
 
         (this.init)();
     }
 
     init() {
-        console.log(this.errorMsg);
         this.wiseword.text = '"' + this.wiseword.text + '"';
     }
 
     gotoBack() {
-        if(document.referrer.indexOf(this.$location.host()) < 0) {
-            this.$state.go('common.default.main');
+        const ref = document.referrer;
+        if(ref.indexOf(this.$location.host()) > -1 && ref.indexOf(this.$location.path()) < 0) {
+            this.$location.href = document.referrer;
         }
         else {
-            this.$location.href = document.referrer;
+            this.$state.go('common.default.main');
         }
     }
 }

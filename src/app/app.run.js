@@ -1,7 +1,7 @@
 export function run (
     $rootScope, $log, $q, AppSettingService, HistoryService,
     TrackerService, StateAuthenticationService, AuthenticationService,
-    $anchorScroll, $window, $document, $timeout, USER_AGENT
+    $anchorScroll, $window, $document, $state, $timeout, USER_AGENT
 ) {
     'ngInject';
 
@@ -27,6 +27,11 @@ export function run (
         event, toState, toParams, fromState, fromParams
     ) => {
         __hideModalWindow__();
+
+        if(!$rootScope.Initialized) {
+            event.preventDefault();
+            $timeout(() => { $state.go(toState, toParams); }, 1000);
+        }
     });
 
     $rootScope.$on('$stateChangeSuccess', (
@@ -42,7 +47,7 @@ export function run (
             to : toState
         });
 
-        $timeout(() => { TrackerService.post(toState, fromState); }, 1000);
+        TrackerService.post(toState, fromState);
         StateAuthenticationService.detect(toState);
 
         $anchorScroll();
