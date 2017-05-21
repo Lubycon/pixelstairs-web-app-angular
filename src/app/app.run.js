@@ -30,7 +30,7 @@ export function run (
 
         if(!$rootScope.Initialized) {
             event.preventDefault();
-            $timeout(() => { $state.go(toState, toParams); }, 1000);
+            $timeout(() => { $state.go(toState, toParams); console.log('loading...'); }, 1000);
         }
     });
 
