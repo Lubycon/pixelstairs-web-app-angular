@@ -29,6 +29,7 @@ export class AppSettingService {
         let defer = this.$q.defer();
 
         const STORED_DATA = this.CookieService.get('setting');
+        /*LOG*/ this.$log.debug('STORED SETTING => ', STORED_DATA);
 
         this.$http({
             method: 'jsonp',

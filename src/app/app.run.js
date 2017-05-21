@@ -1,7 +1,7 @@
 export function run (
     $rootScope, $log, $q, AppSettingService, HistoryService,
     TrackerService, StateAuthenticationService, AuthenticationService,
-    $anchorScroll, $window, $document, USER_AGENT
+    $anchorScroll, $window, $document, $timeout, USER_AGENT
 ) {
     'ngInject';
 
@@ -42,7 +42,7 @@ export function run (
             to : toState
         });
 
-        TrackerService.post(toState, fromState);
+        $timeout(() => { TrackerService.post(toState, fromState); }, 1000);
         StateAuthenticationService.detect(toState);
 
         $anchorScroll();
