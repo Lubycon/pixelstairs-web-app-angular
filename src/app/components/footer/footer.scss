@@ -38,4 +38,17 @@
             color: $silver-grey;
         }
     }
+
+    /* Media Query */
+
+    @media screen and (max-width: $mobile) {
+        ul.nav-wrapper {
+            width: 100%;
+            li {
+                * {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 }

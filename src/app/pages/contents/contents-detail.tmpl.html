@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="content-wrapper col-lg-12">
+        <div class="content-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="content-title">
                 <p>"{{ContentsDetailCtrl.data.title}}"</p>
             </div>
@@ -9,8 +9,8 @@
             </div>
         </div>
 
-        <div class="content-info-wrapper col-lg-12 row row-eq-height">
-            <div class="col-lg-offset-2 col-lg-8 info-card">
+        <div class="content-info-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12 row row-eq-height">
+            <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12 info-card">
                 <div>
                     <h6 class="artwork-by">Artwork by</h6>
 
@@ -40,12 +40,12 @@
                     </div>
 
                     <div class="like-counter row">
-                        <div class="col-lg-6">
-                            <h6 class="attr-title"><i class="xi-heart-o"></i> <span>like</span></h6>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="attr-title"><i class="xi-heart-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> like</span></h6>
                             <p>{{ContentsDetailCtrl.data.counts.like | numberSuffixFilter:1}}</p>
                         </div>
-                        <div class="col-lg-6">
-                            <h6 class="attr-title"><i class="xi-eye-o"></i> <span>view</span></h6>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <h6 class="attr-title"><i class="xi-eye-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> view</span></h6>
                             <p>{{ContentsDetailCtrl.data.counts.view | numberSuffixFilter:1}}</p>
                         </div>
                     </div>

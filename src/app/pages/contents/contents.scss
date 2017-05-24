@@ -139,4 +139,33 @@
     .btn-wrapper {
         text-align: center;
     }
+
+    /* Meida Query */
+    @media screen and (max-width: $mobile) {
+        .content-wrapper {
+            padding: 0;
+            .content-title {
+                font-size: 14px;
+            }
+        }
+
+        .content-info-wrapper {
+            .info-card {
+                .member-info {
+                    .member-profile {
+                        @include circleFrame(40px);
+                    }
+                    p {
+                        font-size: 12px;
+                    }
+                }
+
+                .like-counter {
+                    p {
+                        font-size: 2em;
+                    }
+                }
+            }
+        }
+    }
 }
