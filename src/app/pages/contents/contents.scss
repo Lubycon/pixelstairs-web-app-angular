@@ -42,6 +42,13 @@
             }
         }
     }
+    /* Media Query */
+    @media screen and (max-width: $mobile) {
+        .form-box {
+            margin: 0;
+            padding: 0;
+        }
+    }
 }
 
 .state-contents-detail {
