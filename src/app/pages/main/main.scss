@@ -5,6 +5,7 @@
             * {
                 font-family: $inconsolata;
                 text-align: center;
+                font-size: 14px;
             }
             h4 {
                 margin-bottom: 20px;
@@ -64,6 +65,20 @@
             .art-card {
                 .art-info {
 
+                }
+            }
+        }
+    }
+
+    /* Media query */
+    @media screen and (max-width: $mobile) {
+        .sub-header {
+            .description {
+                * {
+                    font-size: 11px;
+                }
+                h4 {
+                    font-size: 17px;
                 }
             }
         }

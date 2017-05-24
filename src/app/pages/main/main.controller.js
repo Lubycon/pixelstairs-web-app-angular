@@ -1,7 +1,7 @@
 
 export class MainController {
     constructor (
-        $scope, $log, $timeout, $location,
+        $rootScope, $scope, $log, $timeout, $location,
         APIService, CookieService,
         MAIN_GRID_INIT
     ) {
@@ -15,8 +15,10 @@ export class MainController {
         this.APIService = APIService;
         this.CookieService = CookieService;
 
+        this.isMobile = $rootScope.deviceInfo.isMobile;
+
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
-        this.currentViewmode = this.getViewmodeName();
+        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
 
         this.viewmode = [{
             name: 'grid',
