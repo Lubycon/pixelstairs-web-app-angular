@@ -28,6 +28,7 @@ export class AuthenticationService {
     }
 
     init() {
+        /*LOG*/ this.$log.debug('Authentication init start...');
         let defer = this.$q.defer();
 
         let defaultHeaders = this.Restangular.defaultHeaders,

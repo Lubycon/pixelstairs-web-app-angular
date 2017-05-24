@@ -7,12 +7,17 @@ export function run (
 
     $rootScope.deviceInfo = USER_AGENT;
 
-    /*@INIT*/
-    let initPromise = $q.all;
-    initPromise({
-        appSetting: AppSettingService.init(),
-        authenticate: AuthenticationService.init()
-    }).then(res => {
+    const initStarter = () => {
+        let defer = $q.defer();
+        defer.resolve();
+        return defer.promise;
+    };
+    
+    /* app init start */
+    initStarter()
+    .then(res => { return AppSettingService.init(); })
+    .then(res => { return AuthenticationService.init(); })
+    .then(res => {
         /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
 
@@ -21,6 +26,7 @@ export function run (
         /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
         /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
     });
+    /* app init end */
 
     /*@STATE*/
     $rootScope.$on('$stateChangeStart', (
