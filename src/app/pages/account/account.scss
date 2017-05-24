@@ -65,4 +65,31 @@
             font-weight: 600;
         }
     }
+
+    /* Media Query */
+    @media screen and (max-width: $mobile) {
+        .row {
+            @include floatToCenter;
+            width: 100%;
+            margin: 0;
+        }
+        header {
+            .global-logo {
+                width: 150px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+        .form-box {
+            div .fieldset-hint {
+                font-size: 12px;
+            }
+            form {
+                .input-container {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
 }
