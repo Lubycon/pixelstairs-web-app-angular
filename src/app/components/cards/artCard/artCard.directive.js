@@ -30,7 +30,7 @@ export function ArtCardDirective() {
 
 class ArtCardController {
     constructor(
-        $scope, $element, $log, $window,
+        $rootScope, $scope, $element, $log, $window,
         $timeout, $uibPosition,
         CookieService, ImageService
     ) {
@@ -45,6 +45,8 @@ class ArtCardController {
 
         this.CookieService = CookieService;
         this.ImageService = ImageService;
+
+        this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.position = this.$uibPosition.offset(this.$element);
 

@@ -3,7 +3,7 @@
         class="card-header row"
         ng-if="ArtCard.viewmode === 'wide'"
     >
-        <div class="member-info col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div ng-if="!ArtCard.isMobile" class="member-info col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div
                 ng-style="{'background-image': 'url('+ArtCard.data.user.profileImg.file+')'}"
                 class="member-profile"
@@ -11,10 +11,10 @@
             </div>
             <h4>{{ArtCard.data.user.nickname}}</h4>
         </div>
-        <div class="art-title col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div class="art-title col-lg-6 col-md-6 col-sm-12 col-xs-12">
             <h3>{{ArtCard.data.title}}</h3>
         </div>
-        <div class="art-info col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <div class="art-info col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <ul>
                 <li><i class="xi-heart-o"></i> <span>{{ArtCard.data.counts.like | numberSuffixFilter:1}}</span></li>
                 <li><i class="xi-eye-o"></i> <span>{{ArtCard.data.counts.view | numberSuffixFilter:1}}</span></li>

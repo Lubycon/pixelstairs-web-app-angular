@@ -150,3 +150,44 @@
         }
     }
 }
+
+/* Media Query */
+
+@media screen and (max-width: $mobile) {
+    .art-card {
+        margin: 0;
+
+        .card-header {
+            display: block;
+            &>div {
+                display: inline-block;
+                padding: 0;
+            }
+            .member-info {
+                h4 {
+                    font-size: 12px;
+                }
+            }
+
+            .art-title {
+                h3 {
+                    @include ellipsis;
+                    font-size: 13px;
+                }
+            }
+
+            .art-info {
+                ul {
+                    li {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .card-body {
+            .art-background {
+                min-height: 200px;
+            }
+        }
+    }
+}

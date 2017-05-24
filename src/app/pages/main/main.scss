@@ -51,25 +51,6 @@
         margin: 0 auto;
     }
 
-    .page-body {
-        &>ul {
-            &>li {
-                padding: 0 10px;
-                &.shown-element {
-                    border: 1px solid #f00;
-                }
-            }
-        }
-
-        &.wide-mode {
-            .art-card {
-                .art-info {
-
-                }
-            }
-        }
-    }
-
     /* Media query */
     @media screen and (max-width: $mobile) {
         .sub-header {
@@ -79,6 +60,14 @@
                 }
                 h4 {
                     font-size: 17px;
+                }
+            }
+        }
+
+        .page-body {
+            ul.angular-grid {
+                li.angular-grid-item {
+                    padding: 0;
                 }
             }
         }
