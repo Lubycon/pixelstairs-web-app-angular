@@ -26,6 +26,7 @@ export class AppSettingService {
     }
 
     init() {
+        /*LOG*/ this.$log.debug('App Setting init start...');
         let defer = this.$q.defer();
 
         const STORED_DATA = this.CookieService.get('setting');

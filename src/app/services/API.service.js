@@ -37,9 +37,16 @@ const API_LIST = {
         };
     },
     tracker: () => {
-        const prefix = '';
+        const prefix = 'tracker';
         return {
-            tracker: 'tracker'
+            tracker: ''
+        };
+    },
+    quotes: () => {
+        const prefix = 'quotes';
+        return {
+            success: `${prefix}/success`,
+            mistake: `${prefix}/mistake`
         };
     }
 };

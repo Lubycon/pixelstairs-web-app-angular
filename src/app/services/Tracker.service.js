@@ -37,7 +37,7 @@ export class TrackerService {
 
         let tmp = {
             uuid: this.UUID.id,
-            prevUrl: fromState.url,
+            prevUrl: fromState.url.length < 1 ? 'no_referrer' : fromState.url,
             currentUrl: toState.url
         };
 

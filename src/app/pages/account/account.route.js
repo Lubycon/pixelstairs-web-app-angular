@@ -21,7 +21,12 @@ export function routerConfig ($stateProvider) {
             url: '/signout',
             templateUrl: 'app/pages/account/signout.tmpl.html',
             controller: 'SignOutController',
-            controllerAs: 'SignOutCtrl'
+            controllerAs: 'SignOutCtrl',
+            resolve: {
+                getQuotesRsv: (APIService) => {
+                    return APIService.resource('quotes.success').get();
+                }
+            }
         })
         ;
 }
