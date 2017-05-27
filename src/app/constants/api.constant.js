@@ -13,7 +13,8 @@ export function APIDetection() {
     /* ===================== API SERVER ==================== */
     const PRO_API_SERVER = 'http://apidev.pixelstairs.com/v1';
     const DEV_API_SERVER = 'http://apidev.pixelstairs.com/v1';
-    const LOCAL_API_SERVER = 'http://pixel.api/v1'; // FOR DANIEL
+    const LOCAL_API_SERVER_DANIEL = 'http://pixel.api/v1';
+    const LOCAL_API_SERVER_EVAN = 'http://localserver.dev/v1';
     /* ===================================================== */
 
     const DEV_APPKEY = 'lubycon-back';
