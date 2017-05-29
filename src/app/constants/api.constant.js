@@ -11,10 +11,10 @@ export function APIDetection() {
     /* ===================================================== */
 
     /* ===================== API SERVER ==================== */
-    const PRO_API_SERVER = 'http://apidev.pixelstairs.com/v1';
-    const DEV_API_SERVER = 'http://apidev.pixelstairs.com/v1';
-    const LOCAL_API_SERVER_DANIEL = 'http://pixel.api/v1';
-    const LOCAL_API_SERVER_EVAN = 'http://localserver.dev/v1';
+    const PRO_API_SERVER = 'https://apidev.pixelstairs.com/v1';
+    const DEV_API_SERVER = 'https://apidev.pixelstairs.com/v1';
+    const LOCAL_API_SERVER_DANIEL = 'https://pixel.api/v1';
+    const LOCAL_API_SERVER_EVAN = 'https://localserver.dev/v1';
     /* ===================================================== */
 
     const DEV_APPKEY = 'lubycon-back';
@@ -34,7 +34,7 @@ export function APIDetection() {
         output.isValid = true;
     }
     else if(ORIGIN.indexOf(LOCAL_WEB_SERVER) > -1) {
-        api = DEV_API_SERVER;
+        api = LOCAL_API_SERVER_DANIEL;
         output.isValid = true;
     }
     else {
