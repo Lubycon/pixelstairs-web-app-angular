@@ -24,17 +24,20 @@ export function APIDetection() {
     output.isValid = false;
     output.isDev = true;
 
+    /* PROVISION */
     if(ORIGIN.indexOf(PRO_WEB_SERVER) > -1) {
         api = PRO_API_SERVER;
         output.isValid = true;
         output.isDev = false;
     }
+    /* DEV */
     else if(ORIGIN.indexOf(DEV_WEB_SERVER) > -1) {
         api = DEV_API_SERVER;
         output.isValid = true;
     }
+    /* LOCAL */
     else if(ORIGIN.indexOf(LOCAL_WEB_SERVER) > -1) {
-        api = LOCAL_API_SERVER_DANIEL;
+        api = DEV_API_SERVER;
         output.isValid = true;
     }
     else {
