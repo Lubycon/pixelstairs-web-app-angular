@@ -62,7 +62,6 @@ function webpackWrapper(watch, test, callback) {
 }
 
 gulp.task('env', function() {
-
     return gulp.src([ path.join(conf.paths.env, '/env.json') ])
         .pipe(gulpNgConfig('app.env', {
             environment: ['global', 'env.' + util.env.type]
