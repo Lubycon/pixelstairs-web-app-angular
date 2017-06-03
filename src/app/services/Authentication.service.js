@@ -28,6 +28,7 @@ export class AuthenticationService {
     }
 
     init() {
+        /*LOG*/ this.$log.debug('Authentication init start...');
         let defer = this.$q.defer();
 
         let defaultHeaders = this.Restangular.defaultHeaders,
@@ -43,6 +44,7 @@ export class AuthenticationService {
 
             this.APIService.resource('members.simple').get()
             .then(res => {
+                console.log(res);
                 if(res && res.status.code === '0000') {
                     /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
 
@@ -56,7 +58,7 @@ export class AuthenticationService {
 
                 defer.resolve();
             }, err => {
-                /*@LOG*/ this.$log.debug(err);
+                /*@LOG*/ this.$log.debug('AUTHENTICATE ERROR CATCH => ', err);
                 this.clear('reload');
                 defer.reject('Authentication init Error!');
             });
@@ -144,29 +146,40 @@ export class AuthenticationService {
     }
 
     clear(reload, state = '/main') {
-        if(this.$rootScope.memberState.sign && this.$rootScope.member) {
+        if(this.$rootScope.memberState.sign || this.$rootScope.member) {
             this.APIService.resource('members.signout').put()
             .then(res => {
                 if(res && res.status.code === '0000') {
                     delete this.$rootScope.member;
 
                     //DESTROY TOKEN AND AUTH DATA
-                    this.CookieService.remove('auth');
-                    this.$rootScope.memberState.sign = false;
-
-                    this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
-
-                    this.AppSettingService.set('country', this.$rootScope.setting.country_code);
-
-                    this.$state.go('common.default.main');
+                    this.__clearAuth__();
 
                     if(reload === 'reload') this.$window.location.reload();
                 }
             }, err => {
                 /*LOG*/ this.$log.debug(err);
-                this.$log.error('AUTH CLEAR METHOD IS NOT WORKED :: AuthenticationService');
+                this.$log.error('AUTH CLEAR METHOD IS NOT WORKED. TOKEM WILL BE FORCE REMOVED :: AuthenticationService');
+
+                //DESTROY TOKEN AND AUTH DATA
+                this.__clearAuth__();
+
+                if(reload === 'reload') this.$window.location.reload();
+
                 return false;
             });
         }
+    }
+
+
+    __clearAuth__() {
+        this.CookieService.remove('auth');
+        this.$rootScope.memberState.sign = false;
+
+        this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
+
+        this.AppSettingService.set('country', this.$rootScope.setting.country_code);
+
+        this.$state.go('common.default.main');
     }
 }

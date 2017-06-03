@@ -14,13 +14,15 @@ export function routerConfig ($stateProvider) {
                 header: {
                     templateUrl: 'app/components/header/header.tmpl.html',
                     controller: 'HeaderController',
-                    controllerAs: 'GlobalHeader'
+                    controllerAs: 'GlobalHeaderCtrl'
                 },
                 content: {
                     template: '<div ui-view></div>'
                 },
                 footer: {
-
+                    templateUrl: 'app/components/footer/footer.tmpl.html',
+                    controller: 'FooterController',
+                    controllerAs: 'GlobalFooterCtrl'
                 }
             }
         })

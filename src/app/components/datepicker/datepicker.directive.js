@@ -36,6 +36,12 @@ class DatepickerController {
 
         this.isMobile = this.$rootScope.deviceInfo.isMobile;
         this.isOpen = false;
+        this.options = {
+            initDate: new Date(),
+            minDate: new Date('1950-01-01'),
+            maxDate: new Date(),
+            showWeeks: false
+        };
     }
 
     popupOpen() {

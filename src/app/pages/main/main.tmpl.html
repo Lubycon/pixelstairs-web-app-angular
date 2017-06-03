@@ -1,24 +1,24 @@
 <div class="container">
     <div class="sub-header row">
-        <div class="description col-lg-12">
-            <h4>Connect Your Creativity with the World</h4>
-            <div class="col-lg-12">
-                <p>The Pixelstairs is dedicated to providing better opportunities</p>
-                <p>for their works and another inspired interaction with every artist in the world.</p>
+        <div class="description col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <h4>{{'MOTO' | translate}}</h4>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p>{{'HELLO_INFO.00' | translate}}</p>
+                <p>{{'HELLO_INFO.01' | translate}}</p>
             </div>
         </div>
-        <div class="sort-filter col-lg-12">
+        <div class="sort-filter col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <ul>
                 <li
                     class="btn"
                     ng-repeat="filter in MainCtrl.sortFilter"
-                    ng-click="MainCtrl.load(filter.value)"
+                    ng-click="MainCtrl.setFilter(filter.value)"
                 >
                     {{filter.name}}
                 </li>
             </ul>
         </div>
-        <div class="view-mode col-lg-12">
+        <div class="view-mode ccol-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="!MainCtrl.isMobile">
             <ul>
                 <li
                     class="btn"
@@ -33,32 +33,33 @@
     </div>
 
     <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
-        <!-- <div
+        <div
             class="infinite-scroll-wrapper"
-            infinite-scroll="vm.onScroll()"
-            infinite-scroll-disabled="vm.scrollDisabled"
+            infinite-scroll="MainCtrl.onScroll()"
+            infinite-scroll-disabled="MainCtrl.scrollDisabled"
             infinite-scroll-distance="0"
         >
-
-        </div> -->
-        <ul
-            angular-grid="MainCtrl.dummy"
-            ag-css-grid="true"
-            angular-grid-id="gallery"
-        >
-            <li
-                class="col-lg-{{MainCtrl.columnWidth}}"
-                ng-class="{'shown-element': data.sticky}"
-                ng-repeat="data in MainCtrl.dummy"
-                ui-sref="common.default.contents-detail({ id: data.id })"
+            <ul
+                angular-grid="MainCtrl.contentsData.list"
+                ag-css-grid="false"
+                ag-id="gallery"
+                ag-grid-width="MainCtrl.gridWidth"
             >
-                <art-card
-                    data="data"
-                    viewmode="MainCtrl.currentViewmode"
-                    fixed-header="$index === 0"
-                    header-offset="50"
-                ></art-card>
-            </li>
-        </ul>
+                <li
+                    class="col-lg-{{MainCtrl.columnWidth}}"
+                    data-ng-repeat="data in MainCtrl.contentsData.list"
+                    ui-sref="common.default.contents-detail({ id: data.id })"
+                >
+                    <art-card
+                        data="data"
+                        viewmode="MainCtrl.currentViewmode"
+                        fixed-header="$index === 0"
+                        header-offset="50"
+                    ></art-card>
+                </li>
+            </ul>
+        </div>
     </div>
+
+    <loading-icon ng-if="MainCtrl.scrollDisabled" icon="1"></loading-icon>
 </div>

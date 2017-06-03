@@ -5,6 +5,7 @@
             * {
                 font-family: $inconsolata;
                 text-align: center;
+                font-size: 14px;
             }
             h4 {
                 margin-bottom: 20px;
@@ -21,7 +22,8 @@
         .sort-filter {
             ul {
                 li.btn {
-                    border: none;
+                    background-color: transparent;
+                    color: $dark-grey;
                     margin: 0 20px;
                 }
             }
@@ -30,13 +32,14 @@
             ul {
                 li.btn {
                     border: none;
+                    background-color: transparent;
                     i {
                         font-size: 20px;
-                        color: $dark-grey-color;
+                        color: $silver-grey;
                     }
                     &.selected {
                         i {
-                            color: $silver-grey-color;
+                            color: $dark-grey;
                         }
                     }
                 }
@@ -44,31 +47,27 @@
         }
     }
 
-    .page-body {
-        &>ul {
-            &>li {
-                padding: 0 10px;
-                &.shown-element {
-                    border: 1px solid #f00;
+    .loading-icon {
+        margin: 0 auto;
+    }
+
+    /* Media query */
+    @media screen and (max-width: $mobile) {
+        .sub-header {
+            .description {
+                * {
+                    font-size: 11px;
+                }
+                h4 {
+                    font-size: 17px;
                 }
             }
         }
 
-        &.wide-mode {
-            .art-card {
-                // .art-background {
-                //     position: relative;
-                //     padding-top: 56.25%;
-                //     overflow: hidden;
-                //     img {
-                //         position: absolute;
-                //         top: 50%;
-                //         left: 50%;
-                //         transform: translateX(-50%) translateY(-50%);
-                //     }
-                // }
-                .art-info {
-
+        .page-body {
+            ul.angular-grid {
+                li.angular-grid-item {
+                    padding: 0;
                 }
             }
         }

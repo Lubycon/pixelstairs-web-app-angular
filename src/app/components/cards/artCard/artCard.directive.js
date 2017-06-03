@@ -23,7 +23,6 @@ export function ArtCardDirective() {
         $scope.$watch('ArtCard.viewmode', (newVal) => {
             if(newVal) {
                 $scope.ArtCard.viewmode = newVal;
-                $scope.ArtCard.init();
             }
         });
     }
@@ -31,9 +30,9 @@ export function ArtCardDirective() {
 
 class ArtCardController {
     constructor(
-        $scope, $element, $log, $window,
+        $rootScope, $scope, $element, $log, $window,
         $timeout, $uibPosition,
-        CookieService
+        CookieService, ImageService
     ) {
         'ngInject';
 
@@ -45,6 +44,9 @@ class ArtCardController {
         this.$uibPosition = $uibPosition;
 
         this.CookieService = CookieService;
+        this.ImageService = ImageService;
+
+        this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.position = this.$uibPosition.offset(this.$element);
 
@@ -52,41 +54,6 @@ class ArtCardController {
     }
 
     init() {
-        if(this.fixedHeader) {
-            angular.element(this.$window).on('scroll', () => {
-                this.setFixedHeader();
-            });
-        }
-    }
-
-    setFixedHeader() {
-        this.$timeout(() => {
-            // let header = this.$element.find('.card-header'),
-            //     nextElement = this.$element.find('.card-header').next();
-            //
-            // let scrollTop = angular.element(this.$window).scrollTop() + this.headerOffset,
-            //     top = this.position.top,
-            //     bottom = this.position.top + this.$element.height() - (this.headerOffset);
-            //
-            // let fixedSticky = scrollTop >= top && scrollTop < bottom;
-            // let absoluteSticky = scrollTop >= bottom;
-            //
-            // if(fixedSticky) {
-            //     header.removeClass('sticky-header-absolute');
-            //     header.addClass('sticky-header');
-            //
-            //     nextElement.addClass('sticky-bottom');
-            //     nextElement.css('padding-top', header.outerHeight());
-            // }
-            // else if(absoluteSticky) {
-            //     header.removeClass('sticky-header');
-            //     header.addClass('sticky-header-absolute');
-            // }
-            // else {
-            //     header.removeClass('sticky-header');
-            //     nextElement.removeClass('sticky-bottom');
-            //     nextElement.css('padding-top', 0);
-            // }
-        });
+        this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
     }
 }

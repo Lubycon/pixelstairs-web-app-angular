@@ -1,20 +1,20 @@
 /* @API CONSTANT */
 const API_LIST = {
     members: () => {
-        const prefix = 'members/';
+        const prefix = 'members';
         return {
-            signin: `${prefix}signin`,
-            signout: `${prefix}signout`,
-            signup: `${prefix}signup`,
-            signdrop: `${prefix}signdrop`,
+            signin: `${prefix}/signin`,
+            signout: `${prefix}/signout`,
+            signup: `${prefix}/signup`,
+            signdrop: `${prefix}/signdrop`,
 
-            simple: `${prefix}simple`,
-            detail: `${prefix}detail/{id}`,
+            simple: `${prefix}/simple`,
+            detail: `${prefix}/{id}/detail`,
 
-            isExist: `${prefix}isexist`,
+            isExist: `${prefix}/isexist`,
             pwd: {
-                mail: `${prefix}pwd/mail`,
-                reset: `${prefix}pwd/reset`
+                mail: `${prefix}/pwd/mail`,
+                reset: `${prefix}/pwd/reset`
             }
         };
     },
@@ -25,6 +25,28 @@ const API_LIST = {
             list: `${prefix}`,
             detail: `${prefix}/{id}`,
             like: `${prefix}/{id}/like`
+        };
+    },
+    certs: () => {
+        const prefix = 'certs';
+        return {
+            signup: {
+                time: `${prefix}/signup/time`,
+                code: `${prefix}/signup/code`
+            }
+        };
+    },
+    tracker: () => {
+        const prefix = 'tracker';
+        return {
+            tracker: ''
+        };
+    },
+    quotes: () => {
+        const prefix = 'quotes';
+        return {
+            success: `${prefix}/success`,
+            mistake: `${prefix}/mistake`
         };
     }
 };

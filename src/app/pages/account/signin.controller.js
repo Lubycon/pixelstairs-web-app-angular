@@ -41,5 +41,6 @@ export class SignInController {
 
     __reject__(err) {
         /*@LOG*/ this.$log.debug(err);
+        alert(`[${err.status} ${err.statusText} ] - ${err.data.status.code} ${err.data.status.msg}`);
     }
 }

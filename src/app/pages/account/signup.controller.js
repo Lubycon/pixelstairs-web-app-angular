@@ -1,12 +1,14 @@
 export class SignUpController {
     constructor(
-        $log, APIService, AuthenticationService
+        $log, APIService, AuthenticationService,
+        FormRegxService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
+        this.FormRegxService = FormRegxService;
 
         this.signData = {
             email: null,
@@ -17,9 +19,15 @@ export class SignUpController {
             nickname: null,
             gender: null,
             birthday: null,
-            snsCode: '0100',
-            country: 'KR',
-            newsletter: false
+            newsletterAccepted: false,
+            termsOfServiceAccepted: false
+        };
+
+        this.passwordTestList = this.FormRegxService.getPasswordTestList();
+        this.passwordScore = {
+            max: this.passwordTestList.map(v => v.score).reduce((p, v) => p + v),
+            score: 0,
+            status: 'nothing'
         };
 
         this.datePopup = {
@@ -47,17 +55,11 @@ export class SignUpController {
     postData() {
         let data = angular.copy(this.signData);
             data.password = data.password.origin;
+
         /*@LOG*/ this.$log.debug(data);
 
-        // TEST
         data.newsletterAccepted = true;
         data.termsOfServiceAccepted = true;
-        delete data.birthday;
-        delete data.gender;
-        delete data.mobile;
-        // TEST
-
-        this.isExistMember(data.email);
 
         this.APIService.resource('members.signup').post(data).then(res => {
             if(res && res.status.code === '0000') {
@@ -72,13 +74,30 @@ export class SignUpController {
     }
 
     checkPasswordAgain() {
-        let isMatched = this.signData.password.origin === this.signData.password.repeat;
-        /*@LOG*/ this.$log.debug(this.signData.password.origin, this.signData.password.repeat, isMatched);
+        this.form.passwordAgain.$setValidity('notMatched', this.signData.password.origin === this.signData.password.repeat);
     }
 
-    isExistMember(email) {
-        this.APIService.resource('members.isExist').post(email).then(res => {
-            this.$log.debug(res);
-        });
+    calcPasswordLevel() {
+        let score = 0,
+            maxScore = this.passwordScore.max,
+            password = this.signData.password.origin;
+
+
+        this.passwordScore.score = this.FormRegxService.calcPasswordLevel(password, maxScore);
+
+        if(this.passwordScore.score >= 100) {
+            this.passwordScore.status = 'perfect';
+        }
+        else if(this.passwordScore.score > 80) {
+            this.passwordScore.status = 'high';
+        }
+        else if(this.passwordScore.score > 30) {
+            this.passwordScore.status = 'mid';
+        }
+        else {
+            this.passwordScore.status = 'low';
+        }
+
+        /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
     }
 }

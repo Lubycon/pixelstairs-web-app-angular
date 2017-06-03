@@ -1,0 +1,38 @@
+.pixel-datepicker {
+    .uib-datepicker-popup {
+        border: 1px solid $dark-grey;
+        border-radius: 0;
+        &.dropdown-menu {
+            padding: 0;
+        }
+        .btn {
+            background-color: transparent;
+            color: $dark-grey;
+            &.active {
+                background-color: $dark-grey;
+                color: $white;
+                box-shadow: none;
+            }
+            &.uib-left {
+                i::before {
+                    font-family: 'xeicon';
+                    content: '\e93c';
+                }
+            }
+            &.uib-right {
+                i::before {
+                    font-family: 'xeicon';
+                    content: '\e93f';
+                }
+            }
+            &:hover {
+                opacity: 1;
+                background-color: $light-grey;
+                color: $dark-grey;
+            }
+        }
+        .btn[disabled] {
+            color: $silver-grey;
+        }
+    }
+}

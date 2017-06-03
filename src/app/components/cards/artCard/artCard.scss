@@ -3,24 +3,6 @@
     margin: 10px 0;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
 
-    .sticky-header {
-        position: fixed;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        z-index: 1;
-    }
-
-    .sticky-header-absolute {
-        position: absolute;
-        bottom: 0;
-        z-index: 1;
-    }
-
-    .sticky-bottom {
-
-    }
-
     &.grid {
         cursor: pointer;
     }
@@ -32,6 +14,12 @@
     .card-header {
         margin: 0;
         padding: 10px;
+        display: table;
+        &>div {
+            display: table-cell;
+            vertical-align: middle;
+            float: none;
+        }
 
         .member-info {
             text-align: left;
@@ -43,12 +31,15 @@
             h4 {
                 display: inline-block;
                 vertical-align: middle;
+                font-size: 14px;
             }
         }
 
         .art-title {
             h3 {
                 text-align: center;
+                font-size: 18px;
+                vertical-align: middle;
             }
         }
 
@@ -68,6 +59,7 @@
         padding: 0;
 
         .art-background {
+            min-height: 300px;
             img {
                 width: 100%;
             }
@@ -83,7 +75,7 @@
             background-color: rgba(0,0,0,0.4);
             transition: all 0.5s ease-in-out;
             * {
-                color: $white-color;
+                color: $white;
                 font-family: $inconsolata;
                 h4 {
                     margin: 5px auto;
@@ -96,7 +88,7 @@
                 left: 0;
                 padding: 10px;
                 .member-profile {
-                    @include circleFrame(35px);
+                    @include circleFrame(30px);
                     display: inline-block;
                     vertical-align: middle;
                     margin-right: 5px;
@@ -112,6 +104,9 @@
                 .member-info {
                     display: inline-block;
                     vertical-align: middle;
+                    h4 {
+                        font-size: 14px;
+                    }
                 }
             }
             footer {
@@ -119,11 +114,16 @@
                 width: 100%;
                 bottom: 0;
                 left: 0;
-                padding: 10px;
+                padding: 5px 10px;
+
+                h4 {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
                 ul {
                     li {
                         display: inline-block;
-                        margin: 0px 5px;
+                        margin: 0 0 8px 5px;
                         i {
                             vertical-align: middle;
                             font-size: 1.4em;
@@ -146,6 +146,47 @@
         &:hover {
             .art-info {
                 opacity: 1;
+            }
+        }
+    }
+}
+
+/* Media Query */
+
+@media screen and (max-width: $mobile) {
+    .art-card {
+        margin: 0;
+
+        .card-header {
+            display: block;
+            &>div {
+                display: inline-block;
+                padding: 0;
+            }
+            .member-info {
+                h4 {
+                    font-size: 12px;
+                }
+            }
+
+            .art-title {
+                h3 {
+                    @include ellipsis;
+                    font-size: 13px;
+                }
+            }
+
+            .art-info {
+                ul {
+                    li {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .card-body {
+            .art-background {
+                min-height: 200px;
             }
         }
     }

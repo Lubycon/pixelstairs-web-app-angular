@@ -1,6 +1,7 @@
 import { routerConfig } from './app.route';
 import { run } from './app.run';
 
+import './env.js';
 import './config/config.module';
 import './constants/constants.module';
 import './directives/directives.module';
@@ -29,6 +30,7 @@ angular
         'ngTagsInput', // TAG ELEMENT MODULE
         'angularGrid', // GRID LAYOUT MODULE
 
+        'app.env', // ENV CONSTANTS
         'app.config', // APP CONFIG MODULE
         'app.constants', // APP CONSTANTS MODULE
         'app.layouts', // APP LAYOUT MODULE

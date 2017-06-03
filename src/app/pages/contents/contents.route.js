@@ -11,8 +11,8 @@ export function routeConfig ($stateProvider) {
                 id: null
             },
             resolve: {
-                getContentRsv: (DummyService) => {
-                    return DummyService.get().content;
+                getContentRsv: (APIService, $stateParams) => {
+                    return APIService.resource('contents.detail', { id: $stateParams.id }).get().then();
                 }
             }
         })
@@ -20,7 +20,8 @@ export function routeConfig ($stateProvider) {
             url: '/contents/upload',
             templateUrl: 'app/pages/contents/contents-upload.tmpl.html',
             controller: 'ContentsUploadController',
-            controllerAs: 'ContentsUploadCtrl'
+            controllerAs: 'ContentsUploadCtrl',
+            authenticate: 'member:active'
         })
         ;
 }

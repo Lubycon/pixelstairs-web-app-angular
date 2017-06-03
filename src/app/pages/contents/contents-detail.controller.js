@@ -1,15 +1,17 @@
 export class ContentsDetailController {
     constructor(
-        $log, $stateParams,
-        APIService, getContentRsv
+        $rootScope, $log, $stateParams,
+        ImageService,
+        getContentRsv
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$stateParams = $stateParams;
-        this.APIService = APIService;
+        this.ImageService = ImageService;
 
-        this.data = getContentRsv;
+        this.isMobile = $rootScope.deviceInfo.isMobile;
+        this.data = getContentRsv.result;
 
         $log.debug('CONTENT DETAIL PAGE IS LOADED', this.data);
 
@@ -17,7 +19,9 @@ export class ContentsDetailController {
     }
 
     init() {
-        this.data.createdAt = this.getDate(this.data.createdAt);
+        this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
+        this.data.createdAt = new Date(this.data.createdAt);
+        this.data.updatedAt = new Date(this.data.updatedAt);
         /*LOG*/this.$log.debug(this.data);
     }
 

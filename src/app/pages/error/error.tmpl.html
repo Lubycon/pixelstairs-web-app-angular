@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="fieldset wiseword-form col-lg-12">
+            <div class="message-box">
+                <div class="main-message">
+                    <h3>{{'HTTP.' + ErrorPageCtrl.httpStatus | translate}}</h3>
+                </div>
+                <div class="wiseword-message">
+                    <h6>{{ErrorPageCtrl.wiseword.text}}</h6>
+                    <p>{{ErrorPageCtrl.wiseword.author}}</p>
+                </div>
+            </div>
+            <footer>
+                <button class="btn" ng-click="ErrorPageCtrl.gotoBack()">Back to previous page</button>
+            </footer>
+        </div>
+    </div>
+</div>

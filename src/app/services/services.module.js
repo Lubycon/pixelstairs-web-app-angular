@@ -1,4 +1,3 @@
-import { HTTPInterceptorService } from './HTTPInterceptor.service';
 import { UTF8Service } from './UTF8.service';
 import { Base64Service } from './Base64.service';
 import { CookieService } from './Cookie.service';
@@ -9,6 +8,8 @@ import { TrackerService } from './Tracker.service';
 import { AuthenticationService } from './Authentication.service';
 import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
+import { ImageService } from './Image.service';
+import { FormRegxService } from './FormRegx.service';
 
 import { DummyService } from './Dummy.service';
 
@@ -17,8 +18,6 @@ angular
     .module('app.services', [
 
     ])
-
-    .service('HTTPInterceptorService', HTTPInterceptorService)
 
     .service('UTF8Service', UTF8Service)
 
@@ -39,6 +38,10 @@ angular
     .service('StateAuthenticationService', StateAuthenticationService)
 
     .service('APIService', APIService)
+
+    .service('ImageService', ImageService)
+
+    .service('FormRegxService', FormRegxService)
 
     .service('DummyService', DummyService)
     ;

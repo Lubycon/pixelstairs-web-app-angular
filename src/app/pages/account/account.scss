@@ -1,19 +1,94 @@
 .state-signin .container,
 .state-signup .container {
+    .row {
+        transform: translateY(10%);
+    }
     header {
         text-align: center;
         .global-logo {
-            width: 150px;
-            margin: 0 auto;
+            width: 300px;
+            margin: 0 auto 10px;
+        }
+        p {
+            font-size: 17px;
         }
     }
     .form-box {
+        margin-top: 0;
+        div .fieldset-hint{
+            margin-bottom: 30px;
+        }
         form {
             .signin-btn {
                 margin-top: 30px;
                 border: none;
-                background: $dark-grey-color;
-                color: $white-color;
+                background: $dark-grey;
+                color: $white;
+            }
+        }
+        .signup-btn {
+            margin-top: 10px;
+            text-decoration: underline;
+        }
+
+        .password-score {
+            height: 5px;
+            margin-top: 0px;
+            background: $silver-grey;
+            text-align: left;
+            .score-bar {
+                vertical-align: top;
+                height: 100%;
+                display: inline-block;
+                background-color: $dark-grey;
+                transition: width 0.3s ease-out;
+                &[data-status='low'] {
+                    background-color: $red;
+                }
+                &[data-status='mid'] {
+                    background-color: $yellow;
+                }
+                &[data-status='high'] {
+                    background-color: $green;
+                }
+                &[data-status='perfect'] {
+                    background-color: $blue;
+                }
+            }
+        }
+    }
+
+    .form-desc {
+        a {
+            text-align: left;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+    }
+
+    /* Media Query */
+    @media screen and (max-width: $mobile) {
+        .row {
+            @include floatToCenter;
+            width: 100%;
+            margin: 0;
+        }
+        header {
+            .global-logo {
+                width: 150px;
+            }
+            p {
+                font-size: 15px;
+            }
+        }
+        .form-box {
+            div .fieldset-hint {
+                font-size: 12px;
+            }
+            form {
+                .input-container {
+                    padding-bottom: 10px;
+                }
             }
         }
     }

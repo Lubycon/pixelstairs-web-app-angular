@@ -1,10 +1,11 @@
 export class Base64Service {
     constructor (
-        $rootScope, $log, UTF8Service
+        $rootScope, $log, UTF8Service, $q
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$q = $q;
         this.UTF8Service = UTF8Service;
 
         this.KEY_STR = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';

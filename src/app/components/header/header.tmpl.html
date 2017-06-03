@@ -17,33 +17,35 @@
         <ul>
             <li
                 class="global-menu"
-                ng-repeat="link in GlobalHeader.linkList"
+                ng-repeat="link in GlobalHeaderCtrl.linkList"
             >
                 <a ui-sref="{{link.link}}">{{link.name}}</a>
             </li>
             <li
                 class="sign-menu"
-                ng-if="!GlobalHeader.$rootScope.memberState.sign"
+                ng-if="!GlobalHeaderCtrl.$rootScope.memberState.sign"
             >
                 <a ui-sref="full.default.signin">
-                    Sign in
+                    {{'LABEL.SIGNIN' | translate}}
                 </a>
             </li>
             <li
                 uib-dropdown
                 class="member-menu"
-                ng-if="GlobalHeader.$rootScope.memberState.sign"
+                ng-if="GlobalHeaderCtrl.$rootScope.memberState.sign"
             >
-                <a uib-dropdown-toggle>{{GlobalHeader.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
                 <ul
                     uib-dropdown-menu
                     class="dropdown-menu dropdown-menu-right"
                 >
-                    <li ng-repeat="link in GlobalHeader.memberLinkList">
+                    <li ng-repeat="link in GlobalHeaderCtrl.memberLinkList">
                         <a ui-sref="{{link.link}}">{{link.name}}</a>
                     </li>
                     <li>
-                        <a ng-click="GlobalHeader.signout()">Sign out</a>
+                        <a ng-click="GlobalHeaderCtrl.signout()">
+                            {{'LABEL.SIGNOUT' | translate}}
+                        </a>
                     </li>
                 </ul>
             </li>

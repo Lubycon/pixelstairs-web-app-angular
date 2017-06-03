@@ -1,18 +1,23 @@
 export function run (
     $rootScope, $log, $q, AppSettingService, HistoryService,
     TrackerService, StateAuthenticationService, AuthenticationService,
-    $anchorScroll, $window, $document, USER_AGENT
+    $anchorScroll, $window, $document, $state, $timeout, USER_AGENT
 ) {
     'ngInject';
 
     $rootScope.deviceInfo = USER_AGENT;
 
-    /*@INIT*/
-    let initPromise = $q.all;
-    initPromise({
-        appSetting: AppSettingService.init(),
-        authenticate: AuthenticationService.init()
-    }).then(res => {
+    const initStarter = () => {
+        let defer = $q.defer();
+        defer.resolve();
+        return defer.promise;
+    };
+
+    /* app init start */
+    initStarter()
+    .then(res => { return AppSettingService.init(); })
+    .then(res => { return AuthenticationService.init(); })
+    .then(res => {
         /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
 
@@ -21,12 +26,18 @@ export function run (
         /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
         /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
     });
+    /* app init end */
 
     /*@STATE*/
     $rootScope.$on('$stateChangeStart', (
         event, toState, toParams, fromState, fromParams
     ) => {
         __hideModalWindow__();
+
+        if(!$rootScope.Initialized) {
+            event.preventDefault();
+            $timeout(() => { $state.go(toState, toParams); console.log('loading...'); }, 1000);
+        }
     });
 
     $rootScope.$on('$stateChangeSuccess', (

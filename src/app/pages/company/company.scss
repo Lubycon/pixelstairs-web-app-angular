@@ -1,0 +1,135 @@
+.state-aboutus {
+    .aboutus-header {
+        h4 {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .jumbotron {
+            position: relative;
+            height: 600px;
+            background: {
+                image: url('https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/jumbotron/1.png');
+            }
+            * {
+                color: $white;
+            }
+            .float-desc {
+                @include floatToCenter;
+                .logo {
+                    width: 400px;
+                    margin: 0 auto;
+                    img {
+                        width: 100%;
+                    }
+                }
+                h3 {
+                    text-align: center;
+                    font-size: 25px;
+                    margin: 60px 0;
+                }
+                p {
+                    text-align: center;
+                    font-size: 16px;
+                }
+            }
+
+        }
+    }
+    .container {
+        section {
+            h3 {
+                text-align: center;
+                margin: 80px 0;
+                font-size: 36px;
+            }
+
+            a {
+                font-weight: bolder;
+                text-decoration: underline;
+            }
+
+            .icon-desc {
+                margin-bottom: 80px;
+                text-align: center;
+                li {
+                    display: inline-block;
+                    div.icon-desc-icon {
+                        height: 150px;
+                        text-align: center;
+                        margin-bottom: 42px;
+                        img {
+                            height: 100%;
+                        }
+                    }
+                    h4 {
+                        font-size: 30px;
+                        text-align: center;
+                        line-height: 0.9;
+                    }
+                }
+            }
+            .paragraph-desc {
+                p {
+                    font-size: 18px;
+                    text-align: center;
+                }
+            }
+
+            &.cc-section {
+                li {
+                    margin-right: 100px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    .icon-desc-icon {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.state-terms, .state-privacy-policy {
+    .docs {
+        .doc-title {
+
+        }
+        .doc-desc {
+
+        }
+        .doc-body {
+            margin: 50px 0;
+            padding-right: 70px;
+
+            .doc-subtitle {
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 20px;
+            }
+            .doc-content {
+                font-size: 15px;
+                font-weight: 400;
+
+                p {
+                    margin-bottom: 20px;
+                }
+                a {
+                    text-decoration: underline;
+                    &:hover {
+                        opacity: 0.8;
+                    }
+                }
+
+                ol {
+                    margin: 15px 0;
+                    margin-left: 20px;
+
+                    li {
+                        list-style: square;
+                    }
+                }
+            }
+        }
+    }
+}
