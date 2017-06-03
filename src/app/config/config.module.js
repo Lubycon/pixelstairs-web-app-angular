@@ -11,7 +11,7 @@ import { logConfig } from './log.config';
 
 angular
     .module('app.config', [
-        'app.constants'
+        'app.env', 'app.constants'
     ])
     .config(httpConfig)
 

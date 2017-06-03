@@ -1,6 +1,6 @@
 
 
-export function logConfig($logProvider, API_CONFIG) {
+export function logConfig($logProvider, IS_DEV) {
     'ngInject';
     /*
         @TODO
@@ -8,5 +8,5 @@ export function logConfig($logProvider, API_CONFIG) {
         * api.pixelstairs.com -> pro api
     */
 
-    $logProvider.debugEnabled(API_CONFIG.isDev);
+    $logProvider.debugEnabled(IS_DEV);
 }
