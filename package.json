@@ -5,7 +5,7 @@
         "babel-polyfill": "^6.23.0"
     },
     "scripts": {
-        "serve": "gulp serve",
+        "serve": "gulp serve --type=development",
         "serve:local": "gulp serve --type=local",
         "serve:dev": "gulp serve --type=development",
         "serve:prod": "gulp serve --type=production",
