@@ -10,7 +10,8 @@
         "serve:dev": "gulp serve --type=development",
         "serve:prod": "gulp serve --type=production",
         "serve:dist": "gulp serve:dist --type=development",
-        "build": "gulp build --type=production",
+        "build:dev": "gulp build --type=development",
+        "build:prod": "gulp build --type=production",
         "test": "gulp test"
     },
     "devDependencies": {
