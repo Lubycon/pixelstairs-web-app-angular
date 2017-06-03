@@ -12,7 +12,7 @@ export function run (
         defer.resolve();
         return defer.promise;
     };
-    
+
     /* app init start */
     initStarter()
     .then(res => { return AppSettingService.init(); })
