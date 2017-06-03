@@ -70,11 +70,11 @@ gulp.task('env', function() {
         .pipe(gulp.dest(path.join(conf.paths.src, '/app')));
 });
 
-gulp.task('scripts', function () {
+gulp.task('scripts', ['env'], function () {
     return webpackWrapper(false, false);
 });
 
-gulp.task('scripts:watch', ['env', 'scripts'], function (callback) {
+gulp.task('scripts:watch', ['scripts'], function (callback) {
     return webpackWrapper(true, false, callback);
 });
 
@@ -82,6 +82,6 @@ gulp.task('scripts:test', function () {
     return webpackWrapper(false, true);
 });
 
-gulp.task('scripts:test-watch', ['env', 'scripts'], function (callback) {
+gulp.task('scripts:test-watch', ['scripts'], function (callback) {
     return webpackWrapper(true, true, callback);
 });
