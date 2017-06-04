@@ -16,7 +16,10 @@
     .form-box {
         margin-top: 0;
         div .fieldset-hint{
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 30px;
+            }
         }
         form {
             .signin-btn {
