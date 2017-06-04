@@ -8,17 +8,18 @@ export class FindPasswordEmailController {
         this.APIService = APIService;
 
         this.email = null;
+        this.finished = false;
     }
 
     postEmail() {
         this.APIService.resource('members.pwd.mail').post({
             email: this.email
         }).then(res => {
-            alert(true);
+            this.finished = true;
         }, err => {
             const statusCode = err.data.status.code;
             if(statusCode === '0054') {
-                alert('존재하지 않는 회원입니다.');
+                alert('User is not exist');
             }
             else {
                 alert('기타 오류');
