@@ -1,11 +1,13 @@
 export class FooterController {
     constructor(
-        $log
+        $log, $rootScope
     ) {
         'ngInject';
 
         this.$log = $log;
 
+        this.lang = $rootScope.setting.language.split('-')[0];
+        console.log(this.lang);
         this.linkList = [{
             name: 'about us',
             link: 'common.default.aboutus'
@@ -14,10 +16,10 @@ export class FooterController {
             link: 'common.default.aboutus'
         },{
             name: 'privacy policy',
-            link: 'common.default.privacy-policy'
+            link: `common.default.privacy-policy({ lang: '${this.lang}' })`
         },{
             name: 'terms of service',
-            link: 'common.default.terms'
+            link: `common.default.terms({ lang: '${this.lang}' })`
         }];
     }
 }
