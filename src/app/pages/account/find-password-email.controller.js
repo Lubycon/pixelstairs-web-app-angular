@@ -16,7 +16,15 @@ export class FindPasswordEmailController {
         }).then(res => {
             alert(true);
         }, err => {
-            alert(err);
+            const statusCode = err.data.status.code;
+            if(statusCode === '0054') {
+                alert('존재하지 않는 회원입니다.');
+            }
+            else {
+                alert('기타 오류');
+            }
+
+            this.email = null;
         });
     }
 
