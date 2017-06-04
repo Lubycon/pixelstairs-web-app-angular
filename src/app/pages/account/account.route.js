@@ -29,10 +29,19 @@ export function routerConfig ($stateProvider) {
             }
         })
         .state('common.default.find-password-email', {
-            url: '/find/password/email',
+            url: '/password/find/email',
             templateUrl: 'app/pages/account/find-password-email.tmpl.html',
             controller: 'FindPasswordEmailController',
             controllerAs: 'FindPassEmailCtrl'
+        })
+        .state('common.default.set-new-password', {
+            url: '/password/reset?:code',
+            templateUrl: 'app/pages/account/set-new-password.tmpl.html',
+            controller: 'SetNewPasswordController',
+            controllerAs: 'SetNewPassCtrl',
+            params: {
+                code: null
+            }
         })
         ;
 }
