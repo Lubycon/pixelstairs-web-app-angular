@@ -28,5 +28,11 @@ export function routerConfig ($stateProvider) {
                 }
             }
         })
+        .state('common.default.find-password-email', {
+            url: '/find/password/email',
+            templateUrl: 'app/pages/account/find-password-email.tmpl.html',
+            controller: 'FindPasswordEmailController',
+            controllerAs: 'FindPassEmailCtrl'
+        })
         ;
 }

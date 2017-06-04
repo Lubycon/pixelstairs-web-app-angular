@@ -13,8 +13,8 @@ const API_LIST = {
 
             isExist: `${prefix}/isexist`,
             pwd: {
-                mail: `${prefix}/pwd/mail`,
-                reset: `${prefix}/pwd/reset`
+                mail: `${prefix}/password/mail`,
+                reset: `${prefix}/password/reset`
             }
         };
     },

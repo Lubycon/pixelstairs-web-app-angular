@@ -96,3 +96,17 @@
         }
     }
 }
+
+.state-find-password-email {
+    .input-container {
+        display: inline-block;
+        .form-control {
+            margin: 40px 0;
+        }
+    }
+    footer {
+        .btn {
+            width: 100%;
+        }
+    }
+}
