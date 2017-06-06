@@ -9,9 +9,10 @@ export class CertPasswordCodeController {
 
         this.isSuccess = false;
         this.isInit = false;
+        this.code = $stateParams.code;
 
         APIService.resource('certs.password.code').post({
-            code: $stateParams.code
+            code: this.code
         }).then(res =>{
             (this.init)({
                 result: res.result,

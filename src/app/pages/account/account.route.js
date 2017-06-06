@@ -36,10 +36,19 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'FindPassEmailCtrl'
         })
         .state('common.default.cert-password-code', {
-            url: '/password/cert?code',
+            url: '/password/cert/:code',
             templateUrl: 'app/pages/account/cert-password-code.tmpl.html',
             controller: 'CertPasswordCodeController',
             controllerAs: 'CertPassCodeCtrl',
+            params: {
+                code: null
+            }
+        })
+        .state('common.default.reset-password', {
+            url: '/password/reset/:code',
+            templateUrl: 'app/pages/account/reset-password.tmpl.html',
+            controller: 'ResetPasswordController',
+            controllerAs: 'ResetPassCtrl',
             params: {
                 code: null
             }

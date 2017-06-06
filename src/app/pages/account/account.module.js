@@ -4,6 +4,7 @@ import { SignInController } from './signin.controller';
 import { SignUpController } from './signup.controller';
 import { FindPasswordEmailController } from './find-password-email.controller';
 import { CertPasswordCodeController } from './cert-password-code.controller';
+import { ResetPasswordController } from './reset-password.controller';
 
 angular
     .module('app.pages.account', [
@@ -15,4 +16,5 @@ angular
     .controller('SignUpController', SignUpController)
     .controller('FindPasswordEmailController', FindPasswordEmailController)
     .controller('CertPasswordCodeController', CertPasswordCodeController)
+    .controller('ResetPasswordController', ResetPasswordController)
     ;
