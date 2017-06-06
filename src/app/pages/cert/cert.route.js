@@ -3,7 +3,7 @@ export function routeConfig($stateProvider) {
 
     $stateProvider
         .state('common.default.cert-mail', {
-            url: '/cert/mail/:type?code',
+            url: '/certs/code/:type/:code',
             templateUrl: 'app/pages/cert/cert-mail.tmpl.html',
             controller: 'CertMailController',
             controllerAs: 'CertMailCtrl',
