@@ -8,14 +8,17 @@ export class FindPasswordEmailController {
         this.APIService = APIService;
 
         this.email = null;
-        this.finished = false;
+        this.isFinished = false;
+        this.isBusy = false;
     }
 
     postEmail() {
+        this.isBusy = true;
         this.APIService.resource('members.pwd.mail').post({
             email: this.email
         }).then(res => {
-            this.finished = true;
+            this.isFinished = true;
+            this.isBusy = false;
         }, err => {
             const statusCode = err.data.status.code;
             if(statusCode === '0054') {
@@ -25,6 +28,7 @@ export class FindPasswordEmailController {
                 alert('기타 오류');
             }
 
+            this.isBusy = false;
             this.email = null;
         });
     }

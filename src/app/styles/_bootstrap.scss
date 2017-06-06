@@ -28,9 +28,13 @@
     outline: 0 !important;
     margin: 0;
 
-    &:hover,&:focus,&.focus {
+    &:hover {
         color: $white;
         opacity: 0.6;
+    }
+
+    &:focus,&.focus {
+        color: $white;
     }
 
     a {
@@ -53,6 +57,16 @@
                 transform: translateX(-50%) translateY(-50%);
                 font-size: 20px;
             }
+        }
+    }
+
+    .loading-icon {
+        height: auto;
+        margin: 0 auto;
+        .icon-dom {
+            width: 20px;
+            height: 20px;
+            border-right-color: transparent;
         }
     }
 }
