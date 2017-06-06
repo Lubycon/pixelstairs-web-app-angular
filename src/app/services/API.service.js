@@ -13,8 +13,8 @@ const API_LIST = {
 
             isExist: `${prefix}/isexist`,
             pwd: {
-                mail: `${prefix}/pwd/mail`,
-                reset: `${prefix}/pwd/reset`
+                mail: `${prefix}/password/mail`,
+                reset: `${prefix}/password/reset`
             }
         };
     },
@@ -33,6 +33,9 @@ const API_LIST = {
             signup: {
                 time: `${prefix}/signup/time`,
                 code: `${prefix}/signup/code`
+            },
+            password: {
+                code: `${prefix}/password/code`
             }
         };
     },

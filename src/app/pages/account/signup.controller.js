@@ -83,20 +83,9 @@ export class SignUpController {
             password = this.signData.password.origin;
 
 
-        this.passwordScore.score = this.FormRegxService.calcPasswordLevel(password, maxScore);
-
-        if(this.passwordScore.score >= 100) {
-            this.passwordScore.status = 'perfect';
-        }
-        else if(this.passwordScore.score > 80) {
-            this.passwordScore.status = 'high';
-        }
-        else if(this.passwordScore.score > 30) {
-            this.passwordScore.status = 'mid';
-        }
-        else {
-            this.passwordScore.status = 'low';
-        }
+        score = this.FormRegxService.calcPasswordScore(password, maxScore);
+        this.passwordScore.status = this.FormRegxService.getPasswordLevel(score);
+        this.passwordScore.score = score;
 
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
     }

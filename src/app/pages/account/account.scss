@@ -33,32 +33,6 @@
             margin-top: 10px;
             text-decoration: underline;
         }
-
-        .password-score {
-            height: 5px;
-            margin-top: 0px;
-            background: $silver-grey;
-            text-align: left;
-            .score-bar {
-                vertical-align: top;
-                height: 100%;
-                display: inline-block;
-                background-color: $dark-grey;
-                transition: width 0.3s ease-out;
-                &[data-status='low'] {
-                    background-color: $red;
-                }
-                &[data-status='mid'] {
-                    background-color: $yellow;
-                }
-                &[data-status='high'] {
-                    background-color: $green;
-                }
-                &[data-status='perfect'] {
-                    background-color: $blue;
-                }
-            }
-        }
     }
 
     .form-desc {
@@ -93,6 +67,23 @@
                     padding-bottom: 10px;
                 }
             }
+        }
+    }
+}
+
+.state-find-password-email,
+.state-cert-password-code,
+.state-reset-password {
+    .input-container {
+        display: inline-block;
+        .form-control {
+
+        }
+    }
+    footer {
+        padding: 20px;
+        .btn {
+            width: 100%;
         }
     }
 }
