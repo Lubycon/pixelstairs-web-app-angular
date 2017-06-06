@@ -47,7 +47,22 @@ export class FormRegxService {
         ];
     }
 
-    calcPasswordLevel(password, max) {
+    getPasswordLevel(score) {
+        if(score >= 100) {
+            return 'perfect';
+        }
+        else if(score > 80) {
+            return 'high';
+        }
+        else if(score > 30) {
+            return 'mid';
+        }
+        else {
+            return 'low';
+        }
+    }
+
+    calcPasswordScore(password, max) {
         let score = 0;
 
         if(password && password.length > 0) {

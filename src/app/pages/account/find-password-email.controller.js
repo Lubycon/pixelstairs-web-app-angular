@@ -5,6 +5,8 @@ export class FindPasswordEmailController {
         'ngInject';
 
         this.$log = $log;
+
+        this.FormRegxService = FormRegxService;
         this.APIService = APIService;
 
         this.email = null;
