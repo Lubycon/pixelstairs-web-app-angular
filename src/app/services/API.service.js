@@ -33,6 +33,9 @@ const API_LIST = {
             signup: {
                 time: `${prefix}/signup/time`,
                 code: `${prefix}/signup/code`
+            },
+            password: {
+                code: `${prefix}/password/code`
             }
         };
     },

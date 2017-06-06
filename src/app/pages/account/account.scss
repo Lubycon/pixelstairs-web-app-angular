@@ -97,7 +97,8 @@
     }
 }
 
-.state-find-password-email {
+.state-find-password-email,
+.state-set-new-password {
     .input-container {
         display: inline-block;
         .form-control {

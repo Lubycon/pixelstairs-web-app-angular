@@ -24,21 +24,22 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'SignOutCtrl',
             resolve: {
                 getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.success').get();
+                    return APIService.resource('quotes.success').get().then();
                 }
             }
         })
+
         .state('common.default.find-password-email', {
             url: '/password/find/email',
             templateUrl: 'app/pages/account/find-password-email.tmpl.html',
             controller: 'FindPasswordEmailController',
             controllerAs: 'FindPassEmailCtrl'
         })
-        .state('common.default.set-new-password', {
-            url: '/password/reset?:code',
-            templateUrl: 'app/pages/account/set-new-password.tmpl.html',
-            controller: 'SetNewPasswordController',
-            controllerAs: 'SetNewPassCtrl',
+        .state('common.default.cert-password-code', {
+            url: '/password/cert?code',
+            templateUrl: 'app/pages/account/cert-password-code.tmpl.html',
+            controller: 'CertPasswordCodeController',
+            controllerAs: 'CertPassCodeCtrl',
             params: {
                 code: null
             }
