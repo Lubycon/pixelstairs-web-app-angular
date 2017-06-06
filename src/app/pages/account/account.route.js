@@ -33,7 +33,8 @@ export function routerConfig ($stateProvider) {
             url: '/password/find/email',
             templateUrl: 'app/pages/account/find-password-email.tmpl.html',
             controller: 'FindPasswordEmailController',
-            controllerAs: 'FindPassEmailCtrl'
+            controllerAs: 'FindPassEmailCtrl',
+            authenticate: 'visitor'
         })
         .state('common.default.cert-password-code', {
             url: '/password/cert/:code',
@@ -42,7 +43,8 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'CertPassCodeCtrl',
             params: {
                 code: null
-            }
+            },
+            authenticate: 'visitor'
         })
         .state('common.default.reset-password', {
             url: '/password/reset/:code',
@@ -51,7 +53,8 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'ResetPassCtrl',
             params: {
                 code: null
-            }
+            },
+            authenticate: 'visitor'
         })
         ;
 }

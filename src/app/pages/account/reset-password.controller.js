@@ -1,11 +1,12 @@
 export class ResetPasswordController {
     constructor(
-        $log, $stateParams,
+        $log, $state, $stateParams,
         FormRegxService, APIService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$state = $state;
 
         this.FormRegxService = FormRegxService;
         this.APIService = APIService;
@@ -33,7 +34,6 @@ export class ResetPasswordController {
     }
 
     calcPasswordLevel() {
-        console.log(this.password.origin);
         let score = 0,
             maxScore = this.passwordScore.max,
             password = this.password.origin;
@@ -44,5 +44,19 @@ export class ResetPasswordController {
         this.passwordScore.score = score;
 
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
+    }
+
+    postData() {
+        let data = {};
+        data.newPassword = this.password.origin;
+        data.code = this.code;
+
+        this.APIService.resource('members.pwd.reset').put(data)
+        .then(res => {
+            alert('DEBUG::password change success');
+            this.$state.go('full.default.signin');
+        }, err => {
+            alert(`ERR::${err.data.status.code}-${err.data.status.devMsg}`);
+        });
     }
 }
