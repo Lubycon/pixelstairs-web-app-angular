@@ -31,15 +31,11 @@ export class AuthenticationService {
         /*LOG*/ this.$log.debug('Authentication init start...');
         let defer = this.$q.defer();
 
-        let defaultHeaders = this.Restangular.defaultHeaders,
-            authData = this.CookieService.getDecrypt('auth'),
-            authStatus = this.CookieService.getDecrypt('authStatus');
+        if(this.__isSigned__()) {
+            let token = this.CookieService.getDecrypt('auth'),
+                authStatus = this.CookieService.getDecrypt('authStatus');
 
-        const isSigned = authData && authStatus.sign;
-
-        if(isSigned) {
-            defaultHeaders[this.CUSTOM_HEADER_PREFIX + 'token'] = authData;
-            this.Restangular.setDefaultHeaders(defaultHeaders);
+            this.__setTokenToHeader__(token);
             this.$rootScope.authStatus = authStatus;
 
             this.APIService.resource('members.simple').get()
@@ -136,6 +132,15 @@ export class AuthenticationService {
                 return false;
             });
         }
+    }
+
+
+
+    __isSigned__() {
+        const AUTH_COOKIE = this.CookieService.getDecrypt('auth');
+        const AUTH_STATUS_COOKIE = this.CookieService.getDecrypt('authStatus');
+
+        return !!AUTH_COOKIE && !!AUTH_STATUS_COOKIE.sign;
     }
 
     __setAuthCookies__(token, authStatus) {
