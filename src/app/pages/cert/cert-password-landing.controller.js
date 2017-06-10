@@ -1,4 +1,4 @@
-export class CertPasswordCodeController {
+export class CertPasswordLandingController {
     constructor(
         $log, $stateParams,
         APIService

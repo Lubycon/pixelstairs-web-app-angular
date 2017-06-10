@@ -1,4 +1,4 @@
-export class CertMailController {
+export class CertSignupLandingController {
     constructor(
         $log, APIService, $stateParams
     ) {
