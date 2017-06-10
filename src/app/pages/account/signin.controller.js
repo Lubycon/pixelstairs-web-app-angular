@@ -23,12 +23,7 @@ export class SignInController {
         this.APIService.resource('members.signin').post(data)
         .then(res => {
             /*@LOG*/ this.$log.debug(res);
-            if(res.status.code === '0000') {
-                this.__resolve__(res.result.token);
-            }
-            else {
-                this.__reject__(res.status.code);
-            }
+            this.__resolve__(res.result.token);
         }, err => {
             this.__reject__(err);
         });

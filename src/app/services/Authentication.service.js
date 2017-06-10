@@ -44,16 +44,11 @@ export class AuthenticationService {
 
             this.APIService.resource('members.simple').get()
             .then(res => {
-                if(res && res.status.code === '0000') {
-                    /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
+                /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
 
-                    this.$rootScope.member = res.result;
-                    this.CookieService.put('member', this.$rootScope.member);
-                    if(this.$rootScope.member.country) this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
-                }
-                else {
-                    this.clear('reload');
-                }
+                this.$rootScope.member = res.result;
+                this.CookieService.put('member', this.$rootScope.member);
+                if(this.$rootScope.member.country) this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
 
                 defer.resolve();
             }, err => {
@@ -73,44 +68,27 @@ export class AuthenticationService {
             return false;
         }
 
-        let tmp = {};
-            tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = params.token;
-
         this.$rootScope.authStatus = {
             sign: true
         };
 
-        // SET COOKIE
-        this.CookieService.putEncrypt('auth', params.token);
-        this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
-
-        // SET TOKEN TO HTTP HEADER
-        let defaultHeaders = this.Restangular.defaultHeaders;
-        defaultHeaders = angular.extend({}, defaultHeaders, tmp);
-        this.Restangular.setDefaultHeaders(defaultHeaders);
-
+        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
+        this.__setTokenToHeader__(params.token);
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
-
         this.APIService.resource('members.simple').get().then(res => {
-            if(res.status.code === '0000') {
-                this.$rootScope.member = res.result;
-                this.$rootScope.authStatus.status = res.result.status;
+            this.$rootScope.member = res.result;
+            this.$rootScope.authStatus.status = res.result.status;
 
-                if(this.$rootScope.member.country) {
-                    this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
-                }
-
-                this.CookieService.put('member', this.$rootScope.member);
-
-                // GO TO MAIN PAGE
-                if(params.state) this.$state.go(params.state);
-                else this.$state.go('common.default.main');
+            if(this.$rootScope.member.country) {
+                this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
             }
 
-            else this.clear('reload');
-
+            this.CookieService.put('member', this.$rootScope.member);
+            // GO TO MAIN PAGE
+            if(params.state) this.$state.go(params.state);
+            else this.$state.go('common.default.main');
         }, err => {
             /*LOG*/ this.$log.debug(err);
             this.clear('reload');
@@ -119,7 +97,7 @@ export class AuthenticationService {
         // REFRESH COOKIE
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
-        if(reload && reload === 'reload') this.$window.location.reload();
+        if(params.reload === 'reload') this.$window.location.reload();
     }
 
     update(state) {
@@ -143,14 +121,12 @@ export class AuthenticationService {
         if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
             this.APIService.resource('members.signout').put()
             .then(res => {
-                if(res && res.status.code === '0000') {
-                    delete this.$rootScope.member;
+                delete this.$rootScope.member;
 
-                    //DESTROY TOKEN AND AUTH DATA
-                    this.__clearAuth__();
+                //DESTROY TOKEN AND AUTH DATA
+                this.__clearAuth__();
 
-                    if(reload === 'reload') this.$window.location.reload();
-                }
+                if(reload === 'reload') this.$window.location.reload();
             }, err => {
                 /*LOG*/ this.$log.debug(err);
                 this.$log.error('AUTH CLEAR METHOD IS NOT WORKED. TOKEM WILL BE FORCE REMOVED :: AuthenticationService');
@@ -165,6 +141,20 @@ export class AuthenticationService {
         }
     }
 
+    __setAuthCookies__(token, authStatus) {
+        this.CookieService.putEncrypt('auth', token);
+        this.CookieService.putEncrypt('authStatus', authStatus);
+    }
+
+    __setTokenToHeader__(token) {
+        let tmp = {},
+            defaultHeaders = this.Restangular.defaultHeaders;
+
+        tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = token;
+        defaultHeaders = angular.extend({}, defaultHeaders, tmp);
+
+        this.Restangular.setDefaultHeaders(defaultHeaders);
+    }
 
     __clearAuth__() {
         this.CookieService.remove('auth');

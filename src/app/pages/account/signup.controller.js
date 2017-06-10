@@ -62,15 +62,10 @@ export class SignUpController {
         data.termsOfServiceAccepted = true;
 
         this.APIService.resource('members.signup').post(data).then(res => {
-            if(res && res.status.code === '0000') {
-                this.AuthenticationService.set({
-                    token: res.result.token,
-                    state: null
-                });
-            }
-            else {
-                /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', res);
-            }
+            this.AuthenticationService.set({
+                token: res.result.token,
+                state: null
+            });
         }, err => {
             /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', err);
         });
