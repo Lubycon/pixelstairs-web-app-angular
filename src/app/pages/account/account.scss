@@ -86,3 +86,10 @@
         }
     }
 }
+
+.state-auth-signup {
+    .time-checker {
+        color: $red;
+        font-style: italic;
+    }
+}

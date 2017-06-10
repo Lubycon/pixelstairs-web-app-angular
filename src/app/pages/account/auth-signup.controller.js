@@ -1,14 +1,16 @@
 export class AuthSignupController {
     constructor(
-        $log, APIService, $stateParams
+        $rootScope, $log, $interval,
+        APIService, $state
     ) {
         'ngInject';
 
+        this.$rootScope = $rootScope;
         this.$log = $log;
-        this.APIService = APIService;
+        this.$interval = $interval;
+        this.$state = $state;
 
-        this.certType = $stateParams.type;
-        this.certCode = $stateParams.code;
+        this.APIService = APIService;
 
         (this.init)();
     }
@@ -20,14 +22,22 @@ export class AuthSignupController {
     }
 
     getLeftTime() {
-        this.APIService.resource(`certs.${this.certType}.time`).get()
+        this.APIService.resource(`certs.signup.time`).get()
         .then(res => {
-            this.leftTime = res.time;
+
+            this.leftTime = res.result.time * 1000;
+            this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
         });
+
+        this.$interval.cancel();
+        this.$interval(() => {
+            this.leftTime -= 1000;
+            this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
+        }, 1000);
     }
 
     checkCode() {
-        this.APIService.resource(`certs.${this.certType}.code`).post({
+        this.APIService.resource(`certs.signup.code`).post({
             code: this.certCode
         }).then(res => {
             this.$log.debug(res);
@@ -35,6 +45,16 @@ export class AuthSignupController {
     }
 
     sendMailAgain() {
-        this.$log.debug('sendEmailAgain');
+        this.APIService.resource('certs.signup.mail').post().then(res => {
+            console.log(res);
+        });
+    }
+
+    goToMain() {
+        this.$state.go('common.default.main');
+    }
+
+    __calcTimeDigit__(milsecond) {
+        return moment.duration(milsecond);
     }
 }

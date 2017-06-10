@@ -31,6 +31,7 @@ const API_LIST = {
         const prefix = 'certs';
         return {
             signup: {
+                mail: `${prefix}/signup/mail`,
                 time: `${prefix}/signup/time`,
                 code: `${prefix}/signup/code`
             },

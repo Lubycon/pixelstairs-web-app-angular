@@ -10,11 +10,15 @@
                         Check your email
                     </h6>
             </div>
-                <div class="time-checker">{{AuthSignupCtrl.leftTime}} left</div>
+                <div class="time-checker">
+                    <span>{{AuthSignupCtrl.leftTimeDigit.hours()}}</span> hours
+                    <span>{{AuthSignupCtrl.leftTimeDigit.minutes()}}</span> min
+                    <span>{{AuthSignupCtrl.leftTimeDigit.seconds()}}</span> sec left.
+                </div>
             </div>
             <footer>
                 <button class="btn" ng-click="AuthSignupCtrl.sendMailAgain()">Send email again</button>
-                <!-- <button class="btn">Authenticate later</button> -->
+                <button class="btn">Authenticate later</button>
             </footer>
         </div>
     </div>
