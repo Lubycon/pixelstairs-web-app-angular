@@ -22,7 +22,6 @@ export function run (
         $rootScope.Initialized = true;
 
         __disableScrollBySpace__($window, $document);
-
         /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
         /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
     });
@@ -36,7 +35,7 @@ export function run (
 
         if(!$rootScope.Initialized) {
             event.preventDefault();
-            $timeout(() => { $state.go(toState, toParams); console.log('loading...'); }, 1000);
+            $timeout(() => { $state.go(toState, toParams); $log.debug('loading...'); }, 1000);
         }
     });
 

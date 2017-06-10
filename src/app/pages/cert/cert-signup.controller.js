@@ -1,9 +1,10 @@
 export class CertMailController {
     constructor(
-        APIService, $stateParams
+        $log, APIService, $stateParams
     ) {
         'ngInject';
 
+        this.$log = $log;
         this.APIService = APIService;
 
         this.certType = $stateParams.type;
@@ -29,11 +30,11 @@ export class CertMailController {
         this.APIService.resource(`certs.${this.certType}.code`).post({
             code: this.certCode
         }).then(res => {
-            console.log(res);
+            this.$log.debug(res);
         });
     }
 
     sendMailAgain() {
-        console.log('send email again');
+        this.$log.debug('sendEmailAgain');
     }
 }

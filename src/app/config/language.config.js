@@ -18,7 +18,6 @@ export function languageConfig(RestangularProvider, CUSTOM_HEADER_PREFIX) {
     }
 
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'language'] = lang;
-    console.log('IN CONFIG',lang);
 
     RestangularProvider.setDefaultHeaders(defaultHeaders);
 }
