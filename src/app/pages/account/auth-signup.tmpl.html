@@ -9,8 +9,12 @@
                     <h6>You need to authenticate your email address for further activity.<br>
                         Check your email
                     </h6>
-            </div>
-                <div class="time-checker">
+                </div>
+
+                <div class="time-checker" ng-if="AuthSignupCtrl.isExpired">
+                    Your signup code is expired. Please resend again.
+                </div>
+                <div class="time-checker" ng-if="!AuthSignupCtrl.isExpired">
                     <span>{{AuthSignupCtrl.leftTimeDigit.hours()}}</span> hours
                     <span>{{AuthSignupCtrl.leftTimeDigit.minutes()}}</span> min
                     <span>{{AuthSignupCtrl.leftTimeDigit.seconds()}}</span> sec left.

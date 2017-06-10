@@ -12,46 +12,52 @@ export class AuthSignupController {
 
         this.APIService = APIService;
 
+        this.isExpired = null;
+
         (this.init)();
     }
 
     init() {
         this.getLeftTime();
-
-        if(this.certCode) this.checkCode();
     }
 
     getLeftTime() {
         this.APIService.resource(`certs.signup.time`).get()
         .then(res => {
-
             this.leftTime = res.result.time * 1000;
-            this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
-        });
+            if(this.leftTime < 1) {
+                this.leftTime = 0;
+                this.isExpired = true;
+            }
+            else {
+                this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
+                this.isExpired = false;
+                this.__countDown__();
+            }
 
-        this.$interval.cancel();
-        this.$interval(() => {
-            this.leftTime -= 1000;
-            this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
-        }, 1000);
-    }
 
-    checkCode() {
-        this.APIService.resource(`certs.signup.code`).post({
-            code: this.certCode
-        }).then(res => {
-            this.$log.debug(res);
         });
     }
 
     sendMailAgain() {
         this.APIService.resource('certs.signup.mail').post().then(res => {
-            console.log(res);
+            alert('email sended');
+            (this.init)();
         });
     }
 
     goToMain() {
         this.$state.go('common.default.main');
+    }
+
+    __countDown__() {
+        if(!this.isExpired) {
+            this.$interval.cancel(this.countInterval);
+            this.countInterval = this.$interval(() => {
+                this.leftTime -= 1000;
+                this.leftTimeDigit = this.__calcTimeDigit__(this.leftTime);
+            }, 1000);
+        }
     }
 
     __calcTimeDigit__(milsecond) {
