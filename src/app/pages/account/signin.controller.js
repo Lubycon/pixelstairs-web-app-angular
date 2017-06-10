@@ -1,4 +1,4 @@
-export class SignInController {
+export class SigninController {
     constructor(
         $log, APIService, AuthenticationService
     ) {
