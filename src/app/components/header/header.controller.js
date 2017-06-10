@@ -10,6 +10,8 @@ export class HeaderController {
         this.AuthenticationService = AuthenticationService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
+        this.memberStatus = $rootScope.authStatus.sign ? $rootScope.member.status : null;
+
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
@@ -49,7 +51,12 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Setting',
-                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})'
+                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
+                ignore: 'inactive'
+            },{
+                name: 'Authentication',
+                link: 'common.default.auth-signup',
+                ignore: 'active'
             }];
         }
 

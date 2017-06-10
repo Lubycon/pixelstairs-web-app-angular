@@ -15,14 +15,13 @@
                     Your signup code is expired. Please resend again.
                 </div>
                 <div class="time-checker" ng-if="!AuthSignupCtrl.isExpired">
-                    <span>{{AuthSignupCtrl.leftTimeDigit.hours()}}</span> hours
                     <span>{{AuthSignupCtrl.leftTimeDigit.minutes()}}</span> min
                     <span>{{AuthSignupCtrl.leftTimeDigit.seconds()}}</span> sec left.
                 </div>
             </div>
             <footer>
                 <button class="btn" ng-click="AuthSignupCtrl.sendMailAgain()">Send email again</button>
-                <button class="btn">Authenticate later</button>
+                <button class="btn" ng-click="AuthSignupCtrl.goToMain()">Authenticate later</button>
             </footer>
         </div>
     </div>

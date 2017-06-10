@@ -39,7 +39,10 @@
                     uib-dropdown-menu
                     class="dropdown-menu dropdown-menu-right"
                 >
-                    <li ng-repeat="link in GlobalHeaderCtrl.memberLinkList">
+                    <li
+                        ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
+                        ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                    >
                         <a ui-sref="{{link.link}}">{{link.name}}</a>
                     </li>
                     <li>
