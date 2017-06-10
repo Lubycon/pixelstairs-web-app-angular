@@ -1,11 +1,13 @@
 import { routeConfig } from './cert.route';
 
-import { CertMailController } from './cert-mail.controller';
+import { CertSignupController } from './cert-signup.controller';
+import { CertPasswordCodeController } from './cert-password-code.controller';
 
 angular
     .module('app.pages.cert', [
 
     ])
     .config(routeConfig)
-    .controller('CertMailController', CertMailController)
+    .controller('CertSignupController', CertSignupController)
+    .controller('CertPasswordCodeController', CertPasswordCodeController)
     ;
