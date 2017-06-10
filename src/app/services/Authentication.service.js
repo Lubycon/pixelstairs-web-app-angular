@@ -33,18 +33,17 @@ export class AuthenticationService {
 
         let defaultHeaders = this.Restangular.defaultHeaders,
             authData = this.CookieService.getDecrypt('auth'),
-            memberState = this.CookieService.getDecrypt('memberState');
+            authStatus = this.CookieService.getDecrypt('authStatus');
 
-        const isSigned = authData && memberState.sign;
+        const isSigned = authData && authStatus.sign;
 
         if(isSigned) {
             defaultHeaders[this.CUSTOM_HEADER_PREFIX + 'token'] = authData;
             this.Restangular.setDefaultHeaders(defaultHeaders);
-            this.$rootScope.memberState = memberState;
+            this.$rootScope.authStatus = authStatus;
 
             this.APIService.resource('members.simple').get()
             .then(res => {
-                console.log(res);
                 if(res && res.status.code === '0000') {
                     /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
 
@@ -78,13 +77,13 @@ export class AuthenticationService {
         let tmp = {};
             tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = token;
 
-        this.$rootScope.memberState = {
+        this.$rootScope.authStatus = {
             sign: true
         };
 
         // SET COOKIE
         this.CookieService.putEncrypt('auth', token);
-        this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
+        this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
         // SET TOKEN TO HTTP HEADER
         let defaultHeaders = this.Restangular.defaultHeaders;
@@ -98,11 +97,12 @@ export class AuthenticationService {
         this.APIService.resource('members.simple').get().then(res => {
             if(res.status.code === '0000') {
                 this.$rootScope.member = res.result;
-                /*@LOG*/ this.$log.debug(res.result);
+                this.$rootScope.authStatus.status = res.result.status;
 
                 if(this.$rootScope.member.country) {
                     this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
                 }
+
                 this.CookieService.put('member', this.$rootScope.member);
 
                 if(isExistBackState) {
@@ -116,14 +116,16 @@ export class AuthenticationService {
                 // GO TO MAIN PAGE
                 else this.$state.go('common.default.main');
             }
+
             else this.clear('reload');
+
         }, err => {
             /*LOG*/ this.$log.debug(err);
             this.clear('reload');
         });
 
         // REFRESH COOKIE
-        this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
+        this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
         if(reload === 'reload') this.$window.location.reload();
     }
@@ -146,7 +148,7 @@ export class AuthenticationService {
     }
 
     clear(reload, state = '/main') {
-        if(this.$rootScope.memberState.sign || this.$rootScope.member) {
+        if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
             this.APIService.resource('members.signout').put()
             .then(res => {
                 if(res && res.status.code === '0000') {
@@ -174,9 +176,9 @@ export class AuthenticationService {
 
     __clearAuth__() {
         this.CookieService.remove('auth');
-        this.$rootScope.memberState.sign = false;
+        this.$rootScope.authStatus.sign = false;
 
-        this.CookieService.putEncrypt('memberState', this.$rootScope.memberState);
+        this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
         this.AppSettingService.set('country', this.$rootScope.setting.country_code);
 

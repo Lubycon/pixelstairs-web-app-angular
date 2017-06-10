@@ -39,7 +39,7 @@ export class HeaderController {
 
     __getMemberMenuList__(isMobile) {
         let linkList = [];
-        if(!this.$rootScope.memberState) return linkList;
+        if(!this.$rootScope.authStatus) return linkList;
 
         if(isMobile) {
             /*@MOBILE MENU*/

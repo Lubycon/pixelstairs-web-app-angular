@@ -12,7 +12,7 @@ export class StateAuthenticationService {
 
 
     detect(toState) {
-        const IS_SIGNED = this.$rootScope.memberState && this.$rootScope.memberState.sign;
+        const IS_SIGNED = this.$rootScope.authStatus && this.$rootScope.authStatus.sign;
 
         switch(toState.authenticate) {
             case 'all':
