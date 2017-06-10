@@ -59,6 +59,8 @@ export class AuthenticationService {
     }
 
     set(params = {}) {
+        let defer = this.$q.defer();
+
         if(!params.token) {
             this.$log.error('There is no token :: AuthenticationService');
             return false;
@@ -82,18 +84,18 @@ export class AuthenticationService {
             }
 
             this.CookieService.put('member', this.$rootScope.member);
-            // GO TO MAIN PAGE
-            if(params.state) this.$state.go(params.state);
-            else this.$state.go('common.default.main');
+
+            defer.resolve();
         }, err => {
             /*LOG*/ this.$log.debug(err);
+            defer.reject();
             this.clear('reload');
         });
 
         // REFRESH COOKIE
-        this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
+        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
 
-        if(params.reload === 'reload') this.$window.location.reload();
+        return defer.promise;
     }
 
     update(state) {
@@ -128,8 +130,6 @@ export class AuthenticationService {
                 this.__clearAuth__();
 
                 if(reload === 'reload') this.$window.location.reload();
-
-                return false;
             });
         }
     }

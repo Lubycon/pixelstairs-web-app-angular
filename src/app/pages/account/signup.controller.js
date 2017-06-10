@@ -1,11 +1,13 @@
 export class SignupController {
     constructor(
-        $log, APIService, AuthenticationService,
-        FormRegxService
+        $log, $state,
+        APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$state = $state;
+
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
@@ -65,6 +67,8 @@ export class SignupController {
             this.AuthenticationService.set({
                 token: res.result.token,
                 state: null
+            }).then(res => {
+                this.$state.go('common.default.auth-signup');
             });
         }, err => {
             /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', err);

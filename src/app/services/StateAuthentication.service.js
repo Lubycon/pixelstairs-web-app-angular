@@ -27,7 +27,7 @@ export class StateAuthenticationService {
                 else this.__stateChangeReject__();
             break;
             case 'member:inactive':
-                if(IS_SIGNED) this._stateChangeResolve__(toState);
+                if(IS_SIGNED) this.__stateChangeResolve__(toState);
                 else this.__stateChangeReject__();
             break;
             case 'close':

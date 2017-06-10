@@ -1,10 +1,14 @@
 export class SigninController {
     constructor(
-        $log, APIService, AuthenticationService
+        $rootScope, $log, $state,
+        APIService, AuthenticationService
     ) {
         'ngInject';
 
+        this.$rootScope = $rootScope;
         this.$log = $log;
+        this.$state = $state;
+
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
 
@@ -23,7 +27,13 @@ export class SigninController {
         this.APIService.resource('members.signin').post(data)
         .then(res => {
             /*@LOG*/ this.$log.debug(res);
-            this.__resolve__(res.result.token);
+            this.__resolve__(res.result.token).then(res => {
+                let state = this.$rootScope.member.status === 'active' ?
+                    'common.default.main' :
+                    'common.default.auth-signup';
+
+                this.$state.go(state);
+            });
         }, err => {
             this.__reject__(err);
         });
@@ -31,7 +41,7 @@ export class SigninController {
 
     /* @PRIVATE METHOD */
     __resolve__(token) {
-        this.AuthenticationService.set({
+        return this.AuthenticationService.set({
             token,
             state: null
         });

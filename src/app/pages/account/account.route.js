@@ -22,7 +22,7 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/account/auth-signup.tmpl.html',
             controller: 'AuthSignupController',
             controllerAs: 'AuthSignupCtrl',
-            authenticate: 'all'
+            authenticate: 'member:inactive'
         })
 
         .state('common.default.find-password-email', {
