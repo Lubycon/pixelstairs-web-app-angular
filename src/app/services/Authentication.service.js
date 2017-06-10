@@ -102,15 +102,12 @@ export class AuthenticationService {
 
     update(state) {
         this.APIService.resource('member.simple').get().then(res => {
-            if(res.state.code === '0000') {
-                this.$rootScope.member = res.result;
-                this.CookieService.put('member', this.$rootScope.member);
-                this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
+            this.$rootScope.member = res.result;
+            this.CookieService.put('member', this.$rootScope.member);
+            this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
 
-                if(state) this.$state.go(state.name, state.params);
-                else return false;
-            }
-            else this.clear('reload');
+            if(state) this.$state.go(state.name, state.params);
+            else return false;
         }, err => {
             /*LOG*/ this.$log.debug(err);
             this.clear('reload');
