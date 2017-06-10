@@ -36,7 +36,10 @@ export class SignInController {
 
     /* @PRIVATE METHOD */
     __resolve__(token) {
-        this.AuthenticationService.set(token);
+        this.AuthenticationService.set({
+            token,
+            state: null
+        });
     }
 
     __reject__(err) {

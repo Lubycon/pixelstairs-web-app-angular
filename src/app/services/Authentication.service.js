@@ -67,22 +67,21 @@ export class AuthenticationService {
         return defer.promise;
     }
 
-    set(token, reload) {
-        if(!token) {
+    set(params = {}) {
+        if(!params.token) {
             this.$log.error('There is no token :: AuthenticationService');
             return false;
         }
 
-        let isExistBackState = this.HistoryService.get().from.name.length > 0 && this.HistoryService.get().from.url !== '^';
         let tmp = {};
-            tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = token;
+            tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = params.token;
 
         this.$rootScope.authStatus = {
             sign: true
         };
 
         // SET COOKIE
-        this.CookieService.putEncrypt('auth', token);
+        this.CookieService.putEncrypt('auth', params.token);
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
         // SET TOKEN TO HTTP HEADER
@@ -105,15 +104,8 @@ export class AuthenticationService {
 
                 this.CookieService.put('member', this.$rootScope.member);
 
-                if(isExistBackState) {
-                    /*@LOG*/ this.$log.debug(this.HistoryService.get());
-                    const STATE_NAME = this.HistoryService.get().from.name;
-                    const STATE_PARAMS = this.HistoryService.get().from.params;
-
-                    if(STATE_PARAMS) this.$state.go(STATE_NAME, STATE_PARAMS);
-                    else this.$staet.go(STATE_NAME);
-                }
                 // GO TO MAIN PAGE
+                if(params.state) this.$state.go(params.state);
                 else this.$state.go('common.default.main');
             }
 
@@ -127,7 +119,7 @@ export class AuthenticationService {
         // REFRESH COOKIE
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
-        if(reload === 'reload') this.$window.location.reload();
+        if(reload && reload === 'reload') this.$window.location.reload();
     }
 
     update(state) {
