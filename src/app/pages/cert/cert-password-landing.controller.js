@@ -1,4 +1,4 @@
-export class CertPasswordCodeController {
+export class CertPasswordLandingController {
     constructor(
         $log, $stateParams,
         APIService
@@ -14,22 +14,16 @@ export class CertPasswordCodeController {
         APIService.resource('certs.password.code').post({
             code: this.code
         }).then(res =>{
-            (this.init)({
-                result: res.result,
-                status: res.status
-            });
+            (this.init)(true);
         }, err => {
-            (this.init)({
-                result: null,
-                status: err.data.status
-            });
+            (this.init)(false);
         });
     }
 
-    init(result) {
+    init(isSuccess) {
         this.isInit = true;
 
-        this.isSuccess = result.status.code === '0000';
+        this.isSuccess = isSuccess;
         if(this.isSuccess) {
             this.msg = 'You can change your password now - ! Your registraion was finished successfully';
         }

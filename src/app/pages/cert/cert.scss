@@ -1,6 +1,15 @@
-.state-cert-mail, .state-cert-pw {
-    .time-checker {
-        color: $red;
-        font-style: italic;
+.state-cert-mail, .state-cert-password-code {
+
+    .input-container {
+        display: inline-block;
+        .form-control {
+
+        }
+    }
+    footer {
+        padding: 20px;
+        .btn {
+            width: 100%;
+        }
     }
 }

@@ -6,27 +6,23 @@ export function routerConfig ($stateProvider) {
         .state('full.default.signin', {
             url: '/signin',
             templateUrl: 'app/pages/account/signin.tmpl.html',
-            controller: 'SignInController',
-            controllerAs: 'SignInCtrl',
+            controller: 'SigninController',
+            controllerAs: 'SigninCtrl',
             authenticate: 'visitor'
         })
         .state('full.default.signup', {
             url: '/signup',
             templateUrl: 'app/pages/account/signup.tmpl.html',
-            controller: 'SignUpController',
-            controllerAs: 'SignUpCtrl',
+            controller: 'SignupController',
+            controllerAs: 'SignupCtrl',
             authenticate: 'visitor'
         })
-        .state('common.default.signout', {
-            url: '/signout',
-            templateUrl: 'app/pages/account/signout.tmpl.html',
-            controller: 'SignOutController',
-            controllerAs: 'SignOutCtrl',
-            resolve: {
-                getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.success').get().then();
-                }
-            }
+        .state('common.default.auth-signup', {
+            url: '/auth/signup',
+            templateUrl: 'app/pages/account/auth-signup.tmpl.html',
+            controller: 'AuthSignupController',
+            controllerAs: 'AuthSignupCtrl',
+            authenticate: 'member:inactive'
         })
 
         .state('common.default.find-password-email', {
@@ -34,16 +30,6 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/account/find-password-email.tmpl.html',
             controller: 'FindPasswordEmailController',
             controllerAs: 'FindPassEmailCtrl',
-            authenticate: 'visitor'
-        })
-        .state('common.default.cert-password-code', {
-            url: '/password/cert/:code',
-            templateUrl: 'app/pages/account/cert-password-code.tmpl.html',
-            controller: 'CertPasswordCodeController',
-            controllerAs: 'CertPassCodeCtrl',
-            params: {
-                code: null
-            },
             authenticate: 'visitor'
         })
         .state('common.default.reset-password', {
@@ -56,5 +42,19 @@ export function routerConfig ($stateProvider) {
             },
             authenticate: 'visitor'
         })
+
+        /* UNUSED */
+        .state('common.default.signout', {
+            url: '/signout',
+            templateUrl: 'app/pages/account/signout.tmpl.html',
+            controller: 'SignOutController',
+            controllerAs: 'SignOutCtrl',
+            resolve: {
+                getQuotesRsv: (APIService) => {
+                    return APIService.resource('quotes.success').get().then();
+                }
+            }
+        })
+        /* UNUSED */
         ;
 }

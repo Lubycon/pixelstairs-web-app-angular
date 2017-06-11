@@ -72,7 +72,6 @@
 }
 
 .state-find-password-email,
-.state-cert-password-code,
 .state-reset-password {
     .input-container {
         display: inline-block;
@@ -85,5 +84,12 @@
         .btn {
             width: 100%;
         }
+    }
+}
+
+.state-auth-signup {
+    .time-checker {
+        color: $red;
+        font-style: italic;
     }
 }

@@ -23,7 +23,7 @@
             </li>
             <li
                 class="sign-menu"
-                ng-if="!GlobalHeaderCtrl.$rootScope.memberState.sign"
+                ng-if="!GlobalHeaderCtrl.isSignin"
             >
                 <a ui-sref="full.default.signin">
                     {{'LABEL.SIGNIN' | translate}}
@@ -32,14 +32,17 @@
             <li
                 uib-dropdown
                 class="member-menu"
-                ng-if="GlobalHeaderCtrl.$rootScope.memberState.sign"
+                ng-if="GlobalHeaderCtrl.isSignin"
             >
                 <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
                 <ul
                     uib-dropdown-menu
                     class="dropdown-menu dropdown-menu-right"
                 >
-                    <li ng-repeat="link in GlobalHeaderCtrl.memberLinkList">
+                    <li
+                        ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
+                        ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                    >
                         <a ui-sref="{{link.link}}">{{link.name}}</a>
                     </li>
                     <li>

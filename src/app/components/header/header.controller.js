@@ -10,6 +10,11 @@ export class HeaderController {
         this.AuthenticationService = AuthenticationService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
+        this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
+        this.memberStatus = $rootScope.authStatus && $rootScope.authStatus.sign ?
+            $rootScope.member.status :
+            null;
+
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
@@ -39,7 +44,7 @@ export class HeaderController {
 
     __getMemberMenuList__(isMobile) {
         let linkList = [];
-        if(!this.$rootScope.memberState) return linkList;
+        if(!this.$rootScope.authStatus) return linkList;
 
         if(isMobile) {
             /*@MOBILE MENU*/
@@ -49,7 +54,12 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Setting',
-                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})'
+                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
+                ignore: 'inactive'
+            },{
+                name: 'Authentication',
+                link: 'common.default.auth-signup',
+                ignore: 'active'
             }];
         }
 
