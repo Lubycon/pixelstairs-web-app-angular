@@ -1,6 +1,7 @@
 export class HeaderController {
     constructor(
         $rootScope, $log,
+        USER_DEFAULT_PROFILE_IMG,
         AuthenticationService, ImageService
     ) {
         'ngInject';
@@ -16,7 +17,7 @@ export class HeaderController {
         this.memberStatus = this.isSignin ? $rootScope.member.status : null;
         this.memberProfile = this.isSignin && $rootScope.member.profileImg ?
             ImageService.setResolution($rootScope.member.profileImg, 320) :
-            'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/user/default_profile_image.png';
+            USER_DEFAULT_PROFILE_IMG;
 
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);

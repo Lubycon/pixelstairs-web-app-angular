@@ -1,6 +1,7 @@
 export class MemberSettingController {
     constructor(
         $rootScope, $log, $uibModal,
+        USER_DEFAULT_PROFILE_IMG,
         APIService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
@@ -12,7 +13,7 @@ export class MemberSettingController {
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
-        this.memberData.profileImg = this.memberData.profileImg || {file: 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/user/default_profile_image.png'};
+        this.memberData.profileImg = this.memberData.profileImg || {file: USER_DEFAULT_PROFILE_IMG};
         this.memberData.birthday = new Date(this.memberData.birthday);
 
 
