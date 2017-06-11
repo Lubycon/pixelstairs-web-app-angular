@@ -18,6 +18,7 @@
             <li
                 class="global-menu"
                 ng-repeat="link in GlobalHeaderCtrl.linkList"
+                ng-if="link.signin === GlobalHeaderCtrl.isSignin"
             >
                 <a ui-sref="{{link.link}}">{{link.name}}</a>
             </li>
@@ -34,7 +35,13 @@
                 class="member-menu"
                 ng-if="GlobalHeaderCtrl.isSignin"
             >
-                <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                <div class="user-info">
+                    <div class="user-profile-img">
+                        <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
+                    </div>
+                    <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                </div>
+
                 <ul
                     uib-dropdown-menu
                     class="dropdown-menu dropdown-menu-right"

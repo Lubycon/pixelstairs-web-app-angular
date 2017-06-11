@@ -1,19 +1,22 @@
 export class HeaderController {
     constructor(
         $rootScope, $log,
-        AuthenticationService
+        AuthenticationService, ImageService
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
         this.$log = $log;
         this.AuthenticationService = AuthenticationService;
+        this.ImageService = ImageService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
         this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
-        this.memberStatus = $rootScope.authStatus && $rootScope.authStatus.sign ?
-            $rootScope.member.status :
-            null;
+
+        this.memberStatus = this.isSignin ? $rootScope.member.status : null;
+        this.memberProfile = this.isSignin && $rootScope.member.profileImg ?
+            ImageService.setResolution($rootScope.member.profileImg, 320) :
+            'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/user/default_profile_image.png';
 
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
@@ -35,7 +38,8 @@ export class HeaderController {
             /*@DESKTOP MENU*/
             linkList = [{
                 name: 'Submit Artwork',
-                link: 'common.default.contents-upload'
+                link: 'common.default.contents-upload',
+                signin: true
             }];
         }
 
