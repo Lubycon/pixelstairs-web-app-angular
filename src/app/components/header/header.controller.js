@@ -10,7 +10,10 @@ export class HeaderController {
         this.AuthenticationService = AuthenticationService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
-        this.memberStatus = $rootScope.authStatus.sign ? $rootScope.member.status : null;
+        this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
+        this.memberStatus = $rootScope.authStatus && $rootScope.authStatus.sign ?
+            $rootScope.member.status :
+            null;
 
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
