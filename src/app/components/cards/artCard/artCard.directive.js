@@ -54,6 +54,10 @@ class ArtCardController {
     }
 
     init() {
+        this.data.user.profileImg = angular.extend({}, this.data.user.profileImg, {
+            file: this.ImageService.getUserProfile(this.data.user.profileImg)
+        });
+
         this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
     }
 }
