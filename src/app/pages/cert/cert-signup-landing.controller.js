@@ -1,40 +1,39 @@
 export class CertSignupLandingController {
     constructor(
-        $log, APIService, $stateParams
+        $log, APIService,
+        $state, $stateParams
     ) {
         'ngInject';
 
         this.$log = $log;
-        this.APIService = APIService;
+        this.$state = $state;
 
-        this.certType = $stateParams.type;
-        this.certCode = $stateParams.code;
+        this.isSuccess = false;
+        this.isInit = false;
+        this.code = $stateParams.code;
 
-        (this.init)();
-    }
-
-    init() {
-        this.getLeftTime();
-
-        if(this.certCode) this.checkCode();
-    }
-
-    getLeftTime() {
-        this.APIService.resource(`certs.${this.certType}.time`).get()
-        .then(res => {
-            this.leftTime = res.time;
+        APIService.resource('certs.signup.code').post({
+            code: this.code
+        }).then(res =>{
+            (this.init)(true);
+        }, err => {
+            (this.init)(false);
         });
     }
 
-    checkCode() {
-        this.APIService.resource(`certs.${this.certType}.code`).post({
-            code: this.certCode
-        }).then(res => {
-            this.$log.debug(res);
-        });
+    init(isSuccess) {
+        this.isInit = true;
+
+        this.isSuccess = isSuccess;
+        if(this.isSuccess) {
+            this.msg = 'You are a active user now';
+        }
+        else {
+            this.msg = 'Woo...Something is wrong. Click the button to below and please send the email Again. :(';
+        }
     }
 
-    sendMailAgain() {
-        this.$log.debug('sendEmailAgain');
+    goToMain() {
+        this.$state.go('common.default.main');
     }
 }
