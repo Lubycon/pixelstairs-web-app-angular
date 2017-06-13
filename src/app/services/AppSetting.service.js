@@ -29,20 +29,12 @@ export class AppSettingService {
         /*LOG*/ this.$log.debug('App Setting init start...');
         let defer = this.$q.defer();
 
+        const NEW_DATA = window.client_geo_location;
         const STORED_DATA = this.CookieService.get('setting');
-        /*LOG*/ this.$log.debug('STORED SETTING => ', STORED_DATA);
 
-        this.$http({
-            method: 'jsonp',
-            url: IP_API,
-            responseType: 'json'
-        }).then(res => {
-            this.__setSetting__(res.data, STORED_DATA);
-            defer.resolve();
-        }, err => {
-            /*@LOG*/ this.$log.debug(err);
-            defer.reject('App Setting Error!');
-        });
+        this.__setSetting__(NEW_DATA, STORED_DATA);
+
+        defer.resolve();
 
         return defer.promise;
     }
