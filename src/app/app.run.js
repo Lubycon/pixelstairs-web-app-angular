@@ -20,8 +20,8 @@ export function run (
     .then(res => {
         /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
-
         __disableScrollBySpace__($window, $document);
+
         /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
         /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
     });
@@ -32,11 +32,6 @@ export function run (
         event, toState, toParams, fromState, fromParams
     ) => {
         __hideModalWindow__();
-
-        if(!$rootScope.Initialized) {
-            event.preventDefault();
-            $timeout(() => { $state.go(toState, toParams); $log.debug('loading...'); }, 1000);
-        }
     });
 
     $rootScope.$on('$stateChangeSuccess', (
@@ -56,6 +51,14 @@ export function run (
         StateAuthenticationService.detect(toState);
 
         $anchorScroll();
+    });
+
+    $rootScope.$on('$stateChangeError', (
+        event, toState, toParams, fromState, fromParams
+    ) => {
+        $state.go('common.default.error', {
+            httpStatus: 400
+        });
     });
 }
 
