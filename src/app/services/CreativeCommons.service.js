@@ -54,7 +54,6 @@ export class CreativeCommonsService {
         };
         const CC_ARRAY = this.CC_CODE[code];
         const CC_LANDING = this.__getCCURI__(code);
-        console.log(CC_LANDING);
 
         if(!CC_ARRAY) {
             return false;
