@@ -148,11 +148,6 @@
 
             .license-desc {
                 ul {
-                    a {
-                        &:hover {
-                            opacity: 1;
-                        }
-                    }
                     li {
                         position: relative;
                         display: inline-block;
@@ -184,13 +179,15 @@
                     p {
                         color: $dove-grey;
                         margin: 10px 0;
+                        a {
+                            text-decoration: underline;
+                        }
 
                         &.terms-link {
                             color: $silver-grey;
                             font-size: 14px;
                             a {
                                 color: $silver-grey;
-                                text-decoration: underline;
                             }
                         }
                     }
