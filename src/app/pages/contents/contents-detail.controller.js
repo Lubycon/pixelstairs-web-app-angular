@@ -1,7 +1,7 @@
 export class ContentsDetailController {
     constructor(
         $rootScope, $log, $stateParams,
-        ImageService,
+        ImageService, CreativeCommonsService,
         getContentRsv
     ) {
         'ngInject';
@@ -28,14 +28,14 @@ export class ContentsDetailController {
         /*LOG*/this.$log.debug(this.data);
     }
 
+    getCCModel() {
+
+    }
+
     postLike() {
         const id = this.$stateParams.id;
         this.APIService.resource('contents.like', { id: id }).post().then(res => {
             /*@LOG*/this.$log.debug('LIKE => ',res);
         });
-    }
-
-    getDate(date){
-        return new Date(date);
     }
 }
