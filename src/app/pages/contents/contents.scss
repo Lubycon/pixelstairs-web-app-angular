@@ -96,12 +96,15 @@
                     vertical-align: middle;
                 }
             }
-            h6.artwork-by {
-                font-size: 14px;
-                margin-bottom: 20px;
-            }
+
+
 
             .member-info {
+                h6.artwork-by {
+                    font-size: 14px;
+                    margin-bottom: 20px;
+                }
+
                 .member-profile {
                     display: inline-block;
                     @include circleFrame(50px)
@@ -112,18 +115,19 @@
                 p {
                     font-size: 18px;
                     font-weight: 600;
+
+                    &.content-date {
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
                 }
             }
 
-            .content-date {
-                margin: 40px 0px;
-                span {
-                    font-weight: 600;
-                }
+            .content-info-row {
+                margin: 70px 0;
             }
 
-            .tag-wrapper {
-                margin-bottom: 20px;
+            .tag-desc {
                 ul.tags {
                     li {
                         display: inline-block;
@@ -133,12 +137,37 @@
                     }
                 }
             }
+
             .content-desc {
                 p {
                     font-size: 13px;
                     word-break: break-word;
                 }
                 padding: 0 20px;
+            }
+
+            .license-desc {
+                ul {
+                    li {
+                        display: inline-block;
+                        margin: 0 25px;
+
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        &:last-child {
+                            margin-right: 0;
+                        }
+
+                        i {
+                            font-size: 40px;
+                        }
+                        p {
+                            font-size: 18px;
+                            display: block;
+                        }
+                    }
+                }
             }
 
 

@@ -11,50 +11,52 @@
 
         <div class="content-info-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12 row row-eq-height">
             <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12 info-card">
-                <div>
+                <div class="member-info">
                     <h6 class="artwork-by">Artwork by</h6>
-
-                    <div class="member-info">
-                        <div class="member-profile">
-                            <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
-                        </div>
-                        <p>{{ContentsDetailCtrl.data.user.nickname}}</p>
+                    <div class="member-profile">
+                        <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
                     </div>
+                    <p>{{ContentsDetailCtrl.data.user.nickname}}</p>
 
                     <p class="content-date">
                         uploaded at <span>{{ContentsDetailCtrl.data.createdAt | date:'MMM.dd yyyy'}}</span>
                     </p>
+                </div>
 
-                    <div class="tag-wrapper">
-                        <h6 class="attr-title"><i class="xi-tag"></i> tags</h6>
-                        <ul class="tags">
-                            <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
-                                {{tag}}
+                <div class="content-info-row tag-desc">
+                    <h6 class="attr-title"><i class="xi-tag"></i> tags</h6>
+                    <ul class="tags">
+                        <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
+                            {{tag}}
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-info-row content-desc">
+                    <h6 class="attr-title"><i class="xi-info-o"></i> <span>description</span></h6>
+                    <p>{{ContentsDetailCtrl.data.description + 'sajkfjsajfoisajfoiqwjofijwqoifjqwoifwoqijfjsaiofjoaisjfoisajfoisajfoijsaifjoisajfiosajfoiasjoifjoai'}}</p>
+                </div>
+
+                <div class="content-info-row license-desc">
+                    <h6 class="attr-title"><i class="xi-cc-cc"></i> <span>license</span></h6>
+                    <ul class="license-icon-wrapper">
+                        <a ng-href="{{ContentsDetailCtrl.ccData.url}}" target="_blank">
+                            <li ng-repeat="model in ContentsDetailCtrl.ccData.model">
+                                <i class="{{model.icon}}"></i>
+                                <p>{{model.code | uppercase}}</p>
                             </li>
-                        </ul>
-                    </div>
+                        </a>
+                    </ul>
+                </div>
 
-                    <div class="content-desc">
-                        <h6 class="attr-title"><i class="xi-info-o"></i> <span>description</span></h6>
-                        <p>{{ContentsDetailCtrl.data.description + 'sajkfjsajfoisajfoiqwjofijwqoifjqwoifwoqijfjsaiofjoaisjfoisajfoisajfoijsaifjoisajfiosajfoiasjoifjoai'}}</p>
+                <div class="content-info-row like-counter row">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h6 class="attr-title"><i class="xi-heart-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> like</span></h6>
+                        <p>{{ContentsDetailCtrl.data.counts.like | numberSuffixFilter:1}}</p>
                     </div>
-
-                    <div class="license-desc">
-                        <h6 class="attr-title"><i class="xi-cc-cc"></i> <span>license</span></h6>
-                        <ul class="license-icon-wrapper">
-                            <li class=""></li>
-                        </ul>
-                    </div>
-
-                    <div class="like-counter row">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h6 class="attr-title"><i class="xi-heart-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> like</span></h6>
-                            <p>{{ContentsDetailCtrl.data.counts.like | numberSuffixFilter:1}}</p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <h6 class="attr-title"><i class="xi-eye-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> view</span></h6>
-                            <p>{{ContentsDetailCtrl.data.counts.view | numberSuffixFilter:1}}</p>
-                        </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <h6 class="attr-title"><i class="xi-eye-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> view</span></h6>
+                        <p>{{ContentsDetailCtrl.data.counts.view | numberSuffixFilter:1}}</p>
                     </div>
                 </div>
             </div>
