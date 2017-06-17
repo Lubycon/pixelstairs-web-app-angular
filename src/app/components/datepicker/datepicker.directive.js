@@ -45,13 +45,6 @@ class DatepickerController {
     }
 
     popupOpen() {
-        if(!this.isMobile) this.isOpen = true;
-        else this.__openMobileDatePicker__();
-    }
-
-    /*@PRIVATE METHOD*/
-    __openMobileDatePicker__() {
-        const ELEMENT = this.$el.find('.mobile-datepicker');
-        ELEMENT.trigger('focus');
+        this.isOpen = true;
     }
 }
