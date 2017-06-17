@@ -23,7 +23,7 @@
                 height: 80px;
                 margin: 20px;
                 border-radius: 50%;
-                border: 2px solid $dark-grey;
+                border: 2px solid $dove-grey;
                 background: none;
                 i {
                     font-size: 30px;
@@ -133,7 +133,7 @@
                         display: inline-block;
                         margin: 0 5px;
                         padding: 2px 10px;
-                        border: 1px solid $dark-grey;
+                        border: 1px solid $dove-grey;
                     }
                 }
             }
@@ -148,14 +148,21 @@
 
             .license-desc {
                 ul {
+                    a {
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
                     li {
+                        position: relative;
                         display: inline-block;
                         margin: 0 25px;
 
-                        &:first-child {
+
+                        &:first-of-type {
                             margin-left: 0;
                         }
-                        &:last-child {
+                        &:last-of-type {
                             margin-right: 0;
                         }
 
@@ -165,6 +172,26 @@
                         p {
                             font-size: 18px;
                             display: block;
+                        }
+
+                        .tooltip {
+                            position: absolute;
+                        }
+                    }
+                }
+
+                .license-sub-desc {
+                    p {
+                        color: $dove-grey;
+                        margin: 10px 0;
+
+                        &.terms-link {
+                            color: $silver-grey;
+                            font-size: 14px;
+                            a {
+                                color: $silver-grey;
+                                text-decoration: underline;
+                            }
                         }
                     }
                 }

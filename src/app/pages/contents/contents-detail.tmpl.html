@@ -41,12 +41,21 @@
                     <h6 class="attr-title"><i class="xi-cc-cc"></i> <span>license</span></h6>
                     <ul class="license-icon-wrapper">
                         <a ng-href="{{ContentsDetailCtrl.ccData.url}}" target="_blank">
-                            <li ng-repeat="model in ContentsDetailCtrl.ccData.model">
+                            <li
+                                ng-repeat="model in ContentsDetailCtrl.ccData.model"
+                                uib-tooltip="{{model.desc}}"
+                            >
                                 <i class="{{model.icon}}"></i>
                                 <p>{{model.code | uppercase}}</p>
                             </li>
                         </a>
                     </ul>
+                    <div class="license-sub-desc">
+                        <p>Click icons for more Info</p>
+                        <p class="terms-link">or click here and read the pixelstairs
+                            <a ui-sref="common.default.terms({ lang: ContentsDetailCtrl.lang })" target="_blank">terms of service</a>
+                        .</p>
+                    </div>
                 </div>
 
                 <div class="content-info-row like-counter row">

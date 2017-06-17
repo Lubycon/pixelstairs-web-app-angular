@@ -12,6 +12,8 @@ export class ContentsDetailController {
         this.CreativeCommonsService = CreativeCommonsService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
+        this.lang = $rootScope.setting.language.split('-')[0];
+
         this.data = getContentRsv.result;
 
         this.init();

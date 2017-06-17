@@ -1,15 +1,15 @@
 .pixel-datepicker {
     .uib-datepicker-popup {
-        border: 1px solid $dark-grey;
+        border: 1px solid $dove-grey;
         border-radius: 0;
         &.dropdown-menu {
             padding: 0;
         }
         .btn {
             background-color: transparent;
-            color: $dark-grey;
+            color: $dove-grey;
             &.active {
-                background-color: $dark-grey;
+                background-color: $dove-grey;
                 color: $white;
                 box-shadow: none;
             }
@@ -28,7 +28,7 @@
             &:hover {
                 opacity: 1;
                 background-color: $light-grey;
-                color: $dark-grey;
+                color: $dove-grey;
             }
         }
         .btn[disabled] {

@@ -11,7 +11,7 @@ export function routeConfig($stateProvider) {
         .state('common.default.terms', {
             url: '/docs/terms/:lang',
             params: {
-                lang: null
+                lang: 'en'
             },
             templateUrl: ($stateProvider) => {
                 return `app/pages/company/terms-${$stateProvider.lang}.tmpl.html`;
@@ -22,7 +22,7 @@ export function routeConfig($stateProvider) {
         .state('common.default.privacy-policy', {
             url: '/docs/privacypolicy/:lang',
             parmas: {
-                lang: null
+                lang: 'en'
             },
             templateUrl: ($stateParams) => {
                 return `app/pages/company/privacyPolicy-${$stateParams.lang}.tmpl.html`;
