@@ -8,8 +8,10 @@
                 <img ng-src="{{ContentsDetailCtrl.data.image.file}}" alt="{{'content-'+ContentsDetailCtrl.data.id}}">
             </div>
         </div>
+    </div>
 
-        <div class="content-info-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12 row row-eq-height">
+    <div class="row">
+        <div class="content-info-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12 info-card">
                 <div class="member-info">
                     <h6 class="artwork-by">Artwork by</h6>
@@ -68,9 +70,16 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-lg-12 btn-wrapper">
-            <button class="btn" ui-sref="common.default.main">
+    <div class="row btn-wrapper">
+        <div ng-if="ContentsDetailCtrl.isSigned" class="col-lg-4 col-lg-offset-4">
+            <button class="btn btn-border full-width" ng-class="{'liked': ContentsDetailCtrl.data.myLike}" ng-click="ContentsDetailCtrl.postLike()">
+                {{ContentsDetailCtrl.data.myLike ? 'Liked' : 'Like this Artwork'}}
+            </button>
+        </div>
+        <div class="col-lg-4 col-lg-offset-4">
+            <button class="btn btn-border full-width" ng-class="{'btn-link': ContentsDetailCtrl.isSigned}" ui-sref="common.default.main">
                 {{'FORM.BACK_TO_LIST' | translate}}
             </button>
         </div>

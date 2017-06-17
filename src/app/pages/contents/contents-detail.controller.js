@@ -1,16 +1,19 @@
 export class ContentsDetailController {
     constructor(
         $rootScope, $log, $stateParams,
-        ImageService, CreativeCommonsService,
+        APIService, ImageService, CreativeCommonsService,
         getContentRsv
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$stateParams = $stateParams;
+
+        this.APIService = APIService;
         this.ImageService = ImageService;
         this.CreativeCommonsService = CreativeCommonsService;
 
+        this.isSigned = $rootScope.authStatus.sign;
         this.isMobile = $rootScope.deviceInfo.isMobile;
         this.lang = $rootScope.setting.language.split('-')[0];
 
@@ -36,8 +39,18 @@ export class ContentsDetailController {
 
     postLike() {
         const id = this.$stateParams.id;
-        this.APIService.resource('contents.like', { id: id }).post().then(res => {
-            /*@LOG*/this.$log.debug('LIKE => ',res);
-        });
+
+        if(this.data.myLike) {
+            this.APIService.resource('contents.like', { id }).delete().then(res => {
+                this.data.myLike = false;
+                this.data.counts.like--;
+            });
+        }
+        else {
+            this.APIService.resource('contents.like', { id }).post().then(res => {
+                this.data.myLike = true;
+                this.data.counts.like++;
+            });
+        }
     }
 }

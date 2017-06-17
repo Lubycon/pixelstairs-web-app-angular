@@ -4,16 +4,9 @@
     }
 }
 
-// GRID MODE
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-}
-
 // BUTTON
 .btn {
+    box-shadow: none;
     border: {
         color: transparent;
         width: 0;
@@ -68,5 +61,19 @@
             height: 20px;
             border-right-color: transparent;
         }
+    }
+}
+
+.btn {
+    &.btn-border {
+        color: $mine-black;
+        border: 2px solid $mine-black;
+        background-color: transparent;
+    }
+    &.btn-link {
+        color: $mine-black;
+        border: none;
+        background-color: transparent;
+        text-decoration: underline;
     }
 }

@@ -207,6 +207,20 @@
 
     .btn-wrapper {
         text-align: center;
+        &>div {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .btn {
+            &.liked {
+                background-color: $mine-black;
+                color: $white;
+                border-color: $mine-black;
+            }
+        }
     }
 
     /* Meida Query */

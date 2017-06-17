@@ -53,7 +53,12 @@ export class AuthenticationService {
                 defer.reject('Authentication init Error!');
             });
         }
-        else defer.resolve();
+        else {
+            this.$rootScope.authStatus = {
+                sign: false
+            };
+            defer.resolve();
+        }
 
         return defer.promise;
     }
