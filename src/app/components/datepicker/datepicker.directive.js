@@ -27,12 +27,13 @@ export function DatepickerDirective() {
 
 class DatepickerController {
     constructor(
-        $rootScope, $log
+        $rootScope, $element, $log
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
         this.$log = $log;
+        this.$element = $element;
 
         this.isMobile = this.$rootScope.deviceInfo.isMobile;
         this.isOpen = false;
@@ -46,5 +47,9 @@ class DatepickerController {
 
     popupOpen() {
         this.isOpen = true;
+    }
+
+    onChange() {
+        this.$element.find('input').blur();
     }
 }

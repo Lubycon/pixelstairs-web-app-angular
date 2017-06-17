@@ -6,8 +6,16 @@
         class="form-control"
         placeholder="{{Datepicker.placeholder}}"
         datepicker-options="Datepicker.options"
-        show-button-bar="false"
-        ng-focus="Datepicker.popupOpen()"
+        show-button-bar="Datepicker.isMobile"
+        x-autocompletetype="off"
+        autocompletetype="off"
+        autocorrect="off"
+        spellcheck="off"
+        autocapitalize="off"
+        readonly
+        ng-change="Datepicker.onChange()"
+        ng-click="Datepicker.popupOpen()"
         ng-model="Datepicker.ngModel"
+        tabindex="-1"
     >
 </div>

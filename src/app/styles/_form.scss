@@ -1,3 +1,6 @@
+$input-height: 34px;
+$mobile-input-height: 40px;
+
 * {
     font-family: $inconsolata;
 }
@@ -29,6 +32,15 @@
         .input-container {
             padding-bottom: 25px;
         }
+    }
+}
+
+.form-control {
+    height: $input-height;
+}
+@media screen and (max-width: $mobile) {
+    .form-control {
+        height: $mobile-input-height;
     }
 }
 
@@ -145,6 +157,21 @@
         .select2-choice {
             box-shadow: none;
             background: $white;
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        .select2-choice {
+            .select2-chosen {
+                line-height: 37px;
+            }
+            .select2-arrow {
+                b {
+                    &:before {
+                        line-height: 37px;
+                    }
+                }
+            }
         }
     }
 }
