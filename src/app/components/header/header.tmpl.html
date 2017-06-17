@@ -36,7 +36,7 @@
                 ng-if="GlobalHeaderCtrl.isSignin"
             >
                 <div class="user-info">
-                    <div class="user-profile-img">
+                    <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
                         <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
                     </div>
                     <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>

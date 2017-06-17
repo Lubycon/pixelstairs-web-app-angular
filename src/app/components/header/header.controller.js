@@ -15,6 +15,7 @@ export class HeaderController {
         this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
 
         this.memberStatus = this.isSignin ? $rootScope.member.status : null;
+        console.log(this.memberStatus);
         this.memberProfile = this.isSignin && ImageService.getUserProfile($rootScope.member.profileImg);
 
         this.linkList = this.__getMenuList__(this.isMobile);
@@ -49,22 +50,15 @@ export class HeaderController {
         let linkList = [];
         if(!this.isSignin) return linkList;
 
-        if(isMobile) {
-            /*@MOBILE MENU*/
-            linkList = [];
-        }
-        else {
-            /*@DESKTOP MENU*/
-            linkList = [{
-                name: 'Setting',
-                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
-                ignore: 'inactive'
-            },{
-                name: 'Authentication',
-                link: 'common.default.auth-signup',
-                ignore: 'active'
-            }];
-        }
+        linkList = [{
+            name: 'Setting',
+            link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
+            ignore: 'inactive'
+        },{
+            name: 'Authentication',
+            link: 'common.default.auth-signup',
+            ignore: 'active'
+        }];
 
         return linkList;
     }
