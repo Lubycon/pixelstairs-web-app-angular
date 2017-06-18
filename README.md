@@ -87,14 +87,15 @@ bower install
 
 ```
 
-gulp serve
+npm run serve:local // connect to local api server
+npm run serve:dev   // connect to dev api server
 ```
 
 **build**
 
 ```
 
-gulp build
+npm run build
 ```
 
 
