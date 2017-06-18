@@ -1,4 +1,35 @@
 .pixel-datepicker {
+    position: relative;
+    input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .form-control {
+        position: relative;
+        padding: 0;
+        p {
+            display: inline-block;
+            height: 100%;
+            padding: 6px 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            height: 100%;
+            padding: 5px 30px;
+            float: right;
+            &:hover {
+                opacity: 1;
+            }
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
     .uib-datepicker-popup {
         border: 1px solid $dove-grey;
         border-radius: 0;
@@ -37,6 +68,15 @@
     }
 
     @media screen and (max-width: $mobile) {
+        .form-control {
+            p {
+                line-height: 1.8;
+            }
+
+            .btn {
+                padding: 8px 30px;
+            }
+        }
         .uib-datepicker-popup {
             $background-color: $white;
 
