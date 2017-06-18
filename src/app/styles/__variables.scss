@@ -22,6 +22,10 @@
         size: cover;
         position: 50% 50%;
     }
+
+    img {
+        width: 100%;
+    }
 }
 
 @mixin stickyPosition {
@@ -35,19 +39,20 @@
 /* @METHOD */
 
 /* @FONT */
-$inconsolata: 'Inconsolata', monospace;
+$inconsolata: 'Inconsolata', sans-serif;
 
 /* @VARIABLES */
 $global-header-height: 50px;
 
 /* @COLORS */
 $black: #000;
-$dark-grey: #383838;
+$mine-black: #383838;
+$dove-grey: #666;
 $silver-grey: #aaa;
 $light-grey: #ddd;
 $white: #fff;
 
-$red: #ec6446;
+$dark-red: #cf4747;
 $yellow: #ffeb3b;
 $green: #00e676;
 $blue: #488ccb;

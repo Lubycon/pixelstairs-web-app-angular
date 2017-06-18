@@ -13,8 +13,8 @@ const API_LIST = {
 
             isExist: `${prefix}/isexist`,
             pwd: {
-                mail: `${prefix}/pwd/mail`,
-                reset: `${prefix}/pwd/reset`
+                mail: `${prefix}/password/mail`,
+                reset: `${prefix}/password/reset`
             }
         };
     },
@@ -31,8 +31,12 @@ const API_LIST = {
         const prefix = 'certs';
         return {
             signup: {
+                mail: `${prefix}/signup/mail`,
                 time: `${prefix}/signup/time`,
                 code: `${prefix}/signup/code`
+            },
+            password: {
+                code: `${prefix}/password/code`
             }
         };
     },
@@ -55,12 +59,13 @@ const API_LIST = {
 
 export class APIService {
     constructor(
-        Restangular, $log
+        Restangular, $log, $q
     ) {
         'ngInject';
 
         this.Restangular = Restangular;
         this.$log = $log;
+        this.$q = $q;
         this.API = this.__generateAPI__();
     }
 
@@ -77,27 +82,43 @@ export class APIService {
     /* @PRIVATE METHOD */
     __get__(api, id, params) {
         api = this.__getURI__(api, id);
-        return this.Restangular.all(api).customGET('', params);
+        return this.__validate__(this.Restangular.all(api).customGET('', params));
     }
 
     __post__(api, id, data) {
         api = this.__getURI__(api, id);
         this.$log.debug(api);
-        return this.Restangular.all(api).customPOST(data, undefined, undefined, {
+        return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
             'Content-Type': 'application/json'
-        });
+        }));
     }
 
     __put__(api, id, data) {
         api = this.__getURI__(api, id);
-        return this.Restangular.all(api).customPUT(data, undefined, undefined, {
+        return this.__validate__(this.Restangular.all(api).customPUT(data, undefined, undefined, {
             'Content-Type': 'application/json'
-        });
+        }));
     }
 
     __delete__(api, id) {
         api = this.__getURI__(api, id);
-        return this.Restangular.all(api).customDELETE();
+        return this.__validate__(this.Restangular.all(api).customDELETE());
+    }
+
+    __validate__(response) {
+        let defer = this.$q.defer();
+        response.then(res => {
+            if(res.status.code === '0000') {
+                defer.resolve({ result: res.result, status: res.status });
+            }
+            else {
+                defer.reject(res.status);
+            }
+        }, err => {
+            defer.reject(err);
+        });
+
+        return defer.promise;
     }
 
     __getURI__(api, id, uri, list = this.API, index = 0) {

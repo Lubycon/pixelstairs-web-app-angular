@@ -18,12 +18,13 @@
             <li
                 class="global-menu"
                 ng-repeat="link in GlobalHeaderCtrl.linkList"
+                ng-if="link.signin === GlobalHeaderCtrl.isSignin"
             >
                 <a ui-sref="{{link.link}}">{{link.name}}</a>
             </li>
             <li
                 class="sign-menu"
-                ng-if="!GlobalHeaderCtrl.$rootScope.memberState.sign"
+                ng-if="!GlobalHeaderCtrl.isSignin"
             >
                 <a ui-sref="full.default.signin">
                     {{'LABEL.SIGNIN' | translate}}
@@ -32,19 +33,32 @@
             <li
                 uib-dropdown
                 class="member-menu"
-                ng-if="GlobalHeaderCtrl.$rootScope.memberState.sign"
+                ng-if="GlobalHeaderCtrl.isSignin"
             >
-                <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                <div class="user-info">
+                    <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
+                        <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
+                    </div>
+                    <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                </div>
+
                 <ul
                     uib-dropdown-menu
                     class="dropdown-menu dropdown-menu-right"
                 >
-                    <li ng-repeat="link in GlobalHeaderCtrl.memberLinkList">
-                        <a ui-sref="{{link.link}}">{{link.name}}</a>
+                    <li
+                        ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
+                        ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                    >
+                        <a ui-sref="{{link.link}}">
+                            <span>{{link.name}}</span>
+                            <i class="{{link.icon}}"></i>
+                        </a>
                     </li>
                     <li>
                         <a ng-click="GlobalHeaderCtrl.signout()">
-                            {{'LABEL.SIGNOUT' | translate}}
+                            <span>{{'LABEL.SIGNOUT' | translate}}</span>
+                            <i class="xi-power-off"></i>
                         </a>
                     </li>
                 </ul>

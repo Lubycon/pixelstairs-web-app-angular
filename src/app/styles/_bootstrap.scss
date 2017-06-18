@@ -4,16 +4,9 @@
     }
 }
 
-// GRID MODE
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flex;
-    display: flex;
-}
-
 // BUTTON
 .btn {
+    box-shadow: none;
     border: {
         color: transparent;
         width: 0;
@@ -22,19 +15,23 @@
     };
     padding: 10px 15px;
     font-weight: 200;
-    background-color: $dark-grey;;
+    background-color: $dove-grey;
     color: $white;
     transition: all 0.3s ease-in-out;
     outline: 0 !important;
     margin: 0;
 
-    &:hover,&:focus,&.focus {
+    &:hover {
         color: $white;
         opacity: 0.6;
     }
 
+    &:focus,&.focus {
+        color: $white;
+    }
+
     a {
-        color: $dark-grey;
+        color: $dove-grey;
     }
 
     &.icon-btn {
@@ -54,5 +51,29 @@
                 font-size: 20px;
             }
         }
+    }
+
+    .loading-icon {
+        height: auto;
+        margin: 0 auto;
+        .icon-dom {
+            width: 20px;
+            height: 20px;
+            border-right-color: transparent;
+        }
+    }
+}
+
+.btn {
+    &.btn-border {
+        color: $mine-black;
+        border: 2px solid $mine-black;
+        background-color: transparent;
+    }
+    &.btn-link {
+        color: $mine-black;
+        border: none;
+        background-color: transparent;
+        text-decoration: underline;
     }
 }

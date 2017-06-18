@@ -104,7 +104,6 @@ export class MainController {
 
     getContents() {
         // const searcher = this.$location.search();
-
         this.APIService.resource('contents.list').get({pageIndex: this.pageIndex})
         .then(res => {
             if(res.result && res.result.contents) {

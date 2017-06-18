@@ -73,7 +73,10 @@ cd application/mamp-5.5.28-0/apache2/htdocs/lubycon-web-app-front
 
 
 ```
-
+# linux or osx
+npm install
+# you have to install build-tools in windows
+npm install --global --production windows-build-tools
 npm install
 ...
 bower install

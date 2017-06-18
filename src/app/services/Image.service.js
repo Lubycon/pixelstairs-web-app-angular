@@ -1,13 +1,23 @@
 export class ImageService {
-    constructor($q) {
+    constructor(
+        $q,
+        USER_DEFAULT_PROFILE_IMG
+    ) {
         'ngInject';
 
         this.$q = $q;
+        this.USER_DEFAULT_PROFILE_IMG = USER_DEFAULT_PROFILE_IMG;
     }
 
-    setResolution(img, resolution) {
+    setResolution(img, resolution = 1920) {
         if(!img) return false;
         return !!img.isPixelOwn ? img.file + resolution : img.file;
+    }
+
+    getUserProfile(img, resolution = 320) {
+        if(!img) return this.USER_DEFAULT_PROFILE_IMG;
+
+        return this.setResolution(img, resolution);
     }
 
     convertToBase64(img) {

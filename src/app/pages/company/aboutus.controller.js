@@ -1,10 +1,12 @@
 export class AboutusController {
     constructor(
-        $log
+        $log, $stateParams, $timeout
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$stateParams = $stateParams;
+        this.$timeout = $timeout;
 
         this.desciptions = [{
             title: 'Paint Art',
@@ -19,6 +21,7 @@ export class AboutusController {
             alt: 'photograph',
             icon: 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/icons/icon_photograph.svg'
         }];
+
         this.ccDescription = [{
             alt: 'paper-work',
             icon: 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/icons/icon_paper_work.svg'
@@ -26,5 +29,28 @@ export class AboutusController {
             alt: 'cc',
             icon: 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/icons/icon_cc.svg'
         }];
+
+        this.sections = {
+            intro: '.intro-section',
+            cc: '.cc-section',
+            contact: '.contact-section'
+        };
+
+        (this.init)();
+    }
+
+    init() {
+        const SECTION = this.$stateParams.section;
+        if(SECTION) this.__moveToSection__(SECTION);
+    }
+
+    /* PRIVATE METHOD */
+    __moveToSection__(section) {
+        const ELEMENT = angular.element(this.sections[section]);
+        const SCROLL_POSITION = ELEMENT.offset().top;
+
+        this.$timeout(() => {
+            angular.element(document).scrollTop(ELEMENT.offset().top);
+        },0);
     }
 }

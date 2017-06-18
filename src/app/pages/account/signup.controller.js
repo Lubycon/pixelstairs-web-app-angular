@@ -1,11 +1,13 @@
-export class SignUpController {
+export class SignupController {
     constructor(
-        $log, APIService, AuthenticationService,
-        FormRegxService
+        $log, $state,
+        APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$state = $state;
+
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
@@ -62,12 +64,12 @@ export class SignUpController {
         data.termsOfServiceAccepted = true;
 
         this.APIService.resource('members.signup').post(data).then(res => {
-            if(res && res.status.code === '0000') {
-                this.AuthenticationService.set(res.result.token);
-            }
-            else {
-                /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', res);
-            }
+            this.AuthenticationService.set({
+                token: res.result.token,
+                state: null
+            }).then(res => {
+                this.$state.go('common.default.auth-signup');
+            });
         }, err => {
             /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', err);
         });
@@ -83,20 +85,9 @@ export class SignUpController {
             password = this.signData.password.origin;
 
 
-        this.passwordScore.score = this.FormRegxService.calcPasswordLevel(password, maxScore);
-
-        if(this.passwordScore.score >= 100) {
-            this.passwordScore.status = 'perfect';
-        }
-        else if(this.passwordScore.score > 80) {
-            this.passwordScore.status = 'high';
-        }
-        else if(this.passwordScore.score > 30) {
-            this.passwordScore.status = 'mid';
-        }
-        else {
-            this.passwordScore.status = 'low';
-        }
+        score = this.FormRegxService.calcPasswordScore(password, maxScore);
+        this.passwordScore.status = this.FormRegxService.getPasswordLevel(score);
+        this.passwordScore.score = score;
 
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
     }

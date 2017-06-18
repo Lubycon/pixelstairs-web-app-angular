@@ -1,3 +1,5 @@
+import Boot from './app.boot';
+
 import { routerConfig } from './app.route';
 import { run } from './app.run';
 
@@ -44,3 +46,18 @@ angular
     .config(routerConfig)
     .run(run)
     ;
+
+/* ANGULAR APP BOOT START */
+/*
+    * get async data without angular
+    * bind to window object
+    * it will be global variable
+*/
+$.when(
+    Boot.geo_location()
+).always((geo_location) => {
+    window.client_geo_location = geo_location;
+
+    angular.bootstrap(document, [ 'app' ]);
+});
+/* ANGULAR APP BOOT END */

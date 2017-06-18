@@ -12,7 +12,7 @@ export class StateAuthenticationService {
 
 
     detect(toState) {
-        const IS_SIGNED = this.$rootScope.memberState && this.$rootScope.memberState.sign;
+        const IS_SIGNED = this.$rootScope.authStatus && this.$rootScope.authStatus.sign;
 
         switch(toState.authenticate) {
             case 'all':
@@ -27,7 +27,7 @@ export class StateAuthenticationService {
                 else this.__stateChangeReject__();
             break;
             case 'member:inactive':
-                if(IS_SIGNED) this._stateChangeResolve__(toState);
+                if(IS_SIGNED) this.__stateChangeResolve__(toState);
                 else this.__stateChangeReject__();
             break;
             case 'close':

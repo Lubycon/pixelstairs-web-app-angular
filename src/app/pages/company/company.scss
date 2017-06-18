@@ -75,7 +75,7 @@
                 }
             }
 
-            &.cc-section {
+            .cc-section {
                 li {
                     margin-right: 100px;
                     &:last-child {
@@ -85,6 +85,10 @@
                         margin: 0;
                     }
                 }
+            }
+
+            .contact-section {
+                padding-bottom: 400px;
             }
         }
     }

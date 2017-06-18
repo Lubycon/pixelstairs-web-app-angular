@@ -7,13 +7,12 @@ export class FooterController {
         this.$log = $log;
 
         this.lang = $rootScope.setting.language.split('-')[0];
-        console.log(this.lang);
         this.linkList = [{
             name: 'about us',
             link: 'common.default.aboutus'
         },{
             name: 'contact',
-            link: 'common.default.aboutus'
+            link: 'common.default.aboutus({ section: "contact" })'
         },{
             name: 'privacy policy',
             link: `common.default.privacy-policy({ lang: '${this.lang}' })`

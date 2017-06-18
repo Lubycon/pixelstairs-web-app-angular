@@ -50,8 +50,12 @@ export class ContentsUploadController {
             return v.text;
         });
 
-        /*TEST*/
-        data.licenseCode = '0100';
+        /*
+            license선택 기능이 추가되기 전까지는 기본 값
+            cc, by, nc, sa로 들어갈 것
+            2017.06.17 -Evan
+        */
+        data.licenseCode = '1101';
 
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 

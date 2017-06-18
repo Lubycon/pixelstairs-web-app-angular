@@ -24,7 +24,7 @@
                             type="email"
                             class="form-control"
                             placeholder="{{'LABEL.EMAIL' | translate}}"
-                            ng-model="SignInCtrl.signData.email"
+                            ng-model="SigninCtrl.signData.email"
                         />
                     </div>
                     <div class="input-container">
@@ -32,13 +32,13 @@
                             type="password"
                             class="form-control"
                             placeholder="{{'LABEL.PASSWORD' | translate}}"
-                            ng-model="SignInCtrl.signData.password"
+                            ng-model="SigninCtrl.signData.password"
                         >
                     </div>
 
                     <button
                         class="signin-btn btn full-width"
-                        ng-click="SignInCtrl.postData()"
+                        ng-click="SigninCtrl.postData()"
                     >
                         {{'LABEL.SIGNIN' | translate}}
                     </button>
@@ -46,6 +46,9 @@
 
                 <p class="fieldset-hint signup-btn">
                     <a ui-sref="full.default.signup">{{'SCRIPT.GO_TO_SIGNUP' | translate}}</a>
+                </p>
+                <p class="fieldset-hint signup-btn">
+                    <a ui-sref="common.default.find-password-email">{{'SCRIPT.FIND_PASSWORD' | translate}}</a>
                 </p>
             </div>
         </div>

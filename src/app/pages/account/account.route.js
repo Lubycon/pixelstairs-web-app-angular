@@ -6,17 +6,44 @@ export function routerConfig ($stateProvider) {
         .state('full.default.signin', {
             url: '/signin',
             templateUrl: 'app/pages/account/signin.tmpl.html',
-            controller: 'SignInController',
-            controllerAs: 'SignInCtrl',
+            controller: 'SigninController',
+            controllerAs: 'SigninCtrl',
             authenticate: 'visitor'
         })
         .state('full.default.signup', {
             url: '/signup',
             templateUrl: 'app/pages/account/signup.tmpl.html',
-            controller: 'SignUpController',
-            controllerAs: 'SignUpCtrl',
+            controller: 'SignupController',
+            controllerAs: 'SignupCtrl',
             authenticate: 'visitor'
         })
+        .state('common.default.auth-signup', {
+            url: '/auth/signup',
+            templateUrl: 'app/pages/account/auth-signup.tmpl.html',
+            controller: 'AuthSignupController',
+            controllerAs: 'AuthSignupCtrl',
+            authenticate: 'member:inactive'
+        })
+
+        .state('common.default.find-password-email', {
+            url: '/password/find/email',
+            templateUrl: 'app/pages/account/find-password-email.tmpl.html',
+            controller: 'FindPasswordEmailController',
+            controllerAs: 'FindPassEmailCtrl',
+            authenticate: 'visitor'
+        })
+        .state('common.default.reset-password', {
+            url: '/password/reset/:code',
+            templateUrl: 'app/pages/account/reset-password.tmpl.html',
+            controller: 'ResetPasswordController',
+            controllerAs: 'ResetPassCtrl',
+            params: {
+                code: null
+            },
+            authenticate: 'visitor'
+        })
+
+        /* UNUSED */
         .state('common.default.signout', {
             url: '/signout',
             templateUrl: 'app/pages/account/signout.tmpl.html',
@@ -24,9 +51,10 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'SignOutCtrl',
             resolve: {
                 getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.success').get();
+                    return APIService.resource('quotes.success').get().then();
                 }
             }
         })
+        /* UNUSED */
         ;
 }

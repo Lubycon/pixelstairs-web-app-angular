@@ -16,45 +16,22 @@
     .form-box {
         margin-top: 0;
         div .fieldset-hint{
-            margin-bottom: 30px;
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 30px;
+            }
         }
         form {
             .signin-btn {
                 margin-top: 30px;
                 border: none;
-                background: $dark-grey;
+                background: $dove-grey;
                 color: $white;
             }
         }
         .signup-btn {
             margin-top: 10px;
             text-decoration: underline;
-        }
-
-        .password-score {
-            height: 5px;
-            margin-top: 0px;
-            background: $silver-grey;
-            text-align: left;
-            .score-bar {
-                vertical-align: top;
-                height: 100%;
-                display: inline-block;
-                background-color: $dark-grey;
-                transition: width 0.3s ease-out;
-                &[data-status='low'] {
-                    background-color: $red;
-                }
-                &[data-status='mid'] {
-                    background-color: $yellow;
-                }
-                &[data-status='high'] {
-                    background-color: $green;
-                }
-                &[data-status='perfect'] {
-                    background-color: $blue;
-                }
-            }
         }
     }
 
@@ -87,9 +64,42 @@
             }
             form {
                 .input-container {
-                    padding-bottom: 10px;
+                    padding-bottom: 30px;
                 }
             }
         }
+    }
+}
+
+.state-signup .container {
+    .row {
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
+        padding: 50px 0;
+    }
+}
+
+.state-find-password-email,
+.state-reset-password {
+    .input-container {
+        display: inline-block;
+        .form-control {
+
+        }
+    }
+    footer {
+        padding: 20px;
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+.state-auth-signup {
+    .time-checker {
+        color: $dark-red;
+        font-style: italic;
     }
 }

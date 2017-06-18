@@ -1,6 +1,7 @@
 export class MemberSettingController {
     constructor(
         $rootScope, $log, $uibModal,
+        USER_DEFAULT_PROFILE_IMG,
         APIService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
@@ -12,17 +13,19 @@ export class MemberSettingController {
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
-        this.memberData.profileImg = this.memberData.profileImg || {file: 'https://s3-ap-northeast-1.amazonaws.com/lubycon/assets/defaults/user.png'};
+        this.memberData.profileImg = this.memberData.profileImg || {file: USER_DEFAULT_PROFILE_IMG};
+        this.memberData.birthday = new Date(this.memberData.birthday);
+
 
         this.genders = [{
             name: 'Male',
-            code: 'M'
+            code: 'male'
         },{
             name: 'Female',
-            code: 'F'
+            code: 'female'
         },{
             name: 'etc',
-            code: 'E'
+            code: 'etc'
         }];
 
         this.selectBoxOption = {
