@@ -53,10 +53,12 @@ export class HeaderController {
         linkList = [{
             name: 'Setting',
             link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
+            icon: 'xi-cog',
             ignore: 'inactive'
         },{
             name: 'Authentication',
             link: 'common.default.auth-signup',
+            icon: 'xi-key',
             ignore: 'active'
         }];
 
