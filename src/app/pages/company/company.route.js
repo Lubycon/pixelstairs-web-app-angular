@@ -3,7 +3,10 @@ export function routeConfig($stateProvider) {
 
     $stateProvider
         .state('common.default.aboutus', {
-            url: '/aboutus',
+            url: '/aboutus?section',
+            params: {
+                section: null
+            },
             templateUrl: 'app/pages/company/aboutus.tmpl.html',
             controller: 'AboutusController',
             controllerAs: 'AboutusCtrl'
