@@ -15,7 +15,6 @@ export class HeaderController {
         this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
 
         this.memberStatus = this.isSignin ? $rootScope.member.status : null;
-        console.log(this.memberStatus);
         this.memberProfile = this.isSignin && ImageService.getUserProfile($rootScope.member.profileImg);
 
         this.linkList = this.__getMenuList__(this.isMobile);
