@@ -11,7 +11,7 @@ import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
 import { ImageService } from './Image.service';
 import { FormRegxService } from './FormRegx.service';
-import { ErrorCatcherService, errorHandler } from './ErrorCatcher.service';
+import { ErrorCatcherService } from './ErrorCatcher.service';
 
 import { DummyService } from './Dummy.service';
 
@@ -46,8 +46,12 @@ angular
 
     .service('FormRegxService', FormRegxService)
 
-    .factory('$exceptionHandler', errorHandler)
     .service('ErrorCatcherService', ErrorCatcherService)
+    .factory('$exceptionHandler', function errorHandler(ErrorCatcherService) {
+        return function error(exception, cause) {
+            ErrorCatcherService.catcher(exception, cause);
+        };
+    })
 
     .service('DummyService', DummyService)
     ;
