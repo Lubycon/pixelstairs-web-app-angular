@@ -15,66 +15,80 @@
         </div>
     </div>
     <div class="container">
-        <section class="intro-section col-lg-12 col-md-12 col-sm-12 col-xs12">
-            <h3>{{'ABOUT_US.INTRO.TITLE' | translate}}</h3>
-            <div class="icon-desc">
-                <ul class="row">
-                    <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-repeat="desc in AboutusCtrl.desciptions">
-                        <div class="icon-desc-icon">
-                            <img ng-src="{{desc.icon}}" alt="{{'icon-'+desc.alt}}">
-                        </div>
-                        <h4 ng-bind-html="desc.title"></h4>
-                    </li>
-                </ul>
-            </div>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.INTRO.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTENT_1.TITLE' | translate}}</h3>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTENT_1.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="cc-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTENT_2.TITLE' | translate}}</h3>
-            <div class="icon-desc">
-                <ul class="row">
-                    <li ng-repeat="desc in AboutusCtrl.ccDescription">
-                        <div class="icon-desc-icon">
-                            <img ng-src="{{desc.icon}}" alt="{{'icon-'+desc.alt}}">
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTENT_2.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTENT_3.TITLE' | translate}}</h3>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTENT_3.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTENT_4.TITLE' | translate}}</h3>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTENT_4.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTENT_5.TITLE' | translate}}</h3>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTENT_5.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
-        <section class="contact-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h3>{{'ABOUT_US.CONTACT.TITLE' | translate}}</h3>
-            <div class="paragraph-desc">
-                <p>{{'ABOUT_US.CONTACT.DESCRIPTION' | translate}}</p>
-            </div>
-        </section>
+        <div class="row">
+            <section class="intro-section col-lg-12 col-md-12 col-sm-12 col-xs12">
+                <h3>{{'ABOUT_US.INTRO.TITLE' | translate}}</h3>
+                <div class="icon-desc">
+                    <ul class="row">
+                        <li class="col-lg-4 col-md-4 col-sm-4 col-xs-4" ng-repeat="desc in AboutusCtrl.desciptions">
+                            <div class="icon-desc-icon">
+                                <img ng-src="{{desc.icon}}" alt="{{'icon-'+desc.alt}}">
+                            </div>
+                            <h4 ng-bind-html="desc.title"></h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.INTRO.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTENT_1.TITLE' | translate}}</h3>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTENT_1.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="cc-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTENT_2.TITLE' | translate}}</h3>
+                <div class="icon-desc">
+                    <ul class="row">
+                        <li ng-repeat="desc in AboutusCtrl.ccDescription">
+                            <div class="icon-desc-icon">
+                                <img ng-src="{{desc.icon}}" alt="{{'icon-'+desc.alt}}">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTENT_2.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTENT_3.TITLE' | translate}}</h3>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTENT_3.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTENT_4.TITLE' | translate}}</h3>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTENT_4.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="description-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTENT_5.TITLE' | translate}}</h3>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTENT_5.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
+        <div class="row">
+            <section class="contact-section col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h3>{{'ABOUT_US.CONTACT.TITLE' | translate}}</h3>
+                <div class="paragraph-desc">
+                    <p>{{'ABOUT_US.CONTACT.DESCRIPTION' | translate}}</p>
+                </div>
+            </section>
+        </div>
     </div>
 </div>

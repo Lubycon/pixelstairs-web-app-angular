@@ -1,15 +1,46 @@
 .pixel-datepicker {
+    position: relative;
+    input {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .form-control {
+        position: relative;
+        padding: 0;
+        p {
+            display: inline-block;
+            height: 100%;
+            padding: 6px 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            height: 100%;
+            padding: 5px 30px;
+            float: right;
+            &:hover {
+                opacity: 1;
+            }
+
+            i {
+                font-size: 20px;
+            }
+        }
+    }
     .uib-datepicker-popup {
-        border: 1px solid $dark-grey;
+        border: 1px solid $dove-grey;
         border-radius: 0;
         &.dropdown-menu {
             padding: 0;
         }
         .btn {
             background-color: transparent;
-            color: $dark-grey;
+            color: $dove-grey;
             &.active {
-                background-color: $dark-grey;
+                background-color: $dove-grey;
                 color: $white;
                 box-shadow: none;
             }
@@ -28,11 +59,55 @@
             &:hover {
                 opacity: 1;
                 background-color: $light-grey;
-                color: $dark-grey;
+                color: $dove-grey;
             }
         }
         .btn[disabled] {
             color: $silver-grey;
+        }
+    }
+
+    @media screen and (max-width: $mobile) {
+        .form-control {
+            p {
+                line-height: 1.8;
+            }
+
+            .btn {
+                padding: 8px 30px;
+            }
+        }
+        .uib-datepicker-popup {
+            $background-color: $white;
+
+            position: fixed;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,.8);
+
+            &>li {
+                background-color: $background-color;
+            }
+
+            table {
+                width: 100%;
+            }
+
+            .btn {
+                &:hover,&:focus,&:active {
+                    background: transparent;
+                    box-shadow: none;
+                }
+            }
+
+            .uib-button-bar {
+                background-color: $background-color;
+                .btn-group {
+                    float: none !important;
+                }
+            }
         }
     }
 }

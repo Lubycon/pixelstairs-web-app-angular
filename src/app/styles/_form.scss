@@ -1,3 +1,6 @@
+$input-height: 34px;
+$mobile-input-height: 40px;
+
 * {
     font-family: $inconsolata;
 }
@@ -32,18 +35,27 @@
     }
 }
 
+.form-control {
+    height: $input-height;
+}
+@media screen and (max-width: $mobile) {
+    .form-control {
+        height: $mobile-input-height;
+    }
+}
+
 .fieldset {
     .input-container {
         position: relative;
         .form-control.ng-invalid.ng-dirty {
-            border-color: $red;
+            border-color: $dark-red;
         }
         .form-control.ng-invalid+.error-msg {
             position: absolute;
             bottom: 5px;
             left: 0;
             p {
-                color: $red;
+                color: $dark-red;
                 text-align: center;
                 font-size: 12px;
             }
@@ -57,10 +69,10 @@
                 vertical-align: top;
                 height: 100%;
                 display: inline-block;
-                background-color: $dark-grey;
+                background-color: $dove-grey;
                 transition: width 0.3s ease-out;
                 &[data-status='low'] {
-                    background-color: $red;
+                    background-color: $dark-red;
                 }
                 &[data-status='mid'] {
                     background-color: $yellow;
@@ -76,8 +88,8 @@
     }
     .form-control {
         box-shadow: none;
-        border: 2px solid $dark-grey;
-        color: $dark-grey;
+        border: 2px solid $dove-grey;
+        color: $dove-grey;
         border-radius: 0;
     }
 
@@ -101,7 +113,7 @@
                         line-height: 25px;
                         border: none;
                         border-radius: 200px;
-                        background: $dark-grey;
+                        background: $dove-grey;
                         color: $white;
                         font-weight: 200;
                         .remove-button {
@@ -147,14 +159,29 @@
             background: $white;
         }
     }
+
+    @media screen and (max-width: $mobile) {
+        .select2-choice {
+            .select2-chosen {
+                line-height: 37px;
+            }
+            .select2-arrow {
+                b {
+                    &:before {
+                        line-height: 37px;
+                    }
+                }
+            }
+        }
+    }
 }
 .select2-drop {
     &.select2-drop-active {
-        border: 1px solid $dark-grey;
+        border: 1px solid $dove-grey;
     }
     .select2-results {
         .select2-highlighted {
-            background:$dark-grey;
+            background:$dove-grey;
             .select2-result-label {
                 color: $white;
             }

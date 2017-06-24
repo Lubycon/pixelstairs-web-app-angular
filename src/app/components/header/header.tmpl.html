@@ -36,7 +36,7 @@
                 ng-if="GlobalHeaderCtrl.isSignin"
             >
                 <div class="user-info">
-                    <div class="user-profile-img">
+                    <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
                         <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
                     </div>
                     <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
@@ -50,11 +50,15 @@
                         ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
                         ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
                     >
-                        <a ui-sref="{{link.link}}">{{link.name}}</a>
+                        <a ui-sref="{{link.link}}">
+                            <span>{{link.name}}</span>
+                            <i class="{{link.icon}}"></i>
+                        </a>
                     </li>
                     <li>
                         <a ng-click="GlobalHeaderCtrl.signout()">
-                            {{'LABEL.SIGNOUT' | translate}}
+                            <span>{{'LABEL.SIGNOUT' | translate}}</span>
+                            <i class="xi-power-off"></i>
                         </a>
                     </li>
                 </ul>

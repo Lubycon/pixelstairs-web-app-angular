@@ -27,12 +27,13 @@ export function DatepickerDirective() {
 
 class DatepickerController {
     constructor(
-        $rootScope, $log
+        $rootScope, $element, $log
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
         this.$log = $log;
+        this.$element = $element;
 
         this.isMobile = this.$rootScope.deviceInfo.isMobile;
         this.isOpen = false;
@@ -45,13 +46,10 @@ class DatepickerController {
     }
 
     popupOpen() {
-        if(!this.isMobile) this.isOpen = true;
-        else this.__openMobileDatePicker__();
+        this.isOpen = true;
     }
 
-    /*@PRIVATE METHOD*/
-    __openMobileDatePicker__() {
-        const ELEMENT = this.$el.find('.mobile-datepicker');
-        ELEMENT.trigger('focus');
+    onChange() {
+        this.$element.find('input').blur();
     }
 }

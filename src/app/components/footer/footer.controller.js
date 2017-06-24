@@ -12,7 +12,7 @@ export class FooterController {
             link: 'common.default.aboutus'
         },{
             name: 'contact',
-            link: 'common.default.aboutus'
+            link: 'common.default.aboutus({ section: "contact" })'
         },{
             name: 'privacy policy',
             link: `common.default.privacy-policy({ lang: '${this.lang}' })`

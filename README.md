@@ -1,5 +1,5 @@
 # LUBYCON FRONTEND Development
-git - https://Dart_@bitbucket.org/Dart_/lubycon-web-app-front.git
+git - https://Dart_@bitbucket.org/Dart_/pixelstairs-web-app-front.git
 
 ## Cloning
 
@@ -7,7 +7,7 @@ git - https://Dart_@bitbucket.org/Dart_/lubycon-web-app-front.git
 ```
 #!git
 
-git clone https://Dart_@bitbucket.org/Dart_/lubycon-web-app-front.git
+git clone https://Dart_@bitbucket.org/Dart_/pixelstairs-web-app-front.git
 ```
 **2. or use source tree**
 
@@ -64,7 +64,7 @@ win : chdir
 
 example...
 
-cd application/mamp-5.5.28-0/apache2/htdocs/lubycon-web-app-front
+cd ~/Dev/lubycon/pixelstairs-web-app-front
 ```
 
 **3. install local npm and bower**
@@ -73,7 +73,10 @@ cd application/mamp-5.5.28-0/apache2/htdocs/lubycon-web-app-front
 
 
 ```
-
+# linux or osx
+npm install
+# you have to install build-tools in windows
+npm install --global --production windows-build-tools
 npm install
 ...
 bower install
@@ -87,14 +90,15 @@ bower install
 
 ```
 
-gulp serve
+npm run serve:local // connect to local api server
+npm run serve:dev   // connect to dev api server
 ```
 
 **build**
 
 ```
 
-gulp build
+npm run build
 ```
 
 

@@ -11,9 +11,9 @@ import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
 import { ImageService } from './Image.service';
 import { FormRegxService } from './FormRegx.service';
+import { ErrorCatcherService, errorHandler } from './ErrorCatcher.service';
 
 import { DummyService } from './Dummy.service';
-
 
 angular
     .module('app.services', [
@@ -45,6 +45,9 @@ angular
     .service('ImageService', ImageService)
 
     .service('FormRegxService', FormRegxService)
+
+    .factory('$exceptionHandler', errorHandler)
+    .service('ErrorCatcherService', ErrorCatcherService)
 
     .service('DummyService', DummyService)
     ;

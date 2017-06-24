@@ -47,24 +47,19 @@ export class HeaderController {
 
     __getMemberMenuList__(isMobile) {
         let linkList = [];
-        if(!this.$rootScope.authStatus) return linkList;
+        if(!this.isSignin) return linkList;
 
-        if(isMobile) {
-            /*@MOBILE MENU*/
-            linkList = [];
-        }
-        else {
-            /*@DESKTOP MENU*/
-            linkList = [{
-                name: 'Setting',
-                link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
-                ignore: 'inactive'
-            },{
-                name: 'Authentication',
-                link: 'common.default.auth-signup',
-                ignore: 'active'
-            }];
-        }
+        linkList = [{
+            name: 'Setting',
+            link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
+            icon: 'xi-cog',
+            ignore: 'inactive'
+        },{
+            name: 'Authentication',
+            link: 'common.default.auth-signup',
+            icon: 'xi-key',
+            ignore: 'active'
+        }];
 
         return linkList;
     }

@@ -1,19 +1,23 @@
 export class ContentsDetailController {
     constructor(
         $rootScope, $log, $stateParams,
-        ImageService, CreativeCommonsService,
+        APIService, ImageService, CreativeCommonsService,
         getContentRsv
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$stateParams = $stateParams;
+
+        this.APIService = APIService;
         this.ImageService = ImageService;
+        this.CreativeCommonsService = CreativeCommonsService;
 
+        this.isSigned = $rootScope.authStatus.sign;
         this.isMobile = $rootScope.deviceInfo.isMobile;
-        this.data = getContentRsv.result;
+        this.lang = $rootScope.setting.language.split('-')[0];
 
-        $log.debug('CONTENT DETAIL PAGE IS LOADED', this.data);
+        this.data = getContentRsv.result;
 
         this.init();
     }
@@ -25,17 +29,28 @@ export class ContentsDetailController {
         this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
         this.data.createdAt = new Date(this.data.createdAt);
         this.data.updatedAt = new Date(this.data.updatedAt);
-        /*LOG*/this.$log.debug(this.data);
+
+        this.ccData = this.getCCModel(this.data.licenseCode);
     }
 
     getCCModel() {
-
+        return this.CreativeCommonsService.getCCModel(this.data.licenseCode);
     }
 
     postLike() {
         const id = this.$stateParams.id;
-        this.APIService.resource('contents.like', { id: id }).post().then(res => {
-            /*@LOG*/this.$log.debug('LIKE => ',res);
-        });
+
+        if(this.data.myLike) {
+            this.APIService.resource('contents.like', { id }).delete().then(res => {
+                this.data.myLike = false;
+                this.data.counts.like--;
+            });
+        }
+        else {
+            this.APIService.resource('contents.like', { id }).post().then(res => {
+                this.data.myLike = true;
+                this.data.counts.like++;
+            });
+        }
     }
 }

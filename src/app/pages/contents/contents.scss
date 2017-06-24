@@ -23,7 +23,7 @@
                 height: 80px;
                 margin: 20px;
                 border-radius: 50%;
-                border: 2px solid $dark-grey;
+                border: 2px solid $dove-grey;
                 background: none;
                 i {
                     font-size: 30px;
@@ -96,12 +96,15 @@
                     vertical-align: middle;
                 }
             }
-            h6.artwork-by {
-                font-size: 14px;
-                margin-bottom: 20px;
-            }
+
+
 
             .member-info {
+                h6.artwork-by {
+                    font-size: 14px;
+                    margin-bottom: 20px;
+                }
+
                 .member-profile {
                     display: inline-block;
                     @include circleFrame(50px)
@@ -112,33 +115,83 @@
                 p {
                     font-size: 18px;
                     font-weight: 600;
+
+                    &.content-date {
+                        font-size: 16px;
+                        font-weight: 400;
+                    }
                 }
             }
 
-            .content-date {
-                margin: 40px 0px;
-                span {
-                    font-weight: 600;
-                }
+            .content-info-row {
+                margin: 70px 0;
             }
 
-            .tag-wrapper {
-                margin-bottom: 20px;
+            .tag-desc {
                 ul.tags {
                     li {
                         display: inline-block;
                         margin: 0 5px;
                         padding: 2px 10px;
-                        border: 1px solid $dark-grey;
+                        border: 1px solid $dove-grey;
                     }
                 }
             }
+
             .content-desc {
                 p {
                     font-size: 13px;
                     word-break: break-word;
                 }
                 padding: 0 20px;
+            }
+
+            .license-desc {
+                ul {
+                    li {
+                        position: relative;
+                        display: inline-block;
+                        margin: 0 25px;
+
+
+                        &:first-of-type {
+                            margin-left: 0;
+                        }
+                        &:last-of-type {
+                            margin-right: 0;
+                        }
+
+                        i {
+                            font-size: 40px;
+                        }
+                        p {
+                            font-size: 18px;
+                            display: block;
+                        }
+
+                        .tooltip {
+                            position: absolute;
+                        }
+                    }
+                }
+
+                .license-sub-desc {
+                    p {
+                        color: $dove-grey;
+                        margin: 10px 0;
+                        a {
+                            text-decoration: underline;
+                        }
+
+                        &.terms-link {
+                            color: $silver-grey;
+                            font-size: 14px;
+                            a {
+                                color: $silver-grey;
+                            }
+                        }
+                    }
+                }
             }
 
 
@@ -154,6 +207,20 @@
 
     .btn-wrapper {
         text-align: center;
+        &>div {
+            margin-bottom: 10px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .btn {
+            &.liked {
+                background-color: $mine-black;
+                color: $white;
+                border-color: $mine-black;
+            }
+        }
     }
 
     /* Meida Query */
