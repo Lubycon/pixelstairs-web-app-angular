@@ -108,5 +108,35 @@
         "502" : "The Pixelstairs server is sleeping for a while.",
         "504" : "tic tac! sorry, times up.",
         "507" : "One day... we hope the users presents an awwwesome server for us."
+    },
+    "ABOUT_US" : {
+        "INTRO" : {
+            "TITLE": "The Pixelstairs, Design & Artwork contents platform",
+            "DESCRIPTION": "Our services allow users around the world who are active or interested in all areas of design and artwork to cross over the world and freely publish and share their creations without being bound by their skills and genres. And you can communicate with many people who have gathered together in common interests, communicate with the published creations, and support your work. As a result, the Pixelstairs Service is aiming for a free and intimate content / community platform."
+        },
+        "CONTENT_1": {
+            "TITLE": "No pursue professionalism and high quality works",
+            "DESCRIPTION": "All users who will use Pixel Stays are not famous designers or artists. They may still be enthusiastic students, ordinary peoples who dosen't gave up the dreams, or just friends around you. That's the reason the content and community that Pixel Stays pursues are not pursuing exceptional expertise or quality. Many of the works hidden in your room that have not yet seen the light can get the attention and feedback from here the pixelstairs. The most important thing is that the Pixelstairs was made with just tiny motivation in the hands of people like you, and that you seek true service values in such content and communities."
+        },
+        "CONTENT_2": {
+            "TITLE": "Protect your precious works",
+            "DESCRIPTION": "The importance of copyright in today's world where many kinds of creative contents are actively displayed on the internet is an essential protection for all creators who produce such contents. So that reasons, We'll be protected against all forms of illegal activity, including commercial use, modification, redistribution, and identity theft, without permission, by applying the Creative Commons License 4.0 global license to any design or artwork posted on the platform. Don't forget. Your content posted on the Pixelstairs service is your own creation and Pixelstairs is always there to help you exercise your rights."
+        },
+        "CONTENT_3": {
+            "TITLE": "Always use it freely",
+            "DESCRIPTION": "Pixelstairs service provides all services and functions free of charge without pay extension service, and is operated by the proceeds from users' voluntary donations, so that you can freely use all the services provided without any financial burden. So, Pixelstairs service, which is continuously developing, continues to be used as a free service."
+        },
+        "CONTENT_4": {
+            "TITLE": "Doesn't lag behind the trend",
+            "DESCRIPTION": "The Pixelstairs builds on responsive web platforms and applications optimized for various mobile OSs, so you can use our pixelstairs anytime, anywhere and in any form. By pursuing the latest UX design trend, we have eliminated the un-useful out look of each web pages and designed can use only as an essential flow."
+        },
+        "CONTENT_5": {
+            "TITLE": "Start together, look for possibilities",
+            "DESCRIPTION": "Pixelstairs services have unlimited possibilities and also in this moments the many exciting functions and elements that will always helpful in your life are under a planning and development. as the Pixelstairs development team, Lubycon is not behind any part of trends and is not bound to any format. we look forward to the possibilities about everything with passion. The entire member of Lubycon team hopes Pixelstairs will be a better way of life for all users who use and support it. and we want to be with you at the start line."
+        },
+        "CONTACT": {
+            "TITLE": "Contact us anytime!",
+            "DESCRIPTION": "If you have any questions about Pixelstairs practices or policies, further business with this service, or requests for improvement, please click on the button below or contact us at pixelstairscontact@gmail.com."
+        }
     }
 }
