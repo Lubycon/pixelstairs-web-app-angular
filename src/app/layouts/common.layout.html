@@ -1,7 +1,7 @@
 
 <div ui-view="header" ng-if="layout.header"></div>
 
-<div id="container" class="container-fluid" ng-class="{'with-header' : layout.header}">
+<div id="container" class="container-fluid {{layout.name}}" ng-class="{'with-header' : layout.header}">
     <div class="row">
         <div ui-view="content"></div>
     </div>
