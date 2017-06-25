@@ -1,5 +1,6 @@
 * {
     font-family: 'helvetica', sans-serif ;
+    -webkit-font-smoothing: antialiased;
     outline: none;
     &:focus {
         outline: none;
@@ -67,7 +68,6 @@ a {
     margin: 0px;
     padding: 0px;
     cursor: pointer;
-    transition: all 0.3s;
     &:hover, &:focus {
         color: #444;
         opacity: 0.6;
