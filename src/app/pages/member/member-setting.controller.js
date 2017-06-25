@@ -36,6 +36,8 @@ export class MemberSettingController {
         };
 
         this.uploadedProfile = null;
+
+        this.isBusy = false;
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
@@ -74,11 +76,13 @@ export class MemberSettingController {
     }
 
     postData() {
+        this.isBusy = true;
         let data = angular.copy(this.memberData);
         /*@LOG*/ this.$log.debug(data);
         this.APIService.resource('members.detail', { id: data.id }).post(data)
         .then(res => {
-            this.$log.debug(res);
+            alert('updated successfully!');
+            this.isBusy = false;
         });
     }
 

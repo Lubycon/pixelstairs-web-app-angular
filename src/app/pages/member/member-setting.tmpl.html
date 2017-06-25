@@ -72,7 +72,8 @@
                         ng-click="SettingCtrl.postData()"
                         ng-disabled="SettingCtrl.form.$invalid"
                     >
-                        Update setting
+                        <span ng-show="!SettingCtrl.isBusy">Update</span>
+                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
                     </button>
                 </form>
             </div>
