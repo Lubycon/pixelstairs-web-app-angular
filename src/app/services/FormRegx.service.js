@@ -7,7 +7,7 @@ export class FormRegxService {
         this.regx = {
             email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
             title: /[a-zA-Z\d-\_\~\&\/\:\!\.\,\s]$/,
-            nickname: /[a-zA-Z\d-\_]$/,
+            nickname: /[a-zA-Z가-힣\d-\_]$/,
             passwordSpecialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`]/,
             passwordMinLength: /^.{8,}$/,
             lowercase: /[a-z]/,
