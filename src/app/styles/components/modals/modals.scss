@@ -1,0 +1,25 @@
+.modal-backdrop.in {
+    opacity: 0.8;
+}
+
+.modal-dialog {
+    .modal-content {
+        .modal-header {
+            .header-close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-weight: bolder;
+                font-size: 18px;
+            }
+        }
+        .modal-body {
+
+        }
+        .modal-footer {
+            .btn {
+
+            }
+        }
+    }
+}

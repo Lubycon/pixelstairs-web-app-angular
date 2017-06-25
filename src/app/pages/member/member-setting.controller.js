@@ -48,13 +48,15 @@ export class MemberSettingController {
 
     openCropModal() {
         let modal = this.$uibModal.open({
+            windowClass: 'cropper-modal-window',
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            backdrop: true,
+            backdrop: 'static',
             templateUrl: 'app/components/modals/cropper/cropper.modal.tmpl.html',
             controller: 'CropperModalController',
             controllerAs: 'CropperCtrl',
+            keyborad: true,
             resolve: {
                 data: () => {
                     return {
