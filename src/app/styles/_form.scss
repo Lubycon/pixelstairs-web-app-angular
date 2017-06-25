@@ -96,6 +96,7 @@ $mobile-input-height: 40px;
     tags-input.form-control {
         box-shadow: none;
         padding: 0 5px;
+        height: auto;
         * {
             font-family: $inconsolata;
         }

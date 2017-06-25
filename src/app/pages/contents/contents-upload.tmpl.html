@@ -3,100 +3,118 @@
         <!-- <header>
             <p>Submit Artwork</p>
         </header> -->
-        <div class="form-box row">
-            <div class="uploader-info col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h3>{{'SCRIPT.HELP_CONTENT_UPLOAD.H3' | translate}}</h3>
-                <p translate="{{'SCRIPT.HELP_CONTENT_UPLOAD.P' | translate}}"></p>
+        <div class="form-box">
+            <div class="row">
+                <div class="uploader-info col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h3>{{'SCRIPT.HELP_CONTENT_UPLOAD.H3' | translate}}</h3>
+                    <p translate="{{'SCRIPT.HELP_CONTENT_UPLOAD.P' | translate}}"></p>
+                </div>
+                <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
+                    <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}" alt="uploaded-img">
+                </div>
             </div>
 
-            <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
-                <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}" alt="uploaded-img">
-            </div>
-
-            <div class="uploader-btn-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <button
-                    ng-if="!ContentsUploadCtrl.contentData.image.file"
-                    class="icon-btn btn"
-                    ngf-select
-                    type="file"
-                    ngf-change="ContentsUploadCtrl.changedFile($files,$file,$newFiles,$invalidFiles)"
-                    ngf-accept="'image/*'"
-                    ngf-max-size="30MB"
-                    ngf-max-files="1"
-                    ngf-fix-orientation="true"
-                    ng-model="ContentsUploadCtrl.uploadedImg"
-                >
-                    <div class="icon-wrapper">
-                        <i class="xi-cloud-upload-o"></i>
-                    </div>
-                </button>
-
-                <a
-                    ng-if="ContentsUploadCtrl.contentData.image.file"
-                    class="change-file-btn"
-                    ngf-select
-                    type="file"
-                    ngf-change="ContentsUploadCtrl.changedFile($files,$file,$newFiles,$invalidFiles)"
-                    ngf-accept="'image/*'"
-                    ngf-max-size="30MB"
-                    ngf-max-files="1"
-                    ngf-fix-orientation="true"
-                    ng-model="ContentsUploadCtrl.uploadedImg"
-                >
-                    Change uploaded file
-                </a>
-            </div>
-
-            <div class="uploader-form fieldset col-lg-10 col-lg-offset-1">
-                <form name="ContentsUploadCtrl.form" ng-submit="ContentsUploadCtrl.postData()">
-                    <!-- TITLE, TAG, DESC -->
-                    <div class="input-container">
-                        <label><i class="xi-pen-o"></i>{{'LABEL.TITLE' | translate}}</label>
-                        <input
-                            name="title"
-                            type="text"
-                            class="form-control"
-                            placeholder="{{'PLACEHOLDER.TITLE' | translate}}"
-                            ng-model="ContentsUploadCtrl.contentData.title"
-                            ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('title')"
-                            required
-                        >
-                        <div ng-messages="ContentsUploadCtrl.form.title.$error" class="error-msg">
-                            <p ng-message="pattern">You can not use special Chars</p>
-                        </div>
-                    </div>
-                    <div class="input-container">
-                        <label><i class="xi-tags"></i>{{'LABEL.TAGS' | translate}}</label>
-                        <tags-input
-                            class="form-control"
-                            ng-model="ContentsUploadCtrl.contentData.hashTags"
-                            allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
-                            placeholder="{{'PLACEHOLDER.TAGS' | translate}}"
-                            required
-                        ></tags-input>
-                    </div>
-                    <div class="input-container">
-                        <label><i class="xi-info-o"></i>{{'LABEL.DESCRIPTION' | translate}}</label>
-                        <textarea
-                            class="form-control"
-                            rows="8"
-                            placeholder="{{'PLACEHOLDER.DESCRIPTION' | translate}}"
-                            ng-model="ContentsUploadCtrl.contentData.description"
-                            ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('context')"
-                            required
-                        ></textarea>
-                    </div>
-
+            <div class="row">
+                <div class="uploader-btn-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button
-                        type="submit"
-                        class="btn"
-                        ng-disabled="ContentsUploadCtrl.form.$invalid"
+                        ng-if="!ContentsUploadCtrl.contentData.image.file"
+                        class="icon-btn btn"
+                        ngf-select
+                        type="file"
+                        ngf-change="ContentsUploadCtrl.changedFile($files,$file,$newFiles,$invalidFiles)"
+                        ngf-accept="'image/*'"
+                        ngf-max-size="30MB"
+                        ngf-max-files="1"
+                        ngf-fix-orientation="true"
+                        ng-model="ContentsUploadCtrl.uploadedImg"
                     >
-                        <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
-                        <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
+                        <div class="icon-wrapper">
+                            <i class="xi-cloud-upload-o"></i>
+                        </div>
                     </button>
-                </form>
+
+                    <a
+                        ng-if="ContentsUploadCtrl.contentData.image.file"
+                        class="change-file-btn"
+                        ngf-select
+                        type="file"
+                        ngf-change="ContentsUploadCtrl.changedFile($files,$file,$newFiles,$invalidFiles)"
+                        ngf-accept="'image/*'"
+                        ngf-max-size="30MB"
+                        ngf-max-files="1"
+                        ngf-fix-orientation="true"
+                        ng-model="ContentsUploadCtrl.uploadedImg"
+                    >
+                        Change uploaded file
+                    </a>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="uploader-form fieldset col-lg-10 col-lg-offset-1">
+                    <form name="ContentsUploadCtrl.form" ng-submit="ContentsUploadCtrl.postData()">
+                        <!-- TITLE, TAG, DESC -->
+                        <div class="input-container row">
+                            <label><i class="xi-pen-o"></i>{{'LABEL.TITLE' | translate}}</label>
+                            <input
+                                name="title"
+                                type="text"
+                                class="form-control"
+                                placeholder="{{'PLACEHOLDER.TITLE' | translate}}"
+                                ng-model="ContentsUploadCtrl.contentData.title"
+                                ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('title')"
+                                required
+                            >
+                            <div ng-messages="ContentsUploadCtrl.form.title.$error" class="error-msg">
+                                <p ng-message="pattern">You can not use special Chars</p>
+                            </div>
+                        </div>
+                        <div class="input-container row">
+                            <label><i class="xi-tags"></i>{{'LABEL.TAGS' | translate}}</label>
+                            <tags-input
+                                name="tags"
+                                class="form-control"
+                                ng-model="ContentsUploadCtrl.contentData.hashTags"
+                                min-length="2"
+                                max-length="30"
+                                min-tags="1"
+                                max-tags="20"
+                                allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
+                                placeholder="{{'PLACEHOLDER.TAGS' | translate}}"
+                                add-on-space="true"
+                                add-on-blur="true"
+                                required
+                            ></tags-input>
+                            <div ng-messages="ContentsUploadCtrl.form.tags.$error" class="error-msg">
+                                <p ng-message="pattern">You can use only english</p>
+                            </div>
+                        </div>
+                        <div class="input-container row">
+                            <label><i class="xi-info-o"></i>{{'LABEL.DESCRIPTION' | translate}}</label>
+                            <textarea
+                                class="form-control"
+                                rows="8"
+                                placeholder="{{'PLACEHOLDER.DESCRIPTION' | translate}}"
+                                ng-model="ContentsUploadCtrl.contentData.description"
+                                ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('context')"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="btn-wrapper row">
+                            <button
+                                type="submit"
+                                class="btn full-width"
+                                ng-disabled="ContentsUploadCtrl.form.$invalid && !ContentsUploadCtrl.contentData.image.file"
+                            >
+                                <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
+                                <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>

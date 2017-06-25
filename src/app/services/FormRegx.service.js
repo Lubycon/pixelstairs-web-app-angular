@@ -6,7 +6,7 @@ export class FormRegxService {
 
         this.regx = {
             email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-            title: /[a-zA-Z\d-\_\~\&\/\:\!\.\,\s]$/,
+            title: /[a-zA-Z가-힣\d-\_\~\&\/\:\!\.\,\s]$/,
             nickname: /[a-zA-Z가-힣\d-\_]$/,
             passwordSpecialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`]/,
             passwordMinLength: /^.{8,}$/,
@@ -14,7 +14,7 @@ export class FormRegxService {
             uppercase: /[A-Z]/,
             number: /[0-9]/,
             ignoreRepeatWord: /^(?:(.)(?!\1\1))*$/,
-            context: /[a-zA-Z\d\.\,\!\@]$/
+            context: /[a-zA-Z가-힣\d\.\,\!\@]$/
         };
 
         this.avoidWord = ['sex', 'fuck', 'suck', 'shit', 'cunt', 'pussy'];
