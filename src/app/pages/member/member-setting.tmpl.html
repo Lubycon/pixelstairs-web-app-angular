@@ -18,7 +18,7 @@
                         ngf-max-size="10MB"
                         ngf-max-files="1"
                         ngf-fix-orientation="true"
-                        ng-style="{'background-image':'url('+SettingCtrl.memberData.profileImg.file+')'}"
+                        ng-style="{'background-image':'url('+SettingCtrl.memberProfile.file+')'}"
                     >
                     </div>
                 </div>
@@ -72,7 +72,8 @@
                         ng-click="SettingCtrl.postData()"
                         ng-disabled="SettingCtrl.form.$invalid"
                     >
-                        Update setting
+                        <span ng-show="!SettingCtrl.isBusy">Update</span>
+                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
                     </button>
                 </form>
             </div>

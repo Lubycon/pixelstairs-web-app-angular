@@ -19,6 +19,7 @@ export class ContentsUploadController {
         };
 
         this.uploadedImg = null;
+        this.isBusy = false;
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
@@ -43,6 +44,7 @@ export class ContentsUploadController {
     }
 
     postData() {
+        this.isBusy = true;
         let data = angular.copy(this.contentData);
 
         /* SET TAGS */
@@ -61,7 +63,7 @@ export class ContentsUploadController {
 
         this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' }).then(res => {
             alert('UPLOAD FINISHED: DEBUG');
-            /*@LOG*/this.$log.debug(res);
+            this.isBusy = false;
         });
     }
 }

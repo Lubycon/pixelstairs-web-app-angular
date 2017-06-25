@@ -91,7 +91,10 @@
                         type="submit"
                         class="btn"
                         ng-disabled="ContentsUploadCtrl.form.$invalid"
-                    >{{'FORM.SUBMIT' | translate}}</button>
+                    >
+                        <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
+                        <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
+                    </button>
                 </form>
             </div>
         </div>

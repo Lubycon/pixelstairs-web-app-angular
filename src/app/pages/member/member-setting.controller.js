@@ -2,20 +2,21 @@ export class MemberSettingController {
     constructor(
         $rootScope, $log, $uibModal,
         USER_DEFAULT_PROFILE_IMG,
-        APIService, FormRegxService, getMemberRsv
+        APIService, ImageService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
         this.$log = $log;
         this.$uibModal = $uibModal;
+
         this.APIService = APIService;
+        this.ImageService = ImageService;
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
-        this.memberData.profileImg = this.memberData.profileImg || {file: USER_DEFAULT_PROFILE_IMG};
         this.memberData.birthday = new Date(this.memberData.birthday);
-
+        this.memberProfile = this.__getUserProfile__(this.memberData.profileImg);
 
         this.genders = [{
             name: 'Male',
@@ -35,6 +36,8 @@ export class MemberSettingController {
         };
 
         this.uploadedProfile = null;
+
+        this.isBusy = false;
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
@@ -62,19 +65,38 @@ export class MemberSettingController {
         });
 
         modal.result.then(res => {
-            /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', res);
-            this.memberData.profile = {
+            this.memberProfile = {
                 file: res.cropped
             };
+            this.memberData.profileImg = {
+                file: res.cropped
+            };
+            /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', this.memberData.profileImg);
         });
     }
 
     postData() {
+        this.isBusy = true;
         let data = angular.copy(this.memberData);
         /*@LOG*/ this.$log.debug(data);
         this.APIService.resource('members.detail', { id: data.id }).post(data)
         .then(res => {
-            this.$log.debug(res);
+            alert('updated successfully!');
+            this.isBusy = false;
         });
+    }
+
+    /* PRIVATE METHOD */
+    __getUserProfile__(profileImg) {
+        if(profileImg) {
+            profileImg.file = this.ImageService.getUserProfile(profileImg);
+        }
+        else {
+            profileImg = {
+                file: this.ImageService.getUserProfile(profileImg)
+            };
+        }
+
+        return profileImg;
     }
 }
