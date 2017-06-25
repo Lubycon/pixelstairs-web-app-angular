@@ -38,6 +38,7 @@ export class MemberSettingController {
         this.uploadedProfile = null;
 
         this.isBusy = false;
+        this.isProfileBusy = false;
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
@@ -62,6 +63,7 @@ export class MemberSettingController {
     }
 
     openCropModal() {
+        this.isProfileBusy = true;
         let modal = this.$uibModal.open({
             windowClass: 'cropper-modal-window',
             animation: true,
@@ -83,7 +85,10 @@ export class MemberSettingController {
 
         modal.result.then(res => {
             this.setProfileImg(res.cropped);
+            this.isProfileBusy = false;
             /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', this.memberData.profileImg);
+        }, err => {
+            this.isProfileBusy = false;
         });
     }
 

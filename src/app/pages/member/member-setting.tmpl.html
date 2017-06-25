@@ -22,6 +22,9 @@
                         ngf-fix-orientation="true"
                         ng-style="{'background-image':'url('+SettingCtrl.memberProfile.file+')'}"
                     >
+                        <div class="img-loading-overlay" ng-show="SettingCtrl.isProfileBusy">
+                            <i class="xi-spin xi-spinner-4"></i>
+                        </div>
                     </div>
                     <div class="remove-profile-btn" ng-click="SettingCtrl.removeProfileImg()">
                         <i class="xi-trash"></i>
