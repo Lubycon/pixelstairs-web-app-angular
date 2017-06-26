@@ -64,7 +64,7 @@
         "FIND_PASSWORD": "혹시 비밀번호를 잊으셨나요?",
         "HELP_CONTENT_UPLOAD": {
             "H3": "픽셀스테어스에 당신만의 창의적인 아트워크를 업로드 해주세요",
-            "P": "업로드된 당신의 아트워크는 픽셀스테어스 서비스 이용약관에 따르며<br>이에 명시된 크리에이티브 커먼스 라이센스를 부여받습니다."
+            "P": "업로드된 당신의 아트워크는 픽셀스테어스 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>에 따르며<br>이에 명시된 <a href=\"/docs/terms/{{lang}}?section={{section}}\" target=\"_blank\">크리에이티브 커먼스 라이센스</a>를 부여받습니다."
         }
     },
     "FORM" : {

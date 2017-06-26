@@ -64,7 +64,7 @@
         "FIND_PASSWORD": "Find my password",
         "HELP_CONTENT_UPLOAD": {
             "H3": "Upload your Awwwesome Artwork to Pixelstairs",
-            "P": "Your artwork will be posted under the terms of Pixelstairs Service<br>and will be subject to the Creative Commons license as stipulated."
+            "P": "Your artwork will be posted under the <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">terms of Pixelstairs Service</a><br>and will be subject to the <a href=\"/docs/terms/{{lang}}?section={{section}}\" target=\"_blank\">Creative Commons license</a> as stipulated."
         }
     },
     "FORM" : {

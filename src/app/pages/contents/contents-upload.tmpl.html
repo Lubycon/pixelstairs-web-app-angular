@@ -7,7 +7,10 @@
             <div class="row">
                 <div class="uploader-info col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <h3>{{'SCRIPT.HELP_CONTENT_UPLOAD.H3' | translate}}</h3>
-                    <p translate="{{'SCRIPT.HELP_CONTENT_UPLOAD.P' | translate}}"></p>
+                    <p
+                        translate="SCRIPT.HELP_CONTENT_UPLOAD.P"
+                        translate-values="{ lang: ContentsUploadCtrl.lang, section: 2}"    
+                    ></p>
                 </div>
                 <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
                     <img ng-src="{{ContentsUploadCtrl.contentData.image.file}}" alt="uploaded-img">
