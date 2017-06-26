@@ -65,7 +65,6 @@
                                 class="form-control"
                                 placeholder="{{'PLACEHOLDER.TITLE' | translate}}"
                                 ng-model="ContentsUploadCtrl.contentData.title"
-                                ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('title')"
                                 required
                             >
                             <div ng-messages="ContentsUploadCtrl.form.title.$error" class="error-msg">
@@ -99,7 +98,6 @@
                                 rows="8"
                                 placeholder="{{'PLACEHOLDER.DESCRIPTION' | translate}}"
                                 ng-model="ContentsUploadCtrl.contentData.description"
-                                ng-pattern="ContentsUploadCtrl.FormRegxService.getRegx('context')"
                                 required
                             ></textarea>
                         </div>
@@ -117,7 +115,7 @@
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
