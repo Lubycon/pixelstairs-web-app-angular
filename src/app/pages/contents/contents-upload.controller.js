@@ -1,12 +1,14 @@
 export class ContentsUploadController {
     constructor(
-        $rootScope, $log, $q, APIService, ImageService,
-        FormRegxService
+        $rootScope, $log, $q, $state,
+        APIService, ImageService, FormRegxService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$q = $q;
+        this.$state = $state;
+
         this.APIService = APIService;
         this.ImageService = ImageService;
         this.FormRegxService = FormRegxService;
@@ -38,14 +40,12 @@ export class ContentsUploadController {
                 return false;
             }
             this.contentData.image.file = res[1];
-
-            /*@LOG*/ this.$log.debug('model => ', this.uploadedImg);
-            /*@LOG*/ this.$log.debug('files => ', files, file, newFiles, invalidFiles);
-            /*@LOG*/ this.$log.debug('final => ', this.contentData.image.file);
         });
     }
 
     postData() {
+        if(this.isBusy) return false;
+
         this.isBusy = true;
         let data = angular.copy(this.contentData);
 
@@ -68,10 +68,13 @@ export class ContentsUploadController {
 
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 
-        this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' }).then(res => {
-            alert('UPLOAD FINISHED: DEBUG');
+        this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' })
+        .then(res => {
+            console.log(res.result.id);
             this.isBusy = false;
+            this.$state.go('common.default.contents-success', { id: res.result.id });
         }, err => {
+            alert('Somthing is wrong!');
             this.isBusy = false;
         });
     }
