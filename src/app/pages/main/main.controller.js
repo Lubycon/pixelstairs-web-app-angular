@@ -29,7 +29,7 @@ export class MainController {
             return a;
         }, {});
 
-        this.pageIndex = 0;
+        this.pageIndex = 1;
         this.sortMode = 'featured';
 
         this.scrollDisabled = true;
