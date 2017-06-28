@@ -3,7 +3,7 @@ export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
         APIService, CookieService, SearchService,
-        MAIN_GRID_INIT
+        MAIN_GRID_INIT, CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER
     ) {
         'ngInject';
 
@@ -19,32 +19,15 @@ export class MainController {
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
-        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
+        this.viewmode = CONTENTS_VIEW_MODE;
+        this.sortFilter = CONTENTS_SORT_FILTER;
 
-        this.viewmode = [{
-            name: 'grid',
-            icon: 'xi-border-all',
-            width: 6,
-            selected: true
-        },{
-            name: 'wide',
-            icon: 'xi-layout-full-o',
-            width: 12,
-            selected: false
-        }];
+        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
 
         this.viewmodeKey = this.viewmode.reduce((a, b) => {
             a[b.name] = b;
             return a;
         }, {});
-
-        this.sortFilter = [{
-            name: 'Featured',
-            value: 'featured'
-        },{
-            name: 'Latest',
-            value: 'latest'
-        }];
 
         this.pageIndex = 0;
         this.sortMode = 'featured';
@@ -52,7 +35,6 @@ export class MainController {
         this.scrollDisabled = true;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
-
         this.gridWidth = this.__getGridWidth__();
 
         (this.init)();
@@ -61,7 +43,6 @@ export class MainController {
     init() {
         this.$timeout(() => {
             this.setViewmode(this.currentViewmode);
-            this.setFilter(this.mode);
         });
 
         this.getContents();
