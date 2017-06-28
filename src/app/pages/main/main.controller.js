@@ -2,7 +2,7 @@
 export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
-        APIService, CookieService,
+        APIService, CookieService, SearchService,
         MAIN_GRID_INIT
     ) {
         'ngInject';
@@ -14,6 +14,7 @@ export class MainController {
 
         this.APIService = APIService;
         this.CookieService = CookieService;
+        this.SearchService = SearchService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
@@ -24,7 +25,7 @@ export class MainController {
             name: 'grid',
             icon: 'xi-border-all',
             width: 6,
-            selected: false
+            selected: true
         },{
             name: 'wide',
             icon: 'xi-layout-full-o',
@@ -39,13 +40,15 @@ export class MainController {
 
         this.sortFilter = [{
             name: 'Featured',
-            value: 'hot'
+            value: 'featured'
         },{
             name: 'Latest',
             value: 'latest'
         }];
 
         this.pageIndex = 0;
+        this.sortMode = 'featured';
+
         this.scrollDisabled = true;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
@@ -58,6 +61,7 @@ export class MainController {
     init() {
         this.$timeout(() => {
             this.setViewmode(this.currentViewmode);
+            this.setFilter(this.mode);
         });
 
         this.getContents();
@@ -81,8 +85,8 @@ export class MainController {
 
     setFilter(mode) {
         this.$log.debug('SET FILTER TO => ', mode);
+        this.sortMode = mode;
         this.contentsData = this.__initList__();
-        // this.$location.search({ sort: mode });
         this.getContents();
     }
 
@@ -103,8 +107,10 @@ export class MainController {
     }
 
     getContents() {
-        // const searcher = this.$location.search();
-        this.APIService.resource('contents.list').get({pageIndex: this.pageIndex})
+        this.APIService.resource('contents.list').get({
+            pageIndex: this.pageIndex,
+            sort: this.sortMode
+        })
         .then(res => {
             if(res.result && res.result.contents) {
                 this.__addContentToList__(res.result);
