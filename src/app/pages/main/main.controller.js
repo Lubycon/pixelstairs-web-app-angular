@@ -65,9 +65,12 @@ export class MainController {
     }
 
     setFilter(mode) {
-        this.$log.debug('SET FILTER TO => ', mode);
+        /* @LOG */ this.$log.debug('SET FILTER TO => ', mode);
+
         this.sortMode = mode;
         this.contentsData = this.__initList__();
+        this.pageIndex = 1;
+
         this.getContents();
     }
 
