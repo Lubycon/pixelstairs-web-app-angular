@@ -85,12 +85,12 @@ export class MainController {
     }
 
     onScroll() {
-        this.scrollDisabled = true;
         if(this.contentsData.list.length >= this.contentsData.totalCount) return false;
         this.getContents();
     }
 
     getContents() {
+        this.scrollDisabled = true;
         this.APIService.resource('contents.list').get({
             pageIndex: this.pageIndex,
             sort: this.sortMode
