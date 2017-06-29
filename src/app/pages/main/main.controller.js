@@ -30,7 +30,7 @@ export class MainController {
         }, {});
 
         this.pageIndex = 1;
-        this.sortMode = 'featured';
+        this.sortMode = this.sortFilter[0].value;
 
         this.scrollDisabled = true;
         this.busyInterval = 1000;

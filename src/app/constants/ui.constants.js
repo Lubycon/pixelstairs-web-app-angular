@@ -12,8 +12,8 @@ export const CONTENTS_VIEW_MODE = [{
 
 export const CONTENTS_SORT_FILTER = [{
     name: 'Featured',
-    value: 'featured'
+    value: 'featured:desc'
 },{
     name: 'Latest',
-    value: 'latest'
+    value: 'latest:desc'
 }];
