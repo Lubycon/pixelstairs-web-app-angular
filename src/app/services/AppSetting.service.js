@@ -78,10 +78,11 @@ export class AppSettingService {
     /* @PRIVATE METHOD */
     __setSetting__(data, storedData) {
         /*
-            0. 쿠키에서 기존 세팅값이 있는 지 검색
-            1. 기존 세팅값이 있다면 -> 기존 세팅 값과 현재 받아온 접속 위치의 국가코드가 다르다면 토스트 렌더
-            2. 기존 접속위치와 현재 접속위치가 달라졌습니다. 언어를 현재 접속 위치에 맞게 바꾸시겠습니까?
-            3. boolean -> exit 0
+            0. geo_locaiton메소드에서 정상적으로 리턴이 넘어왔는가? 아니라면 네트워크 상태 불량으로 판단.
+            1. 쿠키에서 기존 세팅값이 있는 지 검색
+            2. 기존 세팅값이 있다면 -> 기존 세팅 값과 현재 받아온 접속 위치의 국가코드가 다르다면 토스트 렌더
+            3. 기존 접속위치와 현재 접속위치가 달라졌습니다. 언어를 현재 접속 위치에 맞게 바꾸시겠습니까?
+            4. boolean -> exit 0
         */
 
         /*
@@ -92,7 +93,7 @@ export class AppSettingService {
             if(storedData) data = storedData; // 쿠키가 있다면 -> 쿠키로 대체
             else data = { country_code: 'US', language: 'en' }; // 쿠키도 없다면 기본값 US
         }
-        
+
         if(storedData && data.country_code !== storedData.country_code) {
             this.toastr.warning(`Your Location is changed from <br>${storedData.country_code} to ${data.country_code}.<br>If you want to change to new language, click this message`, '', {
                 timeOut: false,

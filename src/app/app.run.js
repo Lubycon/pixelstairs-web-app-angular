@@ -85,9 +85,8 @@ function __generateURL__(param, $document) {
     let url = param.url;
         url = url === '^' ? $document[0].referrer : param.url;
 
-    url = url.replace(/\:/g,'');
     key.forEach(v => {
-        url = url.replace(v,param.params[v]);
+        url = url.replace(`:${v}`, param.params[v]);
     });
 
     param.url = url;
