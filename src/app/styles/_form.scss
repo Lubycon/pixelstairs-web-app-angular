@@ -96,6 +96,7 @@ $mobile-input-height: 40px;
     tags-input.form-control {
         box-shadow: none;
         padding: 0 5px;
+        height: auto;
         * {
             font-family: $inconsolata;
         }
@@ -218,6 +219,10 @@ $mobile-input-height: 40px;
                 font-weight: 400;
                 font-size: 12px;
             }
+        }
+
+        footer {
+            margin-top: 30px;
         }
     }
 }

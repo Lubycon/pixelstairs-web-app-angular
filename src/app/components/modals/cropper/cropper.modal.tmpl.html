@@ -1,5 +1,8 @@
 <div class="modal-header">
-    <h3 class="modal-title">Cropper</h3>
+    <h3 class="modal-title">Crop your image!</h3>
+    <span class="header-close-btn" ng-click="CropperCtrl.cancel()">
+        <i class="xi-close"></i>
+    </span>
 </div>
 
 <div class="modal-body" id="modal-body">
@@ -15,5 +18,18 @@
 </div>
 
 <div class="modal-footer">
-    <button class="btn" ng-click="CropperCtrl.crop()">CROP</button>
+    <div class="btn-group row full-width">
+        <button
+            class="btn btn-lg col-sm-6 cancel-btn"
+            ng-click="CropperCtrl.cancel()"
+        >
+            <i class="xi-close"></i> CANCEL
+        </button>
+        <button
+            class="btn btn-lg col-sm-6 crop-btn"
+            ng-click="CropperCtrl.crop()"
+        >
+            <i class="xi-crop"></i> CROP
+        </button>
+    </div>
 </div>

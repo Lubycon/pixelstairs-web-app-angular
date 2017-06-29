@@ -1,5 +1,5 @@
-
-import { UserAgentDetection } from './ua.constant.js';
+import { UserAgentDetection } from './ua.constant';
+import { CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER } from './ui.constants';
 
 angular
     .module('app.constants', [
@@ -23,6 +23,8 @@ angular
     })
 
     .constant('MAIN_GRID_INIT', 'grid')
+    .constant('CONTENTS_VIEW_MODE', CONTENTS_VIEW_MODE)
+    .constant('CONTENTS_SORT_FILTER', CONTENTS_SORT_FILTER)
 
     .constant('USER_DEFAULT_PROFILE_IMG', 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/user/default_profile_image.png')
     ;

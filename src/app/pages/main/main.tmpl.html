@@ -11,6 +11,7 @@
             <ul>
                 <li
                     class="btn"
+                    ng-class="{'selected': filter.value === MainCtrl.sortMode}"
                     ng-repeat="filter in MainCtrl.sortFilter"
                     ng-click="MainCtrl.setFilter(filter.value)"
                 >

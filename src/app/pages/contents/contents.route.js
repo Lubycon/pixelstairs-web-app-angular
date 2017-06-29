@@ -23,5 +23,15 @@ export function routeConfig ($stateProvider) {
             controllerAs: 'ContentsUploadCtrl',
             authenticate: 'member:active'
         })
+        .state('common.default.contents-success', {
+            url: '/contents/success/:id',
+            templateUrl: 'app/pages/contents/contents-upload-success.tmpl.html',
+            controller: 'ContentsUploadSuccessController',
+            controllerAs: 'ContentsSuccessCtrl',
+            params: {
+                id: null
+            },
+            authenticate: 'member:active'
+        })
         ;
 }

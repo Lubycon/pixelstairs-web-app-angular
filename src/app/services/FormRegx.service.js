@@ -1,3 +1,10 @@
+/*
+    @name: FormRegx.service.js
+    @desc: 앱 폼 밸리데이션 체크 서비스
+    @author: Evan Moon
+    @created_at: 2017.05.08
+*/
+
 export class FormRegxService {
     constructor($log) {
         'ngInject';
@@ -6,18 +13,17 @@ export class FormRegxService {
 
         this.regx = {
             email: /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i,
-            title: /[a-zA-Z\d-\_\~\&\/\:\!\.\,\s]$/,
-            nickname: /[a-zA-Z\d-\_]$/,
-            passwordSpecialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`]/,
-            passwordMinLength: /^.{8,}$/,
+            basic: /[^]+$/,
+            nickname: /[^\!\@\#\$\%\^\&\*\.\,\`\"\'\s]+$/,
+            password: {
+                specialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`\s]/,
+                minlength: /^.{8,}$/,
+                repeat: /^(?:(.)(?!\1\1))*$/
+            },
             lowercase: /[a-z]/,
             uppercase: /[A-Z]/,
-            number: /[0-9]/,
-            ignoreRepeatWord: /^(?:(.)(?!\1\1))*$/,
-            context: /[a-zA-Z\d\.\,\!\@]$/
+            number: /[0-9]/
         };
-
-        this.avoidWord = ['sex', 'fuck', 'suck', 'shit', 'cunt', 'pussy'];
     }
 
     getRegx(name) {
@@ -36,13 +42,13 @@ export class FormRegxService {
                 regx: this.regx.number
             },{
                 score: 2,
-                regx: this.regx.passwordSpecialChars
+                regx: this.regx.password.specialChars
             },{
                 score: 5,
-                regx: this.regx.ignoreRepeatWord
+                regx: this.regx.password.repeat
             },{
                 score: 10,
-                regx: this.regx.passwordMinLength
+                regx: this.regx.password.minlength
             }
         ];
     }

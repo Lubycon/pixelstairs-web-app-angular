@@ -2,8 +2,8 @@
 export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
-        APIService, CookieService,
-        MAIN_GRID_INIT
+        APIService, CookieService, SearchService,
+        MAIN_GRID_INIT, CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER
     ) {
         'ngInject';
 
@@ -14,42 +14,27 @@ export class MainController {
 
         this.APIService = APIService;
         this.CookieService = CookieService;
+        this.SearchService = SearchService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.MAIN_GRID_INIT = MAIN_GRID_INIT;
-        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
+        this.viewmode = CONTENTS_VIEW_MODE;
+        this.sortFilter = CONTENTS_SORT_FILTER;
 
-        this.viewmode = [{
-            name: 'grid',
-            icon: 'xi-border-all',
-            width: 6,
-            selected: false
-        },{
-            name: 'wide',
-            icon: 'xi-layout-full-o',
-            width: 12,
-            selected: false
-        }];
+        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
 
         this.viewmodeKey = this.viewmode.reduce((a, b) => {
             a[b.name] = b;
             return a;
         }, {});
 
-        this.sortFilter = [{
-            name: 'Featured',
-            value: 'hot'
-        },{
-            name: 'Latest',
-            value: 'latest'
-        }];
+        this.pageIndex = 1;
+        this.sortMode = 'featured';
 
-        this.pageIndex = 0;
         this.scrollDisabled = true;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
-
         this.gridWidth = this.__getGridWidth__();
 
         (this.init)();
@@ -80,9 +65,12 @@ export class MainController {
     }
 
     setFilter(mode) {
-        this.$log.debug('SET FILTER TO => ', mode);
+        /* @LOG */ this.$log.debug('SET FILTER TO => ', mode);
+
+        this.sortMode = mode;
         this.contentsData = this.__initList__();
-        // this.$location.search({ sort: mode });
+        this.pageIndex = 1;
+
         this.getContents();
     }
 
@@ -103,8 +91,10 @@ export class MainController {
     }
 
     getContents() {
-        // const searcher = this.$location.search();
-        this.APIService.resource('contents.list').get({pageIndex: this.pageIndex})
+        this.APIService.resource('contents.list').get({
+            pageIndex: this.pageIndex,
+            sort: this.sortMode
+        })
         .then(res => {
             if(res.result && res.result.contents) {
                 this.__addContentToList__(res.result);

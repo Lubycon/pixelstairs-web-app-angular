@@ -12,9 +12,10 @@ export function routeConfig($stateProvider) {
             controllerAs: 'AboutusCtrl'
         })
         .state('common.default.terms', {
-            url: '/docs/terms/:lang',
+            url: '/docs/terms/:lang?section',
             params: {
-                lang: 'en'
+                lang: 'en',
+                section: null
             },
             templateUrl: ($stateProvider) => {
                 return `app/pages/company/terms-${$stateProvider.lang}.tmpl.html`;
@@ -23,9 +24,10 @@ export function routeConfig($stateProvider) {
             controllerAs: 'DocsCtrl'
         })
         .state('common.default.privacy-policy', {
-            url: '/docs/privacypolicy/:lang',
+            url: '/docs/privacypolicy/:lang?section',
             parmas: {
-                lang: 'en'
+                lang: 'en',
+                section: null
             },
             templateUrl: ($stateParams) => {
                 return `app/pages/company/privacyPolicy-${$stateParams.lang}.tmpl.html`;

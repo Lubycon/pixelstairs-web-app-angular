@@ -38,6 +38,7 @@ export class MemberSettingController {
         this.uploadedProfile = null;
 
         this.isBusy = false;
+        this.isProfileBusy = false;
     }
 
     changedFile(files, file, newFiles, invalidFiles) {
@@ -46,15 +47,33 @@ export class MemberSettingController {
         this.openCropModal();
     }
 
+    setProfileImg(croppedImg) {
+        this.memberProfile = {
+            file: croppedImg
+        };
+        this.memberData.profileImg = {
+            file: croppedImg
+        };
+    }
+
+    removeProfileImg() {
+        this.memberData.profileImg = { file: null, delete: true };
+        this.memberProfile = this.__getUserProfile__();
+        console.log(this.memberProfile);
+    }
+
     openCropModal() {
+        this.isProfileBusy = true;
         let modal = this.$uibModal.open({
+            windowClass: 'cropper-modal-window',
             animation: true,
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            backdrop: true,
+            backdrop: 'static',
             templateUrl: 'app/components/modals/cropper/cropper.modal.tmpl.html',
             controller: 'CropperModalController',
             controllerAs: 'CropperCtrl',
+            keyborad: true,
             resolve: {
                 data: () => {
                     return {
@@ -65,13 +84,11 @@ export class MemberSettingController {
         });
 
         modal.result.then(res => {
-            this.memberProfile = {
-                file: res.cropped
-            };
-            this.memberData.profileImg = {
-                file: res.cropped
-            };
+            this.setProfileImg(res.cropped);
+            this.isProfileBusy = false;
             /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', this.memberData.profileImg);
+        }, err => {
+            this.isProfileBusy = false;
         });
     }
 
@@ -79,9 +96,15 @@ export class MemberSettingController {
         this.isBusy = true;
         let data = angular.copy(this.memberData);
         /*@LOG*/ this.$log.debug(data);
-        this.APIService.resource('members.detail', { id: data.id }).post(data)
+
+        if(!data.profileImg) data.profileImg = { file: null };
+
+        this.APIService.resource('members.detail', { id: data.id }).put(data)
         .then(res => {
             alert('updated successfully!');
+            this.isBusy = false;
+        }, err => {
+            alert(`GET ERROR::${err.status.code} ${err.msg}`);
             this.isBusy = false;
         });
     }

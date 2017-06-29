@@ -1,0 +1,13 @@
+.cropper-modal-window {
+    .modal-footer {
+        .btn-group.row {
+            margin: 0;
+            .cancel-btn {
+                background-color: $dove-grey;
+            }
+            .crop-btn {
+                background-color: $mine-black;
+            }
+        }
+    }
+}

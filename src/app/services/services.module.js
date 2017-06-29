@@ -12,6 +12,7 @@ import { APIService } from './API.service';
 import { ImageService } from './Image.service';
 import { FormRegxService } from './FormRegx.service';
 import { ErrorCatcherService } from './ErrorCatcher.service';
+import { SearchService } from './Search.service';
 
 import { DummyService } from './Dummy.service';
 
@@ -45,6 +46,8 @@ angular
     .service('ImageService', ImageService)
 
     .service('FormRegxService', FormRegxService)
+
+    .service('SearchService', SearchService)
 
     .service('ErrorCatcherService', ErrorCatcherService)
     .factory('$exceptionHandler', function errorHandler(ErrorCatcherService) {
