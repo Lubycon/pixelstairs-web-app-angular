@@ -103,7 +103,10 @@ export class AppSettingService {
                 tapToDismiss: false,
                 onTap: () => { this.__removeStoredData__('reload'); }
             });
-            this.$rootScope.setting = storedData;
+
+            console.log(storedData, data);
+
+            this.$rootScope.setting = angular.extend({}, storedData, data);
         }
         else if(storedData && data.country_code === storedData.country_code) {
             this.$rootScope.setting = storedData;
