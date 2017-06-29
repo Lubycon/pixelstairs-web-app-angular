@@ -1,6 +1,6 @@
 export class MemberSettingController {
     constructor(
-        $rootScope, $log, $uibModal,
+        $rootScope, $log, $uibModal, toastr,
         USER_DEFAULT_PROFILE_IMG,
         APIService, ImageService, FormRegxService, getMemberRsv
     ) {
@@ -9,6 +9,7 @@ export class MemberSettingController {
         this.$rootScope = $rootScope;
         this.$log = $log;
         this.$uibModal = $uibModal;
+        this.toastr = toastr;
 
         this.APIService = APIService;
         this.ImageService = ImageService;
@@ -101,10 +102,10 @@ export class MemberSettingController {
 
         this.APIService.resource('members.detail', { id: data.id }).put(data)
         .then(res => {
-            alert('updated successfully!');
+            this.toastr.success('Upload successfully');
             this.isBusy = false;
         }, err => {
-            alert(`GET ERROR::${err.status.code} ${err.msg}`);
+            this.toastr.error(`GET ERROR::${err.status.code} ${err.msg}`);
             this.isBusy = false;
         });
     }
