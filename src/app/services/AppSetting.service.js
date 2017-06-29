@@ -83,6 +83,16 @@ export class AppSettingService {
             2. 기존 접속위치와 현재 접속위치가 달라졌습니다. 언어를 현재 접속 위치에 맞게 바꾸시겠습니까?
             3. boolean -> exit 0
         */
+
+        /*
+            @TEST -> offline
+            data값이 없는 상황은 ip API와의 통신이 실패했다는 것을 의미한다.
+        */
+        if(!data) {
+            if(storedData) data = storedData; // 쿠키가 있다면 -> 쿠키로 대체
+            else data = { country_code: 'US', language: 'en' }; // 쿠키도 없다면 기본값 US
+        }
+        
         if(storedData && data.country_code !== storedData.country_code) {
             this.toastr.warning(`Your Location is changed from <br>${storedData.country_code} to ${data.country_code}.<br>If you want to change to new language, click this message`, '', {
                 timeOut: false,

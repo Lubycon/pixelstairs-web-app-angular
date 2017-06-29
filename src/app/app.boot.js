@@ -18,7 +18,7 @@ export default {
         }).then(res => {
             defer.resolve(res);
         }, err => {
-            defer.reject(err);
+            defer.reject();
         });
 
         return defer;
