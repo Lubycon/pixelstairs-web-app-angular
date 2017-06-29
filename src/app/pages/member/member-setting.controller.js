@@ -111,15 +111,18 @@ export class MemberSettingController {
 
     /* PRIVATE METHOD */
     __getUserProfile__(profileImg) {
+        let tmp;
+
         if(profileImg) {
-            profileImg.file = this.ImageService.getUserProfile(profileImg);
+            tmp = angular.extend({}, profileImg);
+            tmp.file = this.ImageService.getUserProfile(profileImg);
         }
         else {
-            profileImg = {
+            tmp = {
                 file: this.ImageService.getUserProfile(profileImg)
             };
         }
 
-        return profileImg;
+        return tmp;
     }
 }
