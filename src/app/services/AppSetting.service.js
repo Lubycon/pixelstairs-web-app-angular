@@ -70,6 +70,15 @@ export class AppSettingService {
         this.Restangular.setDefaultHeaders(defaultHeaders);
     }
 
+    updateMemberData(memberData) {
+        if(!memberData) {
+            console.error('No member data');
+            return false;
+        }
+        
+        this.$rootScope.member = memberData;
+    }
+
 
 
 

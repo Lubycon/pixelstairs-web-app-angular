@@ -2,7 +2,7 @@ export class MemberSettingController {
 
     constructor(
         $rootScope, $log, $uibModal, toastr,
-        USER_DEFAULT_PROFILE_IMG,
+        USER_DEFAULT_PROFILE_IMG, AppSettingService,
         APIService, ImageService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
@@ -12,6 +12,7 @@ export class MemberSettingController {
         this.$uibModal = $uibModal;
         this.toastr = toastr;
 
+        this.AppSettingService = AppSettingService;
         this.APIService = APIService;
         this.ImageService = ImageService;
         this.FormRegxService = FormRegxService;
@@ -102,9 +103,11 @@ export class MemberSettingController {
 
         this.APIService.resource('members.detail', { id: data.id }).put(data)
         .then(res => {
-            console.log(res);
             this.toastr.success('Upload successfully');
             this.isBusy = false;
+
+            this.AppSettingService.updateMemberData(res.result);
+            this.$rootScope.$broadcast('update-member-data');
         }, err => {
             this.toastr.error(`GET ERROR::${err.status.code} ${err.msg}`);
             this.isBusy = false;

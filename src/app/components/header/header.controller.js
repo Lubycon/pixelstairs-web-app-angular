@@ -1,12 +1,13 @@
 export class HeaderController {
     constructor(
-        $rootScope, $log,
+        $rootScope, $scope, $log,
         USER_DEFAULT_PROFILE_IMG,
         AuthenticationService, ImageService
     ) {
         'ngInject';
 
         this.$rootScope = $rootScope;
+        this.$scope = $scope;
         this.$log = $log;
         this.AuthenticationService = AuthenticationService;
         this.ImageService = ImageService;
@@ -19,6 +20,14 @@ export class HeaderController {
 
         this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
+
+        (this.init)();
+    }
+
+    init() {
+        this.$scope.$on('update-member-data', () => {
+            this.memberProfile = this.ImageService.getUserProfile(this.$rootScope.member.profileImg);
+        });
     }
 
     signout() {
