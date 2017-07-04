@@ -2,8 +2,9 @@
  *  If you want to override some bootstrap variables, you have to change values here.
  *  The list of variables are listed here bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
  */
-$navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
+
+/* WARNING */
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -19,6 +20,8 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 // injector
 // endinjector
 
+/* WARNING */
+
 /* FONT */
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 // @font-face {
@@ -29,8 +32,4 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
 // }
 /* ==== */
 
-/* DEBUG */
-// * {
-//     border: 1px solid #ff0000 !important;
-//     box-sizing: border-box !important;
-// }
+@import './styles/__module__';

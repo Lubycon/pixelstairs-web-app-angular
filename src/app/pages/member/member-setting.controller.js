@@ -1,4 +1,5 @@
 export class MemberSettingController {
+
     constructor(
         $rootScope, $log, $uibModal, toastr,
         USER_DEFAULT_PROFILE_IMG,
@@ -60,7 +61,6 @@ export class MemberSettingController {
     removeProfileImg() {
         this.memberData.profileImg = { file: null, delete: true };
         this.memberProfile = this.__getUserProfile__();
-        console.log(this.memberProfile);
     }
 
     openCropModal() {
@@ -102,6 +102,7 @@ export class MemberSettingController {
 
         this.APIService.resource('members.detail', { id: data.id }).put(data)
         .then(res => {
+            console.log(res);
             this.toastr.success('Upload successfully');
             this.isBusy = false;
         }, err => {

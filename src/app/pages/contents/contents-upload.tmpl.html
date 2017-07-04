@@ -9,7 +9,7 @@
                     <h3>{{'SCRIPT.HELP_CONTENT_UPLOAD.H3' | translate}}</h3>
                     <p
                         translate="SCRIPT.HELP_CONTENT_UPLOAD.P"
-                        translate-values="{ lang: ContentsUploadCtrl.lang, section: 2}"    
+                        translate-values="{ lang: ContentsUploadCtrl.lang, section: 2}"
                     ></p>
                 </div>
                 <div ng-if="ContentsUploadCtrl.contentData.image.file" class="uploaded-img-wrapper col-lg-offset-3 col-lg-6">
@@ -88,7 +88,7 @@
                                 required
                             ></tags-input>
                             <div ng-messages="ContentsUploadCtrl.form.tags.$error" class="error-msg">
-                                <p ng-message="pattern">You can use only english</p>
+                                <p ng-message="leftoverText">You can use only english</p>
                             </div>
                         </div>
                         <div class="input-container row">
