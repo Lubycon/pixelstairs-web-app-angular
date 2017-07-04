@@ -80,15 +80,19 @@
                                 min-length="2"
                                 max-length="30"
                                 min-tags="1"
-                                max-tags="20"
+                                max-tags="5"
                                 allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
                                 placeholder="{{'PLACEHOLDER.TAGS' | translate}}"
                                 add-on-space="true"
                                 add-on-blur="true"
+                                allow-leftover-text="false"
+                                on-invalid-tag="ContentsUploadCtrl.setTagError($tag)"
+                                on-tag-added="ContentsUploadCtrl.setNewTag($tag)"
                                 required
                             ></tags-input>
                             <div ng-messages="ContentsUploadCtrl.form.tags.$error" class="error-msg">
-                                <p ng-message="leftoverText">You can use only english</p>
+                                <p ng-message="invalidTag">{{ContentsUploadCtrl.invalidTag}} is not available. please make sure that you writen in English or same tag again.</p>
+                                <p ng-message="maxTags">max tag length is 5</p>
                             </div>
                         </div>
                         <div class="input-container row">
@@ -106,7 +110,7 @@
                             <button
                                 type="submit"
                                 class="btn full-width"
-                                ng-disabled="ContentsUploadCtrl.form.$invalid && !ContentsUploadCtrl.contentData.image.file"
+                                ng-disabled="ContentsUploadCtrl.form.$invalid || !ContentsUploadCtrl.contentData.image.file"
                             >
                                 <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
                                 <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>

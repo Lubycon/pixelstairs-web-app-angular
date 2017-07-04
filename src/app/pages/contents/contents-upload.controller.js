@@ -43,6 +43,22 @@ export class ContentsUploadController {
         });
     }
 
+    setTagError($tag) {
+        this.form.tags.$setValidity('invalidTag', false);
+        this.invalidTag = $tag.text;
+    }
+
+    setNewTag($tag, event) {
+        this.form.tags.$setValidity('invalidTag', true);
+        this.form.tags.$setPristine();
+        this.invalidTag = null;
+
+        if(this.contentData.hashTags.length > 5) {
+            this.form.tags.$setValidity('maxTags', false);
+            this.contentData.hashTags.pop();
+        }
+    }
+
     postData() {
         if(this.isBusy) return false;
 
