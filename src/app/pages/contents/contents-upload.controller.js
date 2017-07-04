@@ -53,7 +53,7 @@ export class ContentsUploadController {
         this.form.tags.$setPristine();
         this.invalidTag = null;
 
-        if(this.contentData.hashTags.length > 5) {
+        if(this.contentData.hashTags.length > 20) {
             this.form.tags.$setValidity('maxTags', false);
             this.contentData.hashTags.pop();
         }

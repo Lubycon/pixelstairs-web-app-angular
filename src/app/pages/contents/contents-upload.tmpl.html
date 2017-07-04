@@ -80,7 +80,7 @@
                                 min-length="2"
                                 max-length="30"
                                 min-tags="1"
-                                max-tags="5"
+                                max-tags="20"
                                 allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
                                 placeholder="{{'PLACEHOLDER.TAGS' | translate}}"
                                 add-on-space="true"
@@ -92,7 +92,7 @@
                             ></tags-input>
                             <div ng-messages="ContentsUploadCtrl.form.tags.$error" class="error-msg">
                                 <p ng-message="invalidTag">{{ContentsUploadCtrl.invalidTag}} is not available. please make sure that you writen in English or same tag again.</p>
-                                <p ng-message="maxTags">max tag length is 5</p>
+                                <p ng-message="maxTags">max tag length is 20</p>
                             </div>
                         </div>
                         <div class="input-container row">
