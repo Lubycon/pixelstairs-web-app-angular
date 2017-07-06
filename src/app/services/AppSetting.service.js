@@ -6,7 +6,7 @@ export class AppSettingService {
     constructor (
         $rootScope, $http, $log, $q, $translate, $window,
         Restangular, CookieService, toastr,
-        CUSTOM_HEADER_PREFIX
+        CUSTOM_HEADER_PREFIX, IP_API
     ) {
         'ngInject';
 
@@ -23,18 +23,13 @@ export class AppSettingService {
         this.toastr = toastr;
 
         this.CUSTOM_HEADER_PREFIX = CUSTOM_HEADER_PREFIX;
+        this.IP_API = IP_API;
     }
 
     init() {
         /*LOG*/ this.$log.debug('App Setting init start...');
         let defer = this.$q.defer();
-
-        const NEW_DATA = window.client_geo_location;
-        const STORED_DATA = this.CookieService.get('setting');
-
-        this.__setSetting__(NEW_DATA, STORED_DATA);
-
-        defer.resolve();
+        this.__setSetting__().then(() => defer.resolve() );
 
         return defer.promise;
     }
@@ -75,75 +70,93 @@ export class AppSettingService {
             console.error('No member data');
             return false;
         }
-        
+
         this.$rootScope.member = memberData;
     }
 
 
 
 
-
-
     /* @PRIVATE METHOD */
-    __setSetting__(data, storedData) {
-        /*
-            0. geo_locaiton메소드에서 정상적으로 리턴이 넘어왔는가? 아니라면 네트워크 상태 불량으로 판단.
-            1. 쿠키에서 기존 세팅값이 있는 지 검색
-            2. 기존 세팅값이 있다면 -> 기존 세팅 값과 현재 받아온 접속 위치의 국가코드가 다르다면 토스트 렌더
-            3. 기존 접속위치와 현재 접속위치가 달라졌습니다. 언어를 현재 접속 위치에 맞게 바꾸시겠습니까?
-            4. boolean -> exit 0
-        */
+    __setSetting__() {
+        let defer = this.$q.defer();
 
-        /*
-            @TEST -> offline
-            data값이 없는 상황은 ip API와의 통신이 실패했다는 것을 의미한다.
-        */
-        if(!data) {
-            if(storedData) data = storedData; // 쿠키가 있다면 -> 쿠키로 대체
-            else data = { country_code: 'US', language: 'en' }; // 쿠키도 없다면 기본값 US
-        }
+        const STORED_SETTING = this.CookieService.get('setting');
+        const DEFAULT_SETTING = { country_code: 'US', language: 'en-US' };
 
-        if(storedData && data.country_code !== storedData.country_code) {
-            this.toastr.warning(`Your Location is changed from <br>${storedData.country_code} to ${data.country_code}.<br>If you want to change to new language, click this message`, '', {
-                timeOut: false,
-                closeButton: true,
-                extendedTimeOut: 100000,
-                toastClass: 'toast toast-location-change',
-                tapToDismiss: false,
-                onTap: () => { this.__removeStoredData__('reload'); }
-            });
+        /* DEFAULT SETTING START */
+        if(STORED_SETTING) this.$rootScope.setting = STORED_SETTING;
+        else this.$rootScope.setting = DEFAULT_SETTING;
+        this.__setHTTPHeader__(this.$rootScope.setting);
+        this.__setTranslateLanguage__(this.$rootScope.setting);
+        this.__setStoredData__(this.$rootScope.setting);
+        /* DEFAULT SETTING END */
 
-            console.log(storedData, data);
+        /* OPTIONAL SETTING START */
+        this.__getLocationByIp__().then(res => {
+            const countryVal = {
+                oldVal: this.$rootScope.setting.country_code,
+                newVal: res.country_code
+            };
 
-            this.$rootScope.setting = angular.extend({}, storedData, data);
-        }
-        else if(storedData && data.country_code === storedData.country_code) {
-            this.$rootScope.setting = storedData;
-        }
-        else this.$rootScope.setting = data;
+            /* GETTING NEW LOCATION */
+            if(countryVal.oldVal !== countryVal.newVal) {
+                this.toastr.warning(`Your current location is "${countryVal.newVal}".<br> click this message if you want to change your language!`, '', {
+                    timeOut: false,
+                    closeButton: true,
+                    extendedTimeOut: 100000,
+                    toastClass: 'toast toast-location-change',
+                    tapToDismiss: false,
+                    onTap: () => {
+                        res.language = this.__setLanguage__(res.country_code);
+                        this.__setStoredData__(res, 'reload');
+                    }
+                });
 
-        /*LOG*/ this.$log.debug('SETTING DATA => ', this.$rootScope.setting);
+                return null;
+            }
+            /* GETTING NEW LOCATION END */
 
-        let tmp = {},
-            lang = this.__setLanguage__(this.$rootScope.setting.country_code);
+            return res;
+        }, err => {
+            return null;
+        }).then(res => {
+            if(res) {
+                res.language = this.__setLanguage__(res.country_code);
+                this.$rootScope.setting = res;
+            }
 
-        this.$rootScope.setting.language = lang;
-        tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
-        tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = this.$rootScope.setting.country_code;
+            /*LOG*/ this.$log.debug('SETTING DATA => ', this.$rootScope.setting);
 
-        this.$translate.use(this.$rootScope.setting.language.split('-')[0]);
+            this.__setHTTPHeader__(this.$rootScope.setting);
+            this.__setTranslateLanguage__(this.$rootScope.setting);
+            this.__setStoredData__(this.$rootScope.setting);
+        }).then(() => {
+            defer.resolve();
+        });
+        /* OPTIONAL SETTING END */
 
-        let defaultHeaders = angular.extend({}, this.Restangular.defaultHeaders, tmp);
-
-        this.Restangular.setDefaultHeaders(defaultHeaders);
-
-        this.CookieService.put('setting', this.$rootScope.setting);
-
-        /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
+        return defer.promise;
     }
 
-    __removeStoredData__(reload) {
-        this.CookieService.remove('setting');
+    __getLocationByIp__() {
+        let defer = this.$q.defer();
+
+        $.ajax({
+            url: this.IP_API,
+            dataType: 'json',
+            type: 'GET'
+        }).then(res => {
+            defer.resolve(res);
+        }, err => {
+            defer.reject();
+        });
+
+        return defer.promise;
+    }
+
+    __setStoredData__(setting, reload) {
+        this.CookieService.put('setting', setting);
         if(reload === 'reload') this.$window.location.reload();
     }
 
@@ -152,5 +165,23 @@ export class AppSettingService {
             case 'KR': return 'ko-KR';
             default: return 'en-US';
         }
+    }
+
+    __setHTTPHeader__(setting) {
+        let tmp = {},
+            lang = setting.language;
+
+        tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = setting.country_code;
+
+        let headers = angular.extend({}, this.Restangular.defaultHeaders, tmp);
+
+        this.Restangular.setDefaultHeaders(headers);
+
+        /*@LOG*/ this.$log.debug('HTTP HEADER => ', this.Restangular.defaultHeaders);
+    }
+
+    __setTranslateLanguage__(setting) {
+        this.$translate.use(setting.language.split('-')[0]);
     }
 }

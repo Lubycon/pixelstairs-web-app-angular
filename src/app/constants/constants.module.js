@@ -27,4 +27,5 @@ angular
     .constant('CONTENTS_SORT_FILTER', CONTENTS_SORT_FILTER)
 
     .constant('USER_DEFAULT_PROFILE_IMG', 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/user/default_profile_image.png')
+    .constant('IP_API', 'https://freegeoip.net/json/')
     ;
