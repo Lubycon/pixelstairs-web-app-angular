@@ -13,21 +13,18 @@ export class HeaderController {
         this.ImageService = ImageService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
-        this.isSignin = $rootScope.authStatus && $rootScope.authStatus.sign;
 
-        this.memberStatus = this.isSignin ? $rootScope.member.status : null;
-        this.memberProfile = this.isSignin && ImageService.getUserProfile($rootScope.member.profileImg);
-
-        this.linkList = this.__getMenuList__(this.isMobile);
-        this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
+        this.$scope.$on('update-member-data', () => {
+            (this.init)();
+        });
 
         (this.init)();
     }
 
     init() {
-        this.$scope.$on('update-member-data', () => {
-            this.memberProfile = this.ImageService.getUserProfile(this.$rootScope.member.profileImg);
-        });
+        this.__setMemberData__();
+        this.linkList = this.__getMenuList__(this.isMobile);
+        this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
 
     signout() {
@@ -35,6 +32,18 @@ export class HeaderController {
     }
 
     /* @PRIVATE METHOD */
+    __setMemberData__() {
+        this.isSignin = this.$rootScope.authStatus &&
+            this.$rootScope.authStatus.sign &&
+            !!this.$rootScope.member;
+
+        this.memberStatus = this.isSignin &&
+            this.$rootScope.member.status;
+
+        this.memberProfile = this.isSignin &&
+            this.ImageService.getUserProfile(this.$rootScope.member.profileImg);
+    }
+
     __getMenuList__(isMobile) {
         let linkList = [];
 

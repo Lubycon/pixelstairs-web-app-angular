@@ -99,6 +99,7 @@
         "FINISH" : "Finish",
         "CONTINUE" : "Continue",
         "CHANGE" : "Change",
+        "UPDATE": "Update",
         "SIGNUP_BTN": "Submit & Start as a member",
         "SEND" : {
             "EMAIL": "Send me Email",
@@ -110,7 +111,11 @@
     "FORM_ERROR": {
         "WRONG_EMAIL": "It is not a email address.",
         "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again.",
-        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다. (영어)"
+        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다. (영어)",
+        "TAG": {
+            "WRONG_TAG": "{{tag}} is not available. please make sure that you writen in English or same tag again.",
+            "MAX_TAG": "You can only enter up to 20 tags."
+        }
     },
     "PLACEHOLDER": {
         "TITLE": "Write down the title of your artwork",
@@ -144,6 +149,9 @@
         "TITLE": "Find Account Password",
         "DESC": "First, you need to send the member authentication email to your account email addressand go through the confirmation process.<br>Please, Enter your email address below and click button to send the email to your address.",
         "FINISH_SEND": "Check the email at \"{{email}}\""
+    },
+    "ACCOUNT_SETTING": {
+        "DESC": "You can change your account information here."
     },
     "CONTENTS_DETAIL": {
         "LICENSE_INFO": {

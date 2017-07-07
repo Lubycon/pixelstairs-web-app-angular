@@ -99,6 +99,7 @@
         "FINISH" : "완료",
         "CONTINUE" : "계속",
         "CHANGE" : "변경",
+        "UPDATE": "변경",
         "SIGNUP_BTN": "가입 완료 및 로그인",
         "SEND" : {
             "EMAIL": "이메일 보내기",
@@ -110,7 +111,11 @@
     "FORM_ERROR": {
         "WRONG_EMAIL": "메일 형식이 맞지 않습니다.",
         "WRONG_REPEAT_PASSWORD": "비밀번호가 일치하지 않습니다.",
-        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다."
+        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다.",
+        "TAG": {
+            "WRONG_TAG": "{{tag}}는 올바르지 않은 태그입니다. 태그에는 영어만 입력될 수 있습니다. 또는 중복된 태그가 아닌지 확인해주세요.",
+            "MAX_TAG": "태그는 20개까지만 입력하실 수 있습니다"
+        }
     },
     "PLACEHOLDER": {
         "TITLE": "작품의 제목을 입력하세요",
@@ -144,6 +149,9 @@
         "TITLE": "비밀번호를 잊으셨나요?",
         "DESC": "비밀번호를 찾으시려면 먼저 이메일 인증이 필요합니다.<br>이메일을 입력하시고 발송된 인증메일을 확인해주세요.",
         "FINISH_SEND": "\"{{email}}\"로 인증 메일이 발송되었습니다"
+    },
+    "ACCOUNT_SETTING": {
+        "DESC": "계정의 정보를 변경합니다"
     },
     "CONTENTS_DETAIL": {
         "LICENSE_INFO": {
