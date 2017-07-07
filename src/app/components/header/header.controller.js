@@ -45,7 +45,7 @@ export class HeaderController {
         else {
             /*@DESKTOP MENU*/
             linkList = [{
-                name: 'Submit Artwork',
+                name: 'HEADER.UPLOAD_ARTWORK',
                 link: 'common.default.contents-upload',
                 signin: true
             }];
@@ -59,12 +59,12 @@ export class HeaderController {
         if(!this.isSignin) return linkList;
 
         linkList = [{
-            name: 'Setting',
+            name: 'MENU.ACCOUNT_SETTING',
             link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
             icon: 'xi-cog',
             ignore: 'inactive'
         },{
-            name: 'Authentication',
+            name: 'MENU.AUTHENTICATION',
             link: 'common.default.auth-signup',
             icon: 'xi-key',
             ignore: 'active'

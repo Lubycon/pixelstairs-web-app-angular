@@ -25,6 +25,20 @@
     "SNS_NAME" : {
         "0100" : "E-mail"
     },
+    "MENU": {
+        "FIND_PASSWORD": "Find password",
+        "ACCOUNT_SETTING": "Account Setting",
+        "AUTHENTICATION": "Authentication"
+    },
+    "HEADER": {
+        "UPLOAD_ARTWORK": "Upload Artwork"
+    },
+    "FOOTER": {
+        "ABOUT_US": "About us",
+        "CONTACT": "Contact us",
+        "TERMS_OF_SERVICE": "Terms of service",
+        "PRIVACY_POLICY": "Privacy policy"
+    },
     "LABEL" : {
         "EMAIL": "E-mail",
         "PASSWORD": "Password",
@@ -36,11 +50,17 @@
         "SIGNIN": "Sign in",
         "SIGNUP": "Sign up",
         "SIGNOUT": "Sign out",
-        "SUBMIT_ARTWORK": "Submit artwork",
 
         "TITLE": "Title",
         "TAGS": "Tags",
-        "DESCRIPTION": "Description"
+        "DESCRIPTION": "Description",
+        "LICENSE": "License",
+
+        "LIKE": "Like",
+        "VIEW": "Views",
+
+        "FEATURED": "Featured",
+        "LATEST": "Latest"
     },
     "LICENSE" : {
         "1000" : "Creative Commons license",
@@ -80,6 +100,10 @@
         "CONTINUE" : "Continue",
         "CHANGE" : "Change",
         "SIGNUP_BTN": "Submit & Start as a member",
+        "SEND" : {
+            "EMAIL": "Send me Email",
+            "EMAIL_AGAIN": "Send Again"
+        },
         "BACK_TO_LIST": "Back to list",
         "GO_TO_MAIN": "Go to main"
     },
@@ -111,6 +135,21 @@
         "502" : "The Pixelstairs server is sleeping for a while.",
         "504" : "tic tac! sorry, times up.",
         "507" : "One day... we hope the users presents an awwwesome server for us."
+    },
+
+    "SIGN_UP": {
+        "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."
+    },
+    "FIND_PASSWORD": {
+        "TITLE": "Find Account Password",
+        "DESC": "First, you need to send the member authentication email to your account email addressand go through the confirmation process.<br>Please, Enter your email address below and click button to send the email to your address.",
+        "FINISH_SEND": "Check the email at \"{{email}}\""
+    },
+    "CONTENTS_DETAIL": {
+        "LICENSE_INFO": {
+            "CC": "Click here to know more info",
+            "PXS": "or click here and read the pixelstairs <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a>."
+        }
     },
     "ABOUT_US" : {
         "INTRO" : {

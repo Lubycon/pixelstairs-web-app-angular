@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="content-info-row tag-desc">
-                    <h6 class="attr-title"><i class="xi-tag"></i> tags</h6>
+                    <h6 class="attr-title"><i class="xi-tag"></i> <span>{{'LABEL.TAGS' | translate}}</span></h6>
                     <ul class="tags">
                         <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
                             {{tag}}
@@ -35,12 +35,12 @@
                 </div>
 
                 <div class="content-info-row content-desc">
-                    <h6 class="attr-title"><i class="xi-info-o"></i> <span>description</span></h6>
+                    <h6 class="attr-title"><i class="xi-info-o"></i> <span>{{'LABEL.DESCRIPTION' | translate}}</span></h6>
                     <p>{{ContentsDetailCtrl.data.description}}</p>
                 </div>
 
                 <div class="content-info-row license-desc">
-                    <h6 class="attr-title"><i class="xi-cc-cc"></i> <span>license</span></h6>
+                    <h6 class="attr-title"><i class="xi-cc-cc"></i> <span>{{'LABEL.LICENSE' | translate}}</span></h6>
                     <ul class="license-icon-wrapper">
                         <li
                             ng-repeat="model in ContentsDetailCtrl.ccData.model"
@@ -51,20 +51,28 @@
                         </li>
                     </ul>
                     <div class="license-sub-desc">
-                        <p><a ng-href="{{ContentsDetailCtrl.ccData.url}}" target="_blank">Click here for more Info</a></p>
-                        <p class="terms-link">or click here and read the pixelstairs
-                            <a ui-sref="common.default.terms({ lang: ContentsDetailCtrl.lang })" target="_blank">terms of service</a>
-                        .</p>
+                        <p>
+                            <a ng-href="{{ContentsDetailCtrl.ccData.url}}" target="_blank">
+                            {{'CONTENTS_DETAIL.LICENSE_INFO.CC' | translate}}
+                            </a>
+                        </p>
+                        <p class="terms-link" translate="CONTENTS_DETAIL.LICENSE_INFO.PXS" translate-values="{ lang: ContentDetailCtrl.lang }"></p>
                     </div>
                 </div>
 
                 <div class="content-info-row like-counter row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <h6 class="attr-title"><i class="xi-heart-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> like</span></h6>
+                        <h6 class="attr-title">
+                            <i class="xi-heart-o"></i>
+                            <span ng-if="!ContentsDetailCtrl.isMobile"> {{'LABEL.LIKE' | translate}}</span>
+                        </h6>
                         <p>{{ContentsDetailCtrl.data.counts.like | numberSuffixFilter:1}}</p>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <h6 class="attr-title"><i class="xi-eye-o"></i><span ng-if="!ContentsDetailCtrl.isMobile"> view</span></h6>
+                        <h6 class="attr-title">
+                            <i class="xi-eye-o"></i>
+                            <span ng-if="!ContentsDetailCtrl.isMobile"> {{'LABEL.VIEW' | translate}}</span>
+                        </h6>
                         <p>{{ContentsDetailCtrl.data.counts.view | numberSuffixFilter:1}}</p>
                     </div>
                 </div>

@@ -96,12 +96,11 @@
                         ></datepicker>
                     </div>
 
-                    <p class="form-desc">
-                        If you press the button below, it is assumed that you have agreed to our
-                        <a ui-sref="common.default.terms" target="_blank">terms of service</a>
-                        and
-                        <a ui-sref="common.default.privacy-policy" target="_blank">privacy policy</a>.
-                    </p>
+                    <p
+                        class="form-desc"
+                        translate="SIGN_UP.POLICY"
+                        translate-values="{ lang: SignupCtrl.lang }"
+                    ></p>
 
                     <button
                         class="signin-btn btn full-width"

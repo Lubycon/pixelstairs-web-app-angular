@@ -20,7 +20,7 @@
                 ng-repeat="link in GlobalHeaderCtrl.linkList"
                 ng-if="link.signin === GlobalHeaderCtrl.isSignin"
             >
-                <a ui-sref="{{link.link}}">{{link.name}}</a>
+                <a ui-sref="{{link.link}}">{{link.name | translate}}</a>
             </li>
             <li
                 class="sign-menu"
@@ -51,7 +51,7 @@
                         ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
                     >
                         <a ui-sref="{{link.link}}">
-                            <span>{{link.name}}</span>
+                            <span>{{link.name | translate}}</span>
                             <i class="{{link.icon}}"></i>
                         </a>
                     </li>
