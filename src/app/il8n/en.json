@@ -4,6 +4,7 @@
         "00": "The Pixelstairs is dedicated to providing better opportunities",
         "01": "for their works and another inspired interaction with every artist in the world."
     },
+    "LOCATION_CHANGE": "Your current location is \"{{name}}\". <br> Click this message if you want to change your language!",
     "LANGUAGE" : {
         "KO" : {
             "TXT" : "Korean",
