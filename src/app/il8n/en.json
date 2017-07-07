@@ -79,11 +79,13 @@
         "CONTINUE" : "Continue",
         "CHANGE" : "Change",
         "SIGNUP_BTN": "Submit & Start as a member",
-        "BACK_TO_LIST": "Back to list"
+        "BACK_TO_LIST": "Back to list",
+        "GO_TO_MAIN": "Go to main"
     },
     "FORM_ERROR": {
         "WRONG_EMAIL": "It is not a email address.",
-        "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again."
+        "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again.",
+        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다. (영어)"
     },
     "PLACEHOLDER": {
         "TITLE": "Write down the title of your artwork",

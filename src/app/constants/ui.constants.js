@@ -1,7 +1,7 @@
 export const CONTENTS_VIEW_MODE = [{
     name: 'grid',
     icon: 'xi-border-all',
-    width: 6,
+    width: 4,
     selected: true
 },{
     name: 'wide',
