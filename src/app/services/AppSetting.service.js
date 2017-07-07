@@ -93,7 +93,8 @@ export class AppSettingService {
         /* DEFAULT SETTING END */
 
         /* OPTIONAL SETTING START */
-        this.__getLocationByIp__().then(res => {
+
+        this.__getLocationInfo__().then(res => {
             const countryVal = {
                 oldVal: this.$rootScope.setting.country_code,
                 newVal: res.country_code
@@ -101,7 +102,7 @@ export class AppSettingService {
 
             /* GETTING NEW LOCATION */
             if(countryVal.oldVal !== countryVal.newVal) {
-                this.toastr.warning(`Your current location is "${countryVal.newVal}".<br> click this message if you want to change your language!`, '', {
+                this.toastr.warning(`Your current location is "${res.country_name} / ${res.native_country_name}".<br> click this message if you want to change your language!`, '', {
                     timeOut: false,
                     closeButton: true,
                     extendedTimeOut: 100000,
@@ -139,11 +140,60 @@ export class AppSettingService {
         return defer.promise;
     }
 
+    __getLocationInfo__() {
+        let defer = this.$q.defer();
+
+        const starter = () => {
+            let dummyDefer = this.$q.defer();
+            dummyDefer.resolve();
+            return dummyDefer.promise;
+        };
+
+        let info = null;
+
+        starter()
+        .then(() => {
+            return this.__getLocationByIp__();
+        }).then(res => {
+            info = res;
+            return this.__getLocationDetail__(info.country_code);
+        }, err => {
+            console.error('ERROR:: ip location api is not working');
+            defer.reject();
+        }).then(res => {
+            info.native_country_name = res.nativeName;
+            defer.resolve(info);
+        }, err => {
+            console.error('ERROR:: ip detail location api is not working');
+            info.native_country_name = null;
+            defer.resolve(info);
+        });
+
+        return defer.promise;
+    }
+
     __getLocationByIp__() {
         let defer = this.$q.defer();
 
         $.ajax({
             url: this.IP_API,
+            dataType: 'json',
+            type: 'GET'
+        }).then(res => {
+            defer.resolve(res);
+        }, err => {
+            defer.reject();
+        });
+
+        return defer.promise;
+    }
+
+    __getLocationDetail__(countryCode) {
+        let defer = this.$q.defer();
+        countryCode = countryCode.toLowerCase();
+
+        $.ajax({
+            url: `https://restcountries.eu/rest/v2/alpha/${countryCode}?fields=nativeName`,
             dataType: 'json',
             type: 'GET'
         }).then(res => {
