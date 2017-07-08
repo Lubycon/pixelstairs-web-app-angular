@@ -171,7 +171,7 @@ export class AuthenticationService {
 
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
 
-        this.AppSettingService.set('country', this.$rootScope.setting.country_code);
+        this.AppSettingService.set('country', country_code);
 
         this.$state.go('common.default.main');
     }
