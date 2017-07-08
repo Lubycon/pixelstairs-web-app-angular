@@ -148,7 +148,7 @@
     "SIGN_UP": {
         "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어즈의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."
     },
-    "SIGNUP_CERT": {
+    "CERT_SIGNUP": {
         "TITLE": "Now, it's the last step for more activities(한글)",
         "DESC": "메일로 발송된 인증코드를 입력해주세요",
         "EXPIRED": "인증코드가 만료되었습니다. 인증메일을 다시 발송해주세요",
@@ -157,10 +157,29 @@
             "S": "초 남음"
         }
     },
+    "CERT_SIGNUP_LANDING": {
+        "TITLE": "Registraion is finished(한글)",
+        "MSG": {
+            "SUCCESS": "You are a active user now(한글)",
+            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :( (한글)"
+        }
+    },
     "FIND_PASSWORD": {
         "TITLE": "비밀번호를 잊으셨나요?",
         "DESC": "비밀번호를 찾으시려면 먼저 이메일 인증이 필요합니다.<br>이메일을 입력하시고 발송된 인증메일을 확인해주세요.",
         "FINISH_SEND": "\"{{email}}\"로 인증 메일이 발송되었습니다"
+    },
+    "CERT_PASSWORD_LANDING": {
+        "TITLE": "\"Finish Registration\"(한글)",
+        "MSG": {
+            "SUCCESS": "You can change your password now - ! Your registraion was finished successfully(한글)",
+            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :((한글)"
+        }
+    },
+    "RESET_PASSWORD": {
+        "TITLE": "\"Improve the security of your account\"(한글)",
+        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.(한글)",
+
     },
     "ACCOUNT_SETTING": {
         "DESC": "계정의 정보를 변경합니다"

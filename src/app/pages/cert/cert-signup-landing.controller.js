@@ -1,11 +1,13 @@
 export class CertSignupLandingController {
     constructor(
-        $log, APIService,
-        $state, $stateParams
+        $log, $translate,
+        $state, $stateParams,
+        APIService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$translate = $translate;
         this.$state = $state;
 
         this.isSuccess = false;
@@ -26,10 +28,10 @@ export class CertSignupLandingController {
 
         this.isSuccess = isSuccess;
         if(this.isSuccess) {
-            this.msg = 'You are a active user now';
+            this.msg = this.$translate.instant('CERT_SIGNUP_LANDING.MSG.SUCCESS');
         }
         else {
-            this.msg = 'Woo...Something is wrong. Click the button to below and please send the email Again. :(';
+            this.msg = this.$translate.instant('CERT_SIGNUP_LANDING.MSG.FAILED');
         }
     }
 

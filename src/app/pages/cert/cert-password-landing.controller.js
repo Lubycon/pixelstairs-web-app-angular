@@ -1,11 +1,12 @@
 export class CertPasswordLandingController {
     constructor(
-        $log, $stateParams,
+        $log, $stateParams, $translate,
         APIService
     ) {
         'ngInject';
 
         this.$log = $log;
+        this.$translate = $translate;
 
         this.isSuccess = false;
         this.isInit = false;
@@ -25,10 +26,10 @@ export class CertPasswordLandingController {
 
         this.isSuccess = isSuccess;
         if(this.isSuccess) {
-            this.msg = 'You can change your password now - ! Your registraion was finished successfully';
+            this.msg = this.$translate.instant('"CERT_PASSWORD_LANDING.MSG.SUCCESS');
         }
         else {
-            this.msg = 'Woo...Something is wrong. Click the button to below and please send the email Again. :(';
+            this.msg = this.$translate.instant('"CERT_PASSWORD_LANDING.MSG.FAILED');
         }
     }
 }

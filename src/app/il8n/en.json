@@ -148,7 +148,7 @@
     "SIGN_UP": {
         "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."
     },
-    "SIGNUP_CERT": {
+    "CERT_SIGNUP": {
         "TITLE": "Now, it's the last step for more activities(한글)",
         "DESC": "You need to authenticate your email address for further activity.<br>Please check your email",
         "EXPIRED": "This code is expired. Please resend again.",
@@ -157,10 +157,28 @@
             "S": "sec left"
         }
     },
+    "CERT_SIGNUP_LANDING": {
+        "TITLE": "Registraion is finished",
+        "MSG": {
+            "SUCCESS": "You are a active user now",
+            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
+        }
+    },
     "FIND_PASSWORD": {
         "TITLE": "Find Account Password",
         "DESC": "First, you need to send the member authentication email to your account email addressand go through the confirmation process.<br>Please, Enter your email address below and click button to send the email to your address.",
         "FINISH_SEND": "Check the email at \"{{email}}\""
+    },
+    "CERT_PASSWORD_LANDING": {
+        "TITLE": "\"Finish Registration\"",
+        "MSG": {
+            "SUCCESS": "You can change your password now - ! Your registraion was finished successfully",
+            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
+        }
+    },
+    "RESET_PASSWORD": {
+        "TITLE": "\"Improve the security of your account\"",
+        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.",
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here."
