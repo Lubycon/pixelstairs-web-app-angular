@@ -105,6 +105,9 @@
             "EMAIL": "Send me Email",
             "EMAIL_AGAIN": "Send Again"
         },
+        "AUTHENTICATION": {
+            "LATER": "Authenticate later"
+        },
         "BACK_TO_LIST": "Back to list",
         "GO_TO_MAIN": "Go to main"
     },
@@ -144,6 +147,15 @@
 
     "SIGN_UP": {
         "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."
+    },
+    "SIGNUP_CERT": {
+        "TITLE": "Now, it's the last step for more activities(한글)",
+        "DESC": "You need to authenticate your email address for further activity.<br>Please check your email",
+        "EXPIRED": "This code is expired. Please resend again.",
+        "TIME": {
+            "M": "min",
+            "S": "sec left"
+        }
     },
     "FIND_PASSWORD": {
         "TITLE": "Find Account Password",

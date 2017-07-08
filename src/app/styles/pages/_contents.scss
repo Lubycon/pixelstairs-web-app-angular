@@ -131,9 +131,11 @@
                 ul.tags {
                     li {
                         display: inline-block;
+                        max-width: 100%;
                         margin: 3px 5px;
                         padding: 2px 10px;
                         border: 1px solid $dove-grey;
+                        @include ellipsis;
                     }
                 }
             }

@@ -105,6 +105,9 @@
             "EMAIL": "이메일 보내기",
             "EMAIL_AGAIN": "이메일 다시 보내기"
         },
+        "AUTHENTICATION": {
+            "LATER": "다음에 할게요"
+        },
         "BACK_TO_LIST": "목록으로 이동",
         "GO_TO_MAIN": "메인으로"
     },
@@ -144,6 +147,15 @@
 
     "SIGN_UP": {
         "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어즈의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."
+    },
+    "SIGNUP_CERT": {
+        "TITLE": "Now, it's the last step for more activities(한글)",
+        "DESC": "메일로 발송된 인증코드를 입력해주세요",
+        "EXPIRED": "인증코드가 만료되었습니다. 인증메일을 다시 발송해주세요",
+        "TIME": {
+            "M": "분",
+            "S": "초 남음"
+        }
     },
     "FIND_PASSWORD": {
         "TITLE": "비밀번호를 잊으셨나요?",
