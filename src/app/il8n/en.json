@@ -90,6 +90,7 @@
     },
     "FORM" : {
         "SUBMIT" : "Submit",
+        "SUBMIT_ARTWORK": "Submit artwork",
         "CONFIRM" : "Confirm",
         "CANCLE" : "Cancel",
         "DELETE" : "Delete",
@@ -109,7 +110,8 @@
             "LATER": "Authenticate later"
         },
         "BACK_TO_LIST": "Back to list",
-        "GO_TO_MAIN": "Go to main"
+        "GO_TO_MAIN": "Go to main",
+        "GO_BACK": "Back to previous page"
     },
     "FORM_ERROR": {
         "WRONG_EMAIL": "It is not a email address.",
@@ -182,6 +184,9 @@
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here."
+    },
+    "CONTENTS_UPLOAD": {
+        "CHANGE_ARTWORK": "Change to other artwork"
     },
     "CONTENTS_UPLOAD_SUCCESS": {
         "TITLE": "Your Artwork upload has been successfully completed!",

@@ -48,7 +48,7 @@
                         ngf-fix-orientation="true"
                         ng-model="ContentsUploadCtrl.uploadedImg"
                     >
-                        Change uploaded file
+                        {{"CONTENTS_UPLOAD.CHANGE_ARTWORK" | translate}}
                     </a>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                                 class="btn full-width"
                                 ng-disabled="ContentsUploadCtrl.form.$invalid || !ContentsUploadCtrl.contentData.image.file"
                             >
-                                <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
+                                <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT_ARTWORK' | translate}}</span>
                                 <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
                             </button>
                         </div>
