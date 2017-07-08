@@ -83,7 +83,7 @@
     <div class="row btn-wrapper">
         <div ng-if="ContentsDetailCtrl.isSigned" class="col-lg-4 col-lg-offset-4">
             <button class="btn btn-border full-width" ng-class="{'liked': ContentsDetailCtrl.data.myLike}" ng-click="ContentsDetailCtrl.postLike()">
-                {{ContentsDetailCtrl.data.myLike ? 'Liked' : 'Like this Artwork'}}
+                {{ContentsDetailCtrl.data.myLike ? 'CONTENTS_DETAIL.LIKE.LIKED' : 'CONTENTS_DETAIL.LIKE.LIKE' | translate}}
             </button>
         </div>
         <div class="col-lg-4 col-lg-offset-4">

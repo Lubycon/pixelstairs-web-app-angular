@@ -157,6 +157,10 @@
         "LICENSE_INFO": {
             "CC": "Click here to know more info",
             "PXS": "or click here and read the pixelstairs <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a>."
+        },
+        "LIKE": {
+            "LIKE": "I like this artwork!",
+            "LIKED": "Liked"
         }
     },
     "ABOUT_US" : {
