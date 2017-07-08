@@ -8,16 +8,16 @@ export class FooterController {
 
         this.lang = $rootScope.setting.language.split('-')[0];
         this.linkList = [{
-            name: 'about us',
+            name: 'FOOTER.ABOUT_US',
             link: 'common.default.aboutus'
         },{
-            name: 'contact',
+            name: 'FOOTER.CONTACT',
             link: 'common.default.aboutus({ section: "contact" })'
         },{
-            name: 'privacy policy',
+            name: 'FOOTER.PRIVACY_POLICY',
             link: `common.default.privacy-policy({ lang: '${this.lang}' })`
         },{
-            name: 'terms of service',
+            name: 'FOOTER.TERMS_OF_SERVICE',
             link: `common.default.terms({ lang: '${this.lang}' })`
         }];
     }

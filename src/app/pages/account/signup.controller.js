@@ -1,6 +1,6 @@
 export class SignupController {
     constructor(
-        $log, $state,
+        $rootScope, $log, $state,
         APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
@@ -11,6 +11,8 @@ export class SignupController {
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
+
+        this.lang = $rootScope.setting.language.split('-')[0];
 
         this.signData = {
             email: null,

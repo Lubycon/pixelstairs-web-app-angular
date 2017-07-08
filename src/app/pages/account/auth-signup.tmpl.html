@@ -3,25 +3,23 @@
         <div class="fieldset wiseword-form col-lg-12">
             <div class="message-box">
                 <div class="main-message">
-                    <h3>Now, it's the last step for more activities</h3>
+                    <h3>{{'CERT_SIGNUP.TITLE' | translate}}</h3>
                 </div>
                 <div class="wiseword-message">
-                    <h6>You need to authenticate your email address for further activity.<br>
-                        Check your email
-                    </h6>
+                    <h6 translate="CERT_SIGNUP.DESC"></h6>
                 </div>
 
                 <div class="time-checker" ng-if="AuthSignupCtrl.isExpired">
-                    Your signup code is expired. Please resend again.
+                    {{'CERT_SIGNUP.EXPIRED' | translate}}
                 </div>
                 <div class="time-checker" ng-if="!AuthSignupCtrl.isExpired">
-                    <span>{{AuthSignupCtrl.leftTimeDigit.minutes()}}</span> min
-                    <span>{{AuthSignupCtrl.leftTimeDigit.seconds()}}</span> sec left.
+                    <span>{{AuthSignupCtrl.leftTimeDigit.minutes()}}</span> {{'CERT_SIGNUP.TIME.M' | translate}}
+                    <span>{{AuthSignupCtrl.leftTimeDigit.seconds()}}</span> {{'CERT_SIGNUP.TIME.S' | translate}}
                 </div>
             </div>
             <footer>
-                <button class="btn" ng-click="AuthSignupCtrl.sendMailAgain()">Send email again</button>
-                <button class="btn" ng-click="AuthSignupCtrl.goToMain()">Authenticate later</button>
+                <button class="btn" ng-click="AuthSignupCtrl.sendMailAgain()">{{'FORM.SEND.EMAIL_AGAIN' | translate}}</button>
+                <button class="btn" ng-click="AuthSignupCtrl.goToMain()">{{'FORM.AUTHENTICATION.LATER' | translate}}</button>
             </footer>
         </div>
     </div>

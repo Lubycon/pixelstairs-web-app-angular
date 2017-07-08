@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <header>
-            <h2>Account Setting</h2>
-            <p>You can change your account information here.</p>
+            <h2>{{'MENU.ACCOUNT_SETTING' | translate}}</h2>
+            <p>{{'ACCOUNT_SETTING.DESC' | translate}}</p>
         </header>
         <div
             class="form-box col-xs-12 col-sm-12 col-md-12 col-lg-12"
@@ -55,7 +55,7 @@
                             required
                         >
                         <div ng-messages="SettingCtrl.form.nickname.$error" class="error-msg">
-                            <p ng-message="pattern">Some characters are unavailable</p>
+                            <p ng-message="pattern">{{'FORM_ERROR.WRONG_STRING' | translate}}</p>
                         </div>
                     </div>
                     <div class="input-container">
@@ -80,7 +80,7 @@
                         ng-click="SettingCtrl.postData()"
                         ng-disabled="SettingCtrl.form.$invalid"
                     >
-                        <span ng-show="!SettingCtrl.isBusy">Update</span>
+                        <span ng-show="!SettingCtrl.isBusy">{{'FORM.UPDATE' | translate}}</span>
                         <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
                     </button>
                 </form>

@@ -48,7 +48,7 @@
                         ngf-fix-orientation="true"
                         ng-model="ContentsUploadCtrl.uploadedImg"
                     >
-                        Change uploaded file
+                        {{"CONTENTS_UPLOAD.CHANGE_ARTWORK" | translate}}
                     </a>
                 </div>
             </div>
@@ -67,9 +67,6 @@
                                 ng-model="ContentsUploadCtrl.contentData.title"
                                 required
                             >
-                            <div ng-messages="ContentsUploadCtrl.form.title.$error" class="error-msg">
-                                <p ng-message="pattern">You can not use special Chars</p>
-                            </div>
                         </div>
                         <div class="input-container row">
                             <label><i class="xi-tags"></i>{{'LABEL.TAGS' | translate}}</label>
@@ -77,8 +74,8 @@
                                 name="tags"
                                 class="form-control"
                                 ng-model="ContentsUploadCtrl.contentData.hashTags"
-                                min-length="2"
-                                max-length="30"
+                                min-length="1"
+                                max-length="255"
                                 min-tags="1"
                                 max-tags="20"
                                 allowed-tags-pattern="^[A-Z|a-z|0-9]+$"
@@ -91,8 +88,8 @@
                                 required
                             ></tags-input>
                             <div ng-messages="ContentsUploadCtrl.form.tags.$error" class="error-msg">
-                                <p ng-message="invalidTag">{{ContentsUploadCtrl.invalidTag}} is not available. please make sure that you writen in English or same tag again.</p>
-                                <p ng-message="maxTags">max tag length is 20</p>
+                                <p ng-message="invalidTag" translate="FORM_ERROR.TAG.WRONG_TAG" translate-values="{ tag: ContentsUploadCtrl.invalidTag }"></p>
+                                <p ng-message="maxTags">{{'FORM_ERROR.TAG.MAX_TAG' | translate}}</p>
                             </div>
                         </div>
                         <div class="input-container row">
@@ -112,7 +109,7 @@
                                 class="btn full-width"
                                 ng-disabled="ContentsUploadCtrl.form.$invalid || !ContentsUploadCtrl.contentData.image.file"
                             >
-                                <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT' | translate}}</span>
+                                <span ng-show="!ContentsUploadCtrl.isBusy">{{'FORM.SUBMIT_ARTWORK' | translate}}</span>
                                 <span ng-show="ContentsUploadCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
                             </button>
                         </div>

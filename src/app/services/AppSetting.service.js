@@ -103,7 +103,8 @@ export class AppSettingService {
 
             /* GETTING NEW LOCATION */
             if(countryVal.oldVal && (countryVal.oldVal !== countryVal.newVal)) {
-                this.toastr.warning(`Your current location is "${res.country_name}".<br> click this message if you want to change your language!`, '', {
+                const text = this.$translate.instant('LOCATION_CHANGE', { name: res.country_name });
+                this.toastr.warning(text, '', {
                     timeOut: false,
                     closeButton: true,
                     extendedTimeOut: 100000,
@@ -114,6 +115,8 @@ export class AppSettingService {
                         this.__setStoredData__(res, 'reload');
                     }
                 });
+
+                return null;
             }
             /* GETTING NEW LOCATION END */
 

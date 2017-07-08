@@ -1,7 +1,7 @@
 <footer class="navbar global-footer">
     <ul class="nav-wrapper">
         <li ng-repeat="link in GlobalFooterCtrl.linkList">
-            <a ui-sref="{{link.link}}">{{link.name}}</a>
+            <a ui-sref="{{link.link}}">{{link.name | translate}}</a>
         </li>
     </ul>
     <div class="service-info">

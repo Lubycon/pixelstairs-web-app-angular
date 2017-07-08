@@ -16,8 +16,11 @@ export function run (
 
     /* app init start */
     initStarter()
-    .then(res => { return AppSettingService.init(); })
     .then(res => { return AuthenticationService.init(); })
+    .then(res => {
+        $rootScope.$broadcast('update-member-data');
+        return AppSettingService.init();
+    })
     .then(res => {
         /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
         $rootScope.Initialized = true;
@@ -58,7 +61,7 @@ export function run (
         event, toState, toParams, fromState, fromParams
     ) => {
         $state.go('common.default.error', {
-            httpStatus: 400
+            httpStatus: 500
         });
     });
 }

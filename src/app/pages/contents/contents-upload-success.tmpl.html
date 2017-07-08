@@ -3,25 +3,21 @@
         <div class="fieldset wiseword-form col-lg-12">
             <div class="message-box">
                 <div class="main-message">
-                    <h3>Your Artwork upload has been successfully completed!</h3>
+                    <h3>{{'CONTENTS_UPLOAD_SUCCESS.TITLE' | translate}}</h3>
                 </div>
-                <div class="wiseword-message">
-                    Your Artwork have been uploaded to the Pixelstairs's new contents feed,<br>
-                    and some Artworks will be posted to the Pixelstairs main page<br>
-                    after deliberating on the service itself.<br>
-                </div>
+                <div class="wiseword-message" translate="CONTENTS_UPLOAD_SUCCESS.DESC"></div>
                 <footer class="row col-lg-6 col-lg-offset-3">
                     <button
                         ui-sref="common.default.contents-detail({ id: ContentsSuccessCtrl.contentId })"
                         class="btn col-lg-12"
                     >
-                        View uploaded Artwork
+                        {{'CONTENTS_UPLOAD_SUCCESS.VIEW_UPLOADED_ONE' | translate}}
                     </button>
                     <button
                         ui-sref="common.default.main"
                         class="btn btn-link col-lg-12"
                     >
-                        Go to Main
+                        {{'FORM.GO_TO_MAIN' | translate}}
                     </button>
                 </footer>
             </div>

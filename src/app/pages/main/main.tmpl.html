@@ -15,7 +15,7 @@
                     ng-repeat="filter in MainCtrl.sortFilter"
                     ng-click="MainCtrl.setFilter(filter.value)"
                 >
-                    {{filter.name}}
+                    {{'LABEL.' + filter.name.toUpperCase() | translate}}
                 </li>
             </ul>
         </div>
