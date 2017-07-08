@@ -164,7 +164,11 @@ export class AuthenticationService {
     }
 
     __clearAuth__() {
-        let country_code = this.$rootScope.setting.country_code || 'unknown';
+        let country_code;
+        if(this.$rootScope.setting && this.$rootScope.setting.country_code) {
+            country_code = this.$rootScope.setting.country_code;
+        }
+        else country_code = 'unknown';
 
         this.CookieService.remove('auth');
         this.$rootScope.authStatus.sign = false;
