@@ -178,11 +178,15 @@
     },
     "RESET_PASSWORD": {
         "TITLE": "\"Improve the security of your account\"(한글)",
-        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.(한글)",
-
+        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.(한글)"
     },
     "ACCOUNT_SETTING": {
         "DESC": "계정의 정보를 변경합니다"
+    },
+    "CONTENTS_UPLOAD_SUCCESS": {
+        "TITLE": "아트워크가 성공적으로 전시되었습니다!",
+        "DESC": "Your Artwork have been uploaded to the Pixelstairs's new contents feed,<br>and some Artworks will be posted to the Pixelstairs main page<br>after deliberating on the service itself. (한글)",
+        "VIEW_UPLOADED_ONE": "내가 올린 작품 보러가기"
     },
     "CONTENTS_DETAIL": {
         "LICENSE_INFO": {

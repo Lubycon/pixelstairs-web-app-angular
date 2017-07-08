@@ -178,10 +178,15 @@
     },
     "RESET_PASSWORD": {
         "TITLE": "\"Improve the security of your account\"",
-        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.",
+        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months."
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here."
+    },
+    "CONTENTS_UPLOAD_SUCCESS": {
+        "TITLE": "Your Artwork upload has been successfully completed!",
+        "DESC": "Your Artwork have been uploaded to the Pixelstairs's new contents feed,<br>and some Artworks will be posted to the Pixelstairs main page<br>after deliberating on the service itself.<br>",
+        "VIEW_UPLOADED_ONE": "View uploaded Artwork"
     },
     "CONTENTS_DETAIL": {
         "LICENSE_INFO": {
