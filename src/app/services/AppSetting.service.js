@@ -94,7 +94,6 @@ export class AppSettingService {
         /* DEFAULT SETTING END */
 
         /* OPTIONAL SETTING START */
-
         this.__getLocationByIp__().then(res => {
             const countryVal = {
                 oldVal: STORED_SETTING && STORED_SETTING.country_code,
@@ -145,15 +144,16 @@ export class AppSettingService {
     __getLocationByIp__() {
         let defer = this.$q.defer();
 
-        $.ajax({
-            url: this.IP_API,
-            dataType: 'json',
-            type: 'GET'
-        }).then(res => {
-            defer.resolve(res);
-        }, err => {
-            defer.reject();
-        });
+        // $.ajax({
+        //     url: this.IP_API,
+        //     dataType: 'json',
+        //     type: 'GET'
+        // }).then(res => {
+        //     defer.resolve(res);
+        // }, err => {
+        //     defer.reject();
+        // });
+        defer.reject();
 
         return defer.promise;
     }
