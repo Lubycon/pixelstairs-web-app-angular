@@ -14,8 +14,8 @@ export function restangularConfig(
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'device'] = 'bs=' + USER_AGENT.browser + ',dvc=' + USER_AGENT.device + ',os=' + USER_AGENT.os;
 
     /* 혹시 App Setting이 끝나기 전에 Tracker가 날라가는 경우를 대비 */
-    defaultHeaders[CUSTOM_HEADER_PREFIX + 'country'] = 'unknown';
-    defaultHeaders[CUSTOM_HEADER_PREFIX + 'language'] = 'unknown';
+    defaultHeaders[CUSTOM_HEADER_PREFIX + 'country'] = 'US';
+    defaultHeaders[CUSTOM_HEADER_PREFIX + 'language'] = 'en-US';
 
     if(IS_DEV) {
         defaultHeaders['lubycon-dev'] = DEV_KEY;

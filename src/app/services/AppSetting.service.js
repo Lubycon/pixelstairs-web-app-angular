@@ -95,27 +95,29 @@ export class AppSettingService {
 
         /* OPTIONAL SETTING START */
         this.__getLocationByIp__().then(res => {
-            const countryVal = {
-                oldVal: STORED_SETTING && STORED_SETTING.country_code,
-                newVal: res.country_code
-            };
+            if(res) {
+                const countryVal = {
+                    oldVal: STORED_SETTING && STORED_SETTING.country_code,
+                    newVal: res.country_code
+                };
 
-            /* GETTING NEW LOCATION */
-            if(countryVal.oldVal && (countryVal.oldVal !== countryVal.newVal)) {
-                const text = this.$translate.instant('LOCATION_CHANGE', { name: res.country_name });
-                this.toastr.warning(text, '', {
-                    timeOut: false,
-                    closeButton: true,
-                    extendedTimeOut: 100000,
-                    toastClass: 'toast toast-location-change',
-                    tapToDismiss: false,
-                    onTap: () => {
-                        res.language = this.__setLanguage__(res.country_code);
-                        this.__setStoredData__(res, 'reload');
-                    }
-                });
+                /* GETTING NEW LOCATION */
+                if(countryVal.oldVal && (countryVal.oldVal !== countryVal.newVal)) {
+                    const text = this.$translate.instant('LOCATION_CHANGE', { name: res.country_name });
+                    this.toastr.warning(text, '', {
+                        timeOut: false,
+                        closeButton: true,
+                        extendedTimeOut: 100000,
+                        toastClass: 'toast toast-location-change',
+                        tapToDismiss: false,
+                        onTap: () => {
+                            res.language = this.__setLanguage__(res.country_code);
+                            this.__setStoredData__(res, 'reload');
+                        }
+                    });
 
-                return null;
+                    return null;
+                }
             }
             /* GETTING NEW LOCATION END */
 
@@ -153,7 +155,7 @@ export class AppSettingService {
         // }, err => {
         //     defer.reject();
         // });
-        defer.reject();
+        defer.resolve();
 
         return defer.promise;
     }
