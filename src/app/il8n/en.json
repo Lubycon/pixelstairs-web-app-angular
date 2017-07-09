@@ -120,6 +120,10 @@
         "TAG": {
             "WRONG_TAG": "{{tag}} is not available. please make sure that you writen in English or same tag again.",
             "MAX_TAG": "You can only enter up to 20 tags."
+        },
+        "EXIST": {
+            "EMAIL": "This email is already exist in Pixelstairs",
+            "NICKNAME": "This name is already exist in Pixelstairs"
         }
     },
     "ALERT_ERROR": {

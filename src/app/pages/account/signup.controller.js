@@ -102,4 +102,21 @@ export class SignupController {
 
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
     }
+
+    isExist(prop) {
+        let data = {};
+        data[prop] = this.signData[prop];
+
+        this.APIService.resource(`members.exists.${prop}`).post(data)
+        .then(res => {
+            if(res && res.result) {
+                this.form[prop].$setValidity('exist', false);
+            }
+            else {
+                this.form[prop].$setValidity('exist', true);
+            }
+        }, err => {
+            return false;
+        });
+    }
 }

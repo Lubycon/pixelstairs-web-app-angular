@@ -21,6 +21,8 @@ export class MemberSettingController {
         this.memberData.birthday = new Date(this.memberData.birthday);
         this.memberProfile = this.__getUserProfile__(this.memberData.profileImg);
 
+        this.initMemberData = angular.extend({}, this.memberData);
+
         this.genders = [{
             name: 'Male',
             code: 'male'
@@ -91,6 +93,22 @@ export class MemberSettingController {
             /*@LOG*/ this.$log.debug('CROPPED IMAGE => ', this.memberData.profileImg);
         }, err => {
             this.isProfileBusy = false;
+        });
+    }
+
+    isExistName() {
+        let data = {
+            nickname : this.memberData.nickname
+        };
+
+        this.APIService.resource('members.exists.nickname').post(data)
+        .then(res => {
+            if(res && res.result && data.nickname !== this.initMemberData.nickname) {
+                this.form.nickname.$setValidity('exist', false);
+            }
+            else {
+                this.form.nickname.$setValidity('exist', true);
+            }
         });
     }
 

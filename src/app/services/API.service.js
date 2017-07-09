@@ -10,8 +10,10 @@ const API_LIST = {
 
             simple: `${prefix}/simple`,
             detail: `${prefix}/{id}/detail`,
-
-            isExist: `${prefix}/isexist`,
+            exists: {
+                email: `${prefix}/exists/email`,
+                nickname: `${prefix}/exists/nickname`
+            },
             pwd: {
                 mail: `${prefix}/password/mail`,
                 reset: `${prefix}/password/reset`

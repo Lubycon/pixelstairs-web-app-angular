@@ -24,10 +24,12 @@
                             placeholder="{{'LABEL.EMAIL' | translate}}"
                             ng-model="SignupCtrl.signData.email"
                             ng-pattern="SignupCtrl.FormRegxService.getRegx('email')"
+                            ng-blur="SignupCtrl.isExist('email')"
                             required
                         />
                         <div ng-messages="SignupCtrl.form.email.$error" class="error-msg">
                             <p ng-message="pattern">{{'FORM_ERROR.WRONG_EMAIL' | translate}}</p>
+                            <p ng-message="exist">{{'FORM_ERROR.EXIST.EMAIL' | translate}}</p>
                         </div>
                     </div>
                     <div class="input-container full-width">
@@ -70,10 +72,12 @@
                             min-length="5"
                             max-length="30"
                             ng-pattern="SignupCtrl.FormRegxService.getRegx('nickname')"
+                            ng-blur="SignupCtrl.isExist('nickname')"
                             required
                         >
                         <div ng-messages="SignupCtrl.form.nickname.$error" class="error-msg">
                             <p ng-message="pattern">{{'FORM_ERROR.WRONG_STRING' | translate}}</p>
+                            <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
                     <div class="input-container full-width">

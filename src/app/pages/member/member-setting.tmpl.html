@@ -52,11 +52,13 @@
                             ng-model="SettingCtrl.memberData.nickname"
                             min-length="5"
                             max-length="30"
+                            ng-blur="SettingCtrl.isExistName()"
                             ng-pattern="SettingCtrl.FormRegxService.getRegx('nickname')"
                             required
                         >
                         <div ng-messages="SettingCtrl.form.nickname.$error" class="error-msg">
                             <p ng-message="pattern">{{'FORM_ERROR.WRONG_STRING' | translate}}</p>
+                            <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
                     <div class="input-container">
