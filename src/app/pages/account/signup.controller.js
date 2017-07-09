@@ -1,18 +1,20 @@
 export class SignupController {
     constructor(
-        $rootScope, $log, $state,
+        $rootScope, $log, $state, $translate,
         APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$state = $state;
+        this.$translate = $translate;
 
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
 
         this.lang = $rootScope.setting.language.split('-')[0];
+        this.isBusy = false;
 
         this.signData = {
             email: null,
@@ -59,8 +61,9 @@ export class SignupController {
     postData() {
         let data = angular.copy(this.signData);
             data.password = data.password.origin;
-
         /*@LOG*/ this.$log.debug(data);
+
+        this.isBusy = true;
 
         data.newsletterAccepted = true;
         data.termsOfServiceAccepted = true;
@@ -70,10 +73,16 @@ export class SignupController {
                 token: res.result.token,
                 state: null
             }).then(res => {
+                this.isBusy = false;
                 this.$state.go('common.default.auth-signup');
             });
         }, err => {
+            this.isBusy = false;
             /*@LOG*/ this.$log.debug('SIGN UP IS FAILED => ', err);
+
+            let msg = this.$translate.instant('ALERT_ERROR.SIGNUP.FAILED');
+
+            alert(msg);
         });
     }
 

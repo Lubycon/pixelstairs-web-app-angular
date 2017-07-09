@@ -107,7 +107,8 @@
                         ng-click="SignupCtrl.postData()"
                         ng-disabled="SignupCtrl.form.$invalid"
                     >
-                        {{'FORM.SIGNUP_BTN' | translate}}
+                        <span ng-show="!SignupCtrl.isBusy">{{'FORM.SIGNUP_BTN' | translate}}</span>
+                        <span ng-show="SignupCtrl.isBusy"><i class="xi-spinner-5 xi-spin"></i></span>
                     </button>
                 </form>
             </div>
