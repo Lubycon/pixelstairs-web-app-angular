@@ -196,7 +196,8 @@
         "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months."
     },
     "ACCOUNT_SETTING": {
-        "DESC": "You can change your account information here."
+        "DESC": "You can change your account information here.",
+        "CHANGE_PROFILE_IMG": "Use the default image"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "Change to other artwork"

@@ -63,21 +63,8 @@
             }
 
             .remove-profile-btn {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 40px;
-                height: 40px;
-                padding: 11px;
-                background-color: $mine-black;
-                color: $white;
-                border-radius: 50%;
-                cursor: pointer;
-                transition: all 0.2s ease-in-out;
-                &:hover {
-                    transform: scale(1.1);
-                    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-                }
+                margin-top: 20px;
+                text-decoration: underline;
             }
         }
         form {

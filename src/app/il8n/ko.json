@@ -196,7 +196,8 @@
         "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.(한글)"
     },
     "ACCOUNT_SETTING": {
-        "DESC": "계정의 정보를 변경합니다"
+        "DESC": "계정의 정보를 변경합니다",
+        "CHANGE_PROFILE_IMG": "기본 프로필 사진 사용하기"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "다른 아트워크로 변경하기"
