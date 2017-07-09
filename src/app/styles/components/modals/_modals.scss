@@ -3,7 +3,15 @@
 }
 
 .modal-dialog {
+    @include mq('sm') {
+        margin: 0;
+        max-width: 100vh;
+    }
     .modal-content {
+        @include mq('sm') {
+            border: none;
+            border-radius: 0;
+        }
         .modal-header {
             .header-close-btn {
                 position: absolute;
@@ -17,6 +25,9 @@
 
         }
         .modal-footer {
+            @include mq('sm') {
+                padding: 0;
+            }
             .btn {
 
             }

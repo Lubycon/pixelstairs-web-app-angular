@@ -1,4 +1,7 @@
 .cropper-modal-window {
+    .modal-body {
+        max-height: calc(60vh);
+    }
     .modal-footer {
         .btn-group.row {
             margin: 0;

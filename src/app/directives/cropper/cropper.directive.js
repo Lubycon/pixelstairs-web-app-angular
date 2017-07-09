@@ -25,6 +25,7 @@ export function CropperDirective() {
             viewMode: 2,
             center: true,
             responsive: true,
+            restore: true,
             moveable: true,
             dragMode: "crop"
         });
