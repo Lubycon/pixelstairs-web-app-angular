@@ -88,6 +88,13 @@ gulp.task('pages', function () {
     .pipe($.size());
 });
 
+gulp.task('seo', function() {
+    const txt = $.util.env.type === 'production' ? 'robots-prod.txt' : 'robots-dev.txt';
+    return gulp.src('src/seo/' + txt)
+    .pipe($.rename('robots.txt'))
+    .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
+});
+
 gulp.task('other', function () {
     var fileFilter = $.filter(function (file) {
         return file.stat.isFile();
@@ -105,4 +112,4 @@ gulp.task('clean', function () {
     return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
 
-gulp.task('build', ['html', 'fonts', 'other', 'pages', 'translations']);
+gulp.task('build', ['html', 'fonts', 'other', 'pages', 'seo', 'translations']);
