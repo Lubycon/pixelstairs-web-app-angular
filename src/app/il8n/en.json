@@ -133,6 +133,9 @@
         },
         "ACCOUNT_SETTING": {
             "FAILED": "Sorry. Updating failed. If the problem persists, please contact Pixelstairs."
+        },
+        "CONTENTS_UPLOAD": {
+            "FAILED": "Sorry. Uploading failed. If the problem persists, please contact Pixelstairs."
         }
     },
     "PLACEHOLDER": {

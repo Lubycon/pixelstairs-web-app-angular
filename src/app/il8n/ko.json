@@ -133,6 +133,9 @@
         },
         "ACCOUNT_SETTING": {
             "FAILED": "정보 업데이트에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
+        },
+        "CONTENTS_UPLOAD": {
+            "FAILED": "업로드에 실패하였습니다. 문제가 계쏙되면 Pixelstairs에게 문의해주세요"
         }
     },
     "PLACEHOLDER": {

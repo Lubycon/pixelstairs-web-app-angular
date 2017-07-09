@@ -86,12 +86,12 @@ export class ContentsUploadController {
 
         this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' })
         .then(res => {
-            console.log(res.result.id);
             this.isBusy = false;
             this.$state.go('common.default.contents-success', { id: res.result.id });
         }, err => {
-            alert('Somthing is wrong!');
             this.isBusy = false;
+            let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
+            alert(msg);
         });
     }
 }
