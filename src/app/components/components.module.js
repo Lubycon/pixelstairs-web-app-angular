@@ -5,7 +5,6 @@ import { FooterController } from './footer/footer.controller';
 
 import { ArtCardDirective } from './cards/artCard/artCard.directive';
 import { DatepickerDirective } from './datepicker/datepicker.directive';
-import { LoadingIconDirective } from './loading_icon/loading_icon.directive';
 
 angular
     .module('app.components', [
@@ -16,5 +15,4 @@ angular
 
     .directive('artCard', ArtCardDirective)
     .directive('datepicker', DatepickerDirective)
-    .directive('loadingIcon', LoadingIconDirective)
     ;
