@@ -18,7 +18,7 @@ export class MemberSettingController {
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
-        this.memberData.birthday = new Date(this.memberData.birthday);
+        this.memberData.birthday = new Date(this.memberData.birthday.split(' ')[0]);
         this.memberProfile = this.__getUserProfile__(this.memberData.profileImg);
 
         this.initMemberData = angular.extend({}, this.memberData);
