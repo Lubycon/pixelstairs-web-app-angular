@@ -130,6 +130,9 @@
         },
         "SIGNUP": {
             "FAILED": "Sorry. Registration failed. If the problem persists, please contact Pixelstairs."
+        },
+        "ACCOUNT_SETTING": {
+            "FAILED": "Sorry. Updating failed. If the problem persists, please contact Pixelstairs."
         }
     },
     "PLACEHOLDER": {

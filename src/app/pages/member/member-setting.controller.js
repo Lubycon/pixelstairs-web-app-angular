@@ -109,8 +109,9 @@ export class MemberSettingController {
             this.AppSettingService.updateMemberData(res.result);
             this.$rootScope.$broadcast('update-member-data');
         }, err => {
-            this.toastr.error(`GET ERROR::${err.status.code} ${err.msg}`);
             this.isBusy = false;
+            let msg = this.$translate.instant('ALERT_ERROR.ACCOUNT_SETTING.FAILED');
+            alert(msg);
         });
     }
 
