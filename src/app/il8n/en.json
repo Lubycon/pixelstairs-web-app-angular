@@ -122,6 +122,13 @@
             "MAX_TAG": "You can only enter up to 20 tags."
         }
     },
+    "ALERT_ERROR": {
+        "SIGNIN": {
+            "EMAIL": "Please make sure the email address",
+            "PASSWORD": "You forgot a password!",
+            "FAILED": "Login failed. Please check your email and password again!"
+        }
+    },
     "PLACEHOLDER": {
         "TITLE": "Write down the title of your artwork",
         "TAGS": "Add a tag",

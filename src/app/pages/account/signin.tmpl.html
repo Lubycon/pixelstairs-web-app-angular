@@ -18,21 +18,25 @@
                 <p class="fieldset-hint">
                     {{'SCRIPT.SIGNIN_HEADER' | translate}}
                 </p>
-                <form>
+                <form name="SigninCtrl.form" ng-init="SigninCtrl.form = SigninCtrl.form">
                     <div class="input-container full-width">
                         <input
+                            name="email"
                             type="email"
                             class="form-control"
                             placeholder="{{'LABEL.EMAIL' | translate}}"
                             ng-model="SigninCtrl.signData.email"
+                            required
                         />
                     </div>
                     <div class="input-container">
                         <input
+                            name="password"
                             type="password"
                             class="form-control"
                             placeholder="{{'LABEL.PASSWORD' | translate}}"
                             ng-model="SigninCtrl.signData.password"
+                            required
                         >
                     </div>
 
@@ -40,7 +44,8 @@
                         class="signin-btn btn full-width"
                         ng-click="SigninCtrl.postData()"
                     >
-                        {{'LABEL.SIGNIN' | translate}}
+                        <span ng-show="!SigninCtrl.isBusy">{{'LABEL.SIGNIN' | translate}}</span>
+                        <span ng-show="SigninCtrl.isBusy"><i class="xi-spinner-5 xi-spin"></i></span>
                     </button>
                 </form>
 
