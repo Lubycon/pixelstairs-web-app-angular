@@ -50,7 +50,8 @@ export class AboutusController {
         const SCROLL_POSITION = ELEMENT.offset().top;
 
         this.$timeout(() => {
-            angular.element(document).scrollTop(ELEMENT.offset().top);
+            const TOP = section === 'intro' ? 0 : ELEMENT.offset().top;
+            angular.element(document).scrollTop(TOP);
         },0);
     }
 }

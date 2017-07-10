@@ -9,7 +9,7 @@ export class FooterController {
         this.lang = $rootScope.setting.language.split('-')[0];
         this.linkList = [{
             name: 'FOOTER.ABOUT_US',
-            link: 'common.default.aboutus'
+            link: 'common.default.aboutus({ section: "intro" })'
         },{
             name: 'FOOTER.CONTACT',
             link: 'common.default.aboutus({ section: "contact" })'
