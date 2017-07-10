@@ -139,7 +139,7 @@
             "FAILED": "정보 업데이트에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         },
         "CONTENTS_UPLOAD": {
-            "FAILED": "업로드에 실패하였습니다. 문제가 계쏙되면 Pixelstairs에게 문의해주세요"
+            "FAILED": "업로드에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         }
     },
     "PLACEHOLDER": {
@@ -168,10 +168,10 @@
     },
 
     "SIGN_UP": {
-        "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어즈의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."
+        "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어스의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."
     },
     "CERT_SIGNUP": {
-        "TITLE": "Now, it's the last step for more activities(한글)",
+        "TITLE": "이제 인증을 위한 마지막 단계입니다!",
         "DESC": "메일로 발송된 인증코드를 입력해주세요",
         "EXPIRED": "인증코드가 만료되었습니다. 인증메일을 다시 발송해주세요",
         "TIME": {
@@ -180,10 +180,10 @@
         }
     },
     "CERT_SIGNUP_LANDING": {
-        "TITLE": "Registraion is finished(한글)",
+        "TITLE": "모든 인증이 완료되었습니다",
         "MSG": {
-            "SUCCESS": "You are a active user now(한글)",
-            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :( (한글)"
+            "SUCCESS": "픽셀스테어스에 오신 것을 환영합니다!",
+            "FAILED": "음...무언가 잘못됐네요. 아래 버튼을 클릭하셔서 인증메일을 다시 한번 발송해보세요!"
         }
     },
     "FIND_PASSWORD": {
@@ -192,15 +192,15 @@
         "FINISH_SEND": "\"{{email}}\"로 인증 메일이 발송되었습니다"
     },
     "CERT_PASSWORD_LANDING": {
-        "TITLE": "\"Finish Registration\"(한글)",
+        "TITLE": "\"인증 마지막 단계입니다\"",
         "MSG": {
-            "SUCCESS": "You can change your password now - ! Your registraion was finished successfully(한글)",
-            "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :((한글)"
+            "SUCCESS": "모든 인증이 성공적으로 마무리되었습니다. 이제 비밀번호를 변경하실 수 있습니다!",
+            "FAILED": "음...무언가 잘못됐네요. 아래 버튼을 클릭하셔서 인증메일을 다시 한번 발송해보세요!"
         }
     },
     "RESET_PASSWORD": {
-        "TITLE": "\"Improve the security of your account\"(한글)",
-        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.(한글)"
+        "TITLE": "\"당신의 계정을 보호하세요!\"",
+        "DESC": "새로운 비밀번호를 입력해주세요.<br>잦은 비밀번호 변경은 계정을 보호하기위해 추천되는 방법입니다."
     },
     "ACCOUNT_SETTING": {
         "DESC": "계정의 정보를 변경합니다",
@@ -211,7 +211,7 @@
     },
     "CONTENTS_UPLOAD_SUCCESS": {
         "TITLE": "아트워크가 성공적으로 전시되었습니다!",
-        "DESC": "Your Artwork have been uploaded to the Pixelstairs's new contents feed,<br>and some Artworks will be posted to the Pixelstairs main page<br>after deliberating on the service itself. (한글)",
+        "DESC": "아트워크가 픽셀스테어스의 피드에 전시되었습니다.<br>유저들의 많은 라이크를 받은 아트워크는 인기 아트워크로 선정될 수 있습니다.",
         "VIEW_UPLOADED_ONE": "내가 올린 작품 보러가기"
     },
     "CONTENTS_DETAIL": {

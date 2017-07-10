@@ -116,7 +116,7 @@
     "FORM_ERROR": {
         "WRONG_EMAIL": "It is not a email address.",
         "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again.",
-        "WRONG_STRING": "올바르지 않은 문자가 포함되어 있습니다. (영어)",
+        "WRONG_STRING": "Oh...there are incorrect characters",
         "TAG": {
             "WRONG_TAG": "{{tag}} is not available. please make sure that you writen in English or same tag again.",
             "MAX_TAG": "You can only enter up to 20 tags."
@@ -171,7 +171,7 @@
         "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."
     },
     "CERT_SIGNUP": {
-        "TITLE": "Now, it's the last step for more activities(한글)",
+        "TITLE": "Now, it's the last step for more activities",
         "DESC": "You need to authenticate your email address for further activity.<br>Please check your email",
         "EXPIRED": "This code is expired. Please resend again.",
         "TIME": {
@@ -182,7 +182,7 @@
     "CERT_SIGNUP_LANDING": {
         "TITLE": "Registraion is finished",
         "MSG": {
-            "SUCCESS": "You are a active user now",
+            "SUCCESS": "Welcome to the Pixelstairs!",
             "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
         }
     },
