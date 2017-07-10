@@ -13,6 +13,7 @@ export class StateAuthenticationService {
 
     detect(toState) {
         const IS_SIGNED = this.$rootScope.authStatus && this.$rootScope.authStatus.sign;
+        const IS_ACTIVE_USER = IS_SIGNED && this.__getMemberStatus__() === 'active';
 
         switch(toState.authenticate) {
             case 'all':
@@ -23,8 +24,8 @@ export class StateAuthenticationService {
                 else this.__stateChangeReject__('common.default.main');
             break;
             case 'member:active':
-                if(IS_SIGNED) this.__stateChangeResolve__(toState);
-                else this.__stateChangeReject__();
+                if(IS_SIGNED && IS_ACTIVE_USER) this.__stateChangeResolve__(toState);
+                else this.__stateChangeReject__('common.default.auth-signup');
             break;
             case 'member:inactive':
                 if(IS_SIGNED) this.__stateChangeResolve__(toState);
@@ -54,5 +55,9 @@ export class StateAuthenticationService {
             .replace(/(\.|\_)/gi,'-');
 
         angular.element('body').removeClass().addClass(BODY_CLASS);
+    }
+
+    __getMemberStatus__() {
+        return this.$rootScope.member && this.$rootScope.member.status;
     }
 }
