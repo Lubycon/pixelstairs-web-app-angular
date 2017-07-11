@@ -4,7 +4,7 @@
             <div class="content-title">
                 <p>"{{ContentsDetailCtrl.data.title}}"</p>
             </div>
-            <div class="content-image">
+            <div class="content-image lazy-load-frame" ng-style="{'background-image': 'url('+ContentsDetailCtrl.data.image.thumbnail+')'}">
                 <img ng-src="{{ContentsDetailCtrl.data.image.file}}" alt="{{'content-'+ContentsDetailCtrl.data.id}}">
             </div>
         </div>

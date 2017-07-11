@@ -32,7 +32,7 @@ export class MainController {
         this.pageIndex = 1;
         this.sortMode = this.sortFilter[0].value;
 
-        this.scrollDisabled = true;
+        this.isBusy = false;
         this.busyInterval = 1000;
         this.contentsData = this.__initList__();
         this.gridWidth = this.__getGridWidth__();
@@ -90,7 +90,7 @@ export class MainController {
     }
 
     getContents() {
-        this.scrollDisabled = true;
+        this.isBusy = true;
         this.APIService.resource('contents.list').get({
             pageIndex: this.pageIndex,
             sort: this.sortMode
@@ -116,7 +116,7 @@ export class MainController {
         this.pageIndex++;
 
         this.$timeout(() => {
-            this.scrollDisabled = false;
+            this.isBusy = false;
         }, this.busyInterval);
     }
 

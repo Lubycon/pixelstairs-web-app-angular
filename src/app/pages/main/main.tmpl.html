@@ -37,7 +37,7 @@
         <div
             class="infinite-scroll-wrapper"
             infinite-scroll="MainCtrl.onScroll()"
-            infinite-scroll-disabled="MainCtrl.scrollDisabled"
+            infinite-scroll-disabled="MainCtrl.isBusy"
             infinite-scroll-distance="0"
         >
             <ul
@@ -63,6 +63,6 @@
     </div>
 
     <div class="loading-icon">
-        <i class="xi-spinner-5 xi-spin" ng-if="MainCtrl.scrollDisabled"></i>
+        <i class="xi-spinner-5 xi-spin" ng-show="MainCtrl.isBusy"></i>
     </div>
 </div>
