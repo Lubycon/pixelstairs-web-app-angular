@@ -26,10 +26,10 @@ export class CertPasswordLandingController {
 
         this.isSuccess = isSuccess;
         if(this.isSuccess) {
-            this.msg = this.$translate.instant('"CERT_PASSWORD_LANDING.MSG.SUCCESS');
+            this.msg = this.$translate.instant('CERT_PASSWORD_LANDING.MSG.SUCCESS');
         }
         else {
-            this.msg = this.$translate.instant('"CERT_PASSWORD_LANDING.MSG.FAILED');
+            this.msg = this.$translate.instant('CERT_PASSWORD_LANDING.MSG.FAILED');
         }
     }
 }
