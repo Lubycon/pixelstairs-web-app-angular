@@ -1,12 +1,13 @@
 export class ResetPasswordController {
     constructor(
-        $log, $state, $stateParams,
+        $log, $state, $stateParams, $translate,
         FormRegxService, APIService
     ) {
         'ngInject';
 
         this.$log = $log;
         this.$state = $state;
+        this.$translate = $translate;
 
         this.FormRegxService = FormRegxService;
         this.APIService = APIService;
@@ -27,6 +28,8 @@ export class ResetPasswordController {
             score: 0,
             status: 'nothing'
         };
+
+        this.isBusy = false;
     }
 
     checkPasswordAgain() {
@@ -47,16 +50,23 @@ export class ResetPasswordController {
     }
 
     postData() {
+        this.isBusy = true;
+
         let data = {};
         data.newPassword = this.password.origin;
         data.code = this.code;
 
         this.APIService.resource('members.pwd.reset').put(data)
         .then(res => {
-            alert('DEBUG::password change success');
+            this.isBusy = false;
+            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
+            alert(msg);
+
             this.$state.go('full.default.signin');
         }, err => {
-            alert(`ERR::${err.data.status.code}-${err.data.status.devMsg}`);
+            this.isBusy = false;
+            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.FAILED');
+            alert(`${msg}(Error Code: ${err.data.status.code})`);
         });
     }
 }

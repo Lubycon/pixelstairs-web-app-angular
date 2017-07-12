@@ -200,7 +200,11 @@
     },
     "RESET_PASSWORD": {
         "TITLE": "\"Improve the security of your account\"",
-        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months."
+        "DESC": "Please enter your new password each below for set a new one.<br>It is safe for your account security to change your password<br>about once every six months.",
+        "RESULT": {
+            "SUCCESS": "Password changed successfully! Log in again with changed password",
+            "FAILED": "Woo...Something is wrong. Please refresh and try again."
+        }
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here.",
