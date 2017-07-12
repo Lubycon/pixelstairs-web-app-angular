@@ -44,7 +44,6 @@ export class AuthenticationService {
 
                 this.$rootScope.member = res.result;
                 this.CookieService.put('member', this.$rootScope.member);
-                if(this.$rootScope.member.country) this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
 
                 defer.resolve();
             }, err => {

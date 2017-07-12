@@ -8,39 +8,51 @@ export function run (
 
     $rootScope.deviceInfo = USER_AGENT;
 
-    const initStarter = () => {
-        let defer = $q.defer();
-        defer.resolve();
-        return defer.promise;
-    };
+    function AppBoot() {
+        const initStarter = () => {
+            let defer = $q.defer();
+            defer.resolve();
+            return defer.promise;
+        };
 
-    /* app init start */
-    initStarter()
-    .then(res => { return AuthenticationService.init(); })
-    .then(res => {
-        $rootScope.$broadcast('update-member-data');
-        return AppSettingService.init();
-    })
-    .then(res => {
-        /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
-        $rootScope.Initialized = true;
-        __disableScrollBySpace__($window, $document);
+        /* app init start */
+        return initStarter()
+        .then(res => { return AuthenticationService.init(); })
+        .then(res => {
+            $rootScope.$broadcast('update-member-data');
+            return AppSettingService.init();
+        })
+        .then(res => {
+            /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
+            $rootScope.Initialized = true;
+            __disableScrollBySpace__($window, $document);
 
-        /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
-        /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
-    });
-    /* app init end */
+            /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
+            /*@LOG*/ $log.debug('***================================ RUN BLOCK END ================================***');
+        });
+        /* app init end */
+    }
 
     /*@STATE*/
     $rootScope.$on('$stateChangeStart', (
         event, toState, toParams, fromState, fromParams
     ) => {
-        __hideModalWindow__();
+        if($rootScope.Initialized) {
+            __hideModalWindow__();
+            return;
+        }
+        else {
+            event.preventDefault();
+            AppBoot().then(res => {
+                $state.go(toState, toParams);
+            });
+        }
     });
 
     $rootScope.$on('$stateChangeSuccess', (
         event, toState, toParams, fromState, fromParams
     ) => {
+        console.log('STATE CHNAGED => ', toState);
         fromState.params = fromParams;
         toState.params = toParams;
         fromState = __generateURL__(fromState, $document);

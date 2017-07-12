@@ -31,6 +31,10 @@ export class StateAuthenticationService {
                 if(IS_SIGNED) this.__stateChangeResolve__(toState);
                 else this.__stateChangeReject__();
             break;
+            case 'member:inactive:only':
+                if(IS_SIGNED && !IS_ACTIVE_USER) this.__stateChangeResolve__(toState);
+                else this.__stateChangeReject__('common.default.main');
+            break;
             case 'close':
                 this.__stateChangeReject__('full.default.error', {
                     code: '404'
