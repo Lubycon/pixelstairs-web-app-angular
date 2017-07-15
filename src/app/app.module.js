@@ -29,6 +29,7 @@ angular
         'ui.select2', // SELECT BOX MODULE
         'ngTagsInput', // TAG ELEMENT MODULE
         'angularGrid', // GRID LAYOUT MODULE
+        'angularMoment', // MOMENT MODULE
 
         'app.env', // ENV CONSTANTS
         'app.config', // APP CONFIG MODULE

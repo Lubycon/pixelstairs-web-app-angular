@@ -28,8 +28,6 @@ export class ContentsDetailController {
         });
         this.data.image.thumbnail = this.ImageService.setResolution(this.data.image, '30');
         this.data.image.file = this.ImageService.setResolution(this.data.image, '1920');
-        this.data.createdAt = new Date(this.data.createdAt);
-        this.data.updatedAt = new Date(this.data.updatedAt);
 
         this.ccData = this.getCCModel(this.data.licenseCode);
     }
