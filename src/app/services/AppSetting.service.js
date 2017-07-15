@@ -187,6 +187,11 @@ export class AppSettingService {
     }
 
     __setTranslateLanguage__(setting) {
-        this.$translate.use(setting.language.split('-')[0]);
+        if(setting.language) {
+            this.$translate.use(setting.language.split('-')[0]);
+        }
+        else {
+            this.$translate.use('en');
+        }
     }
 }
