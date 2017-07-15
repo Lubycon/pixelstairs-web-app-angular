@@ -174,7 +174,7 @@ export class AppSettingService {
 
     __setHTTPHeader__(setting) {
         let tmp = {},
-            lang = setting.language;
+            lang = setting.language || 'en-US';
 
         tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
         tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = setting.country_code;

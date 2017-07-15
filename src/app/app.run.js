@@ -17,7 +17,7 @@ export function run (
 
         /* app init start */
         return initStarter()
-        .then(res => { console.log('phase 1'); return AuthenticationService.init(); })
+        .then(res => { return AuthenticationService.init(); })
         .then(res => {
             $rootScope.$broadcast('update-member-data');
             return AppSettingService.init();
