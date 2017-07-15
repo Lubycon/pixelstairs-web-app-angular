@@ -52,7 +52,6 @@ export function run (
     $rootScope.$on('$stateChangeSuccess', (
         event, toState, toParams, fromState, fromParams
     ) => {
-        console.log('STATE CHNAGED => ', toState);
         fromState.params = fromParams;
         toState.params = toParams;
         fromState = __generateURL__(fromState, $document);

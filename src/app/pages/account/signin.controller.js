@@ -24,8 +24,6 @@ export class SigninController {
 
     postData() {
         if(this.form.$invalid) {
-            console.log(this.form.$invalid);
-
             let msg = 'Unknown Error';
             if(this.form.email.$invalid) {
                 msg = this.$translate.instant('ALERT_ERROR.SIGNIN.EMAIL');
