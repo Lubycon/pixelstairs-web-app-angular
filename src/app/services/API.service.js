@@ -1,74 +1,21 @@
-/* @API CONSTANT */
-const API_LIST = {
-    members: () => {
-        const prefix = 'members';
-        return {
-            signin: `${prefix}/signin`,
-            signout: `${prefix}/signout`,
-            signup: `${prefix}/signup`,
-            signdrop: `${prefix}/signdrop`,
-
-            simple: `${prefix}/simple`,
-            detail: `${prefix}/{id}/detail`,
-            exists: {
-                email: `${prefix}/exists/email`,
-                nickname: `${prefix}/exists/nickname`
-            },
-            pwd: {
-                mail: `${prefix}/password/mail`,
-                reset: `${prefix}/password/reset`
-            }
-        };
-    },
-    contents: () => {
-        const prefix = 'contents';
-        return {
-            upload: `${prefix}`,
-            list: `${prefix}`,
-            detail: `${prefix}/{id}`,
-            like: `${prefix}/{id}/like`
-        };
-    },
-    certs: () => {
-        const prefix = 'certs';
-        return {
-            signup: {
-                mail: `${prefix}/signup/mail`,
-                time: `${prefix}/signup/time`,
-                code: `${prefix}/signup/code`
-            },
-            password: {
-                code: `${prefix}/password/code`
-            }
-        };
-    },
-    tracker: () => {
-        const prefix = 'tracker';
-        return {
-            tracker: ''
-        };
-    },
-    quotes: () => {
-        const prefix = 'quotes';
-        return {
-            success: `${prefix}/success`,
-            mistake: `${prefix}/mistake`
-        };
-    }
-};
-/* @API CONSTANT */
-
+/*
+    @name: API.service.js
+    @desc: RESTful API 통신 서비스
+    @author: Evan Moon
+    @created_at:
+*/
 
 export class APIService {
     constructor(
-        Restangular, $log, $q
+        API_LIST, Restangular, $log, $q
     ) {
         'ngInject';
 
+        this.API_LIST = API_LIST;
         this.Restangular = Restangular;
         this.$log = $log;
         this.$q = $q;
-        this.API = this.__generateAPI__();
+        this.API = this.__generateAPI__(API_LIST);
     }
 
     resource(api, id) {
@@ -141,7 +88,7 @@ export class APIService {
         }
     }
 
-    __generateAPI__() {
+    __generateAPI__(API_LIST) {
         let tmp = {};
 
         Object.keys(API_LIST).forEach((v) => {

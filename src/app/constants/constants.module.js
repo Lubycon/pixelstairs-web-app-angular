@@ -1,5 +1,6 @@
 import { UserAgentDetection } from './ua.constant';
-import { CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER } from './ui.constants';
+import { CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER } from './ui.constant';
+import { API_LIST } from './api.constant';
 
 angular
     .module('app.constants', [
@@ -18,10 +19,9 @@ angular
         key: 'ko-KR'
     }])
 
-    .constant('SNS_KEYS', {
+    .constant('SNS_KEYS', {})
 
-    })
-
+    .constant('API_LIST', API_LIST)
     .constant('MAIN_GRID_INIT', 'grid')
     .constant('CONTENTS_VIEW_MODE', CONTENTS_VIEW_MODE)
     .constant('CONTENTS_SORT_FILTER', CONTENTS_SORT_FILTER)
