@@ -7,17 +7,27 @@
         .jumbotron {
             position: relative;
             height: 600px;
+            border-radius: 0;
             background: {
                 image: url('https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/jumbotron/1.png');
+            }
+            @include mq('sm') {
+                height: 400px;
             }
             * {
                 color: $white;
             }
             .float-desc {
                 @include floatToCenter;
+                @include mq('sm') {
+                    width: 100%;
+                }
                 .logo {
                     width: 400px;
                     margin: 0 auto;
+                    @include mq('sm') {
+                        width: 200px;
+                    }
                     img {
                         width: 100%;
                     }
@@ -26,10 +36,20 @@
                     text-align: center;
                     font-size: 25px;
                     margin: 60px 0;
+                    @include mq('sm') {
+                        font-size: 20px;
+                        margin: 40px 0;
+                    }
                 }
                 p {
                     text-align: center;
                     font-size: 16px;
+                    @include mq('sm') {
+                        font-size: 14px;
+                        br {
+                            display: none;
+                        }
+                    }
                 }
             }
 
@@ -41,6 +61,10 @@
                 text-align: center;
                 margin: 80px 0;
                 font-size: 36px;
+                @include mq('sm') {
+                    font-size: 20px;
+                    margin: 40px 0;
+                }
             }
 
             a {
@@ -51,13 +75,20 @@
             .icon-desc {
                 margin-bottom: 80px;
                 text-align: center;
+                @include mq('sm') {
+                    margin-bottom: 40px;
+                }
                 li {
                     display: inline-block;
                     div.icon-desc-icon {
-                        height: 150px;
+                        height: 120px;
                         text-align: center;
-                        margin-bottom: 42px;
-                        margin: 0 50px;
+                        margin: 0 50px 42px;
+                        @include mq('sm') {
+                            height: 50px;
+                            margin: 0 0 20px;
+                        }
+
                         img {
                             height: 100%;
                         }
@@ -66,6 +97,10 @@
                         font-size: 30px;
                         text-align: center;
                         line-height: 0.9;
+
+                        @include mq('sm') {
+                            font-size: 18px;
+                        }
                     }
                 }
             }
@@ -73,12 +108,18 @@
                 p {
                     font-size: 18px;
                     text-align: center;
+                    @include mq('sm') {
+                        font-size: 14px;
+                    }
                 }
             }
 
-            .cc-section {
+            &.cc-section {
                 li {
                     margin-right: 100px;
+                    @include mq('sm') {
+                        margin-right: 50px;
+                    }
                     &:last-child {
                         margin-right: 0;
                     }
@@ -88,8 +129,11 @@
                 }
             }
 
-            .contact-section {
+            &.contact-section {
                 padding-bottom: 400px;
+                @include mq('sm') {
+                    padding-bottom: 200px;
+                }
             }
         }
     }
