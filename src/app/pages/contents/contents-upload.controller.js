@@ -61,37 +61,45 @@ export class ContentsUploadController {
 
     postData() {
         if(this.isBusy) return false;
-
-        this.isBusy = true;
-        let data = angular.copy(this.contentData);
-
         if(!this.contentData.image.file) {
             alert('Make sure your artwork!');
             return false;
         }
 
-        /* SET TAGS */
+        this.isBusy = true;
+        let data = angular.copy(this.contentData);
+        /*
+         * @TODO
+         * license선택 기능이 추가되기 전까지는 기본 값
+         * cc, by, nc, sa로 들어갈 것
+         * 2017.06.17 -Evan
+         */
+        data.licenseCode = '1101';
         data.hashTags = data.hashTags.map(v => {
             return v.text;
         });
-
-        /*
-            license선택 기능이 추가되기 전까지는 기본 값
-            cc, by, nc, sa로 들어갈 것
-            2017.06.17 -Evan
-        */
-        data.licenseCode = '1101';
-
+        data.image.file = this.uploadedImg;
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 
-        this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' })
+        /* CREATE FORM DATA */
+        let formData = new FormData();
+        const KEYS = Object.keys(data);
+        KEYS.forEach(v => {
+            formData.append(v, data[v]);
+        });
+
+        console.log(formData.getAll('title'), formData.getAll('hashTags'), formData.getAll('image'));
+
+        this.APIService.resource('contents.upload').post(data)
         .then(res => {
-            this.isBusy = false;
-            this.$state.go('common.default.contents-success', { id: res.result.id });
+            console.log(res);
+            // this.isBusy = false;
+            // this.$state.go('common.default.contents-success', { id: res.result.id });
         }, err => {
-            this.isBusy = false;
-            let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
-            alert(msg);
+            console.log(err);
+            // this.isBusy = false;
+            // let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
+            // alert(msg);
         });
     }
 }

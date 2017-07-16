@@ -36,10 +36,19 @@ export class APIService {
 
     __post__(api, id, data) {
         api = this.__getURI__(api, id);
-        this.$log.debug(api);
-        return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
-            'Content-Type': 'application/json'
-        }));
+        // return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
+        //     'Content-Type': 'application/json'
+        // }));
+        // multipart/form
+        return this.__validate__(
+            this.Restangular.all(api)
+            .withHttpConfig({
+                transformRequest: angular.identity
+            })
+            .customPOST(data, '', undefined, {
+                'Content-Type': undefined
+            })
+        );
     }
 
     __put__(api, id, data) {
