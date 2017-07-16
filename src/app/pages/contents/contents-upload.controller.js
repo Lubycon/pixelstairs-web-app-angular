@@ -90,7 +90,7 @@ export class ContentsUploadController {
 
         console.log(formData.getAll('title'), formData.getAll('hashTags'), formData.getAll('image'));
 
-        this.APIService.resource('contents.upload').post(data)
+        this.APIService.resource('contents.upload').postTest(formData)
         .then(res => {
             console.log(res);
             // this.isBusy = false;

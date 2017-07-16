@@ -23,7 +23,8 @@ export class APIService {
             get: (params) => this.__get__(api, id, params),
             post: (data) => this.__post__(api, id, data),
             put: (data) => this.__put__(api, id, data),
-            delete: () => this.__delete__(api, id)
+            delete: () => this.__delete__(api, id),
+            postTest: (data) => this.__postTest__(api, id, data)
         };
     }
 
@@ -36,20 +37,25 @@ export class APIService {
 
     __post__(api, id, data) {
         api = this.__getURI__(api, id);
-        // return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
-        //     'Content-Type': 'application/json'
-        // }));
-        // multipart/form
+        return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
+            'Content-Type': 'application/json'
+        }));
+    }
+
+    // Multipart/form test
+    __postTest__(api, id, data) {
+        api = this.__getURI__(api, id);
         return this.__validate__(
             this.Restangular.all(api)
             .withHttpConfig({
                 transformRequest: angular.identity
             })
             .customPOST(data, '', undefined, {
-                'Content-Type': undefined
+                'Content-Type': 'multipart/form'
             })
         );
     }
+    // Multipart/form test
 
     __put__(api, id, data) {
         api = this.__getURI__(api, id);
