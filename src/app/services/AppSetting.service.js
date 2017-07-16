@@ -146,16 +146,16 @@ export class AppSettingService {
     __getLocationByIp__() {
         let defer = this.$q.defer();
 
-        $.ajax({
-            url: this.IP_API,
-            dataType: 'json',
-            type: 'GET'
-        }).then(res => {
-            defer.resolve(res);
-        }, err => {
-            defer.reject();
-        });
-        // defer.resolve();
+        // $.ajax({
+        //     url: this.IP_API,
+        //     dataType: 'json',
+        //     type: 'GET'
+        // }).then(res => {
+        //     defer.resolve(res);
+        // }, err => {
+        //     defer.reject();
+        // });
+        defer.resolve();
 
         return defer.promise;
     }
