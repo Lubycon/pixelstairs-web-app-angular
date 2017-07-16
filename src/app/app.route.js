@@ -9,11 +9,29 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
         })
         ;
 
-    $urlRouterProvider.when('', '/main');
-    $urlRouterProvider.when('/', '/main');
-    $urlRouterProvider.when('/home', '/main');
-    $urlRouterProvider.when('/home/', '/main');
+    // MAIN EXCEPTION
+    $urlRouterProvider.when('', ($injector, $location) => {
+        const state = $injector.get('$state');
+        state.go('common.default.main');
+        return $location.path();
+    });
+    $urlRouterProvider.when('/main', ($injector, $location) => {
+        const state = $injector.get('$state');
+        state.go('common.default.main');
+        return $location.path();
+    });
+    $urlRouterProvider.when('/home', ($injector, $location) => {
+        const state = $injector.get('$state');
+        state.go('common.default.main');
+        return $location.path();
+    });
 
     // PAGE IS NOT FOUND
-    $urlRouterProvider.otherwise('/error/404');
+    $urlRouterProvider.otherwise(($injector, $location) => {
+       const state = $injector.get('$state');
+       state.go('common.default.error', {
+           httpStatus: 404
+       });
+       return $location.path();
+    });
 }

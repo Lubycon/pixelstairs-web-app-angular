@@ -72,7 +72,7 @@ export function run (
         event, toState, toParams, fromState, fromParams
     ) => {
         $state.go('common.default.error', {
-            httpStatus: 500
+            httpStatus: 404
         });
     });
 }
