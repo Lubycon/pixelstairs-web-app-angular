@@ -24,7 +24,7 @@ export class APIService {
             post: (data) => this.__post__(api, id, data),
             put: (data) => this.__put__(api, id, data),
             delete: () => this.__delete__(api, id),
-            postTest: (data) => this.__postTest__(api, id, data)
+            postForm: (data) => this.__postForm__(api, id, data)
         };
     }
 
@@ -43,7 +43,7 @@ export class APIService {
     }
 
     // Multipart/form test
-    __postTest__(api, id, data) {
+    __postForm__(api, id, data) {
         api = this.__getURI__(api, id);
         return this.__validate__(
             this.Restangular.all(api)

@@ -1,6 +1,6 @@
 export class ContentsUploadController {
     constructor(
-        $rootScope, $log, $q, $state,
+        $rootScope, $log, $q, $state, $translate,
         APIService, ImageService, FormRegxService
     ) {
         'ngInject';
@@ -8,6 +8,7 @@ export class ContentsUploadController {
         this.$log = $log;
         this.$q = $q;
         this.$state = $state;
+        this.$translate = $translate;
 
         this.APIService = APIService;
         this.ImageService = ImageService;
@@ -59,7 +60,7 @@ export class ContentsUploadController {
         }
     }
 
-    postData() {
+    submit() {
         if(this.isBusy) return false;
         if(!this.contentData.image.file) {
             alert('Make sure your artwork!');
@@ -67,6 +68,38 @@ export class ContentsUploadController {
         }
 
         this.isBusy = true;
+
+        let contentId = null;
+
+        this.postData()
+        .then(res => {
+            /* Content upload success */
+            contentId = res.result.id;
+            return this.postFile(contentId);
+        }, err => {
+            /* Content upload failed */
+            this.isBusy = false;
+            let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
+            alert(msg);
+        }).then(res => {
+            /* File upload success */
+            this.isBusy = false;
+            this.$state.go('common.default.contents-success', { id: contentId });
+            return false;
+        }, err => {
+            /* File upload failed */
+            return this.cancelData(contentId);
+        }).then(res => {
+            if(res) {
+                this.isBusy = false;
+                let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
+                alert(msg);
+            }
+        });
+    }
+
+    postData() {
+        let defer = this.$q.defer();
         let data = angular.copy(this.contentData);
         /*
          * @TODO
@@ -78,28 +111,30 @@ export class ContentsUploadController {
         data.hashTags = data.hashTags.map(v => {
             return v.text;
         });
-        data.image.file = this.uploadedImg;
+        delete data.image;
         /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
 
-        /* CREATE FORM DATA */
+        return this.APIService.resource('contents.upload').post(data);
+    }
+
+    postFile(contentId) {
+        let defer = this.$q.defer();
+        let data = {
+            contentId,
+            file: this.uploadedImg
+        };
         let formData = new FormData();
         const KEYS = Object.keys(data);
         KEYS.forEach(v => {
             formData.append(v, data[v]);
         });
 
-        console.log(formData.getAll('title'), formData.getAll('hashTags'), formData.getAll('image'));
+        return this.APIService.resource('contents.upload').postForm(formData);
+    }
 
-        this.APIService.resource('contents.upload').postTest(formData)
-        .then(res => {
-            console.log(res);
-            // this.isBusy = false;
-            // this.$state.go('common.default.contents-success', { id: res.result.id });
-        }, err => {
-            console.log(err);
-            // this.isBusy = false;
-            // let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
-            // alert(msg);
-        });
+    cancelData(contentId) {
+        return this.APIService.resource('contents.detail', {
+            id: contentId
+        }).delete();
     }
 }
