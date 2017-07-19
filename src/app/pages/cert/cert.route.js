@@ -14,7 +14,7 @@ export function routeConfig($stateProvider) {
             resolve: {
 
             },
-            authenticate: 'member:active'
+            authenticate: 'member:inactive'
         })
         .state('common.default.cert-password', {
             url: '/certs/password/landing/:code',
