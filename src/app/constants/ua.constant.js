@@ -14,13 +14,6 @@ export function UserAgentDetection() {
     const device = `${parser.device.vendor || ''}_${parser.device.modal || ''}(${parser.device.type || ''})`;
     const isMobile = mobileDetect(parser.ua);
 
-    console.log({
-        browser,
-        os,
-        device,
-        isMobile
-    });
-
     return {
         browser,
         os,

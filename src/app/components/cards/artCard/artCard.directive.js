@@ -58,7 +58,16 @@ class ArtCardController {
             file: this.ImageService.getUserProfile(this.data.user.profileImg)
         });
 
-        this.data.image.thumbnail = this.ImageService.setResolution(this.data.image, '30');
-        this.data.image.file = this.ImageService.setResolution(this.data.image, '640');
+        this.__setImage__(this.data.image);
+    }
+
+    /* PRIVATE METHODS */
+    __setImage__(image) {
+        if(image) {
+            image.thumbnail = this.ImageService.setResolution(image, '30');
+            image.file = this.ImageService.setResolution(image, '640');
+        }
+
+        return image;
     }
 }
