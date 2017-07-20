@@ -1,6 +1,7 @@
 export class SignupController {
     constructor(
         $rootScope, $log, $state, $translate,
+        FORM_CONSTANT,
         APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
@@ -40,16 +41,7 @@ export class SignupController {
             isOpen: false
         };
 
-        this.genders = [{
-            name: 'Male',
-            code: 'M'
-        },{
-            name: 'Female',
-            code: 'F'
-        },{
-            name: 'etc',
-            code: 'E'
-        }];
+        this.genders = FORM_CONSTANT.GENDER_OPTIONS;
 
         this.selectBoxOption = {
             containerCssClass: 'custom-select2 full-width',

@@ -2,7 +2,8 @@ export class MemberSettingController {
 
     constructor(
         $rootScope, $log, $uibModal, toastr,
-        USER_DEFAULT_PROFILE_IMG, AppSettingService,
+        USER_DEFAULT_PROFILE_IMG, FORM_CONSTANT,
+        AppSettingService,
         APIService, ImageService, FormRegxService, getMemberRsv
     ) {
         'ngInject';
@@ -23,16 +24,7 @@ export class MemberSettingController {
 
         this.initMemberData = angular.extend({}, this.memberData);
 
-        this.genders = [{
-            name: 'Male',
-            code: 'male'
-        },{
-            name: 'Female',
-            code: 'female'
-        },{
-            name: 'etc',
-            code: 'etc'
-        }];
+        this.genders = FORM_CONSTANT.GENDER_OPTIONS;
 
         this.selectBoxOption = {
             containerCssClass: 'custom-select2 full-width',

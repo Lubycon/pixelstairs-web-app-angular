@@ -1,13 +1,25 @@
-
+/*
+    @name: ua.constant.js
+    @desc: User Agent를 분석하고 Pixelstairs의 포맷에 맞게 분류한다
+    @author: Evan Moon
+    @created_at: 2017.03.05
+*/
 export function UserAgentDetection() {
     'ngInject';
 
     const parser = new UAParser().getResult();
 
-    const browser = (getInappBrowser(parser.ua) || '') + '_' + parser.browser.name + '(' + (parser.browser.version || '') + ')',
-        os = parser.os.name + '(' + (parser.os.version || '') + ')',
-        device = (parser.device.vendor || '') + (parser.device.vender ? ' ' : '') + (parser.device.model || '') + '(' + (parser.device.type || '') + ')',
-        isMobile = mobileDetect(parser.ua);
+    const browser = `${getInappBrowser(parser.ua) || ''}_${parser.browser.name}(${parser.browser.version || ''})`;
+    const os = `${parser.os.name}(${parser.os.version || ''})`;
+    const device = `${parser.device.vendor || ''}_${parser.device.modal || ''}(${parser.device.type || ''})`;
+    const isMobile = mobileDetect(parser.ua);
+
+    console.log({
+        browser,
+        os,
+        device,
+        isMobile
+    });
 
     return {
         browser,
@@ -16,8 +28,6 @@ export function UserAgentDetection() {
         isMobile
     };
 }
-
-
 
 // PRIVATE METHOD
 
