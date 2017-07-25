@@ -129,7 +129,9 @@ export class ContentsUploadController {
             formData.append(v, data[v]);
         });
 
-        return this.APIService.resource('contents.upload').postForm(formData);
+        return this.APIService.resource('contents.image', {
+            id: data.contentId
+        }).postForm(formData);
     }
 
     cancelData(contentId) {

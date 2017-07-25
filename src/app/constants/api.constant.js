@@ -32,6 +32,7 @@ export const API_LIST = {
             upload: `${prefix}`,
             list: `${prefix}`,
             detail: `${prefix}/{id}`,
+            image: `${prefix}/{id}/image`,
             like: `${prefix}/{id}/like`
         };
     },
