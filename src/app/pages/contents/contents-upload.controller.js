@@ -1,6 +1,6 @@
 export class ContentsUploadController {
     constructor(
-        $rootScope, $log, $q, $state,
+        $rootScope, $log, $q, $state, $translate,
         APIService, ImageService, FormRegxService
     ) {
         'ngInject';
@@ -8,6 +8,7 @@ export class ContentsUploadController {
         this.$log = $log;
         this.$q = $q;
         this.$state = $state;
+        this.$translate = $translate;
 
         this.APIService = APIService;
         this.ImageService = ImageService;
@@ -59,39 +60,83 @@ export class ContentsUploadController {
         }
     }
 
-    postData() {
+    submit() {
         if(this.isBusy) return false;
-
-        this.isBusy = true;
-        let data = angular.copy(this.contentData);
-
         if(!this.contentData.image.file) {
             alert('Make sure your artwork!');
             return false;
         }
 
-        /* SET TAGS */
-        data.hashTags = data.hashTags.map(v => {
-            return v.text;
-        });
+        this.isBusy = true;
 
-        /*
-            license선택 기능이 추가되기 전까지는 기본 값
-            cc, by, nc, sa로 들어갈 것
-            2017.06.17 -Evan
-        */
-        data.licenseCode = '1101';
+        let contentId = null;
 
-        /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
-
-        this.APIService.resource('contents.upload').post(data, { 'Content-Type': 'multipart/mixed' })
+        this.postData()
         .then(res => {
-            this.isBusy = false;
-            this.$state.go('common.default.contents-success', { id: res.result.id });
+            /* Content upload success */
+            contentId = res.result.id;
+            return this.postFile(contentId);
         }, err => {
+            /* Content upload failed */
             this.isBusy = false;
             let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
             alert(msg);
+        }).then(res => {
+            /* File upload success */
+            this.isBusy = false;
+            this.$state.go('common.default.contents-success', { id: contentId });
+            return false;
+        }, err => {
+            /* File upload failed */
+            return this.cancelData(contentId);
+        }).then(res => {
+            if(res) {
+                this.isBusy = false;
+                let msg = this.$translate.instant('ALERT_ERROR.CONTENTS_UPLOAD.FAILED');
+                alert(msg);
+            }
         });
+    }
+
+    postData() {
+        let defer = this.$q.defer();
+        let data = angular.copy(this.contentData);
+        /*
+         * @TODO
+         * license선택 기능이 추가되기 전까지는 기본 값
+         * cc, by, nc, sa로 들어갈 것
+         * 2017.06.17 -Evan
+         */
+        data.licenseCode = '1101';
+        data.hashTags = data.hashTags.map(v => {
+            return v.text;
+        });
+        delete data.image;
+        /*@LOG*/ this.$log.debug('SUBMIT CONTENT => ', data);
+
+        return this.APIService.resource('contents.upload').post(data);
+    }
+
+    postFile(contentId) {
+        let defer = this.$q.defer();
+        let data = {
+            contentId,
+            file: this.uploadedImg
+        };
+        let formData = new FormData();
+        const KEYS = Object.keys(data);
+        KEYS.forEach(v => {
+            formData.append(v, data[v]);
+        });
+
+        return this.APIService.resource('contents.image', {
+            id: data.contentId
+        }).postForm(formData);
+    }
+
+    cancelData(contentId) {
+        return this.APIService.resource('contents.detail', {
+            id: contentId
+        }).delete();
     }
 }
