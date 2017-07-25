@@ -1,5 +1,5 @@
 import { UserAgentDetection } from './ua.constant';
-import { CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER } from './ui.constants';
+import { CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER } from './ui.constant';
 import { FORM_CONSTANT } from './form.constant';
 import { API_LIST } from './api.constant';
 
