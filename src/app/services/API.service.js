@@ -51,9 +51,7 @@ export class APIService {
                 transformRequest: angular.identity
             })
             .customPOST(data, '', undefined, {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Accept':'*/*'
+                'Content-Type': undefined
             })
         );
     }

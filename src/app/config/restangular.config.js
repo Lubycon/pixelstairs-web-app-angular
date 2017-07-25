@@ -9,7 +9,12 @@ export function restangularConfig(
     let defaultHeaders = RestangularProvider.defaultHeaders;
     const $log = angular.injector(['ng']).get('$log');
 
-    defaultHeaders['Content-Type'] = 'application/json';
+    /* @TODO
+     * File upload default헤더가 application/json으로 잡히는
+     *  이슈때문에 default config setting 해제함
+     * 2017.07.25 - Evan
+     */
+    // defaultHeaders['Content-Type'] = 'application/json';
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'version'] = APP_VERSION;
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'device'] = 'bs=' + USER_AGENT.browser + ',dvc=' + USER_AGENT.device + ',os=' + USER_AGENT.os;
 
