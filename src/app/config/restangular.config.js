@@ -2,7 +2,7 @@
 
 export function restangularConfig(
     RestangularProvider,
-    API_HOST, IS_DEV, DEV_KEY, USER_AGENT, APP_VERSION, CUSTOM_HEADER_PREFIX
+    API_HOST, IS_DEV, DEV_KEY, USER_AGENT, API_VERSION, CUSTOM_HEADER_PREFIX
 ) {
     'ngInject';
 
@@ -15,7 +15,7 @@ export function restangularConfig(
      * 2017.07.25 - Evan
      */
     // defaultHeaders['Content-Type'] = 'application/json';
-    defaultHeaders[CUSTOM_HEADER_PREFIX + 'version'] = APP_VERSION;
+    defaultHeaders[CUSTOM_HEADER_PREFIX + 'version'] = API_VERSION;
     defaultHeaders[CUSTOM_HEADER_PREFIX + 'device'] = 'bs=' + USER_AGENT.browser + ',dvc=' + USER_AGENT.device + ',os=' + USER_AGENT.os;
 
     /* 혹시 App Setting이 끝나기 전에 Tracker가 날라가는 경우를 대비 */
