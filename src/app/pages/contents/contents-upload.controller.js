@@ -60,6 +60,13 @@ export class ContentsUploadController {
         }
     }
 
+    initTagError(e) {
+        const CURRENT_VALUE = e.target.value;
+        if(!CURRENT_VALUE) {
+            this.form.tags.$setValidity('invalidTag', true);
+        }
+    }
+
     submit() {
         if(this.isBusy) return false;
         if(!this.contentData.image.file) {
