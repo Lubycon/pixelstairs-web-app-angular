@@ -15,6 +15,7 @@ export class ContentsDetailController {
 
         this.isSigned = $rootScope.authStatus.sign;
         this.isMobile = $rootScope.deviceInfo.isMobile;
+        this.isBusyLike = false;
         this.lang = $rootScope.setting.language.split('-')[0];
 
         this.data = getContentRsv.result;
@@ -40,15 +41,31 @@ export class ContentsDetailController {
         const id = this.$stateParams.id;
 
         if(this.data.myLike) {
-            this.APIService.resource('contents.like', { id }).delete().then(res => {
-                this.data.myLike = false;
-                this.data.counts.like--;
+            // UI 부분
+            this.data.myLike = false;
+            this.data.counts.like--;
+
+            // 실제 요청
+            if(this.isBusyLike) return false;
+            this.isBusyLike = true;
+
+            this.APIService.resource('contents.like', { id }).delete()
+            .finally(res => {
+                this.isBusyLike = false;
             });
         }
         else {
-            this.APIService.resource('contents.like', { id }).post().then(res => {
-                this.data.myLike = true;
-                this.data.counts.like++;
+            // UI 부분
+            this.data.myLike = true;
+            this.data.counts.like++;
+
+            // 실제 요청
+            if(this.isBusyLike) return false;
+            this.isBusyLike = true;
+
+            this.APIService.resource('contents.like', { id }).post()
+            .finally(res => {
+                this.isBusyLike = false;
             });
         }
     }
