@@ -15,7 +15,7 @@ export class CertPasswordLandingController {
         APIService.resource('certs.password.code').post({
             code: this.code
         }).then(res =>{
-            (this.init)(true);
+            (this.init)(res.result.validity);
         }, err => {
             (this.init)(false);
         });
@@ -26,9 +26,11 @@ export class CertPasswordLandingController {
 
         this.isSuccess = isSuccess;
         if(this.isSuccess) {
+            this.title = this.$translate.instant('CERT_PASSWORD_LANDING.TITLE.SUCCESS');
             this.msg = this.$translate.instant('CERT_PASSWORD_LANDING.MSG.SUCCESS');
         }
         else {
+            this.title = this.$translate.instant('CERT_PASSWORD_LANDING.TITLE.FAILED');
             this.msg = this.$translate.instant('CERT_PASSWORD_LANDING.MSG.FAILED');
         }
     }

@@ -180,7 +180,10 @@
         }
     },
     "CERT_SIGNUP_LANDING": {
-        "TITLE": "Registraion is finished",
+        "TITLE": {
+            "SUCCESS": "Registration is finished!",
+            "FAILED": "Sorry. Registration is failed"
+        },
         "MSG": {
             "SUCCESS": "Welcome to the Pixelstairs!",
             "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
@@ -192,7 +195,10 @@
         "FINISH_SEND": "Check the email at \"{{email}}\""
     },
     "CERT_PASSWORD_LANDING": {
-        "TITLE": "\"Finish Registration\"",
+        "TITLE": {
+            "SUCCESS": "Registration is finished!",
+            "FAILED": "Sorry. Registration is failed"
+        },
         "MSG": {
             "SUCCESS": "You can change your password now - ! Your registraion was finished successfully",
             "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
