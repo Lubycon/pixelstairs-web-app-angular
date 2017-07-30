@@ -1,5 +1,48 @@
 <div class="container">
     <div class="row">
-        SIGN DROP PAGE TEST
+        <div class="fieldset wiseword-form col-lg-12">
+            <div class="message-box">
+                <div class="main-message">
+                    <h3>We’ll develop for better service</h3>
+                </div>
+                <div class="wiseword-message">
+                    <h6>Please, let us know what you feel convenient or inconvenient while using the service</h6>
+                </div>
+
+                <div
+                    class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+                >
+                    <div class="fieldset">
+                        <form name="SigndropCtrl.form">
+                            <div class="input-container full-width">
+                                <label>{{'SIGN_DROP.QUESTIONS.GOOD' | translate}}</label>
+                                <select class="form-control">
+                                    <option
+                                        ng-repeat="item in SigndropCtrl.signdropReasons.good"
+                                        ng-value="{{item.id}}"
+                                    >
+                                        {{item.value | translate}}
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="input-container full-width">
+                                <label>{{'SIGN_DROP.QUESTIONS.BAD' | translate}}</label>
+                                <select class="form-control">
+                                    <option
+                                        ng-repeat="item in SigndropCtrl.signdropReasons.bad"
+                                        ng-value="{{item.id}}"
+                                    >
+                                        {{item.value | translate}}
+                                    </option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="col-lg-6 col-lg-offset-3">
+                <button class="btn">Submit and Continue</button>
+            </footer>
+        </div>
     </div>
 </div>

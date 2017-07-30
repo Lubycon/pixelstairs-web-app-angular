@@ -1,7 +1,10 @@
 export class SigndropController {
-    constructor() {
+    constructor(
+        FORM_CONSTANT,
+        APIService
+    ) {
         'ngInject';
 
-        console.log('sign drop page has loaded');
+        this.signdropReasons = FORM_CONSTANT.SIGN_DROP_REASONS;
     }
 }
