@@ -24,6 +24,13 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'AuthSignupCtrl',
             authenticate: 'member:inactive:only'
         })
+        .state('common.default.signdrop', {
+            url: '/signdrop',
+            templateUrl: 'app/pages/account/signdrop.tmpl.html',
+            controller: 'SigndropController',
+            controllerAs: 'SigndropCtrl',
+            authenticate: 'member:inactive'
+        })
 
         .state('common.default.find-password-email', {
             url: '/password/find/email',
