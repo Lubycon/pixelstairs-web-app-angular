@@ -26,7 +26,6 @@ angular
         'pascalprecht.translate', // TRANSLATE FOR LANGUAGE PACK MODULE
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
-        'ui.select2', // SELECT BOX MODULE
         'ngTagsInput', // TAG ELEMENT MODULE
         'angularGrid', // GRID LAYOUT MODULE
         'angularMoment', // MOMENT MODULE
