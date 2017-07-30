@@ -45,6 +45,7 @@ export const API_LIST = {
                 code: `${prefix}/signup/code`
             },
             password: {
+                check: `${prefix}/password`,
                 code: `${prefix}/password/code`
             }
         };

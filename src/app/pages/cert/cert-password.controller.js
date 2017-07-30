@@ -1,11 +1,11 @@
 export class CertPasswordController {
     constructor(
         $rootScope,
-        FormRegxService
+        APIService
     ) {
         'ngInject';
 
-        this.FormRegxService = FormRegxService;
+        this.APIService = APIService;
 
         this.isBusy = false;
         this.certData = {
@@ -15,10 +15,22 @@ export class CertPasswordController {
     }
 
     postData() {
-        console.log(this.certData);
-    }
+        this.isBusy = true;
+        let data = angular.copy(this.certData);
 
-    checkPasswordAgain() {
-        this.form.passwordAgain.$setValidity('notMatched', this.certData.password.origin === this.certData.password.repeat);
+        this.APIService.resource('certs.password.check').post(data)
+        .then(res => {
+            if(res.result.validity) {
+                alert('true');
+            }
+            else {
+                alert('false');
+            }
+        }, err => {
+            alert('false');
+        })
+        .finally(res => {
+            this.isBusy = false;
+        });
     }
 }
