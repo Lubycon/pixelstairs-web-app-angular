@@ -18,7 +18,9 @@
                                 <label>{{'SIGN_DROP.QUESTIONS.GOOD' | translate}}</label>
                                 <div class="select-wrapper form-control">
                                     <select
+                                        name="reason-good"
                                         ng-model="SigndropCtrl.signdropData.reason.good"
+                                        required
                                     >
                                     <option
                                         ng-repeat="item in SigndropCtrl.signdropReasons.good"
@@ -33,7 +35,9 @@
                                 <label>{{'SIGN_DROP.QUESTIONS.BAD' | translate}}</label>
                                 <div class="select-wrapper form-control">
                                     <select
+                                        name="reason-bad"
                                         ng-model="SigndropCtrl.signdropData.reason.bad"
+                                        required
                                     >
                                         <option
                                             ng-repeat="item in SigndropCtrl.signdropReasons.bad"
@@ -52,6 +56,7 @@
                 <button
                     class="btn full-width"
                     ng-click="SigndropCtrl.postData()"
+                    ng-disabled="SigndropCtrl.form.$invalid"
                 >
                     <span ng-show="!SigndropCtrl.isBusy">
                         {{'FORM.CONTINUE' | translate}}
