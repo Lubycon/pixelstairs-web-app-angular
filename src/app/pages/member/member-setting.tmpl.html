@@ -23,7 +23,7 @@
                         ng-style="{'background-image':'url('+SettingCtrl.memberProfile.file+')'}"
                     >
                         <div class="img-loading-overlay" ng-show="SettingCtrl.isProfileBusy">
-                            <i class="xi-spin xi-spinner-4"></i>
+                            <i class="xi-spin xi-spinner-5"></i>
                         </div>
                     </div>
 
@@ -85,7 +85,7 @@
                         ng-disabled="SettingCtrl.form.$invalid"
                     >
                         <span ng-show="!SettingCtrl.isBusy">{{'FORM.UPDATE' | translate}}</span>
-                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
+                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-5"></i></span>
                     </button>
                 </form>
             </div>
