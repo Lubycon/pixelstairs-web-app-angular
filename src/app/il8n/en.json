@@ -240,7 +240,8 @@
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here.",
-        "CHANGE_PROFILE_IMG": "Use the default image"
+        "CHANGE_PROFILE_IMG": "Use the default image",
+        "SIGNDROP": "Do you want to delete your account?"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "Change to other artwork"

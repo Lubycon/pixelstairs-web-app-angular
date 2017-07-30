@@ -240,7 +240,8 @@
     },
     "ACCOUNT_SETTING": {
         "DESC": "계정의 정보를 변경합니다",
-        "CHANGE_PROFILE_IMG": "기본 프로필 사진 사용하기"
+        "CHANGE_PROFILE_IMG": "기본 프로필 사진 사용하기",
+        "SIGNDROP": "픽셀스테어스 떠나기"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "다른 아트워크로 변경하기"

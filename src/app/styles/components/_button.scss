@@ -58,4 +58,8 @@
         background-color: transparent;
         text-decoration: underline;
     }
+    &.btn-cloak {
+        color: $silver-grey;
+        text-decoration: none;
+    }
 }
