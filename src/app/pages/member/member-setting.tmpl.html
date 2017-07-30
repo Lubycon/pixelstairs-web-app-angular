@@ -62,13 +62,14 @@
                         </div>
                     </div>
                     <div class="input-container">
-                        <select
-                            class="full-width form-control"
-                            ui-select2="SettingCtrl.selectBoxOption"
-                            ng-model="SettingCtrl.memberData.gender"
-                            ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
-                        >
-                        </select>
+                        <div class="select-wrapper form-control full-width">
+                            <select
+                                class="full-width"
+                                ng-model="SettingCtrl.memberData.gender"
+                                ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
+                            >
+                            </select>
+                        </div>
                     </div>
                     <div class="input-container">
                         <datepicker
