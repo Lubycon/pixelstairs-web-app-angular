@@ -17,7 +17,7 @@ export function routeConfig($stateProvider) {
             authenticate: 'member:inactive'
         })
         .state('common.default.cert-password', {
-            url: 'certs/password',
+            url: '/certs/password',
             templateUrl: 'app/pages/cert/cert-password.tmpl.html',
             controller: 'CertPasswordController',
             controllerAs: 'CertPassCtrl',
