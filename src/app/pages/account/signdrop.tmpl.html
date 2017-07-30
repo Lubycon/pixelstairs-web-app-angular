@@ -16,32 +16,43 @@
                         <form name="SigndropCtrl.form">
                             <div class="input-container full-width">
                                 <label>{{'SIGN_DROP.QUESTIONS.GOOD' | translate}}</label>
-                                <select class="form-control">
+                                <div class="select-wrapper form-control">
+                                    <select
+                                        ng-model="SigndropCtrl.signdropData.good"
+                                    >
                                     <option
                                         ng-repeat="item in SigndropCtrl.signdropReasons.good"
                                         ng-value="{{item.id}}"
                                     >
                                         {{item.value | translate}}
                                     </option>
-                                </select>
+                                    </select>
+                                </div>
                             </div>
                             <div class="input-container full-width">
                                 <label>{{'SIGN_DROP.QUESTIONS.BAD' | translate}}</label>
-                                <select class="form-control">
-                                    <option
-                                        ng-repeat="item in SigndropCtrl.signdropReasons.bad"
-                                        ng-value="{{item.id}}"
+                                <div class="select-wrapper form-control">
+                                    <select
+                                        ng-model="SigndropCtrl.signdropData.bad"
                                     >
-                                        {{item.value | translate}}
-                                    </option>
-                                </select>
+                                        <option
+                                            ng-repeat="item in SigndropCtrl.signdropReasons.bad"
+                                            ng-value="{{item.id}}"
+                                        >
+                                            {{item.value | translate}}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
             <footer class="col-lg-6 col-lg-offset-3">
-                <button class="btn">Submit and Continue</button>
+                <button
+                    class="btn"
+                    ng-click="SigndropCtrl.postData()"
+                >Submit and Continue</button>
             </footer>
         </div>
     </div>
