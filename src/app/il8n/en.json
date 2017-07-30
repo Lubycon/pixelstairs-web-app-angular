@@ -135,6 +135,9 @@
         "SIGNUP": {
             "FAILED": "Sorry. Registration failed. If the problem persists, please contact Pixelstairs."
         },
+        "SIGNDROP": {
+            "FAILED": "Sorry. Something is wrong. If the problem persists, please contact Pixelstairs."
+        },
         "ACCOUNT_SETTING": {
             "FAILED": "Sorry. Updating failed. If the problem persists, please contact Pixelstairs."
         },
@@ -187,7 +190,8 @@
                 "0004": "The website's visual vibe was not good enough",
                 "0005": "The various functions does not work smoothly"
             }
-        }
+        },
+        "SUCCESS": "Thank you for using Pixelstairs - !"
     },
     "SIGN_UP": {
         "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."

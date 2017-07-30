@@ -135,6 +135,9 @@
         "SIGNUP": {
             "FAILED": "회원가입에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         },
+        "SIGNDROP": {
+            "FAILED": "회원탈퇴에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
+        },
         "ACCOUNT_SETTING": {
             "FAILED": "정보 업데이트에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         },
@@ -187,7 +190,8 @@
                 "0004": "웹사이트 분위기가 너무 허전했어요",
                 "0005": "여러가지 기능이 잘 작동하지 않았어요"
             }
-        }
+        },
+        "SUCCESS": "그동안 픽셀스테어스를 이용해 주셔서 감사합니다."
     },
     "SIGN_UP": {
         "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어스의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."

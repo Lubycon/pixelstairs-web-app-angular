@@ -1,11 +1,15 @@
 export class SigndropController {
     constructor(
+        $translate,
         FORM_CONSTANT,
-        APIService
+        APIService, AuthenticationService
     ) {
         'ngInject';
 
+        this.$translate = $translate;
+
         this.APIService = APIService;
+        this.AuthenticationService = AuthenticationService;
 
         this.signdropReasons = FORM_CONSTANT.SIGN_DROP_REASONS;
         this.signdropData = {
@@ -21,7 +25,12 @@ export class SigndropController {
 
         this.APIService.resource('members.signdrop').delete(data)
         .then(res => {
-            console.log(res);
+            let msg = this.$translate.instant('SIGN_DROP.SUCCESS');
+            alert(msg);
+            this.AuthenticationService.clear('reload');
+        }, err => {
+            let msg = this.$translate.instant('ALERT_ERROR.SIGNDROP.FAILED');
+            alert(msg);
         });
     }
 }
