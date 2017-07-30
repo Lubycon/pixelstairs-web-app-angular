@@ -23,7 +23,7 @@ export class APIService {
             get: (params) => this.__get__(api, id, params),
             post: (data) => this.__post__(api, id, data),
             put: (data) => this.__put__(api, id, data),
-            delete: () => this.__delete__(api, id, data),
+            delete: (data) => this.__delete__(api, id, data),
             postForm: (data) => this.__postForm__(api, id, data)
         };
     }
@@ -66,9 +66,10 @@ export class APIService {
 
     __delete__(api, id, data) {
         api = this.__getURI__(api, id);
-        return this.__validate__(this.Restangular.all(api).customDELETE(data, undefined, undefined, {
+
+        return this.__validate__(this.Restangular.all(api).customOperation('remove', '', {}, {
             'Content-Type': 'application/json'
-        }));
+        }, data));
     }
 
     __validate__(response) {

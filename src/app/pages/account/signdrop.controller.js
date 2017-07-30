@@ -18,11 +18,10 @@ export class SigndropController {
 
     postData() {
         let data = angular.copy(this.signdropData);
-        console.log(data);
 
-        // this.APIService.resource('members.signdrop').delete(this.postData)
-        // .then(res => {
-        //     console.log(res);
-        // });
+        this.APIService.resource('members.signdrop').delete(data)
+        .then(res => {
+            console.log(res);
+        });
     }
 }

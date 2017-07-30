@@ -18,7 +18,7 @@
                                 <label>{{'SIGN_DROP.QUESTIONS.GOOD' | translate}}</label>
                                 <div class="select-wrapper form-control">
                                     <select
-                                        ng-model="SigndropCtrl.signdropData.good"
+                                        ng-model="SigndropCtrl.signdropData.reason.good"
                                     >
                                     <option
                                         ng-repeat="item in SigndropCtrl.signdropReasons.good"
@@ -33,7 +33,7 @@
                                 <label>{{'SIGN_DROP.QUESTIONS.BAD' | translate}}</label>
                                 <div class="select-wrapper form-control">
                                     <select
-                                        ng-model="SigndropCtrl.signdropData.bad"
+                                        ng-model="SigndropCtrl.signdropData.reason.bad"
                                     >
                                         <option
                                             ng-repeat="item in SigndropCtrl.signdropReasons.bad"
