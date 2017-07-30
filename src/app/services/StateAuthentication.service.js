@@ -55,7 +55,7 @@ export class StateAuthenticationService {
 
     __stateChangeResolve__(toState) {
         const BODY_CLASS = toState.name
-            .replace(/^(common|aside|full)\.(default|figure|noFooter)\./g,'state-')
+            .replace(/^(common|aside|full)\.(default|jumbo|figure|noFooter)\./g,'state-')
             .replace(/(\.|\_)/gi,'-');
 
         angular.element('body').removeClass().addClass(BODY_CLASS);
