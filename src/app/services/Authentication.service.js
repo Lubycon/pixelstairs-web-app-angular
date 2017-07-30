@@ -1,7 +1,7 @@
 export class AuthenticationService {
     constructor(
         $rootScope, $window, $location, $state, $filter,
-        $log, Restangular, $q,
+        $log, Restangular, $q, $timeout,
         CookieService, APIService, HistoryService, AppSettingService,
         toastr,
         CUSTOM_HEADER_PREFIX
@@ -16,6 +16,7 @@ export class AuthenticationService {
         this.$log = $log;
         this.Restangular = Restangular;
         this.$q = $q;
+        this.$timeout = $timeout;
 
         this.CookieService = CookieService;
         this.APIService = APIService;
@@ -124,8 +125,6 @@ export class AuthenticationService {
 
                 //DESTROY TOKEN AND AUTH DATA
                 this.__clearAuth__(reload);
-
-                if(reload === 'reload') this.$window.location.reload();
             }, err => {
                 /*LOG*/ this.$log.debug(err);
                 this.$log.error('AUTH CLEAR METHOD IS NOT WORKED. TOKEM WILL BE FORCE REMOVED :: AuthenticationService');
@@ -134,6 +133,10 @@ export class AuthenticationService {
                 this.__clearAuth__(reload);
             });
         }
+    }
+
+    clearForce(reload) {
+        this.__clearAuth__(reload);
     }
 
 
@@ -175,7 +178,12 @@ export class AuthenticationService {
         this.AppSettingService.set('country', country_code);
 
         this.$state.go('common.default.main');
-        
-        if(reload === 'reload') this.$window.location.reload();
+
+        if(reload === 'reload') {
+            // @TODO 추후 timeout 삭제하고 제대로 비동기처리할 것
+            this.$timeout(() => {
+                this.$window.location.reload();
+            }, 1000);
+        }
     }
 }

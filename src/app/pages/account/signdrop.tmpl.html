@@ -50,9 +50,14 @@
             </div>
             <footer class="col-lg-6 col-lg-offset-3">
                 <button
-                    class="btn"
+                    class="btn full-width"
                     ng-click="SigndropCtrl.postData()"
-                >Submit and Continue</button>
+                >
+                    <span ng-show="!SigndropCtrl.isBusy">
+                        {{'FORM.CONTINUE' | translate}}
+                    </span>
+                    <span ng-show="SigndropCtrl.isBusy"><i class="xi-spinner-5 xi-spin"></i></span>
+                </button>
             </footer>
         </div>
     </div>
