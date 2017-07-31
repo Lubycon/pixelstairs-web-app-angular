@@ -16,7 +16,7 @@
         >
             <div class="fieldset">
                 <form name="SignupCtrl.form" ng-init="SignupCtrl.form = SignupCtrl.form">
-                    <div class="input-container full-width">
+                    <div class="input-container">
                         <input
                             name="email"
                             type="email"
@@ -32,7 +32,7 @@
                             <p ng-message="exist">{{'FORM_ERROR.EXIST.EMAIL' | translate}}</p>
                         </div>
                     </div>
-                    <div class="input-container full-width">
+                    <div class="input-container">
                         <input
                             name="password"
                             type="password"
@@ -46,7 +46,7 @@
                             <div class="score-bar" data-status="{{SignupCtrl.passwordScore.status}}" ng-style="{'width': SignupCtrl.passwordScore.score+'%'}"></div>
                         </div>
                     </div>
-                    <div class="input-container full-width">
+                    <div class="input-container">
                         <input
                             name="passwordAgain"
                             type="password"
@@ -62,7 +62,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="input-container full-width">
+                    <div class="input-container">
                         <input
                             name="nickname"
                             type="text"
@@ -80,18 +80,18 @@
                             <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
-                    <div class="input-container full-width">
-                        <select
-                            class="form-control"
-                            ui-select2="SignupCtrl.selectBoxOption"
-                            ng-model="SignupCtrl.signData.gender"
-                            ng-options="gender.code as gender.name for gender in SignupCtrl.genders"
-                            placeholder="{{'LABEL.GENDER' | translate}}"
-                            required
-                        >
-                        </select>
+                    <div class="input-container">
+                        <div class="select-wrapper form-control">
+                            <select
+                                ng-model="SignupCtrl.signData.gender"
+                                ng-options="gender.code as gender.name for gender in SignupCtrl.genders"
+                                placeholder="{{'LABEL.GENDER' | translate}}"
+                                required
+                            >
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-container full-width">
+                    <div class="input-container">
                         <datepicker
                             class="full-width"
                             ng-model="SignupCtrl.signData.birthday"
