@@ -195,6 +195,8 @@
         "FINISH_SEND": "\"{{email}}\"로 인증 메일이 발송되었습니다"
     },
     "CERT_PASSWORD": {
+        "TITLE": "개인정보보호를 위해서 꼭 입력해주세요!",
+        "DESC": "비밀번호를 다시 입력해주세요",
         "FAILED": "비밀번호가 일치하지 않습니다. 다시 한번 확인해주세요."
     },
     "CERT_PASSWORD_LANDING": {

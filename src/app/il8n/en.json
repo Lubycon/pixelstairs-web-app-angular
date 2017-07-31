@@ -195,6 +195,8 @@
         "FINISH_SEND": "Check the email at \"{{email}}\""
     },
     "CERT_PASSWORD": {
+        "TITLE": "Security is the most important thing!",
+        "DESC": "Please enter your password for your account security",
         "FAILED": "Password does not match. Please make sure again."
     },
     "CERT_PASSWORD_LANDING": {
