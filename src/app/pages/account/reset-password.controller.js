@@ -13,7 +13,6 @@ export class ResetPasswordController {
         this.APIService = APIService;
 
         this.code = $stateParams.code;
-        this.isChangePasswordPage = this.$state.is('common.default.change-password');
         this.password = {
             origin: null,
             repeat: null
@@ -55,33 +54,16 @@ export class ResetPasswordController {
         let data = {};
         data.newPassword = this.password.origin;
 
-        if(this.isChangePasswordPage) {
-            this.setNewPassword(data);
-        }
-        else {
-            this.setMissingPassword(data);
-        }
+        this.setNewPasswordToAPI(data);
     }
 
-    setMissingPassword(data) { // 패스워드 분실 시
+    setNewPasswordToAPI(data) {
         data.code = this.code;
 
         this.APIService.resource('members.pwd.reset').put(data)
         .then(res => {
             this.__resolve__(res);
             this.$state.go('full.default.signin');
-        }, err => {
-            this.__reject__(err);
-        })
-        .finally(res => {
-            this.isBusy = false;
-        });
-    }
-
-    setNewPassword(data) { // 패스워드 변경 시
-        this.APIService.resource('members.pwd.change').put(data)
-        .then(res => {
-            this.__resolve__(res);
         }, err => {
             this.__reject__(err);
         })

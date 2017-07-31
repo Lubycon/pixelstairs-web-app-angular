@@ -23,7 +23,7 @@ export const API_LIST = {
             pwd: {
                 mail: `${prefix}/password/mail`,
                 reset: `${prefix}/password/reset`,
-                change: `${prefix}/password/change`
+                token: `${prefix}/password/token`
             }
         };
     },

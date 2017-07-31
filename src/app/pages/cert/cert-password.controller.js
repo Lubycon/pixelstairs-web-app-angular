@@ -20,21 +20,39 @@ export class CertPasswordController {
         this.isBusy = true;
         let data = angular.copy(this.certData);
 
-        this.APIService.resource('certs.password.check').post(data)
+        this.checkPasswordToAPI(data)
         .then(res => {
             if(res.result.validity) {
-                this.$state.go('common.default.change-password');
+                this.createTokenToAPI();
             }
             else {
-                let msg = this.$translate.instant('CERT_PASSWORD.FAILED');
-                alert(msg);
+                this.__reject__();
             }
         }, err => {
-            let msg = this.$translate.instant('CERT_PASSWORD.FAILED');
-            alert(msg);
-        })
-        .finally(res => {
+            this.__reject__();
+        });
+    }
+
+    checkPasswordToAPI(data) {
+        return this.APIService.resource('certs.password.check').post(data);
+    }
+
+    createTokenToAPI() {
+        return this.APIService.resource('members.pwd.token').post()
+        .then(res => {
+            this.$state.go('common.default.reset-password', {
+                code: res.result.token
+            });
+        }, err => {
+            this.__reject__();
+        }).finally(res => {
             this.isBusy = false;
         });
+    }
+
+    __reject__() {
+        let msg = this.$translate.instant('CERT_PASSWORD.FAILED');
+        alert(msg);
+        this.isBusy = false;
     }
 }

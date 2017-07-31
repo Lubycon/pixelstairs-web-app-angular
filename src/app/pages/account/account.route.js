@@ -40,14 +40,7 @@ export function routerConfig ($stateProvider) {
             params: {
                 code: null
             },
-            authenticate: 'visitor'
-        })
-        .state('common.default.change-password', {
-            url: '/password/change',
-            templateUrl: 'app/pages/account/reset-password.tmpl.html',
-            controller: 'ResetPasswordController',
-            controllerAs: 'ResetPassCtrl',
-            authenticate: 'member:active'
+            authenticate: 'all'
         })
 
         /* UNUSED */
