@@ -116,24 +116,20 @@ export class AuthenticationService {
         });
     }
 
-    clear(reload, state = '/main') {
+    clear(reload, state = 'common.default.main') {
         if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
             this.APIService.resource('members.signout').put()
             .then(res => {
                 delete this.$rootScope.member;
 
                 //DESTROY TOKEN AND AUTH DATA
-                this.__clearAuth__();
-
-                if(reload === 'reload') this.$window.location.reload();
+                this.__clearAuth__(reload, state);
             }, err => {
                 /*LOG*/ this.$log.debug(err);
                 this.$log.error('AUTH CLEAR METHOD IS NOT WORKED. TOKEM WILL BE FORCE REMOVED :: AuthenticationService');
 
                 //DESTROY TOKEN AND AUTH DATA
-                this.__clearAuth__();
-
-                if(reload === 'reload') this.$window.location.reload();
+                this.__clearAuth__(reload, state);
             });
         }
     }
@@ -162,7 +158,7 @@ export class AuthenticationService {
         this.Restangular.setDefaultHeaders(defaultHeaders);
     }
 
-    __clearAuth__() {
+    __clearAuth__(reload, state) {
         let country_code;
         if(this.$rootScope.setting && this.$rootScope.setting.country_code) {
             country_code = this.$rootScope.setting.country_code;
@@ -176,6 +172,10 @@ export class AuthenticationService {
 
         this.AppSettingService.set('country', country_code);
 
-        this.$state.go('common.default.main');
+        this.$state.go(state).then(res => {
+            if(reload === 'reload') {
+                this.$window.location.reload();
+            }
+        });
     }
 }
