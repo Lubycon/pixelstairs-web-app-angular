@@ -1,12 +1,13 @@
 export class CertPasswordController {
     constructor(
-        $rootScope, $translate,
+        $rootScope, $translate, $state,
         APIService
     ) {
         'ngInject';
 
         this.$translate = $translate;
         this.APIService = APIService;
+        this.$state = $state;
 
         this.isBusy = false;
         this.certData = {
@@ -22,8 +23,7 @@ export class CertPasswordController {
         this.APIService.resource('certs.password.check').post(data)
         .then(res => {
             if(res.result.validity) {
-                // @TODO 서버에서 token을 받아야 다음 진행이 가능
-                // 2017.07.30 - Evan
+                this.$state.go('common.default.change-password');
             }
             else {
                 let msg = this.$translate.instant('CERT_PASSWORD.FAILED');
