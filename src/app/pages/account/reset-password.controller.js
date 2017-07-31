@@ -13,7 +13,7 @@ export class ResetPasswordController {
         this.APIService = APIService;
 
         this.code = $stateParams.code;
-
+        this.isChangePasswordPage = this.$state.is('common.default.change-password');
         this.password = {
             origin: null,
             repeat: null
@@ -54,19 +54,49 @@ export class ResetPasswordController {
 
         let data = {};
         data.newPassword = this.password.origin;
+
+        if(this.isChangePasswordPage) {
+            this.setNewPassword(data);
+        }
+        else {
+            this.setMissingPassword(data);
+        }
+    }
+
+    setMissingPassword(data) { // 패스워드 분실 시
         data.code = this.code;
 
         this.APIService.resource('members.pwd.reset').put(data)
         .then(res => {
-            this.isBusy = false;
-            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
-            alert(msg);
-
+            this.__resolve__(res);
             this.$state.go('full.default.signin');
         }, err => {
+            this.__reject__(err);
+        })
+        .finally(res => {
             this.isBusy = false;
-            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.FAILED');
-            alert(`${msg}(Error Code: ${err.data.status.code})`);
         });
+    }
+
+    setNewPassword(data) { // 패스워드 변경 시
+        this.APIService.resource('members.pwd.change').put(data)
+        .then(res => {
+            this.__resolve__(res);
+        }, err => {
+            this.__reject__(err);
+        })
+        .finally(res => {
+            this.isBusy = false;
+        });
+    }
+
+    __resolve__(res) {
+        const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
+        alert(msg);
+    }
+
+    __reject__(err) {
+        const msg = this.$translate.instant('RESET_PASSWORD.RESULT.FAILED');
+        alert(`${msg}(Error Code: ${err.data.status.code})`);
     }
 }
