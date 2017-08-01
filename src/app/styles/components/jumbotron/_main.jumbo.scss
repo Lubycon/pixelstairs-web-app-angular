@@ -1,3 +1,39 @@
 .jumbotron.main-jumbotron {
     padding: 0;
+
+    .slick-track {
+        height: 350px;
+
+        .slick-item {
+            height: 100%;
+            overflow: hidden;
+        }
+    }
+
+    ul.slick-dots {
+        text-align: center;
+        li {
+            display: inline-block;
+
+            button {
+                $slick-dot-size: 15px;
+                width: $slick-dot-size;
+                height: $slick-dot-size;
+                padding: 0;
+                margin: 0 3px;
+                border: 1px solid $white;
+                border-radius: 50%;
+                background-color: transparent;
+                color: transparent;
+                vertical-align: middle;
+                content: '';
+            }
+
+            &.slick-active {
+                button {
+                    background-color: $white;
+                }
+            }
+        }
+    }
 }

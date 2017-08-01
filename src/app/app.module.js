@@ -23,6 +23,7 @@ angular
         'ui.router', // STATE CONTROL MODULE FOR SPA
         'ui.bootstrap', // BOOTSTRAP MODULE
         'toastr', // TOAST
+        'slickCarousel', // SLIDE SLICK MODULE
         'pascalprecht.translate', // TRANSLATE FOR LANGUAGE PACK MODULE
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
