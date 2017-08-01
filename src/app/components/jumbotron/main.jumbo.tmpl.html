@@ -3,7 +3,10 @@
         settings="MainJumboCtrl.slickConfig"
     >
         <div class="slick-item" ng-repeat="slide in MainJumboCtrl.slides">
-            <img src="{{ slide.image }}" />
+            <div
+                class="slick-image"
+                ng-style="{'background-image': 'url('+slide.image+')'}"
+            ></div>
         </div>
     </slick>
 </div>

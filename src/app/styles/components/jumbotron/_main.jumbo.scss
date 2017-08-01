@@ -8,19 +8,31 @@
             height: 100%;
             overflow: hidden;
         }
+
+        .slick-image {
+            height: 100%;
+            background: {
+                size: cover;
+                position: 50% 50%;
+            }
+        }
     }
 
     ul.slick-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
         text-align: center;
         li {
             display: inline-block;
 
             button {
-                $slick-dot-size: 15px;
+                $slick-dot-size: 10px;
                 width: $slick-dot-size;
                 height: $slick-dot-size;
                 padding: 0;
-                margin: 0 3px;
+                margin: 0 6px;
                 border: 1px solid $white;
                 border-radius: 50%;
                 background-color: transparent;

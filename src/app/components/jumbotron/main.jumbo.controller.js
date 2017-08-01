@@ -6,7 +6,7 @@ export class MainJumboController {
 
         this.slickConfig = {
             autoplay: true,
-            autoplaySpeed: 1000,
+            autoplaySpeed: 1500,
             speed: 800,
             dots: true,
             arrows: false
