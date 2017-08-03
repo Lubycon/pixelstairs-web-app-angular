@@ -1,7 +1,7 @@
 export class ResetPasswordController {
     constructor(
         $log, $state, $stateParams, $translate,
-        FormRegxService, APIService
+        AuthenticationService, FormRegxService, APIService
     ) {
         'ngInject';
 
@@ -9,6 +9,7 @@ export class ResetPasswordController {
         this.$state = $state;
         this.$translate = $translate;
 
+        this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
         this.APIService = APIService;
 
@@ -63,7 +64,6 @@ export class ResetPasswordController {
         this.APIService.resource('members.pwd.reset').put(data)
         .then(res => {
             this.__resolve__(res);
-            this.$state.go('full.default.signin');
         }, err => {
             this.__reject__(err);
         })
@@ -75,6 +75,7 @@ export class ResetPasswordController {
     __resolve__(res) {
         const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
         alert(msg);
+        this.AuthenticationService.clear('reload', 'full.default.signin');
     }
 
     __reject__(err) {
