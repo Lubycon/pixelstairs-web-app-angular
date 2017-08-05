@@ -53,6 +53,11 @@ export class HeaderController {
             icon: 'xi-cog',
             ignore: 'inactive'
         },{
+            name: 'MENU.CHANGE_PASSWORD',
+            link: 'common.default.cert-password',
+            icon: 'xi-key',
+            ignore: 'inactive'
+        },{
             name: 'MENU.AUTHENTICATION',
             link: 'common.default.auth-signup',
             icon: 'xi-key',

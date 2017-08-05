@@ -28,6 +28,7 @@
     "MENU": {
         "FIND_PASSWORD": "Find password",
         "ACCOUNT_SETTING": "Account Setting",
+        "CHANGE_PASSWORD": "Change Password",
         "AUTHENTICATION": "Authentication"
     },
     "HEADER": {

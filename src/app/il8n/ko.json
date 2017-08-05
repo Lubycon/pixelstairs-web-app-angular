@@ -28,6 +28,7 @@
     "MENU": {
         "FIND_PASSWORD": "비밀번호 찾기",
         "ACCOUNT_SETTING": "계정 설정",
+        "CHANGE_PASSWORD": "비밀번호 변경하기",
         "AUTHENTICATION": "계정 인증하기"
     },
     "HEADER": {
