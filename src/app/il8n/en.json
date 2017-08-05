@@ -171,26 +171,6 @@
     },
 
     "SIGN_DROP": {
-        "QUESTIONS": {
-            "GOOD": "What was convenient for you in Pixelstairs?",
-            "BAD": "What was inconvenient for you in Pixelstairs?"
-        },
-        "REASONS": {
-            "GOOD": {
-                "0001": "It was not complicated to use",
-                "0002": "There was a lot of useful content",
-                "0003": "Make and delete account was not complicated",
-                "0004": "The website's visual vibe was good",
-                "0005": "The various functions worked smoothly"
-            },
-            "BAD": {
-                "0001": "It was complicated to use",
-                "0002": "The content was not very useful",
-                "0003": "Make and delete account was too complicated",
-                "0004": "The website's visual vibe was not good enough",
-                "0005": "The various functions does not work smoothly"
-            }
-        },
         "SUCCESS": "Thank you for using Pixelstairs - !"
     },
     "SIGN_UP": {

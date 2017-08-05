@@ -16,44 +16,7 @@ const GENDER_OPTIONS = [{
     code: 'etc'
 }];
 
-const SIGN_DROP_REASONS = {
-    good: [{
-        id: 1,
-        value: 'SIGN_DROP.REASONS.GOOD.0001'
-    },{
-        id: 2,
-        value: 'SIGN_DROP.REASONS.GOOD.0002'
-    },{
-        id: 3,
-        value: 'SIGN_DROP.REASONS.GOOD.0003'
-    },{
-        id: 4,
-        value: 'SIGN_DROP.REASONS.GOOD.0004'
-    },{
-        id: 5,
-        value: 'SIGN_DROP.REASONS.GOOD.0005'
-    }],
-    bad: [{
-        id: 1,
-        value: 'SIGN_DROP.REASONS.BAD.0001'
-    },{
-        id: 2,
-        value: 'SIGN_DROP.REASONS.BAD.0002'
-    },{
-        id: 3,
-        value: 'SIGN_DROP.REASONS.BAD.0003'
-    },{
-        id: 4,
-        value: 'SIGN_DROP.REASONS.BAD.0004'
-    },{
-        id: 5,
-        value: 'SIGN_DROP.REASONS.BAD.0005'
-    }]
-};
-
-
 /* EXPORT */
 export const FORM_CONSTANT = {
-    GENDER_OPTIONS,
-    SIGN_DROP_REASONS
+    GENDER_OPTIONS
 };

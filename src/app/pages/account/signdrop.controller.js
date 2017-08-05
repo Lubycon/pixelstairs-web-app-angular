@@ -1,7 +1,7 @@
 export class SigndropController {
     constructor(
-        $translate,
-        FORM_CONSTANT,
+        $rootScope, $translate,
+        FORM_CONSTANT, getReasonRsv,
         APIService, AuthenticationService
     ) {
         'ngInject';
@@ -11,13 +11,12 @@ export class SigndropController {
         this.APIService = APIService;
         this.AuthenticationService = AuthenticationService;
 
+        this.lang = $rootScope.setting.language.split('-')[0];
         this.isBusy = false;
-        this.signdropReasons = FORM_CONSTANT.SIGN_DROP_REASONS;
+        this.surveyList = getReasonRsv.result;
+
         this.signdropData = {
-            reason: {
-                good: null,
-                bad: null
-            }
+            answerIds: []
         };
     }
 
@@ -25,6 +24,7 @@ export class SigndropController {
         let data = angular.copy(this.signdropData);
 
         this.isBusy = true;
+
         this.APIService.resource('members.signdrop').delete(data)
         .then(res => {
             this.AuthenticationService.clearForce('reload');

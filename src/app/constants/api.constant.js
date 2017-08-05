@@ -13,6 +13,7 @@ export const API_LIST = {
             signout: `${prefix}/signout`,
             signup: `${prefix}/signup`,
             signdrop: `${prefix}/signdrop`,
+            signdropSurvey: `${prefix}/signdrop/survey/list`,
 
             simple: `${prefix}/simple`,
             detail: `${prefix}/{id}/detail`,

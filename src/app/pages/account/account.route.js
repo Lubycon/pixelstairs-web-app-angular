@@ -29,7 +29,12 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/account/signdrop.tmpl.html',
             controller: 'SigndropController',
             controllerAs: 'SigndropCtrl',
-            authenticate: 'member:inactive'
+            authenticate: 'member:inactive',
+            resolve: {
+                getReasonRsv: (APIService) => {
+                    return APIService.resource('members.signdropSurvey').get().then();
+                }
+            }
         })
 
         .state('common.default.find-password-email', {
