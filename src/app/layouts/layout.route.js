@@ -26,6 +26,24 @@ export function routerConfig ($stateProvider) {
                 }
             }
         })
+        .state('common.jumbo', {
+            abstract: true,
+            views: {
+                header: {
+                    templateUrl: 'app/components/header/header.tmpl.html',
+                    controller: 'HeaderController',
+                    controllerAs: 'GlobalHeaderCtrl'
+                },
+                content: {
+                    template: '<div ui-view="jumbo"></div><div ui-view="page"></div>'
+                },
+                footer: {
+                    templateUrl: 'app/components/footer/footer.tmpl.html',
+                    controller: 'FooterController',
+                    controllerAs: 'GlobalFooterCtrl'
+                }
+            }
+        })
         .state('full', {
             abstract: true,
             templateUrl: 'app/layouts/common.layout.html',

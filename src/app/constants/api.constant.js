@@ -23,7 +23,8 @@ export const API_LIST = {
             },
             pwd: {
                 mail: `${prefix}/password/mail`,
-                reset: `${prefix}/password/reset`
+                reset: `${prefix}/password/reset`,
+                token: `${prefix}/password/token`
             }
         };
     },
@@ -46,6 +47,7 @@ export const API_LIST = {
                 code: `${prefix}/signup/code`
             },
             password: {
+                check: `${prefix}/password`,
                 code: `${prefix}/password/code`
             }
         };

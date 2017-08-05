@@ -17,6 +17,13 @@ export function routeConfig($stateProvider) {
             authenticate: 'member:inactive'
         })
         .state('common.default.cert-password', {
+            url: '/certs/password',
+            templateUrl: 'app/pages/cert/cert-password.tmpl.html',
+            controller: 'CertPasswordController',
+            controllerAs: 'CertPassCtrl',
+            authenticate: 'member:active'
+        })
+        .state('common.default.cert-password-landing', {
             url: '/certs/password/landing/:code',
             templateUrl: 'app/pages/cert/cert-password-landing.tmpl.html',
             controller: 'CertPasswordLandingController',

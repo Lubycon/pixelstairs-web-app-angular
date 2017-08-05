@@ -16,9 +16,6 @@
                 display: inline-block;
                 margin: 0 5px;
                 padding: 5px 10px;
-                &.global-menu {
-                    border: 2px solid $dove-grey;
-                }
 
                 &.member-menu {
                     .user-info {
@@ -35,23 +32,23 @@
                             vertical-align: middle;
                         }
                     }
+                }
+            }
+        }
 
-                    ul.dropdown-menu {
-                        li {
-                            width: 220px;
-                            margin: 0;
-                            a {
-                                position: relative;
-                                padding: 7px 14px;
+        ul.dropdown-menu {
+            li {
+                width: 220px;
+                margin: 0;
+                a {
+                    position: relative;
+                    padding: 7px 14px;
 
-                                i {
-                                    position: absolute;
-                                    top: 50%;
-                                    right: 14px;
-                                    transform: translateY(-50%);
-                                }
-                            }
-                        }
+                    i {
+                        position: absolute;
+                        top: 50%;
+                        right: 14px;
+                        transform: translateY(-50%);
                     }
                 }
             }

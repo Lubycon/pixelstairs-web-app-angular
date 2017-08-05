@@ -62,4 +62,7 @@
         color: $silver-grey;
         text-decoration: none;
     }
+    &.btn-round {
+        border-radius: 500px;
+    }
 }

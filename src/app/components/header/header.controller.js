@@ -23,7 +23,6 @@ export class HeaderController {
 
     init() {
         this.__setMemberData__();
-        this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
 
@@ -42,25 +41,6 @@ export class HeaderController {
 
         this.memberProfile = this.isSignin &&
             this.ImageService.getUserProfile(this.$rootScope.member.profileImg);
-    }
-
-    __getMenuList__(isMobile) {
-        let linkList = [];
-
-        if(isMobile) {
-            /*@MOBILE MENU*/
-            linkList = [];
-        }
-        else {
-            /*@DESKTOP MENU*/
-            linkList = [{
-                name: 'HEADER.UPLOAD_ARTWORK',
-                link: 'common.default.contents-upload',
-                signin: true
-            }];
-        }
-
-        return linkList;
     }
 
     __getMemberMenuList__(isMobile) {

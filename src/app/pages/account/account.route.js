@@ -52,7 +52,7 @@ export function routerConfig ($stateProvider) {
             params: {
                 code: null
             },
-            authenticate: 'visitor'
+            authenticate: 'all'
         })
 
         /* UNUSED */
