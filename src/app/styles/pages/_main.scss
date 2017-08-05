@@ -15,19 +15,20 @@
         }
 
 
-        ul {
-            text-align: center;
-        }
-
         .sort-filter {
-            margin-bottom: 20px;
+            margin-top: 10px;
+            margin-bottom: 30px;
             ul {
+                text-align: center;
                 li.btn {
                     position: relative;
                     background-color: transparent;
                     color: $dove-grey;
-                    padding: 10px 30px 5px;
+                    padding: 10px 20px 5px;
+                    font-size: 18px;
                     &.selected {
+                        color: $mine-black;
+                        font-weight: bold;
                         &::after {
                             content: '';
                             position: absolute;
@@ -44,12 +45,15 @@
             }
         }
         .view-mode {
+            margin-bottom: 10px;
             ul {
+                text-align: left;
                 li.btn {
                     border: none;
                     background-color: transparent;
+                    padding: 5px;
                     i {
-                        font-size: 20px;
+                        font-size: 23px;
                         color: $silver-grey;
                     }
                     &.selected {
