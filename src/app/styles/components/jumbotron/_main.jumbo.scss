@@ -1,5 +1,28 @@
 .jumbotron.main-jumbotron {
+    position: relative;
     padding: 0;
+
+    .jumbo-desc {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        * {
+            color: $white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        p {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
 
     .slick-track {
         height: 350px;
