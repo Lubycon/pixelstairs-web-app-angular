@@ -12,17 +12,17 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     // MAIN EXCEPTION
     $urlRouterProvider.when('', ($injector, $location) => {
         const state = $injector.get('$state');
-        state.go('common.default.main');
+        state.go('common.jumbo.main');
         return $location.path();
     });
     $urlRouterProvider.when('/main', ($injector, $location) => {
         const state = $injector.get('$state');
-        state.go('common.default.main');
+        state.go('common.jumbo.main');
         return $location.path();
     });
     $urlRouterProvider.when('/home', ($injector, $location) => {
         const state = $injector.get('$state');
-        state.go('common.default.main');
+        state.go('common.jumbo.main');
         return $location.path();
     });
 

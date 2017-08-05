@@ -176,6 +176,6 @@ export class AuthenticationService {
 
         this.AppSettingService.set('country', country_code);
 
-        this.$state.go('common.default.main');
+        this.$state.go('common.jumbo.main');
     }
 }

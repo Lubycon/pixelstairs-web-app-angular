@@ -47,7 +47,7 @@ export class AuthSignupController {
     }
 
     goToMain() {
-        this.$state.go('common.default.main');
+        this.$state.go('common.jumbo.main');
     }
 
     __countDown__() {
