@@ -135,8 +135,8 @@ export class AuthenticationService {
         }
     }
 
-    clearForce(reload) {
-        this.__clearAuth__(reload);
+    clearForce(reload, state = 'common.default.main') {
+        this.__clearAuth__(reload, state);
     }
 
 
