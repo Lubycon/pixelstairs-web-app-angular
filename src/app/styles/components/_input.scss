@@ -1,0 +1,65 @@
+.input-container {
+    position: relative;
+
+    .password-score {
+        $radius: 14px;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+
+        width: $radius;
+        height: $radius;
+        border-radius: 50%;
+        background: $light-grey;
+        text-align: left;
+        overflow: hidden;
+        .score-badge {
+            height: 100%;
+            background-color: $dove-grey;
+            &[data-status='low'] {
+                background-color: $dark-red;
+            }
+            &[data-status='mid'] {
+                background-color: $yellow;
+            }
+            &[data-status='high'] {
+                background-color: $green;
+            }
+            &[data-status='perfect'] {
+                background-color: $blue;
+            }
+        }
+    }
+}
+
+.form-control {
+    height: $input-height;
+    border: 1px solid $dove-grey;
+    border-radius: $input-border-radius;
+    box-shadow: none;
+    color: $dove-grey;
+    @include mq('sm') {
+        height: $mobile-input-height;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    &.ng-invalid.ng-dirty {
+        border-color: $dark-red;
+
+        &+.error-msg {
+            position: absolute;
+            bottom: -22px;
+            left: 0;
+            p {
+                color: $dark-red;
+                text-align: center;
+                font-size: 12px;
+            }
+        }
+    }
+}

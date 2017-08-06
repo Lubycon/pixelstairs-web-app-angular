@@ -1,12 +1,17 @@
 .state-signin .container,
 .state-signup .container {
     .row {
-        transform: translateY(10%);
+        width: 100%;
+        @include floatToCenter;
+        @include mq('sm') {
+            width: 100%;
+            margin: 0;
+        }
     }
     header {
         text-align: center;
         .global-logo {
-            width: 300px;
+            width: 250px;
             margin: 0 auto 10px;
         }
         p {
@@ -22,6 +27,9 @@
             }
         }
         form {
+            .input-container:last-of-type {
+                padding-bottom: 0;
+            }
             .signin-btn {
                 margin-top: 30px;
                 border: none;
@@ -36,6 +44,7 @@
     }
 
     .form-desc {
+        margin: 10px 0;
         a {
             text-align: left;
             text-decoration: underline;
@@ -45,11 +54,6 @@
 
     /* Media Query */
     @media screen and (max-width: $mobile) {
-        .row {
-            @include floatToCenter;
-            width: 100%;
-            margin: 0;
-        }
         header {
             .global-logo {
                 width: 150px;
@@ -71,35 +75,6 @@
     }
 }
 
-.state-signup .container {
-    .row {
-        position: relative;
-        transform: none;
-        top: 0;
-        left: 0;
-        padding: 50px 0;
-    }
-}
-
-.state-find-password-email,
-.state-reset-password {
-    .input-container {
-        display: inline-block;
-        .form-control {
-
-        }
-    }
-    footer {
-        padding: 20px;
-        .btn {
-            width: 100%;
-        }
-    }
-}
-
-.state-auth-signup {
-    .time-checker {
-        color: $dark-red;
-        font-style: italic;
-    }
-}
+@import './signup.page';
+@import './_auth-signup.page';
+@import './_password.page';

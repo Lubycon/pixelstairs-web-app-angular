@@ -1,9 +1,17 @@
+/*
+    @name: _button.scss
+    @desc: Pixelstairs Global 버튼 스타일
+    @author: Evan Moon
+    @created_at: 2017.07.30
+*/
+
+// GLOBAL BUTTON STYLE
 .btn {
     box-shadow: none;
     border: {
         color: transparent;
         width: 0;
-        radius: 0;
+        radius: $input-border-radius;
         style: solid;
     };
     padding: 10px 15px;
@@ -15,7 +23,7 @@
 
     &:hover {
         color: $white;
-        opacity: 0.6;
+        opacity: 0.8;
     }
 
     &:focus,&.focus {
@@ -39,13 +47,14 @@
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translateX(-50%) translateY(-50%);
+                transform: translate(-50%, -50%);
                 font-size: 20px;
             }
         }
     }
 }
 
+// CUSTOM BUTTON CLASSES
 .btn {
     &.btn-border {
         color: $mine-black;

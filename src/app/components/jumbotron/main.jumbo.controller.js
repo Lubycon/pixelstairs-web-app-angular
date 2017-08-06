@@ -1,8 +1,22 @@
 export class MainJumboController {
     constructor(
-
+        ImageService, getImageRsv
     ) {
         'ngInject';
+
+        this.ImageService = ImageService;
+        this.imageList = getImageRsv.result.contents;
+        this.imageList.forEach(v => {
+            v.image.file = ImageService.setResolution(v.image, 1920);
+        });
+
+        this.slickConfig = {
+            autoplay: true,
+            autoplaySpeed: 1500,
+            speed: 800,
+            dots: true,
+            arrows: false
+        };
 
         this.slides = [{
             id: 1,
@@ -14,7 +28,5 @@ export class MainJumboController {
             id: 3,
             image: 'http://orig15.deviantart.net/1283/f/2015/313/1/8/monody_artwork_by_jordangrimmer-d9fv2le.jpg'
         }];
-
-        console.log(this.slides);
     }
 }

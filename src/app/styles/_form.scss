@@ -1,5 +1,6 @@
-$input-height: 34px;
+$input-height: 40px;
 $mobile-input-height: 40px;
+$input-border-radius: 5px;
 
 * {
     font-family: $inconsolata;
@@ -30,99 +31,7 @@ $mobile-input-height: 40px;
 
     form {
         .input-container {
-            padding-bottom: 25px;
-        }
-    }
-}
-
-.form-control {
-    height: $input-height;
-}
-@media screen and (max-width: $mobile) {
-    .form-control {
-        height: $mobile-input-height;
-    }
-}
-
-.fieldset {
-    .input-container {
-        position: relative;
-        .form-control.ng-invalid.ng-dirty {
-            border-color: $dark-red;
-        }
-        .form-control.ng-invalid+.error-msg {
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            p {
-                color: $dark-red;
-                text-align: center;
-                font-size: 12px;
-            }
-        }
-        .password-score {
-            height: 5px;
-            margin-top: 0px;
-            background: $silver-grey;
-            text-align: left;
-            .score-bar {
-                vertical-align: top;
-                height: 100%;
-                display: inline-block;
-                background-color: $dove-grey;
-                transition: width 0.3s ease-out;
-                &[data-status='low'] {
-                    background-color: $dark-red;
-                }
-                &[data-status='mid'] {
-                    background-color: $yellow;
-                }
-                &[data-status='high'] {
-                    background-color: $green;
-                }
-                &[data-status='perfect'] {
-                    background-color: $blue;
-                }
-            }
-        }
-    }
-    .form-control {
-        box-shadow: none;
-        border: 2px solid $dove-grey;
-        color: $dove-grey;
-        border-radius: 0;
-    }
-
-    tags-input.form-control {
-        box-shadow: none;
-        padding: 0 5px;
-        height: auto;
-        * {
-            font-family: $inconsolata;
-        }
-        .host {
-            margin: 0;
-            .tags {
-                border: none;
-                box-shadow: none;
-                input {
-                    margin: 2px;
-                }
-                .tag-list {
-                    .tag-item {
-                        padding: 0 10px;
-                        line-height: 25px;
-                        border: none;
-                        border-radius: 200px;
-                        background: $dove-grey;
-                        color: $white;
-                        font-weight: 200;
-                        .remove-button {
-                            color: $white;
-                        }
-                    }
-                }
-            }
+            margin-bottom: 25px;
         }
     }
 }

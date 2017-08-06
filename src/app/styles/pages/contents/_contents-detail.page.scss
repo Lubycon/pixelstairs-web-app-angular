@@ -1,0 +1,146 @@
+.state-contents-detail {
+    @mixin bottom-line() {
+        $space: 30px;
+        border-bottom: 1px solid $light-grey;
+        margin-bottom: $space;
+        padding-bottom: $space;
+    }
+
+    .section-card {
+        @extend .col-lg-6;
+        @extend .col-lg-offset-3;
+        @extend .col-md-12;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+    }
+
+    section {
+        @include mq('sm') {
+            margin: {
+                left: 0;
+                right: 0;
+            }
+        }
+        .section-card {
+            margin-bottom: 10px;
+            &:last-child {
+                @include bottom-line;
+            }
+        }
+        &:last-child {
+            .section-card:last-child {
+                border-color: transparent;
+            }
+        }
+    }
+
+    section[data-section="content-section"] {
+        .content-wrapper {
+            .content-title {
+                text-align: center;
+                padding: 10px 0;
+                font-size: 28px;
+                margin: 30px 0 20px;
+            }
+            .content-image {
+                img {
+                    width: 100%;
+                }
+            }
+
+            .content-desc {
+                p {
+                    font-size: 16px;
+                    margin: 30px 0;
+                }
+            }
+
+            .tags-wrapper {
+                label {
+                    margin-bottom: 10px;
+                    i {
+                        font-size: 18px;
+                        vertical-align: middle;
+                    }
+                    span {
+                        font-size: 14px;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+
+    section[data-section="like-section"] {
+        .btn-like {
+            border-color: $dark-red;
+            i {
+                color: $dark-red;
+                vertical-align: middle;
+            }
+            span {
+                vertical-align: middle;
+            };
+
+            &.liked {
+                background-color: $dark-red;
+                color: $white;
+                i {
+                    color: $white;
+                }
+            }
+        }
+
+        .content-counter {
+            text-align: center;
+            li {
+                display: inline-block;
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                i {
+                    vertical-align: middle;
+                    font-size: 20px;
+                    &.xi-heart {
+                        color: $dark-red;
+                    }
+                }
+                span {
+                    vertical-align: middle;
+                    font-size: 18px;
+                    strong {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    section[data-section="author-section"] {
+        .artwork-by {
+            margin-bottom: 10px;
+        }
+        .member-info {
+            .member-profile {
+                @include circleFrame(40px);
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+            .member-detail-info {
+                display: inline-block;
+                vertical-align: middle;
+                h5 {
+                    font-weight: bold;
+                }
+                p {
+                    span {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

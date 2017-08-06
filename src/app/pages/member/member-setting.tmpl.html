@@ -61,26 +61,9 @@
                             <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
-                    <div class="input-container">
-                        <div class="select-wrapper form-control full-width">
-                            <select
-                                class="full-width"
-                                ng-model="SettingCtrl.memberData.gender"
-                                ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
-                            >
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-container">
-                        <datepicker
-                            class="full-width"
-                            ng-model="SettingCtrl.memberData.birthday"
-                            placeholder="Birthday"
-                        ></datepicker>
-                    </div>
 
                     <button
-                        class="btn full-width"
+                        class="btn btn-round full-width"
                         ng-click="SettingCtrl.postData()"
                         ng-disabled="SettingCtrl.form.$invalid"
                     >

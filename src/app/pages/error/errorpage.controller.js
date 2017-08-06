@@ -31,7 +31,7 @@ export class ErrorPageController {
             this.$location.href = document.referrer;
         }
         else {
-            this.$state.go('common.default.main');
+            this.$state.go('common.jumbo.main');
         }
     }
 }

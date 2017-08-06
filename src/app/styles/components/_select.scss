@@ -1,6 +1,11 @@
 .form-control.select-wrapper {
-    border-radius: 0;
+    border-radius: $input-border-radius;
     position: relative;
+    height: $input-height;
+    box-shadow: none;
+    @include mq('sm') {
+        height: $mobile-input-height;
+    }
 
     &::before {
         position: absolute;

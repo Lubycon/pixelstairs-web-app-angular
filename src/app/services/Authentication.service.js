@@ -117,7 +117,7 @@ export class AuthenticationService {
         });
     }
 
-    clear(reload, state = 'common.default.main') {
+    clear(reload, state = 'common.jumbo.main') {
         if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
             this.APIService.resource('members.signout').put()
             .then(res => {
@@ -135,7 +135,7 @@ export class AuthenticationService {
         }
     }
 
-    clearForce(reload, state = 'common.default.main') {
+    clearForce(reload, state = 'common.jumbo.main') {
         this.__clearAuth__(reload, state);
     }
 

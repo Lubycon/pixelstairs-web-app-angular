@@ -46,7 +46,7 @@ export class SigninController {
 
             this.__resolve__(res.result.token).then(res => {
                 let state = this.$rootScope.member.status === 'active' ?
-                    'common.default.main' :
+                    'common.jumbo.main' :
                     'common.default.auth-signup';
 
                 this.$state.go(state);

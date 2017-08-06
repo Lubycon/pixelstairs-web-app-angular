@@ -40,6 +40,6 @@ export class CertSignupLandingController {
     }
 
     goToMain() {
-        this.$state.go('common.default.main');
+        this.$state.go('common.jumbo.main');
     }
 }
