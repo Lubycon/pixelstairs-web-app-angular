@@ -1,5 +1,37 @@
 .input-container {
     position: relative;
+
+    .password-score {
+        $radius: 14px;
+
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+
+        width: $radius;
+        height: $radius;
+        border-radius: 50%;
+        background: $light-grey;
+        text-align: left;
+        overflow: hidden;
+        .score-badge {
+            height: 100%;
+            background-color: $dove-grey;
+            &[data-status='low'] {
+                background-color: $dark-red;
+            }
+            &[data-status='mid'] {
+                background-color: $yellow;
+            }
+            &[data-status='high'] {
+                background-color: $green;
+            }
+            &[data-status='perfect'] {
+                background-color: $blue;
+            }
+        }
+    }
 }
 
 .form-control {
@@ -16,43 +48,17 @@
         box-shadow: none;
     }
 
-    .ng-invalid.ng-dirty {
+    &.ng-invalid.ng-dirty {
         border-color: $dark-red;
 
         &+.error-msg {
             position: absolute;
-            bottom: 5px;
+            bottom: -22px;
             left: 0;
             p {
                 color: $dark-red;
                 text-align: center;
                 font-size: 12px;
-            }
-        }
-    }
-
-    .password-score {
-        height: 5px;
-        margin-top: 0px;
-        background: $silver-grey;
-        text-align: left;
-        .score-bar {
-            vertical-align: top;
-            height: 100%;
-            display: inline-block;
-            background-color: $dove-grey;
-            transition: width 0.3s ease-out;
-            &[data-status='low'] {
-                background-color: $dark-red;
-            }
-            &[data-status='mid'] {
-                background-color: $yellow;
-            }
-            &[data-status='high'] {
-                background-color: $green;
-            }
-            &[data-status='perfect'] {
-                background-color: $blue;
             }
         }
     }

@@ -15,21 +15,28 @@ tags-input.form-control {
     box-shadow: none;
     padding: 0 5px;
     height: auto;
+    min-height: $input-height;
+    @include mq('sm') {
+        height: $mobile-input-height;
+    }
     * {
         font-family: $inconsolata;
     }
     .host {
-        margin: 0;
         .tags {
             border: none;
             box-shadow: none;
             input {
-                margin: 2px;
+                height: $input-height - 10px;
+                vertical-align: middle;
+                @include mq('sm') {
+                    height: $mobile-input-height;
+                }
             }
             .tag-list {
                 .tag-item {
                     padding: 0 10px;
-                    line-height: 25px;
+                    height: $input-height - 10px;
                     border: none;
                     border-radius: 200px;
                     background: $dove-grey;
@@ -37,6 +44,10 @@ tags-input.form-control {
                     font-weight: 200;
                     .remove-button {
                         color: $white;
+                    }
+
+                    @include mq('sm') {
+                        height: $mobile-input-height - 10px;
                     }
                 }
             }

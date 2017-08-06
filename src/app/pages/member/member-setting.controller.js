@@ -2,7 +2,7 @@ export class MemberSettingController {
 
     constructor(
         $rootScope, $log, $uibModal, toastr,
-        USER_DEFAULT_PROFILE_IMG, FORM_CONSTANT,
+        USER_DEFAULT_PROFILE_IMG,
         AppSettingService,
         APIService, ImageService, FormRegxService, getMemberRsv
     ) {
@@ -19,12 +19,9 @@ export class MemberSettingController {
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
-        this.memberData.birthday = this.memberData.birthday && new Date(this.memberData.birthday.split(' ')[0]);
         this.memberProfile = this.__getUserProfile__(this.memberData.profileImg);
 
         this.initMemberData = angular.extend({}, this.memberData);
-
-        this.genders = FORM_CONSTANT.GENDER_OPTIONS;
 
         this.selectBoxOption = {
             containerCssClass: 'custom-select2 full-width',

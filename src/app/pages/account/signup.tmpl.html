@@ -12,7 +12,7 @@
             <p>{{'MOTO' | translate}}</p>
         </header>
         <div
-            class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+            class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4"
         >
             <div class="fieldset">
                 <form name="SignupCtrl.form" ng-init="SignupCtrl.form = SignupCtrl.form">
@@ -43,7 +43,7 @@
                             required
                         >
                         <div class="password-score">
-                            <div class="score-bar" data-status="{{SignupCtrl.passwordScore.status}}" ng-style="{'width': SignupCtrl.passwordScore.score+'%'}"></div>
+                            <div class="score-badge" data-status="{{SignupCtrl.passwordScore.status}}"></div>
                         </div>
                     </div>
                     <div class="input-container">
@@ -80,25 +80,6 @@
                             <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
-                    <div class="input-container">
-                        <div class="select-wrapper form-control">
-                            <select
-                                ng-model="SignupCtrl.signData.gender"
-                                ng-options="gender.code as gender.name for gender in SignupCtrl.genders"
-                                placeholder="{{'LABEL.GENDER' | translate}}"
-                                required
-                            >
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-container">
-                        <datepicker
-                            class="full-width"
-                            ng-model="SignupCtrl.signData.birthday"
-                            placeholder="{{'LABEL.BIRTHDAY' | translate}}"
-                            required
-                        ></datepicker>
-                    </div>
 
                     <p
                         class="form-desc"
@@ -107,7 +88,7 @@
                     ></p>
 
                     <button
-                        class="signin-btn btn full-width"
+                        class="signin-btn btn btn-round full-width"
                         ng-click="SignupCtrl.postData()"
                         ng-disabled="SignupCtrl.form.$invalid"
                     >

@@ -1,7 +1,6 @@
 export class SignupController {
     constructor(
         $rootScope, $log, $state, $translate,
-        FORM_CONSTANT,
         APIService, AuthenticationService, FormRegxService
     ) {
         'ngInject';
@@ -24,8 +23,6 @@ export class SignupController {
                 repeat: null
             },
             nickname: null,
-            gender: null,
-            birthday: null,
             newsletterAccepted: false,
             termsOfServiceAccepted: false
         };
@@ -40,8 +37,6 @@ export class SignupController {
         this.datePopup = {
             isOpen: false
         };
-
-        this.genders = FORM_CONSTANT.GENDER_OPTIONS;
 
         this.selectBoxOption = {
             containerCssClass: 'custom-select2 full-width',
