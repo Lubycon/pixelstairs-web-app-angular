@@ -53,12 +53,6 @@
         ga('send', 'pageview');
     </script>
     <!-- GOOGLE ANALYTICS END -->
-
-    <!-- Sentry Error Tracker -->
-    <script src="https://cdn.ravenjs.com/3.17.0/angular/raven.min.js" crossorigin="anonymous"></script>
-    <script>
-        Raven.config('https://cfb6874f200148d4aa36fd8bef3f729f@sentry.pixelstairs.com:9443/3').install();
-    </script>
 </head>
 <body>
     <!--[if lt IE 10]>
@@ -83,4 +77,11 @@
     <!-- endinject -->
     <!-- endbuild -->
 </body>
+
+<!-- Sentry Error Tracker -->
+<script src="https://cdn.ravenjs.com/3.17.0/angular/raven.min.js" crossorigin="anonymous"></script>
+<script>
+    Raven.config('https://9c4f8ad9f1884aed9d00fbd685023dfc@sentry.pixelstairs.com:9443/4').install();
+</script>
+
 </html>
