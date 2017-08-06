@@ -1,5 +1,5 @@
 
-<div ui-view="header" ng-if="layout.header"></div>
+<div ui-view="header" id="app-header" ng-if="layout.header"></div>
 
 <div id="container" class="container-fluid {{layout.name}}" ng-class="{'with-header' : layout.header}">
     <div class="row">
@@ -7,4 +7,4 @@
     </div>
 </div>
 
-<div ui-view="footer" ng-if="layout.footer"></div>
+<div ui-view="footer" id="app-footer" ng-if="layout.footer"></div>

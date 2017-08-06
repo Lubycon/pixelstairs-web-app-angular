@@ -1,7 +1,7 @@
 export class ResetPasswordController {
     constructor(
         $log, $state, $stateParams, $translate,
-        FormRegxService, APIService
+        AuthenticationService, FormRegxService, APIService
     ) {
         'ngInject';
 
@@ -9,11 +9,11 @@ export class ResetPasswordController {
         this.$state = $state;
         this.$translate = $translate;
 
+        this.AuthenticationService = AuthenticationService;
         this.FormRegxService = FormRegxService;
         this.APIService = APIService;
 
         this.code = $stateParams.code;
-
         this.password = {
             origin: null,
             repeat: null
@@ -54,19 +54,32 @@ export class ResetPasswordController {
 
         let data = {};
         data.newPassword = this.password.origin;
+
+        this.setNewPasswordToAPI(data);
+    }
+
+    setNewPasswordToAPI(data) {
         data.code = this.code;
 
         this.APIService.resource('members.pwd.reset').put(data)
         .then(res => {
-            this.isBusy = false;
-            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
-            alert(msg);
-
-            this.$state.go('full.default.signin');
+            this.__resolve__(res);
         }, err => {
+            this.__reject__(err);
+        })
+        .finally(res => {
             this.isBusy = false;
-            const msg = this.$translate.instant('RESET_PASSWORD.RESULT.FAILED');
-            alert(`${msg}(Error Code: ${err.data.status.code})`);
         });
+    }
+
+    __resolve__(res) {
+        const msg = this.$translate.instant('RESET_PASSWORD.RESULT.SUCCESS');
+        alert(msg);
+        this.AuthenticationService.clear('reload', 'full.default.signin');
+    }
+
+    __reject__(err) {
+        const msg = this.$translate.instant('RESET_PASSWORD.RESULT.FAILED');
+        alert(`${msg}(Error Code: ${err.data.status.code})`);
     }
 }

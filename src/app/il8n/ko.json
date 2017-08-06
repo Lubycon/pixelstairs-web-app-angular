@@ -28,6 +28,7 @@
     "MENU": {
         "FIND_PASSWORD": "비밀번호 찾기",
         "ACCOUNT_SETTING": "계정 설정",
+        "CHANGE_PASSWORD": "비밀번호 변경하기",
         "AUTHENTICATION": "계정 인증하기"
     },
     "HEADER": {
@@ -80,7 +81,6 @@
         }
     },
     "SCRIPT": {
-        "SIGNIN_HEADER": "\"픽셀스테어스는 당신과 당신만의 영감을 환영합니다!\"",
         "GO_TO_SIGNUP": "아직 회원이 아니신가요? 지금 가입하세요!",
         "FIND_PASSWORD": "혹시 비밀번호를 잊으셨나요?",
         "HELP_CONTENT_UPLOAD": {
@@ -135,6 +135,9 @@
         "SIGNUP": {
             "FAILED": "회원가입에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         },
+        "SIGNDROP": {
+            "FAILED": "회원탈퇴에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
+        },
         "ACCOUNT_SETTING": {
             "FAILED": "정보 업데이트에 실패하였습니다. 문제가 계속되면 Pixelstairs에게 문의해주세요"
         },
@@ -167,6 +170,9 @@
         "507" : "언젠간... 유저분들이 저희에게 좋은 서버를 선물해주실 날이 오겠죠?"
     },
 
+    "SIGN_DROP": {
+        "SUCCESS": "그동안 픽셀스테어스를 이용해 주셔서 감사합니다."
+    },
     "SIGN_UP": {
         "POLICY": "아래 버튼을 누른 다는 것은 픽셀스테어스의 <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">서비스 이용약관</a>과 <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">개인정보보호정책</a>에 동의함을 의미합니다."
     },
@@ -180,7 +186,10 @@
         }
     },
     "CERT_SIGNUP_LANDING": {
-        "TITLE": "모든 인증이 완료되었습니다",
+        "TITLE": {
+            "SUCCESS": "모든 인증이 완료되었습니다",
+            "FAILED": "인증이 실패하였습니다"
+        },
         "MSG": {
             "SUCCESS": "픽셀스테어스에 오신 것을 환영합니다!",
             "FAILED": "음...무언가 잘못됐네요. 아래 버튼을 클릭하셔서 인증메일을 다시 한번 발송해보세요!"
@@ -191,8 +200,16 @@
         "DESC": "비밀번호를 찾으시려면 먼저 이메일 인증이 필요합니다.<br>이메일을 입력하시고 발송된 인증메일을 확인해주세요.",
         "FINISH_SEND": "\"{{email}}\"로 인증 메일이 발송되었습니다"
     },
+    "CERT_PASSWORD": {
+        "TITLE": "개인정보보호를 위해서 꼭 입력해주세요!",
+        "DESC": "비밀번호를 다시 입력해주세요",
+        "FAILED": "비밀번호가 일치하지 않습니다. 다시 한번 확인해주세요."
+    },
     "CERT_PASSWORD_LANDING": {
-        "TITLE": "\"인증 마지막 단계입니다\"",
+        "TITLE": {
+            "SUCCESS": "모든 인증이 완료되었습니다",
+            "FAILED": "인증이 실패하였습니다"
+        },
         "MSG": {
             "SUCCESS": "모든 인증이 성공적으로 마무리되었습니다. 이제 비밀번호를 변경하실 수 있습니다!",
             "FAILED": "음...무언가 잘못됐네요. 아래 버튼을 클릭하셔서 인증메일을 다시 한번 발송해보세요!"
@@ -208,7 +225,8 @@
     },
     "ACCOUNT_SETTING": {
         "DESC": "계정의 정보를 변경합니다",
-        "CHANGE_PROFILE_IMG": "기본 프로필 사진 사용하기"
+        "CHANGE_PROFILE_IMG": "기본 프로필 사진 사용하기",
+        "SIGNDROP": "픽셀스테어스 떠나기"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "다른 아트워크로 변경하기"

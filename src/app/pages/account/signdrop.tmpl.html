@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="fieldset wiseword-form col-lg-12">
+            <div class="message-box">
+                <div class="main-message">
+                    <h3>We’ll develop for better service</h3>
+                </div>
+                <div class="wiseword-message">
+                    <h6>Please, let us know what you feel convenient or inconvenient while using the service</h6>
+                </div>
+
+                <div
+                    class="form-box col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3"
+                >
+                    <div class="fieldset">
+                        <form name="SigndropCtrl.form">
+                            <div
+                                ng-repeat="survey in SigndropCtrl.surveyList"
+                                class="input-container full-width"
+                            >
+                                <label>{{survey.question[SigndropCtrl.lang]}}</label>
+                                <div class="select-wrapper form-control">
+                                    <select
+                                        name="reason-good"
+                                        ng-model="SigndropCtrl.signdropData.answerIds[$index]"
+                                        required
+                                    >
+                                    <option
+                                        ng-repeat="answer in survey.answer"
+                                        ng-value="{{answer.id}}"
+                                    >
+                                        {{answer[SigndropCtrl.lang]}}
+                                    </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <footer class="col-lg-6 col-lg-offset-3">
+                <button
+                    class="btn btn-round full-width"
+                    ng-click="SigndropCtrl.postData()"
+                    ng-disabled="SigndropCtrl.form.$invalid"
+                >
+                    <span ng-show="!SigndropCtrl.isBusy">
+                        {{'FORM.CONTINUE' | translate}}
+                    </span>
+                    <span ng-show="SigndropCtrl.isBusy"><i class="xi-spinner-5 xi-spin"></i></span>
+                </button>
+            </footer>
+        </div>
+    </div>
+</div>

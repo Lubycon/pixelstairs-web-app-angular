@@ -28,6 +28,7 @@
     "MENU": {
         "FIND_PASSWORD": "Find password",
         "ACCOUNT_SETTING": "Account Setting",
+        "CHANGE_PASSWORD": "Change Password",
         "AUTHENTICATION": "Authentication"
     },
     "HEADER": {
@@ -80,7 +81,6 @@
         }
     },
     "SCRIPT": {
-        "SIGNIN_HEADER": "\"We welcome you and your inspiration!\"",
         "GO_TO_SIGNUP": "Not yet a member? Join now!",
         "FIND_PASSWORD": "Find my password",
         "HELP_CONTENT_UPLOAD": {
@@ -135,6 +135,9 @@
         "SIGNUP": {
             "FAILED": "Sorry. Registration failed. If the problem persists, please contact Pixelstairs."
         },
+        "SIGNDROP": {
+            "FAILED": "Sorry. Something is wrong. If the problem persists, please contact Pixelstairs."
+        },
         "ACCOUNT_SETTING": {
             "FAILED": "Sorry. Updating failed. If the problem persists, please contact Pixelstairs."
         },
@@ -167,6 +170,9 @@
         "507" : "One day... we hope the users presents an awwwesome server for us."
     },
 
+    "SIGN_DROP": {
+        "SUCCESS": "Thank you for using Pixelstairs - !"
+    },
     "SIGN_UP": {
         "POLICY": "If you press the button below, it is assumed that you have agreed to our <a href=\"/docs/terms/{{lang}}\" target=\"_blank\">Terms of service</a> and <a href=\"/docs/privacypolicy/{{lang}}\" target=\"_blank\">Privacy policy</a>."
     },
@@ -180,7 +186,10 @@
         }
     },
     "CERT_SIGNUP_LANDING": {
-        "TITLE": "Registraion is finished",
+        "TITLE": {
+            "SUCCESS": "Registration is finished!",
+            "FAILED": "Sorry. Registration is failed"
+        },
         "MSG": {
             "SUCCESS": "Welcome to the Pixelstairs!",
             "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
@@ -191,8 +200,16 @@
         "DESC": "First, you need to send the member authentication email to your account email addressand go through the confirmation process.<br>Please, Enter your email address below and click button to send the email to your address.",
         "FINISH_SEND": "Check the email at \"{{email}}\""
     },
+    "CERT_PASSWORD": {
+        "TITLE": "Security is the most important thing!",
+        "DESC": "Please enter your password for your account security",
+        "FAILED": "Password does not match. Please make sure again."
+    },
     "CERT_PASSWORD_LANDING": {
-        "TITLE": "\"Finish Registration\"",
+        "TITLE": {
+            "SUCCESS": "Registration is finished!",
+            "FAILED": "Sorry. Registration is failed"
+        },
         "MSG": {
             "SUCCESS": "You can change your password now - ! Your registraion was finished successfully",
             "FAILED": "Woo...Something is wrong. Click the button to below and please send the email Again. :("
@@ -208,7 +225,8 @@
     },
     "ACCOUNT_SETTING": {
         "DESC": "You can change your account information here.",
-        "CHANGE_PROFILE_IMG": "Use the default image"
+        "CHANGE_PROFILE_IMG": "Use the default image",
+        "SIGNDROP": "Do you want to delete your account?"
     },
     "CONTENTS_UPLOAD": {
         "CHANGE_ARTWORK": "Change to other artwork"

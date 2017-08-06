@@ -4,6 +4,9 @@
     .global-logo {
         width: 160px;
         @include floatToCenter;
+        @include mq('sm') {
+            width: 120px;
+        }
     }
 
     .global-menu-wrapper {
@@ -16,8 +19,18 @@
                 display: inline-block;
                 margin: 0 5px;
                 padding: 5px 10px;
-                &.global-menu {
-                    border: 2px solid $dove-grey;
+                @include mq('sm') {
+                    margin: 0;
+                    font-size: 12px;
+                }
+
+                &.sign-menu {
+                    @include mq('sm') {
+                        padding: {
+                            left: 0;
+                            right: 0;
+                        }
+                    }
                 }
 
                 &.member-menu {
@@ -35,39 +48,24 @@
                             vertical-align: middle;
                         }
                     }
-
-                    ul.dropdown-menu {
-                        li {
-                            width: 220px;
-                            margin: 0;
-                            a {
-                                position: relative;
-                                padding: 7px 14px;
-
-                                i {
-                                    position: absolute;
-                                    top: 50%;
-                                    right: 14px;
-                                    transform: translateY(-50%);
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
-    }
 
-    @media screen and (max-width: $mobile) {
-        .global-logo {
-            width: 120px;
-        }
+        ul.dropdown-menu {
+            li {
+                width: 220px;
+                margin: 0;
+                a {
+                    position: relative;
+                    padding: 7px 14px;
 
-        .global-menu-wrapper {
-            ul {
-                li {
-                    margin: 0;
-                    font-size: 12px;
+                    i {
+                        position: absolute;
+                        top: 50%;
+                        right: 14px;
+                        transform: translateY(-50%);
+                    }
                 }
             }
         }

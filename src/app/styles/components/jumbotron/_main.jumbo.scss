@@ -1,0 +1,84 @@
+.jumbotron.main-jumbotron {
+    position: relative;
+    padding: 0;
+
+    .jumbo-desc {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        @include mq('sm') {
+            width: 100%;
+            padding: 0 20px;
+        }
+        * {
+            color: $white;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: bold;
+            @include mq('sm') {
+                font-size: 18px;
+            }
+        }
+        p {
+            margin: 0;
+            font-size: 18px;
+            @include mq('sm') {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .slick-track {
+        height: 350px;
+
+        .slick-item {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slick-image {
+            height: 100%;
+            background: {
+                size: cover;
+                position: 50% 50%;
+            }
+        }
+    }
+
+    ul.slick-dots {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        li {
+            display: inline-block;
+
+            button {
+                $slick-dot-size: 10px;
+                width: $slick-dot-size;
+                height: $slick-dot-size;
+                padding: 0;
+                margin: 0 6px;
+                border: 1px solid $white;
+                border-radius: 50%;
+                background-color: transparent;
+                color: transparent;
+                vertical-align: middle;
+                content: '';
+            }
+
+            &.slick-active {
+                button {
+                    background-color: $white;
+                }
+            }
+        }
+    }
+}

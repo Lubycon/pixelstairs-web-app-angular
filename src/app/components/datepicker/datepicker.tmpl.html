@@ -20,8 +20,8 @@
     <div class="form-control">
         <p ng-show="!Datepicker.ngModel">{{Datepicker.placeholder}}</p>
         <p ng-show="Datepicker.ngModel">{{Datepicker.ngModel | date:'yyyy/MM/dd'}}</p>
-        <span class="btn" ng-click="Datepicker.popupOpen()">
+        <button class="btn" ng-click="Datepicker.popupOpen()">
             <i class="xi-calendar"></i>
-        </span>
+        </button>
     </div>
 </div>

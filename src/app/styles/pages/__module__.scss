@@ -1,8 +1,7 @@
-@import './wiseword-form';
-@import './account';
-@import './cert';
-@import './company';
-@import './contents';
-@import './error';
-@import './main';
-@import './member';
+@import './account/__module__';
+@import './cert/__module__';
+@import './company/__module__';
+@import './contents/__module__';
+@import './error/__module__';
+@import './main/__module__';
+@import './member/__module__';

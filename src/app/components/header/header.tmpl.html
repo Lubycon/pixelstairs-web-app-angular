@@ -16,53 +16,65 @@
     <div class="global-menu-wrapper">
         <ul>
             <li
-                class="global-menu"
-                ng-repeat="link in GlobalHeaderCtrl.linkList"
-                ng-if="link.signin === GlobalHeaderCtrl.isSignin"
+                ng-if="!GlobalHeaderCtrl.isMobile && GlobalHeaderCtrl.isSignin"
             >
-                <a ui-sref="{{link.link}}">{{link.name | translate}}</a>
-            </li>
-            <li
-                class="sign-menu"
-                ng-if="!GlobalHeaderCtrl.isSignin"
-            >
-                <a ui-sref="full.default.signin">
-                    {{'LABEL.SIGNIN' | translate}}
+                <a
+                    class="content-upload-btn btn btn-round"
+                    ui-sref="common.default.contents-upload"
+                >
+                    {{'HEADER.UPLOAD_ARTWORK' | translate}}
                 </a>
             </li>
-            <li
-                uib-dropdown
-                class="member-menu"
-                ng-if="GlobalHeaderCtrl.isSignin"
-            >
-                <div class="user-info">
-                    <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
-                        <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
-                    </div>
-                    <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
-                </div>
 
-                <ul
-                    uib-dropdown-menu
-                    class="dropdown-menu dropdown-menu-right"
+            <!-- SIGNIN BUTTON START -->
+            <span>
+                <li
+                    class="sign-menu"
+                    ng-if="!GlobalHeaderCtrl.isSignin"
                 >
-                    <li
-                        ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
-                        ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                    <a ui-sref="full.default.signin">
+                        <button class="btn btn-round">
+                            {{'LABEL.SIGNIN' | translate}}
+                        </button>
+                    </a>
+                </li>
+                <!-- SIGNIN BUTTON END -->
+                <!-- USER MENU START -->
+                <li
+                    uib-dropdown
+                    class="member-menu"
+                    ng-if="GlobalHeaderCtrl.isSignin"
+                >
+                    <div class="user-info">
+                        <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
+                            <img ng-src="{{GlobalHeaderCtrl.memberProfile}}" alt="user-profile">
+                        </div>
+                        <a uib-dropdown-toggle>{{GlobalHeaderCtrl.$rootScope.member.nickname}} <i class="xi-angle-down-min"></i></a>
+                    </div>
+
+                    <ul
+                        uib-dropdown-menu
+                        class="dropdown-menu dropdown-menu-right"
                     >
-                        <a ui-sref="{{link.link}}">
-                            <span>{{link.name | translate}}</span>
-                            <i class="{{link.icon}}"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-click="GlobalHeaderCtrl.signout()">
-                            <span>{{'LABEL.SIGNOUT' | translate}}</span>
-                            <i class="xi-power-off"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+                        <li
+                            ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
+                            ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                        >
+                            <a ui-sref="{{link.link}}">
+                                <span>{{link.name | translate}}</span>
+                                <i class="{{link.icon}}"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a ng-click="GlobalHeaderCtrl.signout()">
+                                <span>{{'LABEL.SIGNOUT' | translate}}</span>
+                                <i class="xi-power-off"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- USER MENU END -->
+            </span>
         </ul>
     </div>
 </nav>

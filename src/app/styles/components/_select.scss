@@ -1,0 +1,29 @@
+.form-control.select-wrapper {
+    border-radius: $input-border-radius;
+    position: relative;
+    height: $input-height;
+    box-shadow: none;
+    @include mq('sm') {
+        height: $mobile-input-height;
+    }
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        font-family: 'xeicon';
+        color: $mine-black;
+        content: "\e942";
+    }
+
+    select {
+        width: 100%;
+        box-shadow: none;
+        border: none;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+}

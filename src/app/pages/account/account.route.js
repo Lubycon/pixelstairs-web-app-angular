@@ -24,6 +24,18 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'AuthSignupCtrl',
             authenticate: 'member:inactive:only'
         })
+        .state('common.default.signdrop', {
+            url: '/signdrop',
+            templateUrl: 'app/pages/account/signdrop.tmpl.html',
+            controller: 'SigndropController',
+            controllerAs: 'SigndropCtrl',
+            authenticate: 'member:inactive',
+            resolve: {
+                getReasonRsv: (APIService) => {
+                    return APIService.resource('members.signdropSurvey').get().then();
+                }
+            }
+        })
 
         .state('common.default.find-password-email', {
             url: '/password/find/email',
@@ -40,7 +52,7 @@ export function routerConfig ($stateProvider) {
             params: {
                 code: null
             },
-            authenticate: 'visitor'
+            authenticate: 'all'
         })
 
         /* UNUSED */

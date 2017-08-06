@@ -1,74 +1,21 @@
-/* @API CONSTANT */
-const API_LIST = {
-    members: () => {
-        const prefix = 'members';
-        return {
-            signin: `${prefix}/signin`,
-            signout: `${prefix}/signout`,
-            signup: `${prefix}/signup`,
-            signdrop: `${prefix}/signdrop`,
-
-            simple: `${prefix}/simple`,
-            detail: `${prefix}/{id}/detail`,
-            exists: {
-                email: `${prefix}/exists/email`,
-                nickname: `${prefix}/exists/nickname`
-            },
-            pwd: {
-                mail: `${prefix}/password/mail`,
-                reset: `${prefix}/password/reset`
-            }
-        };
-    },
-    contents: () => {
-        const prefix = 'contents';
-        return {
-            upload: `${prefix}`,
-            list: `${prefix}`,
-            detail: `${prefix}/{id}`,
-            like: `${prefix}/{id}/like`
-        };
-    },
-    certs: () => {
-        const prefix = 'certs';
-        return {
-            signup: {
-                mail: `${prefix}/signup/mail`,
-                time: `${prefix}/signup/time`,
-                code: `${prefix}/signup/code`
-            },
-            password: {
-                code: `${prefix}/password/code`
-            }
-        };
-    },
-    tracker: () => {
-        const prefix = 'tracker';
-        return {
-            tracker: ''
-        };
-    },
-    quotes: () => {
-        const prefix = 'quotes';
-        return {
-            success: `${prefix}/success`,
-            mistake: `${prefix}/mistake`
-        };
-    }
-};
-/* @API CONSTANT */
-
+/*
+    @name: API.service.js
+    @desc: RESTful API 통신 서비스
+    @author: Evan Moon
+    @created_at:
+*/
 
 export class APIService {
     constructor(
-        Restangular, $log, $q
+        API_LIST, Restangular, $log, $q
     ) {
         'ngInject';
 
+        this.API_LIST = API_LIST;
         this.Restangular = Restangular;
         this.$log = $log;
         this.$q = $q;
-        this.API = this.__generateAPI__();
+        this.API = this.__generateAPI__(API_LIST);
     }
 
     resource(api, id) {
@@ -76,7 +23,8 @@ export class APIService {
             get: (params) => this.__get__(api, id, params),
             post: (data) => this.__post__(api, id, data),
             put: (data) => this.__put__(api, id, data),
-            delete: () => this.__delete__(api, id)
+            delete: (data) => this.__delete__(api, id, data),
+            postForm: (data) => this.__postForm__(api, id, data)
         };
     }
 
@@ -89,11 +37,25 @@ export class APIService {
 
     __post__(api, id, data) {
         api = this.__getURI__(api, id);
-        this.$log.debug(api);
         return this.__validate__(this.Restangular.all(api).customPOST(data, undefined, undefined, {
             'Content-Type': 'application/json'
         }));
     }
+
+    // Multipart/form test
+    __postForm__(api, id, data) {
+        api = this.__getURI__(api, id);
+        return this.__validate__(
+            this.Restangular.all(api)
+            .withHttpConfig({
+                transformRequest: angular.identity
+            })
+            .customPOST(data, '', undefined, {
+                'Content-Type': undefined
+            })
+        );
+    }
+    // Multipart/form test
 
     __put__(api, id, data) {
         api = this.__getURI__(api, id);
@@ -102,9 +64,12 @@ export class APIService {
         }));
     }
 
-    __delete__(api, id) {
+    __delete__(api, id, data) {
         api = this.__getURI__(api, id);
-        return this.__validate__(this.Restangular.all(api).customDELETE());
+
+        return this.__validate__(this.Restangular.all(api).customOperation('remove', '', {}, {
+            'Content-Type': 'application/json'
+        }, data));
     }
 
     __validate__(response) {
@@ -141,7 +106,7 @@ export class APIService {
         }
     }
 
-    __generateAPI__() {
+    __generateAPI__(API_LIST) {
         let tmp = {};
 
         Object.keys(API_LIST).forEach((v) => {

@@ -23,7 +23,6 @@ export class HeaderController {
 
     init() {
         this.__setMemberData__();
-        this.linkList = this.__getMenuList__(this.isMobile);
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
 
@@ -44,25 +43,6 @@ export class HeaderController {
             this.ImageService.getUserProfile(this.$rootScope.member.profileImg);
     }
 
-    __getMenuList__(isMobile) {
-        let linkList = [];
-
-        if(isMobile) {
-            /*@MOBILE MENU*/
-            linkList = [];
-        }
-        else {
-            /*@DESKTOP MENU*/
-            linkList = [{
-                name: 'HEADER.UPLOAD_ARTWORK',
-                link: 'common.default.contents-upload',
-                signin: true
-            }];
-        }
-
-        return linkList;
-    }
-
     __getMemberMenuList__(isMobile) {
         let linkList = [];
         if(!this.isSignin) return linkList;
@@ -71,6 +51,11 @@ export class HeaderController {
             name: 'MENU.ACCOUNT_SETTING',
             link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
             icon: 'xi-cog',
+            ignore: 'inactive'
+        },{
+            name: 'MENU.CHANGE_PASSWORD',
+            link: 'common.default.cert-password',
+            icon: 'xi-key',
             ignore: 'inactive'
         },{
             name: 'MENU.AUTHENTICATION',

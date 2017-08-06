@@ -21,7 +21,7 @@ export class StateAuthenticationService {
             break;
             case 'visitor':
                 if(!IS_SIGNED) this.__stateChangeResolve__(toState);
-                else this.__stateChangeReject__('common.default.main');
+                else this.__stateChangeReject__('common.jumbo.main');
             break;
             case 'member:active':
                 if(IS_SIGNED && IS_ACTIVE_USER) this.__stateChangeResolve__(toState);
@@ -33,7 +33,7 @@ export class StateAuthenticationService {
             break;
             case 'member:inactive:only':
                 if(IS_SIGNED && !IS_ACTIVE_USER) this.__stateChangeResolve__(toState);
-                else this.__stateChangeReject__('common.default.main');
+                else this.__stateChangeReject__('common.jumbo.main');
             break;
             case 'close':
                 this.__stateChangeReject__('full.default.error', {
@@ -55,7 +55,7 @@ export class StateAuthenticationService {
 
     __stateChangeResolve__(toState) {
         const BODY_CLASS = toState.name
-            .replace(/^(common|aside|full)\.(default|figure|noFooter)\./g,'state-')
+            .replace(/^(common|aside|full)\.(default|jumbo|figure|noFooter)\./g,'state-')
             .replace(/(\.|\_)/gi,'-');
 
         angular.element('body').removeClass().addClass(BODY_CLASS);

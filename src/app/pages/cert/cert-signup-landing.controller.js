@@ -1,6 +1,6 @@
 export class CertSignupLandingController {
     constructor(
-        $log, $translate,
+        $rootScope, $log, $translate,
         $state, $stateParams,
         APIService
     ) {
@@ -12,12 +12,14 @@ export class CertSignupLandingController {
 
         this.isSuccess = false;
         this.isInit = false;
+
+        this.userEmail = $rootScope.member.email;
         this.code = $stateParams.code;
 
         APIService.resource('certs.signup.code').post({
             code: this.code
         }).then(res =>{
-            (this.init)(true);
+            (this.init)(res.result.validity);
         }, err => {
             (this.init)(false);
         });
@@ -28,14 +30,16 @@ export class CertSignupLandingController {
 
         this.isSuccess = isSuccess;
         if(this.isSuccess) {
+            this.title = this.$translate.instant('CERT_SIGNUP_LANDING.TITLE.SUCCESS');
             this.msg = this.$translate.instant('CERT_SIGNUP_LANDING.MSG.SUCCESS');
         }
         else {
+            this.title = this.$translate.instant('CERT_SIGNUP_LANDING.TITLE.FAILED');
             this.msg = this.$translate.instant('CERT_SIGNUP_LANDING.MSG.FAILED');
         }
     }
 
     goToMain() {
-        this.$state.go('common.default.main');
+        this.$state.go('common.jumbo.main');
     }
 }

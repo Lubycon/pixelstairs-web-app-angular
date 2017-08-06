@@ -23,7 +23,7 @@
                         ng-style="{'background-image':'url('+SettingCtrl.memberProfile.file+')'}"
                     >
                         <div class="img-loading-overlay" ng-show="SettingCtrl.isProfileBusy">
-                            <i class="xi-spin xi-spinner-4"></i>
+                            <i class="xi-spin xi-spinner-5"></i>
                         </div>
                     </div>
 
@@ -61,32 +61,20 @@
                             <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
                         </div>
                     </div>
-                    <div class="input-container">
-                        <select
-                            class="full-width form-control"
-                            ui-select2="SettingCtrl.selectBoxOption"
-                            ng-model="SettingCtrl.memberData.gender"
-                            ng-options="gender.code as gender.name for gender in SettingCtrl.genders"
-                        >
-                        </select>
-                    </div>
-                    <div class="input-container">
-                        <datepicker
-                            class="full-width"
-                            ng-model="SettingCtrl.memberData.birthday"
-                            placeholder="Birthday"
-                        ></datepicker>
-                    </div>
 
                     <button
-                        class="btn full-width"
+                        class="btn btn-round full-width"
                         ng-click="SettingCtrl.postData()"
                         ng-disabled="SettingCtrl.form.$invalid"
                     >
                         <span ng-show="!SettingCtrl.isBusy">{{'FORM.UPDATE' | translate}}</span>
-                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-4"></i></span>
+                        <span ng-show="SettingCtrl.isBusy"><i class="xi-spin xi-spinner-5"></i></span>
                     </button>
                 </form>
+
+                <button class="btn btn-link btn-cloak" ui-sref="common.default.signdrop">
+                    {{'ACCOUNT_SETTING.SIGNDROP' | translate}}
+                </button>
             </div>
         </div>
     </div>
