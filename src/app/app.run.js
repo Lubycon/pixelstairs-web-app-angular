@@ -25,6 +25,8 @@ export function run (
         .then(res => {
             /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
             $rootScope.Initialized = true;
+            $('.global-loading-wrapper').stop().fadeOut(1000);
+
             __disableScrollBySpace__($window, $document);
 
             /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
