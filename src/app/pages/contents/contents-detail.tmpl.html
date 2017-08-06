@@ -1,16 +1,76 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="content-wrapper col-lg-6 col-lg-offset-3 col-md-12 col-sm-12 col-xs-12">
+<div class="container">
+    <section class="row" data-section="content-section">
+        <div class="content-wrapper section-card">
             <div class="content-title">
-                <p>"{{ContentsDetailCtrl.data.title}}"</p>
+                <p>{{ContentsDetailCtrl.data.title}}</p>
             </div>
             <div class="content-image lazy-load-frame" ng-style="{'background-image': 'url('+ContentsDetailCtrl.data.image.thumbnail+')'}">
                 <img ng-src="{{ContentsDetailCtrl.data.image.file}}" alt="{{'content-'+ContentsDetailCtrl.data.id}}">
             </div>
-        </div>
-    </div>
+            <div class="content-desc">
+                <p>{{ContentsDetailCtrl.data.description}}</p>
 
-    <div class="row">
+                <div class="tags-wrapper">
+                    <label>
+                        <i class="xi-tag"></i> <span>{{'LABEL.TAGS' | translate}}</span>
+                    </label>
+                    <ul class="tags">
+                        <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
+                            {{tag}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row" data-section="like-section">
+        <div class="section-card">
+            <button
+                class="btn btn-border btn-round btn-like full-width"
+                ng-class="{'liked': ContentsDetailCtrl.data.myLike}"
+                ng-click="ContentsDetailCtrl.postLike()"
+            >
+                <i ng-class="ContentsDetailCtrl.data.myLike ? 'xi-heart' : 'xi-heart-o'"></i>
+                <span>
+                    {{ContentsDetailCtrl.data.myLike ? 'CONTENTS_DETAIL.LIKE.LIKED' : 'CONTENTS_DETAIL.LIKE.LIKE' | translate}}
+                </span>
+            </button>
+        </div>
+        <div class="section-card">
+            <ul class="content-counter">
+                <li>
+                    <i class="xi-eye"></i>
+                    <span>
+                        <strong>{{ContentsDetailCtrl.data.counts.view | numberSuffixFilter:1}}</strong> View
+                    </span>
+                </li>
+                <li>
+                    <i class="xi-heart"></i>
+                    <span>
+                        <strong>{{ContentsDetailCtrl.data.counts.like | numberSuffixFilter:1}}</strong> Like
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="row" data-section="author-section">
+        <div class="section-card">
+            <p class="artwork-by">Artwork by</p>
+            <div class="member-info">
+                <div class="member-profile">
+                    <img ng-src="{{ContentsDetailCtrl.data.user.profileImg.file}}" alt="{{'member-profile-'+ContentsDetailCtrl.data.member.id}}">
+                </div>
+                <div class="member-detail-info">
+                    <h5>{{ContentsDetailCtrl.data.user.nickname}}</h5>
+                    <p>uploaded at <span>{{ContentsDetailCtrl.data.createdAt | amDateFormat:'MMM.DD YYYY'}}</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="row">
         <div class="content-info-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12 info-card">
                 <div class="member-info">
@@ -23,20 +83,6 @@
                     <p class="content-date">
                         uploaded at <span>{{ContentsDetailCtrl.data.createdAt | amDateFormat:'MMM.DD YYYY'}}</span>
                     </p>
-                </div>
-
-                <div class="content-info-row tag-desc">
-                    <h6 class="attr-title"><i class="xi-tag"></i> <span>{{'LABEL.TAGS' | translate}}</span></h6>
-                    <ul class="tags">
-                        <li ng-repeat="tag in ContentsDetailCtrl.data.hashTags">
-                            {{tag}}
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="content-info-row content-desc">
-                    <h6 class="attr-title"><i class="xi-info-o"></i> <span>{{'LABEL.DESCRIPTION' | translate}}</span></h6>
-                    <p>{{ContentsDetailCtrl.data.description}}</p>
                 </div>
 
                 <div class="content-info-row license-desc">
@@ -87,9 +133,9 @@
             </button>
         </div>
         <div class="col-lg-4 col-lg-offset-4">
-            <button class="btn btn-border full-width" ng-class="{'btn-link': ContentsDetailCtrl.isSigned}" ui-sref="common.default.main">
+            <button class="btn btn-border full-width" ng-class="{'btn-link': ContentsDetailCtrl.isSigned}" ui-sref="common.jumbo.main">
                 {{'FORM.BACK_TO_LIST' | translate}}
             </button>
         </div>
-    </div>
+    </div> -->
 </div>

@@ -61,193 +61,139 @@
 }
 
 .state-contents-detail {
-    .content-wrapper {
-        .content-title {
-            text-align: center;
-            padding: 10px 0;
-            font-weight: 600;
-            font-size: 18px;
+    @mixin bottom-line() {
+        $space: 30px;
+        border-bottom: 1px solid $light-grey;
+        margin-bottom: $space;
+        padding-bottom: $space;
+    }
+
+    .section-card {
+        @extend .col-lg-6;
+        @extend .col-lg-offset-3;
+        @extend .col-md-12;
+        @extend .col-sm-12;
+        @extend .col-xs-12;
+    }
+
+    section {
+        .section-card {
+            margin-bottom: 10px;
+            &:last-child {
+                @include bottom-line;
+            }
         }
-        .content-image {
-            img {
-                width: 100%;
+        &:last-child {
+            .section-card:last-child {
+                border-color: transparent;
             }
         }
     }
 
-    .content-info-wrapper {
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-        float: none;
-
-        .info-card {
-            text-align: center;
-            padding: 30px 0;
-
-            h6.attr-title {
-                font-size: 14px;
-                font-weight: 600;
-                margin-bottom: 15px;
-                i {
-                    vertical-align: middle;
-                }
-                span {
-                    vertical-align: middle;
-                }
+    section[data-section="content-section"] {
+        .content-wrapper {
+            .content-title {
+                text-align: center;
+                padding: 10px 0;
+                font-size: 28px;
+                margin: 30px 0 20px;
             }
-
-
-
-            .member-info {
-                h6.artwork-by {
-                    font-size: 14px;
-                    margin-bottom: 20px;
-                }
-
-                .member-profile {
-                    display: inline-block;
-                    @include circleFrame(50px)
-                    img {
-                        width: 100%;
-                    }
-                }
-                p {
-                    font-size: 18px;
-                    font-weight: 600;
-
-                    &.content-date {
-                        font-size: 16px;
-                        font-weight: 400;
-                    }
-                }
-            }
-
-            .content-info-row {
-                margin: 70px 0;
-            }
-
-            .tag-desc {
-                ul.tags {
-                    li {
-                        display: inline-block;
-                        max-width: 100%;
-                        margin: 3px 5px;
-                        padding: 2px 10px;
-                        border: 1px solid $dove-grey;
-                        @include ellipsis;
-                    }
+            .content-image {
+                img {
+                    width: 100%;
                 }
             }
 
             .content-desc {
                 p {
-                    font-size: 13px;
-                    word-break: break-word;
-                }
-                padding: 0 20px;
-            }
-
-            .license-desc {
-                ul {
-                    li {
-                        position: relative;
-                        display: inline-block;
-                        margin: 0 25px;
-
-
-                        &:first-of-type {
-                            margin-left: 0;
-                        }
-                        &:last-of-type {
-                            margin-right: 0;
-                        }
-
-                        i {
-                            font-size: 40px;
-                        }
-                        p {
-                            font-size: 18px;
-                            display: block;
-                        }
-
-                        .tooltip {
-                            position: absolute;
-                        }
-                    }
-                }
-
-                .license-sub-desc {
-                    p {
-                        color: $dove-grey;
-                        margin: 10px 0;
-                        a {
-                            text-decoration: underline;
-                        }
-
-                        &.terms-link {
-                            color: $silver-grey;
-                            font-size: 14px;
-                            a {
-                                color: $silver-grey;
-                            }
-                        }
-                    }
+                    font-size: 16px;
+                    margin: 30px 0;
                 }
             }
 
-
-            .like-counter {
-                margin: 80px 0;
-                p {
-                    font-size: 5em;
-                    letter-spacing: 1px;
+            .tags-wrapper {
+                label {
+                    margin-bottom: 10px;
+                    i {
+                        font-size: 18px;
+                        vertical-align: middle;
+                    }
+                    span {
+                        font-size: 14px;
+                        vertical-align: middle;
+                    }
                 }
             }
         }
     }
 
-    .btn-wrapper {
-        text-align: center;
-        &>div {
-            margin-bottom: 10px;
-            &:last-child {
-                margin-bottom: 0;
+    section[data-section="like-section"] {
+        .btn-like {
+            border-color: $dark-red;
+            i {
+                color: $dark-red;
+                vertical-align: middle;
             }
-        }
+            span {
+                vertical-align: middle;
+            };
 
-        .btn {
             &.liked {
-                background-color: $mine-black;
+                background-color: $dark-red;
                 color: $white;
-                border-color: $mine-black;
+                i {
+                    color: $white;
+                }
+            }
+        }
+
+        .content-counter {
+            text-align: center;
+            li {
+                display: inline-block;
+                margin-right: 10px;
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                i {
+                    vertical-align: middle;
+                    font-size: 20px;
+                    &.xi-heart {
+                        color: $dark-red;
+                    }
+                }
+                span {
+                    vertical-align: middle;
+                    font-size: 18px;
+                    strong {
+                        font-weight: bold;
+                    }
+                }
             }
         }
     }
 
-    /* Meida Query */
-    @media screen and (max-width: $mobile) {
-        .content-wrapper {
-            padding: 0;
-            .content-title {
-                font-size: 14px;
-            }
+    section[data-section="author-section"] {
+        .artwork-by {
+            margin-bottom: 10px;
         }
-
-        .content-info-wrapper {
-            .info-card {
-                .member-info {
-                    .member-profile {
-                        @include circleFrame(40px);
-                    }
-                    p {
-                        font-size: 12px;
-                    }
+        .member-info {
+            .member-profile {
+                @include circleFrame(40px);
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+            }
+            .member-detail-info {
+                display: inline-block;
+                vertical-align: middle;
+                h5 {
+                    font-weight: bold;
                 }
-
-                .like-counter {
-                    p {
-                        font-size: 2em;
+                p {
+                    span {
+                        font-weight: bold;
                     }
                 }
             }
