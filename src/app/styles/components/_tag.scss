@@ -10,3 +10,36 @@ ul.tags {
         }
     }
 }
+
+tags-input.form-control {
+    box-shadow: none;
+    padding: 0 5px;
+    height: auto;
+    * {
+        font-family: $inconsolata;
+    }
+    .host {
+        margin: 0;
+        .tags {
+            border: none;
+            box-shadow: none;
+            input {
+                margin: 2px;
+            }
+            .tag-list {
+                .tag-item {
+                    padding: 0 10px;
+                    line-height: 25px;
+                    border: none;
+                    border-radius: 200px;
+                    background: $dove-grey;
+                    color: $white;
+                    font-weight: 200;
+                    .remove-button {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}

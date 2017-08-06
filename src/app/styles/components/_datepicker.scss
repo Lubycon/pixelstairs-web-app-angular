@@ -13,7 +13,7 @@
         p {
             display: inline-block;
             height: 100%;
-            padding: 6px 12px;
+            padding: 9px 12px;
         }
 
         .btn {
@@ -21,6 +21,13 @@
             height: 100%;
             padding: 5px 30px;
             float: right;
+            margin: 0;
+            border: {
+                top-left-radius: 0;
+                top-right-radius: $input-border-radius - 2px;
+                bottom-left-radius: 0;
+                bottom-right-radius: $input-border-radius - 2px;
+            }
             &:hover {
                 opacity: 1;
             }
@@ -32,13 +39,16 @@
     }
     .uib-datepicker-popup {
         border: 1px solid $dove-grey;
-        border-radius: 0;
+        border-radius: $input-border-radius;
+        overflow: hidden;
         &.dropdown-menu {
             padding: 0;
         }
         .btn {
             background-color: transparent;
             color: $dove-grey;
+            margin: 0;
+            border-radius: 0;
             &.active {
                 background-color: $dove-grey;
                 color: $white;
