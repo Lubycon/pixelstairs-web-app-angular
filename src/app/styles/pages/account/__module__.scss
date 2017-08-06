@@ -71,35 +71,6 @@
     }
 }
 
-.state-signup .container {
-    .row {
-        position: relative;
-        transform: none;
-        top: 0;
-        left: 0;
-        padding: 50px 0;
-    }
-}
-
-.state-find-password-email,
-.state-reset-password {
-    .input-container {
-        display: inline-block;
-        .form-control {
-
-        }
-    }
-    footer {
-        padding: 20px;
-        .btn {
-            width: 100%;
-        }
-    }
-}
-
-.state-auth-signup {
-    .time-checker {
-        color: $dark-red;
-        font-style: italic;
-    }
-}
+@import './signup.page';
+@import './_auth-signup.page';
+@import './_password.page';

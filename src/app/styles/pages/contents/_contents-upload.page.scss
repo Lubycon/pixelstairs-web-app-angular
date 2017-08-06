@@ -1,0 +1,55 @@
+.state-contents-upload {
+    .form-box {
+        @include mq('sm') {
+            margin: 0;
+            padding: 0;
+        }
+        .uploader-info {
+            * {
+                font-family: $inconsolata;
+            }
+            h3 {
+                font-weight: 600;
+                margin-bottom: 10px;
+                @include mq('sm') {
+                    font-size: 15px;
+                }
+            }
+            p {
+                font-size: 14px;
+                @include mq('sm') {
+                    font-size: 12px;
+                }
+            }
+        }
+        .uploaded-img-wrapper {
+            img {
+                width: 100%;
+            }
+        }
+        .uploader-btn-wrapper {
+            button.btn {
+                width: 80px;
+                height: 80px;
+                margin: 20px;
+                border-radius: 50%;
+                border: 2px solid $dove-grey;
+                background: none;
+                i {
+                    font-size: 30px;
+                }
+            }
+            a.change-file-btn {
+                text-decoration: underline;
+            }
+        }
+        .uploader-form {
+            .input-container {
+                label {
+                    width: 100%;
+                    text-align: left;
+                };
+            }
+        }
+    }
+}

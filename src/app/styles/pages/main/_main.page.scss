@@ -6,11 +6,17 @@
                 font-family: $inconsolata;
                 text-align: center;
                 font-size: 14px;
+                @include mq('sm') {
+                    font-size: 11px;
+                }
             }
             h4 {
                 margin-bottom: 20px;
                 font-weight: bold;
                 font-size: 22px;
+                @include mq('sm') {
+                    font-size: 17px;
+                }
             }
         }
 
@@ -75,22 +81,10 @@
         }
     }
 
-    /* Media query */
-    @media screen and (max-width: $mobile) {
-        .sub-header {
-            .description {
-                * {
-                    font-size: 11px;
-                }
-                h4 {
-                    font-size: 17px;
-                }
-            }
-        }
-
-        .page-body {
-            ul.angular-grid {
-                li.angular-grid-item {
+    .page-body {
+        ul.angular-grid {
+            li.angular-grid-item {
+                @include mq('sm') {
                     padding: 0;
                 }
             }
