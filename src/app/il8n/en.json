@@ -80,7 +80,6 @@
         }
     },
     "SCRIPT": {
-        "SIGNIN_HEADER": "\"We welcome you and your inspiration!\"",
         "GO_TO_SIGNUP": "Not yet a member? Join now!",
         "FIND_PASSWORD": "Find my password",
         "HELP_CONTENT_UPLOAD": {

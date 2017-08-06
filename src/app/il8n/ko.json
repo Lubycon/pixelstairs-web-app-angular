@@ -80,7 +80,6 @@
         }
     },
     "SCRIPT": {
-        "SIGNIN_HEADER": "\"픽셀스테어스는 당신과 당신만의 영감을 환영합니다!\"",
         "GO_TO_SIGNUP": "아직 회원이 아니신가요? 지금 가입하세요!",
         "FIND_PASSWORD": "혹시 비밀번호를 잊으셨나요?",
         "HELP_CONTENT_UPLOAD": {

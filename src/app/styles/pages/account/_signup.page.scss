@@ -1,9 +1,11 @@
 .state-signup .container {
     .row {
-        position: relative;
-        transform: none;
-        top: 0;
-        left: 0;
-        padding: 50px 0;
+        @include mq('sm') {
+            position: relative;
+            transform: none;
+            top: 0;
+            left: 0;
+            padding: 50px 0;
+        }
     }
 }
