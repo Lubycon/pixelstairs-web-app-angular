@@ -8,6 +8,10 @@
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: 1;
+        @include mq('sm') {
+            width: 100%;
+            padding: 0 20px;
+        }
         * {
             color: $white;
             text-align: center;
@@ -17,10 +21,16 @@
             font-size: 36px;
             margin-bottom: 16px;
             font-weight: bold;
+            @include mq('sm') {
+                font-size: 18px;
+            }
         }
         p {
             margin: 0;
             font-size: 18px;
+            @include mq('sm') {
+                font-size: 14px;
+            }
         }
     }
 

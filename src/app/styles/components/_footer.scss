@@ -3,6 +3,9 @@
     margin: 50px 0 0 0;
     padding: 0 40px;
     background: $white;
+    @include mq('sm') {
+        padding: 0 20px;
+    }
     .footer-wrapper {
         border-top: 1px solid $light-grey;
         padding: 20px 0;

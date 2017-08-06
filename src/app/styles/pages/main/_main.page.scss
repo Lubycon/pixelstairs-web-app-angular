@@ -50,6 +50,7 @@
                 }
             }
         }
+
         .view-mode {
             margin-bottom: 10px;
             ul {
@@ -82,6 +83,10 @@
     }
 
     .page-body {
+        margin: {
+            left: 0;
+            right: 0;
+        }
         ul.angular-grid {
             li.angular-grid-item {
                 @include mq('sm') {

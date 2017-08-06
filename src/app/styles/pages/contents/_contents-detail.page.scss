@@ -15,6 +15,12 @@
     }
 
     section {
+        @include mq('sm') {
+            margin: {
+                left: 0;
+                right: 0;
+            }
+        }
         .section-card {
             margin-bottom: 10px;
             &:last-child {
