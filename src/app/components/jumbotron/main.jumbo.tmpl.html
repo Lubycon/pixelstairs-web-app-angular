@@ -10,10 +10,10 @@
     <slick
         settings="MainJumboCtrl.slickConfig"
     >
-        <div class="slick-item" ng-repeat="slide in MainJumboCtrl.slides">
+        <div class="slick-item" ng-repeat="slide in MainJumboCtrl.imageList">
             <div
                 class="slick-image"
-                ng-style="{'background-image': 'url('+slide.image+')'}"
+                ng-style="{'background-image': 'url('+slide.image.file+')'}"
             ></div>
         </div>
     </slick>

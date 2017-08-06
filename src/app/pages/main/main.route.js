@@ -9,7 +9,15 @@ export function routerConfig ($stateProvider) {
                 jumbo: {
                     templateUrl: 'app/components/jumbotron/main.jumbo.tmpl.html',
                     controller: 'MainJumboController',
-                    controllerAs: 'MainJumboCtrl'
+                    controllerAs: 'MainJumboCtrl',
+                    resolve: {
+                        getImageRsv(APIService) {
+                            return APIService.resource('contents.list').get({
+                                pageSize: '3',
+                                sort: 'featured:desc'
+                            }).then();
+                        }
+                    }
                 },
                 page: {
                     templateUrl: 'app/pages/main/main.tmpl.html',

@@ -1,8 +1,14 @@
 export class MainJumboController {
     constructor(
-
+        ImageService, getImageRsv
     ) {
         'ngInject';
+
+        this.ImageService = ImageService;
+        this.imageList = getImageRsv.result.contents;
+        this.imageList.forEach(v => {
+            v.image.file = ImageService.setResolution(v.image, 1920);
+        });
 
         this.slickConfig = {
             autoplay: true,
