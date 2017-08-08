@@ -84,10 +84,6 @@ export class AuthenticationService {
             this.$rootScope.member = res.result;
             this.$rootScope.authStatus.status = res.result.status;
 
-            if(this.$rootScope.member.country) {
-                this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
-            }
-
             this.CookieService.put('member', this.$rootScope.member);
 
             defer.resolve();
@@ -103,11 +99,10 @@ export class AuthenticationService {
         return defer.promise;
     }
 
-    update(state) {
-        this.APIService.resource('member.simple').get().then(res => {
+    update(state = { name: 'common.jumbo.main', param: null }) {
+        this.APIService.resource('members.simple').get().then(res => {
             this.$rootScope.member = res.result;
             this.CookieService.put('member', this.$rootScope.member);
-            this.AppSettingService.set('country', this.$rootScope.member.country.alpha2Code);
 
             if(state) this.$state.go(state.name, state.params);
             else return false;

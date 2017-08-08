@@ -2,7 +2,7 @@ export class CertSignupLandingController {
     constructor(
         $rootScope, $log, $translate,
         $state, $stateParams,
-        APIService
+        APIService, AuthenticationService
     ) {
         'ngInject';
 
@@ -15,6 +15,8 @@ export class CertSignupLandingController {
 
         this.userEmail = $rootScope.member.email;
         this.code = $stateParams.code;
+
+        this.AuthenticationService = AuthenticationService;
 
         APIService.resource('certs.signup.code').post({
             code: this.code
@@ -40,6 +42,8 @@ export class CertSignupLandingController {
     }
 
     goToMain() {
-        this.$state.go('common.jumbo.main');
+        this.AuthenticationService.update({
+            name: 'common.jumbo.main'
+        });
     }
 }

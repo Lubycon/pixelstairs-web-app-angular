@@ -1,16 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="fieldset wiseword-form col-lg-12">
-            <div class="message-box" ng-if="CertSignupLandingCtrl.isInit">
-                <div class="main-message">
+            <div class="message-box row" ng-if="CertSignupLandingCtrl.isInit">
+                <div class="main-message col-xs-12">
                     <h3>{{ CertSignupLandingCtrl.title }}</h3>
                 </div>
-                <div class="wiseword-message">
+                <div class="wiseword-message col-xs-12">
                     {{ CertSignupLandingCtrl.msg }}
                 </div>
                 <footer class="col-lg-6 col-lg-offset-3">
                     <button
-                        ui-sref="common.jumbo.main"
+                        ng-click="CertSignupLandingCtrl.goToMain()"
                         ng-show="CertSignupLandingCtrl.isSuccess"
                         class="btn"
                     >
