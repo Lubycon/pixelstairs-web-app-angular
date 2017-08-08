@@ -24,7 +24,7 @@ export class FindPasswordEmailController {
         }, err => {
             const statusCode = err.data.status.code;
             if(statusCode === '0054') {
-                alert('User is not exist');
+                alert('존재하지 않는 유저입니다.');
             }
             else {
                 alert('기타 오류');
