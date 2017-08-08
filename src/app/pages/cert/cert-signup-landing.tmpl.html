@@ -8,18 +8,18 @@
                 <div class="wiseword-message col-xs-12">
                     {{ CertSignupLandingCtrl.msg }}
                 </div>
-                <footer class="col-lg-6 col-lg-offset-3">
+                <footer class="col-xs-12 col-lg-6 col-lg-offset-3">
                     <button
                         ng-click="CertSignupLandingCtrl.goToMain()"
                         ng-show="CertSignupLandingCtrl.isSuccess"
-                        class="btn"
+                        class="btn btn-round full-width"
                     >
                         {{'FORM.GO_TO_MAIN' | translate}}
                     </button>
                     <button
                         ui-sref="common.default.auth-signup"
                         ng-show="!CertSignupLandingCtrl.isSuccess"
-                        class="btn"
+                        class="btn btn-round full-width"
                     >
                         {{'FORM.PREV' | translate}}
                     </button>
