@@ -25,7 +25,7 @@
     </section>
 
     <section class="row" data-section="like-section">
-        <div class="section-card">
+        <div class="section-card" ng-if="ContentsDetailCtrl.isSigned">
             <button
                 class="btn btn-border btn-round btn-like full-width"
                 ng-class="{'liked': ContentsDetailCtrl.data.myLike}"
