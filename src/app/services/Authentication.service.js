@@ -128,13 +128,14 @@ export class AuthenticationService {
                 this.__clearAuth__(reload, state);
             });
         }
+        else {
+            this.clearForce(reload, state);
+        }
     }
 
     clearForce(reload, state = 'common.jumbo.main') {
         this.__clearAuth__(reload, state);
     }
-
-
 
     __isSigned__() {
         const AUTH_COOKIE = this.CookieService.getDecrypt('auth');
