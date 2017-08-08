@@ -114,7 +114,7 @@ export class AuthenticationService {
 
     clear(reload, state = 'common.jumbo.main') {
         if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
-            this.APIService.resource('members.signout').put()
+            return this.APIService.resource('members.signout').put()
             .then(res => {
                 delete this.$rootScope.member;
 
@@ -173,9 +173,10 @@ export class AuthenticationService {
         this.AppSettingService.set('country', country_code);
 
         this.$state.go(state).then(res => {
-            if(reload === 'reload') {
+            if(!reload || reload !== 'reload') return false;
+            this.$timeout(() => {
                 this.$window.location.reload();
-            }
+            });
         });
     }
 }
