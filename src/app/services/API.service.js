@@ -120,7 +120,7 @@ export class APIService {
     }
 
     __setParamsToAPI__(uri, uriParams) {
-        const regx = /\{.+\}/gi;
+        const regx = /\{\w+\}/gi;
         const braket_regx = /[\{|\}]/g;
 
         let params = uri.match(regx);
