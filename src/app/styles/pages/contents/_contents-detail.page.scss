@@ -39,8 +39,13 @@
             .content-title {
                 text-align: center;
                 padding: 10px 0;
-                font-size: 28px;
                 margin: 30px 0 20px;
+                h1 {
+                    font-size: 28px;
+                    @include mq('sm') {
+                        font-size: 22px;
+                    }
+                }
             }
             .content-image {
                 img {

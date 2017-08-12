@@ -1,10 +1,10 @@
-<div class="container">
+<div>
     <section class="row" data-section="content-section">
         <div class="content-wrapper section-card">
             <div class="content-title">
-                <p>{{ContentsDetailCtrl.data.title}}</p>
+                <h1>{{ContentsDetailCtrl.data.title}}</h1>
             </div>
-            <div class="content-image lazy-load-frame" ng-style="{'background-image': 'url('+ContentsDetailCtrl.data.image.thumbnail+')'}">
+            <div class="content-image lazy-load-frame row" ng-style="{'background-image': 'url('+ContentsDetailCtrl.data.image.thumbnail+')'}">
                 <img ng-src="{{ContentsDetailCtrl.data.image.file}}" alt="{{'content-'+ContentsDetailCtrl.data.id}}">
             </div>
             <div class="content-desc">
