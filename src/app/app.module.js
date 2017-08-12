@@ -30,6 +30,8 @@ angular
         'ngTagsInput', // TAG ELEMENT MODULE
         'angularGrid', // GRID LAYOUT MODULE
         'angularMoment', // MOMENT MODULE
+        'permission', // USER PERMISSION MODULE
+        'permission.ui', // UI ROUTER USER PERMISSION MODULE
 
         'app.env', // ENV CONSTANTS
         'app.config', // APP CONFIG MODULE

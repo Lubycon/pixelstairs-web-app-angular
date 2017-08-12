@@ -8,31 +8,51 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/account/signin.tmpl.html',
             controller: 'SigninController',
             controllerAs: 'SigninCtrl',
-            authenticate: 'visitor'
+            data: {
+                permissions: {
+                    only: 'GHOST',
+                    redirectTo: 'common.jumbo.main'
+                }
+            }
         })
         .state('full.default.signup', {
             url: '/signup',
             templateUrl: 'app/pages/account/signup.tmpl.html',
             controller: 'SignupController',
             controllerAs: 'SignupCtrl',
-            authenticate: 'visitor'
+            data: {
+                permissions: {
+                    only: 'GHOST',
+                    redirectTo: 'common.jumbo.main'
+                }
+            }
         })
         .state('common.default.auth-signup', {
             url: '/auth/signup',
             templateUrl: 'app/pages/account/auth-signup.tmpl.html',
             controller: 'AuthSignupController',
             controllerAs: 'AuthSignupCtrl',
-            authenticate: 'member:inactive:only'
+            data: {
+                permissions: {
+                    only: 'INACTIVE_USER',
+                    redirectTo: 'common.jumbo.main'
+                }
+            }
         })
         .state('common.default.signdrop', {
             url: '/signdrop',
             templateUrl: 'app/pages/account/signdrop.tmpl.html',
             controller: 'SigndropController',
             controllerAs: 'SigndropCtrl',
-            authenticate: 'member:inactive',
             resolve: {
                 getReasonRsv: (APIService) => {
                     return APIService.resource('members.signdropSurvey').get().then();
+                }
+            },
+            data: {
+                permissions: {
+                    except: 'GHOST',
+                    redirectTo: 'full.default.signin'
                 }
             }
         })
@@ -42,7 +62,12 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/account/find-password-email.tmpl.html',
             controller: 'FindPasswordEmailController',
             controllerAs: 'FindPassEmailCtrl',
-            authenticate: 'visitor'
+            data: {
+                permissions: {
+                    only: 'GHOST',
+                    redirectTo: 'common.jumbo.main'
+                }
+            }
         })
         .state('common.default.reset-password', {
             url: '/password/reset/:code',
@@ -52,21 +77,12 @@ export function routerConfig ($stateProvider) {
             params: {
                 code: null
             },
-            authenticate: 'all'
-        })
-
-        /* UNUSED */
-        .state('common.default.signout', {
-            url: '/signout',
-            templateUrl: 'app/pages/account/signout.tmpl.html',
-            controller: 'SignOutController',
-            controllerAs: 'SignOutCtrl',
-            resolve: {
-                getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.success').get().then();
+            data: {
+                permissions: {
+                    only: 'USER',
+                    redirectTo: 'common.jumbo.main'
                 }
             }
         })
-        /* UNUSED */
         ;
 }

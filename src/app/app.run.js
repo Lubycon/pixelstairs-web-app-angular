@@ -1,7 +1,7 @@
 export function run (
     $rootScope, $log, $q, AppSettingService, HistoryService,
-    TrackerService, StateAuthenticationService, AuthenticationService,
-    ErrorCatcherService,
+    TrackerService, AuthenticationService,
+    ErrorCatcherService, PermissionService,
     $anchorScroll, $window, $document, $state, $timeout, USER_AGENT
 ) {
     'ngInject';
@@ -20,6 +20,7 @@ export function run (
         .then(res => { return AuthenticationService.init(); })
         .then(res => {
             $rootScope.$broadcast('update-member-data');
+            PermissionService.init();
             return AppSettingService.init();
         })
         .then(res => {
@@ -65,7 +66,6 @@ export function run (
         });
 
         TrackerService.post(toState, fromState);
-        StateAuthenticationService.detect(toState);
 
         $anchorScroll();
     });

@@ -8,13 +8,21 @@ export function routerConfig ($stateProvider) {
             templateUrl: 'app/pages/member/member-setting.tmpl.html',
             controller: 'MemberSettingController',
             controllerAs: 'SettingCtrl',
-            authenticate: 'member:active',
             params: {
                 memberId: null
             },
             resolve: {
                 getMemberRsv: ($stateParams, APIService) => {
                     return APIService.resource('members.detail', { id: $stateParams.memberId }).get().then();
+                }
+            },
+            data: {
+                permissions: {
+                    except: ['GHOST', 'INACTIVE_USER'],
+                    redirectTo: {
+                        GHOST: 'full.default.signin',
+                        INACTIVE_USER: 'common.default.auth-signup'
+                    }
                 }
             }
         })

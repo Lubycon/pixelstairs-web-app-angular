@@ -30,7 +30,8 @@
     "ng-tags-input": "^3.1.1",
     "angulargrid": "^0.6.5",
     "angular-moment": "^1.0.1",
-    "angular-slick-carousel": "^3.1.7"
+    "angular-slick-carousel": "^3.1.7",
+    "angular-permission": "^5.3.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.3"

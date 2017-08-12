@@ -21,7 +21,16 @@ export function routeConfig ($stateProvider) {
             templateUrl: 'app/pages/contents/contents-upload.tmpl.html',
             controller: 'ContentsUploadController',
             controllerAs: 'ContentsUploadCtrl',
-            authenticate: 'member:active'
+            data: {
+                permissions: {
+                    except: ['GHOST', 'INACTIVE_USER', 'STOP'],
+                    redirectTo: {
+                        GHOST: 'full.default.signin',
+                        INACTIVE_USER: 'common.default.auth-signup',
+                        STOP: 'common.jumbo.main'
+                    }
+                }
+            }
         })
         .state('common.default.contents-success', {
             url: '/contents/success/:id',
@@ -31,7 +40,16 @@ export function routeConfig ($stateProvider) {
             params: {
                 id: null
             },
-            authenticate: 'member:active'
+            data: {
+                permissions: {
+                    except: ['GHOST', 'INACTIVE_USER', 'STOP'],
+                    redirectTo: {
+                        GHOST: 'full.default.signin',
+                        INACTIVE_USER: 'common.default.auth-signup',
+                        STOP: 'common.jumbo.main'
+                    }
+                }
+            }
         })
         ;
 }

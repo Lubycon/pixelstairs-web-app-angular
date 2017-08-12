@@ -8,20 +8,20 @@ export function routeConfig($stateProvider) {
             controller: 'CertSignupLandingController',
             controllerAs: 'CertSignupLandingCtrl',
             params: {
-                code: null,
-                type: null
-            },
-            resolve: {
-
-            },
-            authenticate: 'member:inactive'
+                code: null
+            }
         })
         .state('common.default.cert-password', {
             url: '/certs/password',
             templateUrl: 'app/pages/cert/cert-password.tmpl.html',
             controller: 'CertPasswordController',
             controllerAs: 'CertPassCtrl',
-            authenticate: 'member:active'
+            data: {
+                permissions: {
+                    except: 'GHOST',
+                    redirectTo: 'full.default.signin'
+                }
+            }
         })
         .state('common.default.cert-password-landing', {
             url: '/certs/password/landing/:code',
@@ -30,8 +30,7 @@ export function routeConfig($stateProvider) {
             controllerAs: 'CertPassLandingCtrl',
             params: {
                 code: null
-            },
-            authenticate: 'visitor'
+            }
         })
         ;
 }

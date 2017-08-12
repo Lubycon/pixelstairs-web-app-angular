@@ -7,9 +7,9 @@ import { HistoryService } from './History.service';
 import { UUIDService } from './UUID.service';
 import { TrackerService } from './Tracker.service';
 import { AuthenticationService } from './Authentication.service';
-import { StateAuthenticationService } from './StateAuthentication.service';
 import { APIService } from './API.service';
 import { ImageService } from './Image.service';
+import { PermissionService } from './Permission.service';
 import { FormRegxService } from './FormRegx.service';
 import { ErrorCatcherService } from './ErrorCatcher.service';
 import { SearchService } from './Search.service';
@@ -39,11 +39,11 @@ angular
 
     .service('AuthenticationService', AuthenticationService)
 
-    .service('StateAuthenticationService', StateAuthenticationService)
-
     .service('APIService', APIService)
 
     .service('ImageService', ImageService)
+
+    .service('PermissionService', PermissionService)
 
     .service('FormRegxService', FormRegxService)
 
