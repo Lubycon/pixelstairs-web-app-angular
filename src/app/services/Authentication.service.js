@@ -153,10 +153,24 @@ export class AuthenticationService {
         let tmp = {},
             defaultHeaders = this.Restangular.defaultHeaders;
 
-        tmp[this.CUSTOM_HEADER_PREFIX + 'token'] = token;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}token`] = token;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
+    }
+
+    __removeTokenFromHeader__() {
+        let defaultHeaders = this.Restangular.defaultHeaders;
+
+        if(defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`]) {
+            delete defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`];
+            this.Restangular.setDefaultHeaders(defaultHeaders);
+
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     __clearAuth__(reload, state) {
@@ -170,6 +184,7 @@ export class AuthenticationService {
         this.$rootScope.authStatus.sign = false;
 
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
+        this.__removeTokenFromHeader__();
 
         this.AppSettingService.set('country', country_code);
 
