@@ -96,13 +96,9 @@ export class SignupController {
 
         this.APIService.resource(`members.exists.${prop}`).post(data)
         .then(res => {
-            if(res && res.result) {
-                this.form[prop].$setValidity('exist', false);
-            }
-            else {
-                this.form[prop].$setValidity('exist', true);
-            }
+            this.form[prop].$setValidity('exist', false);
         }, err => {
+            this.form[prop].$setValidity('exist', true);
             return false;
         });
     }
