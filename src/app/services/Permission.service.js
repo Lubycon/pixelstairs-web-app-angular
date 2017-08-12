@@ -25,28 +25,34 @@ export class PermissionService {
     }
 
     setRoles() {
-        let isAuthenticated = this.$rootScope.authStatus.sign;
-        let status = isAuthenticated && this.$rootScope.member.status;
         this.PermRoleStore
         .defineManyRoles({
             ALL: (roleName, transitionProps) => {
                 return true;
             },
             GHOST: (roleName, transitionProps) => {
-                return !isAuthenticated;
+                return !this.isAuthenticated();
             },
             USER: (roleName, transitionProps) => {
-                return isAuthenticated;
+                return this.isAuthenticated();
             },
             INACTIVE_USER: (roleName, transitionProps) => {
-                return isAuthenticated && status === 'inactive';
+                return this.isAuthenticated() && this.getUserStatus() === 'inactive';
             },
             ACTIVE_USER: (roleName, transitionProps) => {
-                return isAuthenticated && status === 'active';
+                return this.isAuthenticated() && this.getUserStatus() === 'active';
             },
             STOP: (roleName, transitionProps) => {
-                return isAuthenticated && status === 'stop';
+                return this.isAuthenticated() && this.getUserStatus() === 'stop';
             }
         });
+    }
+
+    isAuthenticated() {
+        return this.$rootScope.authStatus.sign;
+    }
+
+    getUserStatus() {
+        return this.$rootSCope.authStatus.sign && this.$rootScope.member.status;
     }
 }
