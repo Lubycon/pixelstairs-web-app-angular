@@ -36,8 +36,8 @@
             <ul
                 angular-grid="MainCtrl.contentsData.list"
                 ag-css-grid="false"
-                ag-id="gallery"
                 ag-grid-width="MainCtrl.gridWidth"
+                ng-class="{'is-loading': MainCtrl.isBusy}"
             >
                 <li
                     class="col-lg-{{MainCtrl.columnWidth}}"
@@ -47,15 +47,18 @@
                     <art-card
                         data="data"
                         viewmode="MainCtrl.currentViewmode"
-                        fixed-header="$index === 0"
-                        header-offset="50"
                     ></art-card>
                 </li>
             </ul>
         </div>
-    </div>
+        <div
+            class="no-content-wrapper"
+            ng-show="!MainCtrl.isBusy && MainCtrl.contentsData.list.length < 1"
+        >
+        </div>
 
-    <div class="loading-icon">
-        <i class="xi-spinner-5 xi-spin" ng-show="MainCtrl.isBusy"></i>
+        <div class="loading-icon" ng-show="MainCtrl.isBusy">
+            <i class="xi-spinner-5 xi-spin"></i>
+        </div>
     </div>
 </div>

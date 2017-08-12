@@ -6,9 +6,7 @@ export function ArtCardDirective() {
         templateUrl: 'app/components/cards/artCard/artCard.tmpl.html',
         scope: {
             data: '=',
-            viewmode: '=',
-            fixedHeader: '=',
-            headerOffset: '=?'
+            viewmode: '='
         },
         link: link,
         controller: ArtCardController,

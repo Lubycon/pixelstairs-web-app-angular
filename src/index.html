@@ -77,7 +77,7 @@
     <!-- endinject -->
     <!-- endbuild -->
     <div class="global-loading-wrapper">
-        <i class="xi-spin xi-spinner-5"></i>
+        <div id="global-loading-icon"></div>
     </div>
 </body>
 
@@ -87,4 +87,17 @@
     Raven.config('https://9c4f8ad9f1884aed9d00fbd685023dfc@sentry.pixelstairs.com:9443/4').install();
 </script>
 
+<!-- LOADING ICON - BODYMOVING -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.2/bodymovin_light.min.js"></script>
+<script>
+    $(document).ready(function() {
+        bodymovin.loadAnimation({
+            container: $('#global-loading-icon')[0],
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: '/assets/loading_ani.json'
+        });
+    });
+</script>
 </html>
