@@ -39,7 +39,7 @@
                             class="form-control"
                             placeholder="{{'LABEL.PASSWORD' | translate}}"
                             ng-model="SignupCtrl.signData.password.origin"
-                            ng-keyup="SignupCtrl.calcPasswordLevel()"
+                            ng-keyup="[SignupCtrl.calcPasswordLevel(), SignupCtrl.checkPasswordAgain()]"
                             required
                         >
                         <div class="password-score">
