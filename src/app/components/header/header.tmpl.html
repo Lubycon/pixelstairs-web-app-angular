@@ -21,6 +21,8 @@
                 <a
                     class="content-upload-btn btn btn-round"
                     ui-sref="common.default.contents-upload"
+                    permission
+                    permission-only="'ACTIVE_USER'"
                 >
                     {{'HEADER.UPLOAD_ARTWORK' | translate}}
                 </a>
@@ -30,7 +32,8 @@
             <span>
                 <li
                     class="sign-menu"
-                    ng-if="!GlobalHeaderCtrl.isSignin"
+                    permission
+                    permission-only="'GHOST'"
                 >
                     <a ui-sref="full.default.signin">
                         <button class="btn btn-round">
@@ -43,7 +46,8 @@
                 <li
                     uib-dropdown
                     class="member-menu"
-                    ng-if="GlobalHeaderCtrl.isSignin"
+                    permission
+                    permission-only="'USER'"
                 >
                     <div class="user-info">
                         <div ng-show="!GlobalHeaderCtrl.isMobile" class="user-profile-img">
@@ -58,17 +62,16 @@
                     >
                         <li
                             ng-repeat="link in GlobalHeaderCtrl.memberLinkList"
-                            ng-if="GlobalHeaderCtrl.memberStatus !== link.ignore"
+                            permission
+                            permission-only="link.permission"
                         >
-                            <a ui-sref="{{link.link}}">
+                            <a ng-if="link.link" ui-sref="{{link.link}}">
                                 <span>{{link.name | translate}}</span>
                                 <i class="{{link.icon}}"></i>
                             </a>
-                        </li>
-                        <li>
-                            <a ng-click="GlobalHeaderCtrl.signout()">
-                                <span>{{'LABEL.SIGNOUT' | translate}}</span>
-                                <i class="xi-power-off"></i>
+                            <a ng-if="link.callback" ng-click="link.callback(GlobalHeaderCtrl)">
+                                <span>{{link.name | translate}}</span>
+                                <i class="{{link.icon}}"></i>
                             </a>
                         </li>
                     </ul>

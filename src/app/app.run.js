@@ -67,6 +67,7 @@ export function run (
 
         TrackerService.post(toState, fromState);
 
+        __setStateClassToBody__(toState);
         $anchorScroll();
     });
 
@@ -108,4 +109,12 @@ function __generateURL__(param, $document) {
     param.url = url;
 
     return param;
+}
+
+function __setStateClassToBody__(toState) {
+    const BODY_CLASS = toState.name
+    .replace(/^(common|aside|full)\.(default|jumbo|figure|noFooter)\./g,'state-')
+    .replace(/(\.|\_)/gi,'-');
+
+    angular.element('body').removeClass().addClass(BODY_CLASS);
 }

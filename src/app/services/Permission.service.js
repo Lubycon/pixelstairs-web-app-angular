@@ -29,6 +29,9 @@ export class PermissionService {
         let status = isAuthenticated && this.$rootScope.member.status;
         this.PermRoleStore
         .defineManyRoles({
+            ALL: (roleName, transitionProps) => {
+                return true;
+            },
             GHOST: (roleName, transitionProps) => {
                 return !isAuthenticated;
             },

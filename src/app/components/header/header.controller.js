@@ -26,8 +26,13 @@ export class HeaderController {
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
     }
 
-    signout() {
-        this.AuthenticationService.clear('reload');
+    signout(self) {
+        if(self) {
+            self.AuthenticationService.clear('reload');
+        }
+        else {
+            this.AuthenticationService.clear('reload');
+        }
     }
 
     /* @PRIVATE METHOD */
@@ -51,17 +56,22 @@ export class HeaderController {
             name: 'MENU.ACCOUNT_SETTING',
             link: 'common.default.member-setting({memberId:'+this.$rootScope.member.id+'})',
             icon: 'xi-cog',
-            ignore: 'inactive'
+            permission: 'ACTIVE_USER'
         },{
             name: 'MENU.CHANGE_PASSWORD',
             link: 'common.default.cert-password',
             icon: 'xi-key',
-            ignore: 'inactive'
+            permission: 'USER'
         },{
             name: 'MENU.AUTHENTICATION',
             link: 'common.default.auth-signup',
             icon: 'xi-key',
-            ignore: 'active'
+            permission: 'INACTIVE_USER'
+        },{
+            name: 'LABEL.SIGNOUT',
+            icon: 'xi-power-off',
+            callback: this.signout,
+            permission: 'ALL'
         }];
 
         return linkList;
