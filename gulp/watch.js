@@ -1,23 +1,23 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require('path');
+const gulp = require('gulp');
+const conf = require('./conf');
 
-var browserSync = require('browser-sync');
+const browserSync = require('browser-sync');
 
 function isOnlyChange(event) {
     return event.type === 'changed';
 }
 
-gulp.task('watch', ['scripts:watch', 'inject'], function () {
+gulp.task('watch', ['scripts:watch', 'inject'], () => {
 
     gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject-reload']);
 
     gulp.watch([
         path.join(conf.paths.src, '/app/**/*.css'),
         path.join(conf.paths.src, '/app/**/*.scss')
-    ], function(event) {
+    ], (event) => {
         if(isOnlyChange(event)) {
             gulp.start('styles-reload');
         } else {
@@ -26,7 +26,7 @@ gulp.task('watch', ['scripts:watch', 'inject'], function () {
     });
 
 
-    gulp.watch(path.join(conf.paths.src, '/app/**/*.html'), function(event) {
+    gulp.watch(path.join(conf.paths.src, '/app/**/*.html'), (event) => {
         browserSync.reload(event.path);
     });
 });

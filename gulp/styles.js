@@ -1,28 +1,36 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require('path');
+const gulp = require('gulp');
+const conf = require('./conf');
 
-var browserSync = require('browser-sync');
+const browserSync = require('browser-sync');
 
-var $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
-var wiredep = require('wiredep').stream;
-var _ = require('lodash');
+const wiredep = require('wiredep').stream;
+const _ = require('lodash');
 
-const support_browsers = ['last 2 version', 'safari 5', 'ie 6', 'ie 7', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'];
+const support_browsers = [
+    'last 10 version',
+    '> 1%',
+    'safari 5',
+    'ie 6-11',
+    'opera 12.1',
+    'Firefox <= 20',
+    'ios 6', 'android 4'
+];
 
-gulp.task('styles-reload', ['styles'], function() {
+gulp.task('styles-reload', ['styles'], () => {
     return buildStyles()
     .pipe(browserSync.stream());
 });
 
-gulp.task('styles', function() {
+gulp.task('styles', () => {
     return buildStyles();
 });
 
-var buildStyles = function() {
+var buildStyles = () => {
     var sassOptions = {
         outputStyle: 'expanded',
         precision: 10

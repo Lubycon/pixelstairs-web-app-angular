@@ -1,12 +1,12 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
+const path = require('path');
+const gulp = require('gulp');
+const conf = require('./conf');
 
-var browserSync = require('browser-sync');
+const browserSync = require('browser-sync');
 
-var $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
 // Downloads the selenium webdriver
 gulp.task('webdriver-update', $.protractor.webdriver_update);
@@ -22,11 +22,11 @@ function runProtractor (done) {
         configFile: 'protractor.conf.js',
         args: args
     }))
-    .on('error', function (err) {
+    .on('error', (err) => {
         // Make sure failed tests cause gulp to exit non-zero
         throw err;
     })
-    .on('end', function () {
+    .on('end', () => {
         // Close browser sync server
         browserSync.exit();
         done();

@@ -1,15 +1,15 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./conf');
-var util = require('gulp-util');
-var gulpNgConfig = require('gulp-ng-config');
+const path = require('path');
+const gulp = require('gulp');
+const conf = require('./conf');
+const util = require('gulp-util');
+const gulpNgConfig = require('gulp-ng-config');
 
-var browserSync = require('browser-sync');
-var webpack = require('webpack-stream');
+const browserSync = require('browser-sync');
+const webpack = require('webpack-stream');
 
-var $ = require('gulp-load-plugins')();
+const $ = require('gulp-load-plugins')();
 
 
 function webpackWrapper(watch, test, callback) {
