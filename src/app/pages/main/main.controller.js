@@ -2,7 +2,6 @@
 export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
-        angularGridInstance,
         APIService, CookieService, SearchService,
         MAIN_GRID_INIT, CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER
     ) {
@@ -12,8 +11,6 @@ export class MainController {
         this.$log = $log;
         this.$timeout = $timeout;
         this.$location = $location;
-
-        this.angularGridInstance = angularGridInstance;
 
         this.APIService = APIService;
         this.CookieService = CookieService;
