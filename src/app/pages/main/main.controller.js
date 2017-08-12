@@ -33,7 +33,7 @@ export class MainController {
         this.sortMode = this.sortFilter[0].value;
 
         this.isBusy = false;
-        this.busyInterval = 1000;
+        this.busyInterval = 2000;
         this.contentsData = this.__initList__();
         this.gridWidth = this.__getGridWidth__();
 
