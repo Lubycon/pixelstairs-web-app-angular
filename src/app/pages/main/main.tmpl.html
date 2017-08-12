@@ -37,7 +37,7 @@
                 angular-grid="MainCtrl.contentsData.list"
                 ag-css-grid="false"
                 ag-grid-width="MainCtrl.gridWidth"
-                ng-class="{'is-loading': MainCtrl.isBusy}"
+                ng-class="{'is-loading': MainCtrl.isInitBusy}"
             >
                 <li
                     class="col-lg-{{MainCtrl.columnWidth}}"
@@ -56,9 +56,9 @@
             ng-show="!MainCtrl.isBusy && MainCtrl.contentsData.list.length < 1"
         >
         </div>
+    </div>
 
-        <div class="loading-icon" ng-show="MainCtrl.isBusy">
-            <i class="xi-spinner-5 xi-spin"></i>
-        </div>
+    <div class="loading-icon" ng-show="MainCtrl.isBusy">
+        <i class="xi-spinner-5 xi-spin"></i>
     </div>
 </div>

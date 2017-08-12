@@ -32,7 +32,9 @@ export class MainController {
         this.pageIndex = 1;
         this.sortMode = this.sortFilter[0].value;
 
+        this.isInitBusy = false;
         this.isBusy = false;
+
         this.busyInterval = 2000;
         this.contentsData = this.__initList__();
         this.gridWidth = this.__getGridWidth__();
@@ -70,6 +72,7 @@ export class MainController {
         this.sortMode = mode;
         this.contentsData = this.__initList__();
         this.pageIndex = 1;
+        this.isInitBusy = true;
 
         this.getContents();
     }
@@ -119,6 +122,7 @@ export class MainController {
 
         this.$timeout(() => {
             this.isBusy = false;
+            this.isInitBusy = false;
         }, this.busyInterval);
     }
 
