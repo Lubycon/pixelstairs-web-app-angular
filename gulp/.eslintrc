@@ -1,5 +1,16 @@
 {
+  "extends": "eslint:recommended",
   "env": {
-    "node": true
+    "es6": true,
+    "browser": true,
+    "jasmine": true
+  },
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "globals": {
+    "angular": true,
+    "module": true,
+    "inject": true
   }
 }
