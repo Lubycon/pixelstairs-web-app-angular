@@ -13,7 +13,7 @@ export function routeConfig ($stateProvider) {
             },
             resolve: {
                 getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.mistake').get();
+                    return APIService.resource('quotes.mistake').get().then();
                 }
             }
         })

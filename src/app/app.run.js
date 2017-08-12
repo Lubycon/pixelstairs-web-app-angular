@@ -26,8 +26,6 @@ export function run (
         .then(res => {
             /*LOG*/ $log.debug('APP INIT IS DONE!!', res);
             $rootScope.Initialized = true;
-            $('.global-loading-wrapper').stop().fadeOut(1000);
-
             __disableScrollBySpace__($window, $document);
 
             /*@LOG*/ $log.debug('ROOT SCOPE => ', $rootScope);
@@ -68,20 +66,29 @@ export function run (
         TrackerService.post(toState, fromState);
 
         __setStateClassToBody__(toState);
+        __hideGlobalLoading__();
         $anchorScroll();
     });
 
     $rootScope.$on('$stateChangeError', (
         event, toState, toParams, fromState, fromParams
     ) => {
-        $state.go('common.default.error', {
-            httpStatus: 404
-        });
+        if(fromState.name !== 'common.default.error') {
+            $state.go('common.default.error', {
+                httpStatus: 404
+            });
+        }
+        else {
+            $state.go('common.jumbo.main');
+        }
     });
 }
 
-
 /*@PRIVATE METHOD*/
+function __hideGlobalLoading__() {
+    $('.global-loading-wrapper').stop().fadeOut(1000);
+}
+
 function __disableScrollBySpace__($window, $document) {
     $window.onkeydown = event => {
         if(event.keyCode === 32 && event.target == $document.body) {
