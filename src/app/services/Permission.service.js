@@ -53,6 +53,6 @@ export class PermissionService {
     }
 
     getUserStatus() {
-        return this.$rootSCope.authStatus.sign && this.$rootScope.member.status;
+        return this.$rootScope.authStatus.sign && this.$rootScope.member.status;
     }
 }

@@ -58,7 +58,6 @@ export class SigninController {
 
     /* @PRIVATE METHOD */
     __resolve__(token) {
-        this.isBusy = false;
         return this.AuthenticationService.set({
             token,
             state: null
