@@ -73,14 +73,9 @@ export function run (
     $rootScope.$on('$stateChangeError', (
         event, toState, toParams, fromState, fromParams
     ) => {
-        if(fromState.name !== 'common.default.error') {
-            $state.go('common.default.error', {
-                httpStatus: 404
-            });
-        }
-        else {
-            $state.go('common.jumbo.main');
-        }
+        $state.go('common.default.error', {
+            httpStatus: 500
+        });
     });
 }
 

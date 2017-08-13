@@ -2,7 +2,7 @@
 export class ErrorPageController {
     constructor(
         $log, $state, $stateParams, $translate,
-        $location, getQuotesRsv
+        $location, $window, APIService
     ) {
         'ngInject';
 
@@ -10,19 +10,32 @@ export class ErrorPageController {
         this.$state = $state;
         this.$translate = $translate;
         this.$location = $location;
+        this.$window = $window;
+
+        this.APIService = APIService;
 
         this.httpStatus = $stateParams.httpStatus;
         this.errorMsg = $translate.instant(`HTTP.${this.httpStatus}`);
-        this.wiseword = {
-            text: getQuotesRsv.result.message,
-            author: getQuotesRsv.result.author
-        };
 
         (this.init)();
     }
 
     init() {
-        this.wiseword.text = '"' + this.wiseword.text + '"';
+        this.getErrorMsg().then(res => {
+            this.wiseword = {
+                text: `"${res.result.message}"`,
+                author: res.result.author
+            };
+        }, err => {
+            this.wiseword = {
+                text: '\"Mistakes are the portals of discovery.\"',
+                author: 'James Joyce'
+            };
+        });
+    }
+
+    getErrorMsg() {
+        return this.APIService.resource('quotes.mistake').get();
     }
 
     gotoBack() {
@@ -31,7 +44,9 @@ export class ErrorPageController {
             this.$location.href = document.referrer;
         }
         else {
-            this.$state.go('common.jumbo.main');
+            this.$state.go('common.jumbo.main').then(res => {
+                this.$window.reload();
+            });
         }
     }
 }

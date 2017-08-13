@@ -10,11 +10,6 @@ export function routeConfig ($stateProvider) {
             controllerAs: 'ErrorPageCtrl',
             params: {
                 httpStatus: null
-            },
-            resolve: {
-                getQuotesRsv: (APIService) => {
-                    return APIService.resource('quotes.mistake').get().then();
-                }
             }
         })
         ;
