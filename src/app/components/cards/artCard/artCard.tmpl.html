@@ -3,7 +3,7 @@
         class="card-header row"
         ng-if="ArtCard.viewmode === 'wide'"
     >
-        <div class="visible-lg member-info col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div ng-if="!ArtCard.isMobile" class="member-info col-md-3 col-xs-12">
             <div
                 ng-style="{'background-image': 'url('+ArtCard.data.user.profileImg.file+')'}"
                 class="member-profile"
