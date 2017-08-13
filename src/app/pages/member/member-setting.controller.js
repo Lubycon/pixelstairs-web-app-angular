@@ -92,7 +92,7 @@ export class MemberSettingController {
 
         this.APIService.resource('members.exists.nickname').post(data)
         .then(res => {
-            this.form.nickname.$setValidity('exist', false);
+            this.form.nickname.$setValidity('exist', !res.result);
         }, err => {
             this.form.nickname.$setValidity('exist', true);
         });
