@@ -174,19 +174,11 @@ export class AuthenticationService {
     }
 
     __clearAuth__(reload, state) {
-        let country_code;
-        if(this.$rootScope.setting && this.$rootScope.setting.country_code) {
-            country_code = this.$rootScope.setting.country_code;
-        }
-        else country_code = 'unknown';
-
         this.CookieService.remove('auth');
         this.$rootScope.authStatus.sign = false;
 
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
         this.__removeTokenFromHeader__();
-
-        this.AppSettingService.set('country', country_code);
 
         this.$state.go(state).then(res => {
             if(!reload || reload !== 'reload') return false;

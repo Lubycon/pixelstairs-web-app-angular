@@ -74,19 +74,20 @@ export class AppSettingService {
         this.$rootScope.member = memberData;
     }
 
-
-
-
     /* @PRIVATE METHOD */
     __setSetting__() {
         let defer = this.$q.defer();
 
         const STORED_SETTING = this.CookieService.get('setting') || null;
-        const DEFAULT_SETTING = { country_code: 'US', language: 'en-US' };
+        const DEFAULT_SETTING = { language: 'en-US' };
 
         /* DEFAULT SETTING START */
-        if(STORED_SETTING) this.$rootScope.setting = STORED_SETTING;
-        else this.$rootScope.setting = DEFAULT_SETTING;
+        if(STORED_SETTING) {
+            this.$rootScope.setting = STORED_SETTING;
+        }
+        else {
+            this.$rootScope.setting = DEFAULT_SETTING;
+        }
 
         this.__setHTTPHeader__(this.$rootScope.setting);
         this.__setTranslateLanguage__(this.$rootScope.setting);
@@ -94,39 +95,13 @@ export class AppSettingService {
         /* DEFAULT SETTING END */
 
         /* OPTIONAL SETTING START */
-        this.__getLocationByIp__().then(res => {
-            if(res) {
-                const countryVal = {
-                    oldVal: STORED_SETTING && STORED_SETTING.country_code,
-                    newVal: res.country_code
-                };
-
-                /* GETTING NEW LOCATION */
-                if(countryVal.oldVal && (countryVal.oldVal !== countryVal.newVal)) {
-                    const text = this.$translate.instant('LOCATION_CHANGE', { name: res.country_name });
-                    this.toastr.warning(text, '', {
-                        timeOut: false,
-                        closeButton: true,
-                        extendedTimeOut: 100000,
-                        toastClass: 'toast toast-location-change',
-                        tapToDismiss: false,
-                        onTap: () => {
-                            res.language = this.__setLanguage__(res.country_code);
-                            this.__setStoredData__(res, 'reload');
-                        }
-                    });
-
-                    return null;
-                }
-            }
-            /* GETTING NEW LOCATION END */
-
+        this.__getBrowserLanguage__()
+        .then(res => {
             return res;
         }, err => {
             return null;
         }).then(res => {
             if(res) {
-                res.language = this.__setLanguage__(res.country_code);
                 this.$rootScope.setting = res;
             }
 
@@ -143,19 +118,19 @@ export class AppSettingService {
         return defer.promise;
     }
 
-    __getLocationByIp__() {
+    __getBrowserLanguage__() {
         let defer = this.$q.defer();
 
-        $.ajax({
-            url: this.IP_API,
-            dataType: 'json',
-            type: 'GET'
-        }).then(res => {
-            defer.resolve(res);
-        }, err => {
+        const LANGUAGE = navigator.language || navigator.userLanguage;
+
+        if(LANGUAGE) {
+            defer.resolve({
+                language: LANGUAGE
+            });
+        }
+        else {
             defer.reject();
-        });
-        // defer.resolve();
+        }
 
         return defer.promise;
     }
@@ -174,11 +149,9 @@ export class AppSettingService {
 
     __setHTTPHeader__(setting) {
         let tmp = {},
-            lang = setting.language || 'en-US';
+            lang = setting.language;
 
         tmp[`${this.CUSTOM_HEADER_PREFIX}language`] = lang;
-        tmp[`${this.CUSTOM_HEADER_PREFIX}country`] = setting.country_code;
-
         let headers = angular.extend({}, this.Restangular.defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(headers);
@@ -187,8 +160,12 @@ export class AppSettingService {
     }
 
     __setTranslateLanguage__(setting) {
-        if(setting.language) {
-            this.$translate.use(setting.language.split('-')[0]);
+        const LANGUAGE = setting.language.indexOf('-') > -1 ?
+            setting.language.split('-')[0] :
+            setting.language;
+
+        if(LANGUAGE) {
+            this.$translate.use(LANGUAGE);
         }
         else {
             this.$translate.use('en');
