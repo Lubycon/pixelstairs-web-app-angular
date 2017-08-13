@@ -35,12 +35,13 @@
         >
             <ul
                 angular-grid="MainCtrl.contentsData.list"
-                ag-css-grid="false"
-                ag-grid-width="MainCtrl.gridWidth"
+                angular-grid-id="artGrid"
+                ag-css-grid="true"
+                performant-scroll="true"
                 ng-class="{'is-loading': MainCtrl.isInitBusy}"
             >
                 <li
-                    class="col-lg-{{MainCtrl.columnWidth}}"
+                    class="col-xs-12 col-lg-{{MainCtrl.gridWidth}}"
                     data-ng-repeat="data in MainCtrl.contentsData.list"
                     ui-sref="common.default.contents-detail({ id: data.id })"
                 >

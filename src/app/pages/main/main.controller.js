@@ -2,7 +2,7 @@
 export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
-        APIService, CookieService, SearchService,
+        APIService, CookieService, SearchService, angularGridInstance,
         MAIN_GRID_INIT, CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER
     ) {
         'ngInject';
@@ -15,6 +15,8 @@ export class MainController {
         this.APIService = APIService;
         this.CookieService = CookieService;
         this.SearchService = SearchService;
+
+        this.angularGridInstance = angularGridInstance;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
@@ -51,6 +53,8 @@ export class MainController {
     }
 
     setViewmode(mode) {
+        if(this.isBusy) return false;
+
         /* @LOG */ this.$log.debug('SET VIEW MODE => ', mode);
 
         this.viewmode.forEach(v => {
@@ -64,9 +68,13 @@ export class MainController {
         this.currentViewmode = mode;
         this.gridWidth = this.__getGridWidth__();
         this.CookieService.put('viewmode', this.currentViewmode);
+
+        this.angularGridInstance.artGrid.refresh();
     }
 
     setFilter(mode) {
+        if(this.isBusy) return false;
+
         /* @LOG */ this.$log.debug('SET FILTER TO => ', mode);
 
         this.sortMode = mode;
@@ -98,6 +106,7 @@ export class MainController {
         this.isBusy = true;
         this.APIService.resource('contents.list').get({
             pageIndex: this.pageIndex,
+            pageSize: 21,
             sort: this.sortMode
         })
         .then(res => {
@@ -108,10 +117,11 @@ export class MainController {
     }
 
     __getGridWidth__() {
-        let gridWidth = this.getCurrentViewmode().width,
-            documentWidth = angular.element('.page-body').width();
-
-        return documentWidth / (12 / gridWidth) - 100;
+        // let gridWidth = this.getCurrentViewmode().width,
+        //     documentWidth = angular.element('.page-body').width();
+        //
+        // return documentWidth / (12 / gridWidth) - 100;
+        return this.getCurrentViewmode().width;
     }
 
     __addContentToList__(data) {

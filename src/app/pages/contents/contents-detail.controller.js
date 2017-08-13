@@ -16,7 +16,6 @@ export class ContentsDetailController {
         this.isSigned = $rootScope.authStatus.sign;
         this.isMobile = $rootScope.deviceInfo.isMobile;
         this.isBusyLike = false;
-        this.lang = $rootScope.setting.language.split('-')[0];
 
         this.data = getContentRsv.result;
 
