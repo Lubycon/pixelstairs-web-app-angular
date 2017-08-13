@@ -70,4 +70,21 @@
             }
         }
     }
+
+    // @TODO 인스타그램에서 헤더가 잘리는 이슈가 발생하여 임시로 만든 로그인 배너
+    // 나중에 삭제할 것
+    // 2017.08.14 - Evan
+    .mobile-signin-banner {
+        position: fixed;
+        bottom: -500px;
+        left: 50%;
+        width: 80%;
+        transform: translateX(-50%);
+        transition: bottom 0.8s ease-in-out;
+
+        .btn {
+            width: 100%;
+            box-shadow: 0 0 10px 0 opacify($black, 0.1);
+        }
+    }
 }

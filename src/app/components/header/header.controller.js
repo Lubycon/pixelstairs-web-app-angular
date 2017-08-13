@@ -1,10 +1,12 @@
 export class HeaderController {
     constructor(
         $rootScope, $scope, $log,
-        USER_DEFAULT_PROFILE_IMG,
+        USER_DEFAULT_PROFILE_IMG, USER_AGENT,
         AuthenticationService, ImageService
     ) {
         'ngInject';
+
+        this.USER_AGENT = USER_AGENT;
 
         this.$rootScope = $rootScope;
         this.$scope = $scope;
@@ -24,6 +26,10 @@ export class HeaderController {
     init() {
         this.__setMemberData__();
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
+
+        $(document).scroll(() => {
+            this.showSigninBanner();
+        });
     }
 
     signout(self) {
@@ -32,6 +38,32 @@ export class HeaderController {
         }
         else {
             this.AuthenticationService.clear('reload');
+        }
+    }
+
+    /*
+     * @TODO 인스타그램 인앱에서 헤더가 잘리는 이슈 때문에 로그인이 불가능해서 임시로 만든 배너
+     * 나중에 삭제할 것
+     * 2017.08.14 - Evan
+     */
+    showSigninBanner() {
+        let banner = angular.element('.mobile-signin-banner');
+        const isShowing = banner.css('bottom') === '15px';
+        const isInstagramInApp = this.USER_AGENT.browser.indexOf('instagram') > -1;
+        const isAuthenticated = this.$rootScope.authStatus.sign;
+
+        if(!isInstagramInApp || isAuthenticated && false) {
+            return false;
+        }
+
+        if(!isShowing && angular.element(document).scrollTop() > 100) {
+            banner.css('bottom', '15px');
+        }
+        else if(isShowing && angular.element(document).scrollTop() === 0) {
+            banner.css('bottom', '-500px');
+        }
+        else {
+            return false;
         }
     }
 
