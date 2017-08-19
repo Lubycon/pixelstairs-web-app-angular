@@ -1,6 +1,6 @@
 export class AuthSignupController {
     constructor(
-        $rootScope, $log, $interval,
+        $rootScope, $log, $interval, $translate,
         APIService, $state
     ) {
         'ngInject';
@@ -9,6 +9,7 @@ export class AuthSignupController {
         this.$log = $log;
         this.$interval = $interval;
         this.$state = $state;
+        this.$translate = $translate;
 
         this.APIService = APIService;
 
@@ -41,7 +42,8 @@ export class AuthSignupController {
 
     sendMailAgain() {
         this.APIService.resource('certs.signup.mail').post().then(res => {
-            alert('email sended');
+            let msg = this.$translate.instant('CERT_SIGNUP.SENT_AGAIN');
+            alert(msg);
             (this.init)();
         });
     }
