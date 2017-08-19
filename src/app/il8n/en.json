@@ -180,6 +180,7 @@
         "TITLE": "Now, it's the last step for more activities",
         "DESC": "You need to authenticate your email address for further activity.<br>Please check your email",
         "EXPIRED": "This code is expired. Please resend again.",
+        "SENT_AGAIN": "Email has sent again!",
         "TIME": {
             "M": "min",
             "S": "sec left"
