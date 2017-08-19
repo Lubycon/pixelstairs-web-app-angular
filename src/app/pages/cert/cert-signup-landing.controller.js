@@ -13,8 +13,8 @@ export class CertSignupLandingController {
         this.isSuccess = false;
         this.isInit = false;
 
-        this.userEmail = $rootScope.member.email;
         this.code = $stateParams.code;
+        this.isAuthenticated = $rootScope.authStatus.sign;
 
         this.AuthenticationService = AuthenticationService;
 
@@ -45,5 +45,9 @@ export class CertSignupLandingController {
         this.AuthenticationService.update({
             name: 'common.jumbo.main'
         });
+    }
+
+    goToSignin() {
+        this.$state.go('full.default.singin');
     }
 }

@@ -14,7 +14,14 @@
                         ng-show="CertSignupLandingCtrl.isSuccess"
                         class="btn btn-round full-width"
                     >
-                        {{'FORM.GO_TO_MAIN' | translate}}
+                        {{ 'FORM.GO_TO_MAIN' | translate }}
+                    </button>
+                    <button
+                        ng-if="!CertSignupLandingCtrl.isAuthenticated"
+                        ng-click="CertSignupLandingCtrl.goToSignin()"
+                        class="btn btn-round full-width sub-btn"
+                    >
+                        {{ 'FORM.GO_TO_SIGNIN' | translate }}
                     </button>
                     <button
                         ui-sref="common.default.auth-signup"
