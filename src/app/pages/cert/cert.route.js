@@ -9,6 +9,12 @@ export function routeConfig($stateProvider) {
             controllerAs: 'CertSignupLandingCtrl',
             params: {
                 code: null
+            },
+            data: {
+                permissions: {
+                    except: 'GHOST',
+                    redirectTo: 'full.default.signin'
+                }
             }
         })
         .state('common.default.cert-password', {
