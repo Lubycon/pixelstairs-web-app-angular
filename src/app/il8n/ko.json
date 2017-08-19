@@ -111,6 +111,7 @@
         },
         "BACK_TO_LIST": "목록으로 이동",
         "GO_TO_MAIN": "메인으로",
+        "GO_TO_SIGNIN": "로그인하기",
         "GO_BACK": "돌아가기"
     },
     "FORM_ERROR": {
