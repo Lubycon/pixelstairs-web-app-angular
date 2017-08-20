@@ -76,12 +76,6 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'ResetPassCtrl',
             params: {
                 code: null
-            },
-            data: {
-                permissions: {
-                    only: 'USER',
-                    redirectTo: 'common.jumbo.main'
-                }
             }
         })
         ;
