@@ -19,6 +19,8 @@ export class MemberSettingController {
         this.FormRegxService = FormRegxService;
 
         this.memberData = getMemberRsv.result;
+        this.originMemberData = angular.extend({}, this.memberData);
+
         this.memberProfile = this.__getUserProfile__(this.memberData.profileImg);
 
         this.initMemberData = angular.extend({}, this.memberData);
@@ -86,6 +88,11 @@ export class MemberSettingController {
     }
 
     isExistName() {
+        if(this.originMemberData.nickname === this.memberData.nickname) {
+            this.form.nickname.$setValidity('exist', true);
+            return false;
+        }
+
         let data = {
             nickname : this.memberData.nickname
         };
