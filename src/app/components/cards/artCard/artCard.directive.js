@@ -5,8 +5,7 @@ export function ArtCardDirective() {
         restrict: 'EA',
         templateUrl: 'app/components/cards/artCard/artCard.tmpl.html',
         scope: {
-            data: '=',
-            viewmode: '='
+            data: '='
         },
         link: link,
         controller: ArtCardController,
@@ -47,6 +46,7 @@ class ArtCardController {
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.position = this.$uibPosition.offset(this.$element);
+        this.viewmode = this.isMobile ? 'wide' : 'grid';
 
         (this.init)();
     }
