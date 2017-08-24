@@ -12,21 +12,9 @@
                 </li>
             </ul>
         </div>
-        <div class="view-mode col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-if="!MainCtrl.isMobile">
-            <ul>
-                <li
-                    class="btn"
-                    ng-class="{'selected': mode.selected}"
-                    ng-repeat="mode in MainCtrl.viewmode"
-                    ng-click="MainCtrl.setViewmode(mode.name)"
-                >
-                    <i class="{{mode.icon}}"></i>
-                </li>
-            </ul>
-        </div>
     </div>
 
-    <div class="page-body row {{MainCtrl.getViewmode()+'-mode'}}">
+    <div class="page-body row">
         <div
             class="infinite-scroll-wrapper"
             infinite-scroll="MainCtrl.onScroll()"
@@ -41,13 +29,13 @@
                 ng-class="{'is-loading': MainCtrl.isInitBusy}"
             >
                 <li
-                    class="col-xs-12 col-lg-{{MainCtrl.gridWidth}}"
+                    class="col-xs-12 col-lg-4"
                     data-ng-repeat="data in MainCtrl.contentsData.list"
                     ui-sref="common.default.contents-detail({ id: data.id })"
                 >
                     <art-card
                         data="data"
-                        viewmode="MainCtrl.currentViewmode"
+                        viewmode="grid"
                     ></art-card>
                 </li>
             </ul>

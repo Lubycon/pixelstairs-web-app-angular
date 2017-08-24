@@ -24,52 +24,20 @@ export class MainController {
         this.viewmode = CONTENTS_VIEW_MODE;
         this.sortFilter = CONTENTS_SORT_FILTER;
 
-        this.currentViewmode = this.isMobile ? 'wide' : this.getViewmodeName();
-
-        this.viewmodeKey = this.viewmode.reduce((a, b) => {
-            a[b.name] = b;
-            return a;
-        }, {});
-
         this.pageIndex = 1;
-        this.sortMode = this.sortFilter[0].value;
+        this.sortMode = this.sortFilter[1].value;
 
         this.isInitBusy = false;
         this.isBusy = false;
 
         this.busyInterval = 2000;
         this.contentsData = this.__initList__();
-        this.gridWidth = this.__getGridWidth__();
 
         (this.init)();
     }
 
     init() {
-        this.$timeout(() => {
-            this.setViewmode(this.currentViewmode);
-        });
-
         this.getContents();
-    }
-
-    setViewmode(mode) {
-        if(this.isBusy) return false;
-
-        /* @LOG */ this.$log.debug('SET VIEW MODE => ', mode);
-
-        this.viewmode.forEach(v => {
-            if(v.name === mode) {
-                v.selected = true;
-                this.columnWidth = v.width;
-            }
-            else v.selected = false;
-        });
-
-        this.currentViewmode = mode;
-        this.gridWidth = this.__getGridWidth__();
-        this.CookieService.put('viewmode', this.currentViewmode);
-
-        this.angularGridInstance.artGrid.refresh();
     }
 
     setFilter(mode) {
@@ -83,16 +51,6 @@ export class MainController {
         this.isInitBusy = true;
 
         this.getContents();
-    }
-
-    getViewmodeName() {
-        let mode = this.CookieService.get('viewmode') || this.MAIN_GRID_INIT;
-
-        return mode;
-    }
-
-    getCurrentViewmode() {
-        return this.viewmodeKey[this.currentViewmode];
     }
 
     onScroll() {
@@ -114,14 +72,6 @@ export class MainController {
                 this.__addContentToList__(res.result);
             }
         });
-    }
-
-    __getGridWidth__() {
-        // let gridWidth = this.getCurrentViewmode().width,
-        //     documentWidth = angular.element('.page-body').width();
-        //
-        // return documentWidth / (12 / gridWidth) - 100;
-        return this.getCurrentViewmode().width;
     }
 
     __addContentToList__(data) {
