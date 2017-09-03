@@ -16,7 +16,7 @@ export class FormRegxService {
             basic: /[^]+$/,
             nickname: /[^\!\@\#\$\%\^\&\*\.\,\`\"\'\s]+$/,
             password: {
-                specialChars: /[\!\@\#\$\%\^\*\+\-\_\.\,\`\s]/,
+                specialChars: /[\?\!\@\#\$\%\^\*\+\-\_\.\,\`]/,
                 minlength: /^.{8,}$/,
                 repeat: /^(?:(.)(?!\1\1))*$/
             },

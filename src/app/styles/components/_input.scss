@@ -50,16 +50,16 @@
 
     &.ng-invalid.ng-dirty {
         border-color: $dark-red;
+    }
 
-        &+.error-msg {
-            position: absolute;
-            bottom: -22px;
-            left: 0;
-            p {
-                color: $dark-red;
-                text-align: center;
-                font-size: 12px;
-            }
+    &+.error-msg {
+        position: absolute;
+        bottom: -22px;
+        left: 0;
+        p {
+            color: $dark-red;
+            text-align: center;
+            font-size: 12px;
         }
     }
 }

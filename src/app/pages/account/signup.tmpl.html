@@ -42,6 +42,11 @@
                             ng-keyup="[SignupCtrl.calcPasswordLevel(), SignupCtrl.checkPasswordAgain()]"
                             required
                         >
+                        <div ng-messages="SignupCtrl.form.password.$error" class="error-msg">
+                            <p ng-message="lowSecure">
+                                {{'FORM_ERROR.LOW_SECURE' | translate}}
+                            </p>
+                        </div>
                         <div class="password-score">
                             <div class="score-badge" data-status="{{SignupCtrl.passwordScore.status}}"></div>
                         </div>

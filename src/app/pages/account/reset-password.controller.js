@@ -41,11 +41,16 @@ export class ResetPasswordController {
             maxScore = this.passwordScore.max,
             password = this.password.origin;
 
-
         score = this.FormRegxService.calcPasswordScore(password, maxScore);
         this.passwordScore.status = this.FormRegxService.getPasswordLevel(score);
         this.passwordScore.score = score;
 
+        if(score <= 30 ) {
+            this.form.password.$setValidity('lowSecure', false);
+        }
+        else {
+            this.form.password.$setValidity('lowSecure', true);
+        }
         /*LOG*/ this.$log.debug('FINAL SCORE PERCENT => ', this.passwordScore.score);
     }
 

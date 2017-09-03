@@ -117,6 +117,7 @@
         "WRONG_EMAIL": "It is not a email address.",
         "WRONG_REPEAT_PASSWORD": "It is different! Please make sure your password again.",
         "WRONG_STRING": "Oh...there are incorrect characters",
+        "LOW_SECURE": "Too lower security level.",
         "TAG": {
             "WRONG_TAG": "{{tag}} is not available. please make sure that you writen in English or same tag again.",
             "MAX_TAG": "You can only enter up to 20 tags."
