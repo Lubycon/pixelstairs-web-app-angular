@@ -11,7 +11,7 @@ export class AboutusController {
         this.desciptions = [{
             title: 'Paint Art',
             alt: 'paint-art',
-            icon: 'https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/icons/icon_painter.svg'
+            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/icon_painter.svg'
         },{
             title: 'Computer<br>Graphic Art',
             alt: 'com-graphics',

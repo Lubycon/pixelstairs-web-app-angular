@@ -9,7 +9,7 @@
             height: 600px;
             border-radius: 0;
             background: {
-                image: url('https://s3-ap-northeast-1.amazonaws.com/pixelstairsdev/assets/jumbotron/1.png');
+                image: url('https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/jumbotron/1.png');
             }
             @include mq('sm') {
                 height: 400px;
