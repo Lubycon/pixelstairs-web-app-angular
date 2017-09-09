@@ -14,6 +14,7 @@ export class HeaderController {
         this.$state = $state;
         this.AuthenticationService = AuthenticationService;
         this.ImageService = ImageService;
+        this.isTransparency = this.hasJumbotron();
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
@@ -35,8 +36,9 @@ export class HeaderController {
         if(this.hasJumbotron()) {
             angular.element(document).scroll(() => {
                 const $JUMBO = angular.element(document).find('.jumbotron');
+                const $HEADER = angular.element(document).find('.global-header');
                 let scrollTop = angular.element(document).scrollTop();
-                let threshold = $JUMBO.offset().top + $JUMBO.height();
+                let threshold = $JUMBO.offset().top + $JUMBO.height() - $HEADER.height();
                 this.calcTransparentHeader(scrollTop, threshold);
             });
         }
@@ -56,14 +58,19 @@ export class HeaderController {
         let isTransparency = $HEADER.hasClass('transparency');
         if(scrollTop < t) {
             if(!isTransparency) {
+                this.isTransparency = true;
                 $HEADER.addClass('transparency');
             }
         }
         else {
             if(isTransparency) {
+                this.isTransparency = false;
                 $HEADER.removeClass('transparency');
             }
         }
+
+        this.isTransparency = isTransparency;
+        this.$scope.$apply();
     }
 
     hasJumbotron() {

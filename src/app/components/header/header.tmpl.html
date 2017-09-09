@@ -7,7 +7,13 @@
     <div class="global-logo">
         <a href="/">
             <img
-                src="https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/text.svg"
+                ng-show="GlobalHeaderCtrl.isTransparency"
+                ng-src="https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/text_w.png"
+                alt="global-logo"
+            >
+            <img
+                ng-show="!GlobalHeaderCtrl.isTransparency"
+                ng-src="https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/text.svg"
                 alt="global-logo"
             >
         </a>
