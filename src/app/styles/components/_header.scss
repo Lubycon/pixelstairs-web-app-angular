@@ -1,6 +1,10 @@
 .global-header {
     min-height: $global-header-height;
     background-color: $white;
+    transition: background-color 0.2s;
+    &.transparency {
+        background-color: transparent;
+    }
     .global-logo {
         width: 160px;
         @include floatToCenter;

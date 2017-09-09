@@ -1,6 +1,6 @@
 export class HeaderController {
     constructor(
-        $rootScope, $scope, $log,
+        $rootScope, $scope, $log, $state,
         USER_DEFAULT_PROFILE_IMG, USER_AGENT,
         AuthenticationService, ImageService
     ) {
@@ -11,12 +11,17 @@ export class HeaderController {
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         this.$log = $log;
+        this.$state = $state;
         this.AuthenticationService = AuthenticationService;
         this.ImageService = ImageService;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 
         this.$scope.$on('update-member-data', () => {
+            (this.init)();
+        });
+
+        this.$scope.$on('state-changed', () => {
             (this.init)();
         });
 
@@ -27,9 +32,14 @@ export class HeaderController {
         this.__setMemberData__();
         this.memberLinkList = this.__getMemberMenuList__(this.isMobile);
 
-        $(document).scroll(() => {
-            this.showSigninBanner();
-        });
+        if(this.hasJumbotron()) {
+            angular.element(document).scroll(() => {
+                const $JUMBO = angular.element(document).find('.jumbotron');
+                let scrollTop = angular.element(document).scrollTop();
+                let threshold = $JUMBO.offset().top + $JUMBO.height();
+                this.calcTransparentHeader(scrollTop, threshold);
+            });
+        }
     }
 
     signout(self) {
@@ -41,30 +51,23 @@ export class HeaderController {
         }
     }
 
-    /*
-     * @TODO 인스타그램 인앱에서 헤더가 잘리는 이슈 때문에 로그인이 불가능해서 임시로 만든 배너
-     * 나중에 삭제할 것
-     * 2017.08.14 - Evan
-     */
-    showSigninBanner() {
-        let banner = angular.element('.mobile-signin-banner');
-        const isShowing = banner.css('bottom') === '15px';
-        const isInstagramInApp = this.USER_AGENT.browser.indexOf('instagram') > -1;
-        const isAuthenticated = this.$rootScope.authStatus.sign;
-
-        if(!isInstagramInApp || isAuthenticated && false) {
-            return false;
-        }
-
-        if(!isShowing && angular.element(document).scrollTop() > 100) {
-            banner.css('bottom', '15px');
-        }
-        else if(isShowing && angular.element(document).scrollTop() === 0) {
-            banner.css('bottom', '-500px');
+    calcTransparentHeader(scrollTop, t) {
+        const $HEADER = angular.element('.global-header');
+        let isTransparency = $HEADER.hasClass('transparency');
+        if(scrollTop < t) {
+            if(!isTransparency) {
+                $HEADER.addClass('transparency');
+            }
         }
         else {
-            return false;
+            if(isTransparency) {
+                $HEADER.removeClass('transparency');
+            }
         }
+    }
+
+    hasJumbotron() {
+        return this.$state.current.name.indexOf('common.jumbo') > -1;
     }
 
     /* @PRIVATE METHOD */

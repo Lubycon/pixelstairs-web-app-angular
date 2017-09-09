@@ -68,6 +68,8 @@ export function run (
         __setStateClassToBody__(toState);
         __hideGlobalLoading__();
         $anchorScroll();
+
+        $rootScope.$broadcast('state-changed');
     });
 
     $rootScope.$on('$stateChangeError', (
