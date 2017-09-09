@@ -25,13 +25,16 @@
             margin-top: 10px;
             margin-bottom: 30px;
             ul {
-                text-align: center;
+                text-align: left;
+                @include mq('sm') {
+                    text-align: center;
+                }
                 li.btn {
                     position: relative;
                     background-color: transparent;
                     color: $dove-grey;
                     padding: 10px 20px 5px;
-                    font-size: 18px;
+                    font-size: 16px;
                     &.selected {
                         color: $mine-black;
                         font-weight: bold;
@@ -50,27 +53,6 @@
                 }
             }
         }
-
-        .view-mode {
-            margin-bottom: 10px;
-            ul {
-                text-align: left;
-                li.btn {
-                    border: none;
-                    background-color: transparent;
-                    padding: 5px;
-                    i {
-                        font-size: 23px;
-                        color: $silver-grey;
-                    }
-                    &.selected {
-                        i {
-                            color: $mine-black;
-                        }
-                    }
-                }
-            }
-        }
     }
 
     .page-body {
@@ -79,10 +61,12 @@
             left: 0;
             right: 0;
         }
-        ul.angular-grid {
-            li.angular-grid-item {
+        ul {
+            li {
+                padding: 0 7px;
                 @include mq('sm') {
                     padding: 0;
+                    margin-bottom: 10px;
                 }
             }
         }

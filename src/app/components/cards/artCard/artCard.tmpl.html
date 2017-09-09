@@ -24,7 +24,7 @@
 
     <div class="card-body">
         <div class="art-background lazy-load-frame" ng-style="{'background-image': 'url('+ArtCard.data.image.thumbnail+')'}">
-            <img ng-src="{{ArtCard.data.image.file}}" alt="{{'art-img-' + ArtCard.data.id}}">
+            <div class="art-thumbnail" ng-style="{'background-image': 'url('+ArtCard.data.image.file+')'}">
         </div>
         <div class="art-info">
             <div ng-if="ArtCard.viewmode === 'grid'">

@@ -2,7 +2,7 @@
 export class MainController {
     constructor (
         $rootScope, $scope, $log, $timeout, $location,
-        APIService, CookieService, SearchService, angularGridInstance,
+        APIService, CookieService, SearchService,
         MAIN_GRID_INIT, CONTENTS_VIEW_MODE, CONTENTS_SORT_FILTER
     ) {
         'ngInject';
@@ -15,8 +15,6 @@ export class MainController {
         this.APIService = APIService;
         this.CookieService = CookieService;
         this.SearchService = SearchService;
-
-        this.angularGridInstance = angularGridInstance;
 
         this.isMobile = $rootScope.deviceInfo.isMobile;
 

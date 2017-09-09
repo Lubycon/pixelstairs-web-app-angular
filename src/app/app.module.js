@@ -28,7 +28,6 @@ angular
         'ngFileUpload', // FILE UPLOAD MODULE
         'infinite-scroll', // INFINITE SCROLL
         'ngTagsInput', // TAG ELEMENT MODULE
-        'angularGrid', // GRID LAYOUT MODULE
         'angularMoment', // MOMENT MODULE
         'permission', // USER PERMISSION MODULE
         'permission.ui', // UI ROUTER USER PERMISSION MODULE
