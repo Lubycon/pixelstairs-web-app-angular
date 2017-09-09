@@ -1,66 +1,17 @@
 .state-aboutus {
-    .aboutus-header {
-        h4 {
-            text-align: center;
-            padding: 20px 0;
-        }
-        .jumbotron {
-            position: relative;
-            height: 600px;
-            border-radius: 0;
-            background: {
-                image: url('https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/jumbotron/1.png');
-            }
-            @include mq('sm') {
-                height: 400px;
-            }
-            * {
-                color: $white;
-            }
-            .float-desc {
-                @include floatToCenter;
-                @include mq('sm') {
-                    width: 100%;
-                }
-                .logo {
-                    width: 400px;
-                    margin: 0 auto;
-                    @include mq('sm') {
-                        width: 200px;
-                    }
-                    img {
-                        width: 100%;
-                    }
-                }
-                h3 {
-                    text-align: center;
-                    font-size: 25px;
-                    margin: 60px 0;
-                    @include mq('sm') {
-                        font-size: 20px;
-                        margin: 40px 0;
-                    }
-                }
-                p {
-                    text-align: center;
-                    font-size: 16px;
-                    @include mq('sm') {
-                        font-size: 14px;
-                        br {
-                            display: none;
-                        }
-                    }
-                }
-            }
-
-        }
-    }
     .container {
+        .row {
+            margin-bottom: 100px;
+            @include mq('sm') {
+                margin-bottom: 0;
+            }
+        }
         section {
             h3 {
                 text-align: center;
                 margin: 80px 0;
                 font-size: 36px;
+                font-weight: bolder;
                 @include mq('sm') {
                     font-size: 20px;
                     margin: 40px 0;
@@ -81,7 +32,7 @@
                 li {
                     display: inline-block;
                     div.icon-desc-icon {
-                        height: 120px;
+                        height: 190px;
                         text-align: center;
                         margin: 0 50px 42px;
                         @include mq('sm') {
@@ -94,19 +45,20 @@
                         }
                     }
                     h4 {
-                        font-size: 30px;
+                        font-size: 24px;
                         text-align: center;
                         line-height: 0.9;
+                        font-weight: bolder;
 
                         @include mq('sm') {
-                            font-size: 18px;
+                            display: none;
                         }
                     }
                 }
             }
             .paragraph-desc {
                 p {
-                    font-size: 18px;
+                    font-size: 16px;
                     text-align: center;
                     @include mq('sm') {
                         font-size: 14px;
