@@ -35,6 +35,8 @@ export class HeaderController {
 
         if(this.hasJumbotron()) {
             angular.element(document).scroll(() => {
+                if(!this.hasJumbotron()) return false;
+                
                 const $JUMBO = angular.element(document).find('.jumbotron');
                 const $HEADER = angular.element(document).find('.global-header');
                 let scrollTop = angular.element(document).scrollTop();

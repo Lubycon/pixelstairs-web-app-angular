@@ -41,6 +41,31 @@
             }
         }
     }
+
+    .slick-slider {
+        $arrow-padding: 0px;
+        .slick-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            background-color: transparent;
+            border: none;
+            color: $white;
+            i {
+                font-size: 40px;
+                @include mq('sm') {
+                    font-size: 18px;
+                }
+            }
+        }
+        .slick-prev {
+            left: $arrow-padding;
+        }
+        .slick-next {
+            right: $arrow-padding;
+        }
+    }
 }
 
 @import './main.jumbo';
