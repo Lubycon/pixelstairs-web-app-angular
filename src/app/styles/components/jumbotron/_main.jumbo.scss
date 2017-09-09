@@ -1,6 +1,19 @@
 .jumbotron.main-jumbotron {
+    .jumbo-desc {
+        text-align: center;
+        .btn {
+            margin-top: 30px;
+            background-color: $blue;
+            box-shadow: 0 8px 7px 0 rgba(0, 0, 0, 0.15);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+
     .slick-track {
-        height: 350px;
+        height: 470px;
+        @include mq('sm') {
+            height: 60vh;
+        }
 
         .slick-item {
             height: 100%;
