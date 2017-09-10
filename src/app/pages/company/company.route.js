@@ -2,14 +2,23 @@ export function routeConfig($stateProvider) {
     'ngInject';
 
     $stateProvider
-        .state('common.default.aboutus', {
+        .state('common.jumbo.aboutus', {
             url: '/aboutus?section',
             params: {
                 section: null
             },
-            templateUrl: 'app/pages/company/aboutus.tmpl.html',
-            controller: 'AboutusController',
-            controllerAs: 'AboutusCtrl'
+            views: {
+                jumbo: {
+                    templateUrl: 'app/components/jumbotron/about.jumbo.tmpl.html',
+                    controller: 'AboutJumboController',
+                    controllerAs: 'AboutJumboCtrl'
+                },
+                page: {
+                    templateUrl: 'app/pages/company/aboutus.tmpl.html',
+                    controller: 'AboutusController',
+                    controllerAs: 'AboutusCtrl'
+                }
+            }
         })
         .state('common.default.terms', {
             url: '/docs/terms/:lang?section',

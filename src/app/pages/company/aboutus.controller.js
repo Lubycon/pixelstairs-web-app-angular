@@ -11,15 +11,15 @@ export class AboutusController {
         this.desciptions = [{
             title: 'Paint Art',
             alt: 'paint-art',
-            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/icon_painter.svg'
+            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/Paint-Art.svg'
         },{
             title: 'Computer<br>Graphic Art',
             alt: 'com-graphics',
-            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/icon_com_graphics.svg'
+            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/Computer-Graphic-Art.svg'
         },{
             title: 'Photograph<br>Art',
             alt: 'photograph',
-            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/icon_photograph.svg'
+            icon: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/icons/Photograph-Art.svg'
         }];
 
         this.ccDescription = [{

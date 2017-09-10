@@ -2,10 +2,14 @@
 
 }
 
-#container {
+#container.default-layout {
     min-height: 100vh;
     &.with-header {
         margin-top: $global-header-height;
+    }
+
+    div[ui-view="jumbo"] {
+        margin-top: $global-header-height * -1;
     }
 }
 

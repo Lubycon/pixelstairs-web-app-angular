@@ -15,7 +15,8 @@ export class MainJumboController {
             autoplaySpeed: 1500,
             speed: 800,
             dots: true,
-            arrows: false
+            prevArrow: '<button type="button" class="slick-prev"><i class="xi-angle-left-thin"></button>',
+            nextArrow: '<button type="button" class="slick-next"><i class="xi-angle-right-thin"></button>'
         };
 
         this.slides = [{

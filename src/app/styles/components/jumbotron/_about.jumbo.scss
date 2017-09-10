@@ -1,0 +1,23 @@
+.jumbotron.about-jumbotron {
+    height: 600px;
+    background: {
+        image: url('https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/jumbotron/1.png');
+    }
+    @include mq('sm') {
+        height: 400px;
+    }
+
+    .jumbo-desc {
+        .logo {
+            width: 260px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+            @include mq('sm') {
+                width: 120px;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+}

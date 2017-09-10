@@ -1,6 +1,22 @@
 .global-header {
     min-height: $global-header-height;
     background-color: $white;
+    transition: background-color 0.3s ease-out;
+    &.transparency {
+        background-color: transparent;
+        .user-info {
+            a {
+                color: $white;
+            }
+        }
+        .sign-menu {
+            .btn {
+                background-color: $white;
+                color: $mine-black;
+                transition: all 0.6s ease-out;
+            }
+        }
+    }
     .global-logo {
         width: 160px;
         @include floatToCenter;
@@ -35,7 +51,6 @@
 
                 &.member-menu {
                     .user-info {
-
                         .user-profile-img {
                             display: inline-block;
                             vertical-align: middle;

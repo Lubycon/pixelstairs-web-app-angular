@@ -1,4 +1,5 @@
-#container {
+#container.full-layout {
+    min-height: 100vh;
     &.with-header {
         margin-top: $global-header-height;
     }

@@ -22,14 +22,11 @@
             infinite-scroll-distance="0"
         >
             <ul
-                angular-grid="MainCtrl.contentsData.list"
-                angular-grid-id="artGrid"
-                ag-css-grid="true"
                 performant-scroll="true"
                 ng-class="{'is-loading': MainCtrl.isInitBusy}"
             >
                 <li
-                    class="col-xs-12 col-lg-4"
+                    class="col-xs-12 col-lg-3"
                     data-ng-repeat="data in MainCtrl.contentsData.list"
                     ui-sref="common.default.contents-detail({ id: data.id })"
                 >

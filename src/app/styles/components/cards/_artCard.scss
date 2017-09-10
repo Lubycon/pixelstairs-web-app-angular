@@ -2,9 +2,15 @@
     position: relative;
     margin: 10px 0;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    height: 278px;
+    overflow: hidden;
+    @include mq('sm') {
+        height: 450px;
+    }
 
     &.grid {
         cursor: pointer;
+        overflow: hidden;
     }
     &.wide {
         cursor: zoom-in;
@@ -57,10 +63,16 @@
 
     .card-body {
         padding: 0;
+        height: 100%;
 
         .art-background {
-            img {
-                width: 100%;
+            height: 100%;
+            .art-thumbnail {
+                height: 100%;
+                background: {
+                    size: cover;
+                    position: 50% 50%;
+                }
             }
         }
 
