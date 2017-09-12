@@ -22,10 +22,10 @@
     <meta name="theme-color" content="#dddddd" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pixel Stairs" />
+    <meta property="og:title" content="Pixelstairs" />
     <meta property="og:description" content="Pixelstairs :: Connect Your Creativity With the World!" />
     <meta property="og:image" content="/assets/images/ogImage.jpg" />
-    <meta property="og:url" content="https://www.pixelstairs.com" />
+    <meta property="og:url" content="https://pixelstairs.com" />
 
     <base href="/">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -91,6 +91,37 @@
 
 <!-- LOADING ICON - BODYMOVING -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.2/bodymovin_light.min.js"></script>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Organization",
+        "name": "Pixelstairs",
+        "url": "https://pixelstairs.com",
+        "sameAs": [
+            "https://www.pixelstairs.com"
+        ],
+        "brand": "Lubycon",
+        "description": "Connect your creativity with the World!",
+        "logo": "https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/vp_b.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+8210-4755-6185",
+            "email": "lubycon@gmail.com",
+            "contactType": "Customer service"
+        },
+        "developer": [{
+            "givenName": "Evan",
+            "familyName": "Moon",
+            "url": "https://github.com/evan-moon"
+        },{
+            "givenName": "Daniel",
+            "familyName": "Kim",
+            "url": ""
+        }]
+    }
+</script>
 <script>
     $(document).ready(function() {
         bodymovin.loadAnimation({
