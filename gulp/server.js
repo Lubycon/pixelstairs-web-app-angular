@@ -40,7 +40,7 @@ function browserSyncInit(baseDir, browser) {
         server: server,
         browser: browser,
         open: false,
-        https: false
+        https: true
     });
 }
 
