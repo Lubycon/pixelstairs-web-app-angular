@@ -68,4 +68,28 @@ export class ContentsDetailController {
             });
         }
     }
+
+    getContent({ direction }) {
+        const CURRENT_ID = this.$stateParams.id * 1;
+        let nextId;
+
+        if(direction === 'prev') {
+            nextId = CURRENT_ID - 1;
+        }
+        else if(direction === 'next') {
+            nextId = CURRENT_ID + 1;
+        }
+        else {
+            return false;
+        }
+
+        this.APIService.resource('contents.detail', {
+            id: nextId
+        })
+        .get().then(res => {
+            console.log('nextId', res.result.id);
+        }, err => {
+            alert('There no more content!');
+        });
+    }
 }
