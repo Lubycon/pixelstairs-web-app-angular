@@ -1,14 +1,19 @@
 export class MainJumboController {
     constructor(
-        ImageService, getImageRsv
+        $rootScope, $state,
+        ImageService, getImageRsv, $uibModal
     ) {
         'ngInject';
+
+        this.$rootScope = $rootScope;
+        this.$state = $state;
 
         this.ImageService = ImageService;
         this.imageList = getImageRsv.result.contents;
         this.imageList.forEach(v => {
             v.image.file = ImageService.setResolution(v.image, 1920);
         });
+        this.$uibModal = $uibModal;
 
         this.slickConfig = {
             autoplay: true,
@@ -29,5 +34,28 @@ export class MainJumboController {
             id: 3,
             image: 'http://orig15.deviantart.net/1283/f/2015/313/1/8/monody_artwork_by_jordangrimmer-d9fv2le.jpg'
         }];
+    }
+
+    gotoUpload () {
+        if(this.$rootScope.authStatus.sign) {
+            this.$state.go('common.default.contents-upload');
+        }
+        else {
+            this.openSignupModal();
+        }
+    }
+
+    openSignupModal () {
+        let modal = this.$uibModal.open({
+            windowClass: 'signup-modal-window',
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            backdrop: 'static',
+            templateUrl: 'app/components/modals/signup/signup.modal.tmpl.html',
+            controller: 'SignupModalController',
+            controllerAs: 'SignupModalCtrl',
+            keyborad: true
+        });
     }
 }
