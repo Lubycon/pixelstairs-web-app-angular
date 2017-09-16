@@ -22,14 +22,10 @@
 
     <div class="global-menu-wrapper">
         <ul>
-            <li
-                ng-if="!GlobalHeaderCtrl.isMobile && GlobalHeaderCtrl.isSignin"
-            >
+            <li ng-if="!GlobalHeaderCtrl.isMobile">
                 <a
                     class="content-upload-btn btn btn-round"
-                    ui-sref="common.default.contents-upload"
-                    permission
-                    permission-only="'ACTIVE_USER'"
+                    ng-click="GlobalHeaderCtrl.gotoUpload()"
                 >
                     {{'HEADER.UPLOAD_ARTWORK' | translate}}
                 </a>

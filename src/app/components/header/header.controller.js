@@ -1,6 +1,6 @@
 export class HeaderController {
     constructor(
-        $rootScope, $scope, $log, $state,
+        $rootScope, $scope, $log, $state, $uibModal,
         USER_DEFAULT_PROFILE_IMG, USER_AGENT,
         AuthenticationService, ImageService
     ) {
@@ -12,6 +12,8 @@ export class HeaderController {
         this.$scope = $scope;
         this.$log = $log;
         this.$state = $state;
+        this.$uibModal = $uibModal;
+
         this.AuthenticationService = AuthenticationService;
         this.ImageService = ImageService;
         this.isTransparency = this.hasJumbotron();
@@ -36,7 +38,7 @@ export class HeaderController {
         if(this.hasJumbotron()) {
             angular.element(document).scroll(() => {
                 if(!this.hasJumbotron()) return false;
-                
+
                 const $JUMBO = angular.element(document).find('.jumbotron');
                 const $HEADER = angular.element(document).find('.global-header');
                 let scrollTop = angular.element(document).scrollTop();
@@ -77,6 +79,29 @@ export class HeaderController {
 
     hasJumbotron() {
         return this.$state.current.name.indexOf('common.jumbo') > -1;
+    }
+
+    gotoUpload () {
+        if(this.$rootScope.authStatus.sign) {
+            this.$state.go('common.default.contents-upload');
+        }
+        else {
+            this.openSignupModal();
+        }
+    }
+
+    openSignupModal () {
+        let modal = this.$uibModal.open({
+            windowClass: 'signup-modal-window',
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            backdrop: 'static',
+            templateUrl: 'app/components/modals/signup/signup.modal.tmpl.html',
+            controller: 'SignupModalController',
+            controllerAs: 'SignupModalCtrl',
+            keyborad: true
+        });
     }
 
     /* @PRIVATE METHOD */
