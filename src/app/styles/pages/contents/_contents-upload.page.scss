@@ -1,9 +1,6 @@
 .state-contents-upload {
     .form-box {
-        @include mq('sm') {
-            margin: 0;
-            padding: 0;
-        }
+
         .uploader-info {
             * {
                 font-family: $inconsolata;
@@ -52,6 +49,9 @@
                 label {
                     width: 100%;
                     text-align: left;
+                    i {
+                        margin-right: 5px;
+                    }
                 };
             }
         }
