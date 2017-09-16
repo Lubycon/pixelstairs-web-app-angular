@@ -82,6 +82,11 @@
         }
     },
     "SCRIPT": {
+        "TO_NEW_PERSON": {
+            "TITLE": "픽셀스테어스가 처음이신가요?",
+            "DESC": "간편하게 회원가입을 진행하고 작품 업로드를 계속 하세요!"
+        },
+        "ALREADY_ACCOUNT": "이미 계정을 가지고 있어요!",
         "GO_TO_SIGNUP": "아직 회원이 아니신가요? 지금 가입하세요!",
         "FIND_PASSWORD": "혹시 비밀번호를 잊으셨나요?",
         "HELP_CONTENT_UPLOAD": {

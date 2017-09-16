@@ -6,8 +6,8 @@
 
 <div class="modal-body row">
     <div class="signup-desc">
-        <h3>아직 회원이 아니시군요?</h3>
-        <p>간편하게 회원가입을 진행하시고 아트워크 업로드를 계속하세요!</p>
+        <h3>{{'SCRIPT.TO_NEW_PERSON.TITLE' | translate}}</h3>
+        <p>{{'SCRIPT.TO_NEW_PERSON.DESC' | translate}}</p>
     </div>
     <div
         class="form-box col-xs-12"
@@ -100,7 +100,7 @@
                 </button>
 
                 <p class="form-desc">
-                    <a ng-click="SignupModalCtrl.gotoSignin()">이미 계정을 가지고 있어요!</a>
+                    <a ng-click="SignupModalCtrl.gotoSignin()">{{'SCRIPT.ALREADY_ACCOUNT' | translate}}</a>
                 </p>
             </form>
         </div>

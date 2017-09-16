@@ -82,6 +82,11 @@
         }
     },
     "SCRIPT": {
+        "TO_NEW_PERSON": {
+            "TITLE": "Is this your first time here?",
+            "DESC": "Simply proceed to sign up and continue uploading your work!"
+        },
+        "ALREADY_ACCOUNT": "I am not new here!",
         "GO_TO_SIGNUP": "Not yet a member? Join now!",
         "FIND_PASSWORD": "Find my password",
         "HELP_CONTENT_UPLOAD": {
