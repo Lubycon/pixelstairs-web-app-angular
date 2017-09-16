@@ -1,0 +1,47 @@
+.signup-modal-window {
+    .modal-header, .modal-footer {
+        border: none;
+    }
+    .signup-desc {
+        * {
+            text-align: center;
+        }
+        h3 {
+            font-weight: bolder;
+            margin-bottom: 10px;
+        }
+        p {
+
+        }
+    }
+    .form-box {
+        padding: {
+            left: 40px;
+            right: 40px;
+        }
+
+        form {
+            .input-container:last-of-type {
+                padding-bottom: 0;
+            }
+            .signin-btn {
+                border: none;
+                background: $mine-black;
+                color: $white;
+                margin-top: 10px;
+                &:first-of-type {
+                    margin-top: 30px;
+                }
+            }
+
+            .form-desc {
+                margin: 10px 0;
+                a {
+                    text-align: left;
+                    text-decoration: underline;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,112 @@
+<div class="modal-header">
+    <span class="header-close-btn" ng-click="SignupModalCtrl.close()">
+        <i class="xi-close"></i>
+    </span>
+</div>
+
+<div class="modal-body row">
+    <div class="signup-desc">
+        <h3>아직 회원이 아니시군요?</h3>
+        <p>간편하게 회원가입을 진행하시고 아트워크 업로드를 계속하세요!</p>
+    </div>
+    <div
+        class="form-box col-xs-12"
+    >
+        <div class="fieldset">
+            <form name="SignupModalCtrl.form" ng-init="SignupModalCtrl.form = SignupModalCtrl.form">
+                <div class="input-container">
+                    <input
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        placeholder="{{'LABEL.EMAIL' | translate}}"
+                        ng-model="SignupModalCtrl.signData.email"
+                        ng-pattern="SignupModalCtrl.FormRegxService.getRegx('email')"
+                        ng-blur="SignupModalCtrl.isExist('email')"
+                        required
+                    />
+                    <div ng-messages="SignupModalCtrl.form.email.$error" class="error-msg">
+                        <p ng-message="pattern">{{'FORM_ERROR.WRONG_EMAIL' | translate}}</p>
+                        <p ng-message="exist">{{'FORM_ERROR.EXIST.EMAIL' | translate}}</p>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input
+                        name="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="{{'LABEL.PASSWORD' | translate}}"
+                        ng-model="SignupModalCtrl.signData.password.origin"
+                        ng-keyup="[SignupModalCtrl.calcPasswordLevel(), SignupModalCtrl.checkPasswordAgain()]"
+                        required
+                    >
+                    <div ng-messages="SignupModalCtrl.form.password.$error" class="error-msg">
+                        <p ng-message="lowSecure">
+                            {{'FORM_ERROR.LOW_SECURE' | translate}}
+                        </p>
+                    </div>
+                    <div class="password-score">
+                        <div class="score-badge" data-status="{{SignupModalCtrl.passwordScore.status}}"></div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input
+                        name="passwordAgain"
+                        type="password"
+                        class="form-control"
+                        placeholder="{{'LABEL.PASSWORD_REPEAT' | translate}}"
+                        ng-model="SignupModalCtrl.signData.password.repeat"
+                        ng-keyup="SignupModalCtrl.checkPasswordAgain()"
+                        required
+                    >
+                    <div ng-messages="SignupModalCtrl.form.passwordAgain.$error" class="error-msg">
+                        <p ng-message="notMatched">
+                            {{'FORM_ERROR.WRONG_REPEAT_PASSWORD' | translate}}
+                        </p>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <input
+                        name="nickname"
+                        type="text"
+                        class="form-control"
+                        placeholder="{{'LABEL.NICKNAME' | translate}}"
+                        ng-model="SignupModalCtrl.signData.nickname"
+                        min-length="5"
+                        max-length="30"
+                        ng-pattern="SignupModalCtrl.FormRegxService.getRegx('nickname')"
+                        ng-blur="SignupModalCtrl.isExist('nickname')"
+                        required
+                    >
+                    <div ng-messages="SignupModalCtrl.form.nickname.$error" class="error-msg">
+                        <p ng-message="pattern">{{'FORM_ERROR.WRONG_STRING' | translate}}</p>
+                        <p ng-message="exist">{{'FORM_ERROR.EXIST.NICKNAME' | translate}}</p>
+                    </div>
+                </div>
+
+                <p
+                    class="form-desc"
+                    translate="SIGN_UP.POLICY"
+                    translate-values="{ lang: SignupModalCtrl.lang }"
+                ></p>
+
+                <button
+                    class="signin-btn btn btn-round full-width"
+                    ng-click="SignupModalCtrl.postData()"
+                    ng-disabled="SignupModalCtrl.form.$invalid"
+                >
+                    <span ng-show="!SignupModalCtrl.isBusy">{{'FORM.SIGNUP_BTN' | translate}}</span>
+                    <span ng-show="SignupModalCtrl.isBusy"><i class="xi-spinner-5 xi-spin"></i></span>
+                </button>
+
+                <p class="form-desc">
+                    <a ng-click="SignupModalCtrl.gotoSignin()">이미 계정을 가지고 있어요!</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+
+</div>
