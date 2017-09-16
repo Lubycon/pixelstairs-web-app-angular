@@ -1,21 +1,3 @@
-/* DEVIDER */
-@import './deviders';
-
-/* CARD */
-@import './cards/cards';
-@import './cards/artCard';
-
-/* MODAL */
-@import './modals/modals';
-@import './modals/cropper.modal';
-
-/* JUMBOTRON */
-@import './jumbotron/__module__';
-
-/* COMPONENTS */
-@import './header';
-@import './footer';
-
 @import './datepicker';
 @import './toast';
 @import './cropper';
@@ -28,3 +10,22 @@
 
 @import './lazy-loader';
 @import './wiseword-form';
+
+/* DEVIDER */
+@import './deviders';
+
+/* CARD */
+@import './cards/cards';
+@import './cards/artCard';
+
+/* MODAL */
+@import './modals/modals';
+@import './modals/cropper.modal';
+@import './modals/signup.modal';
+
+/* JUMBOTRON */
+@import './jumbotron/__module__';
+
+/* COMPONENTS */
+@import './header';
+@import './footer';
