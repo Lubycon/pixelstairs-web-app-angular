@@ -102,6 +102,7 @@
         "CONTINUE" : "Continue",
         "CHANGE" : "Change",
         "UPDATE": "Update",
+        "CROP": "Crop",
         "SIGNUP_BTN": "Submit & Start as a member",
         "SEND" : {
             "EMAIL": "Send me Email",
