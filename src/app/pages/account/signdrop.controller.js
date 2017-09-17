@@ -25,7 +25,7 @@ export class SigndropController {
 
         this.isBusy = true;
 
-        this.APIService.resource('members.signdrop').delete(data)
+        this.APIService.resource('users.signdrop').delete(data)
         .then(res => {
             this.AuthenticationService.clearForce('reload');
             let msg = this.$translate.instant('SIGN_DROP.SUCCESS');

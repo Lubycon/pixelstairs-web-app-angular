@@ -22,7 +22,7 @@ export class SignupModalController extends SignupController {
         data.newsletterAccepted = true;
         data.termsOfServiceAccepted = true;
 
-        this.APIService.resource('members.signup').post(data).then(res => {
+        this.APIService.resource('users.signup').post(data).then(res => {
             this.AuthenticationService.set({
                 token: res.result.token,
                 state: null

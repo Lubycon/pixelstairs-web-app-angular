@@ -46,7 +46,7 @@ export function routerConfig ($stateProvider) {
             controllerAs: 'SigndropCtrl',
             resolve: {
                 getReasonRsv: (APIService) => {
-                    return APIService.resource('members.signdropSurvey').get().then();
+                    return APIService.resource('users.signdropSurvey').get().then();
                 }
             },
             data: {

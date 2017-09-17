@@ -16,7 +16,7 @@ export class FindPasswordEmailController {
 
     postEmail() {
         this.isBusy = true;
-        this.APIService.resource('members.pwd.mail').post({
+        this.APIService.resource('users.pwd.mail').post({
             email: this.email
         }).then(res => {
             this.isFinished = true;

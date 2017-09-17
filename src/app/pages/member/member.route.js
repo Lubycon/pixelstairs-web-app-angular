@@ -13,7 +13,7 @@ export function routerConfig ($stateProvider) {
             },
             resolve: {
                 getMemberRsv: ($stateParams, APIService) => {
-                    return APIService.resource('members.detail', { id: $stateParams.memberId }).get().then();
+                    return APIService.resource('users.info', { id: $stateParams.memberId }).get().then();
                 }
             },
             data: {

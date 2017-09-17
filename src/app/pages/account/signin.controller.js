@@ -40,7 +40,7 @@ export class SigninController {
         this.isBusy = true;
         /*@LOG*/ this.$log.debug(this.signData);
 
-        this.APIService.resource('members.signin').post(data)
+        this.APIService.resource('users.signin').post(data)
         .then(res => {
             /*@LOG*/ this.$log.debug(res);
 

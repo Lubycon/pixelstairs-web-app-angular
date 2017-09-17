@@ -38,7 +38,7 @@ export class CertPasswordController {
     }
 
     createTokenToAPI() {
-        return this.APIService.resource('members.pwd.token').post()
+        return this.APIService.resource('users.pwd.token').post()
         .then(res => {
             this.$state.go('common.default.reset-password', {
                 code: res.result.token

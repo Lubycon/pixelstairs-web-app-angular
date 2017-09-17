@@ -6,7 +6,7 @@
 */
 
 export const API_LIST = {
-    members: () => {
+    users: () => {
         const prefix = 'members';
         return {
             signin: `${prefix}/signin`,
@@ -15,8 +15,8 @@ export const API_LIST = {
             signdrop: `${prefix}/signdrop`,
             signdropSurvey: `${prefix}/signdrop/survey/list`,
 
-            simple: `${prefix}/simple`,
-            detail: `${prefix}/{id}/detail`,
+            me: `${prefix}/me`,
+            info: `${prefix}/{id}`,
             exists: {
                 email: `${prefix}/exists/email`,
                 nickname: `${prefix}/exists/nickname`

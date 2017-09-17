@@ -39,7 +39,7 @@ export class AuthenticationService {
             this.__setTokenToHeader__(token);
             this.$rootScope.authStatus = authStatus;
 
-            this.APIService.resource('members.simple').get()
+            this.APIService.resource('users.me').get()
             .then(res => {
                 /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
 
@@ -80,7 +80,7 @@ export class AuthenticationService {
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
-        this.APIService.resource('members.simple').get().then(res => {
+        this.APIService.resource('users.me').get().then(res => {
             this.$rootScope.member = res.result;
             this.$rootScope.authStatus.status = res.result.status;
 
@@ -100,7 +100,7 @@ export class AuthenticationService {
     }
 
     update(state = { name: 'common.jumbo.main', param: null }) {
-        this.APIService.resource('members.simple').get().then(res => {
+        this.APIService.resource('users.me').get().then(res => {
             this.$rootScope.member = res.result;
             this.CookieService.put('member', this.$rootScope.member);
 
@@ -114,7 +114,7 @@ export class AuthenticationService {
 
     clear(reload, state = 'common.jumbo.main') {
         if(this.$rootScope.authStatus.sign || this.$rootScope.member) {
-            return this.APIService.resource('members.signout').put()
+            return this.APIService.resource('users.signout').put()
             .then(res => {
                 delete this.$rootScope.member;
 

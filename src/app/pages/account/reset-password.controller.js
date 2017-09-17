@@ -66,7 +66,7 @@ export class ResetPasswordController {
     setNewPasswordToAPI(data) {
         data.code = this.code;
 
-        this.APIService.resource('members.pwd.reset').put(data)
+        this.APIService.resource('users.pwd.reset').put(data)
         .then(res => {
             this.__resolve__(res);
         }, err => {

@@ -97,7 +97,7 @@ export class MemberSettingController {
             nickname : this.memberData.nickname
         };
 
-        this.APIService.resource('members.exists.nickname').post(data)
+        this.APIService.resource('users.exists.nickname').post(data)
         .then(res => {
             this.form.nickname.$setValidity('exist', !res.result);
         }, err => {
@@ -112,7 +112,7 @@ export class MemberSettingController {
 
         if(!data.profileImg) data.profileImg = { file: null };
 
-        this.APIService.resource('members.detail', { id: data.id }).put(data)
+        this.APIService.resource('users.info', { id: data.id }).put(data)
         .then(res => {
             this.toastr.success('Upload successfully');
             this.isBusy = false;
