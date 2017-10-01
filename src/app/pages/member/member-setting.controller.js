@@ -112,7 +112,7 @@ export class MemberSettingController {
 
         if(!data.profileImg) data.profileImg = { file: null };
 
-        this.APIService.resource('users.info', { id: data.id }).put(data)
+        this.APIService.resource('users.me').put(data)
         .then(res => {
             this.toastr.success('Upload successfully');
             this.isBusy = false;
