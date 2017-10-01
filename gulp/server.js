@@ -23,7 +23,10 @@ function browserSyncInit(baseDir, browser) {
 
     const server = {
         baseDir: baseDir,
-        routes: routes
+        routes: routes,
+        proxy: {
+            target: 'local.pixelstairs.com'
+        }
     };
 
     /*
