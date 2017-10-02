@@ -39,18 +39,12 @@ export class AuthenticationService {
             this.__setTokenToHeader__(token);
             this.$rootScope.authStatus = authStatus;
 
-            this.APIService.resource('users.me').get()
-            .then(res => {
-                /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
-
-                this.$rootScope.member = res.result;
-                this.CookieService.put('member', this.$rootScope.member);
-
+            this.__getUser__().then(res => {
+                console.log('GET USER');
                 defer.resolve();
             }, err => {
-                /*@LOG*/ this.$log.debug('AUTHENTICATE ERROR CATCH => ', err);
-                this.clear('reload');
-                defer.reject('Authentication init Error!');
+                console.error('GET USER ERROR');
+                defer.reject();
             });
         }
         else {
@@ -80,17 +74,10 @@ export class AuthenticationService {
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
-        this.APIService.resource('users.me').get().then(res => {
-            this.$rootScope.member = res.result;
-            this.$rootScope.authStatus.status = res.result.status;
-
-            this.CookieService.put('member', this.$rootScope.member);
-
+        this.__getUser__().then(res => {
             defer.resolve();
         }, err => {
-            /*LOG*/ this.$log.debug(err);
             defer.reject();
-            this.clear('reload');
         });
 
         // REFRESH COOKIE
@@ -100,16 +87,15 @@ export class AuthenticationService {
     }
 
     update(state = { name: 'common.jumbo.main', param: null }) {
-        this.APIService.resource('users.me').get().then(res => {
-            this.$rootScope.member = res.result;
-            this.CookieService.put('member', this.$rootScope.member);
-
+        this.__getUser__().then(res => {
             if(state) this.$state.go(state.name, state.params);
             else return false;
-        }, err => {
-            /*LOG*/ this.$log.debug(err);
-            this.clear('reload');
         });
+    }
+
+    reissuance() {
+        // REISSUANCE AUTH TOKEN USING REFRESH TOKEN
+        console.log('[Error] need refresh token!');
     }
 
     clear(reload, state = 'common.jumbo.main') {
@@ -186,5 +172,27 @@ export class AuthenticationService {
                 this.$window.location.reload();
             });
         });
+    }
+
+    __getUser__ () {
+        let defer = this.$q.defer();
+        this.APIService.resource('users.me').get()
+        .then(res => {
+            this.$rootScope.member = res.result;
+            this.CookieService.put('member', this.$rootScope.member);
+
+            defer.resolve();
+        }, err => {
+            this.$log.debug('AUTHENTICATE ERROR CATCH => ', err.status);
+            if (err.status && err.status === 419) {
+                this.reissuance();
+            }
+            else {
+                defer.reject(err);
+                this.clear('reload');
+            }
+        });
+
+        return defer.promise;
     }
 }
