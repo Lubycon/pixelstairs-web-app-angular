@@ -11,6 +11,14 @@
             .crop-btn {
                 background-color: $mine-black;
             }
+            .btn {
+                @include mq('sm') {
+                    border-radius: 0;
+                    & + .btn {
+                        margin-left: 0;
+                    }
+                }
+            }
         }
     }
 }
