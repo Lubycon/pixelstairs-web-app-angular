@@ -139,9 +139,15 @@ export class AuthenticationService {
     }
 
     __setAuthCookies__({ accessToken, refreshToken, state }) {
-        this.CookieService.putEncrypt('auth', accessToken);
-        this.CookieService.putEncrypt('refresh', refreshToken);
-        this.CookieService.putEncrypt('authStatus', state);
+        if (accessToken) {
+            this.CookieService.putEncrypt('auth', accessToken);
+        }
+        if (refreshToken) {
+            this.CookieService.putEncrypt('refresh', refreshToken);
+        }
+        if (state) {
+            this.CookieService.putEncrypt('authStatus', state);
+        }
     }
 
     __setTokenToHeader__(accessToken) {
