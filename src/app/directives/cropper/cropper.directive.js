@@ -33,6 +33,7 @@ export function CropperDirective() {
         $scope.$watch(function() {
             return $element[0].currentSrc;
         }, function(newValue, oldValue) {
+            console.log(oldValue, newValue);
             if(!oldValue || oldValue.length === 0) {
                 $scope.cropping = true;
                 $element.cropper();
