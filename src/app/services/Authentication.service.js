@@ -115,7 +115,7 @@ export class AuthenticationService {
                 accessToken: res.result
             });
 
-            this.$location.reload();
+            this.$window.location.reload();
         }, err => {
             this.clear('reload');
         });
