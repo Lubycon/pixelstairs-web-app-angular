@@ -57,10 +57,10 @@ export class AuthenticationService {
         return defer.promise;
     }
 
-    set(params = {}) {
+    set({ accessToken, refreshToken, state }) {
         let defer = this.$q.defer();
 
-        if(!params.token) {
+        if(!accessToken) {
             this.$log.error('There is no token :: AuthenticationService');
             return false;
         }
@@ -69,8 +69,12 @@ export class AuthenticationService {
             sign: true
         };
 
-        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
-        this.__setTokenToHeader__(params.token);
+        this.__setAuthCookies__({
+            accessToken,
+            refreshToken,
+            state: this.$rootScope.authStatus
+        });
+        this.__setTokenToHeader__(accessToken);
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
@@ -81,7 +85,11 @@ export class AuthenticationService {
         });
 
         // REFRESH COOKIE
-        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
+        this.__setAuthCookies__({
+            accessToken,
+            refreshToken,
+            state: this.$rootScope.authStatus
+        });
 
         return defer.promise;
     }
@@ -130,16 +138,17 @@ export class AuthenticationService {
         return !!AUTH_COOKIE && !!AUTH_STATUS_COOKIE.sign;
     }
 
-    __setAuthCookies__(token, authStatus) {
-        this.CookieService.putEncrypt('auth', token);
-        this.CookieService.putEncrypt('authStatus', authStatus);
+    __setAuthCookies__({ accessToken, refreshToken, state }) {
+        this.CookieService.putEncrypt('auth', accessToken);
+        this.CookieService.putEncrypt('refresh', refreshToken);
+        this.CookieService.putEncrypt('authStatus', state);
     }
 
-    __setTokenToHeader__(token) {
+    __setTokenToHeader__(accessToken) {
         let tmp = {},
             defaultHeaders = this.Restangular.defaultHeaders;
 
-        tmp[`Authorization`] = `Bearer ${token}`;
+        tmp[`Authorization`] = `Bearer ${accessToken}`;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
@@ -161,6 +170,7 @@ export class AuthenticationService {
 
     __clearAuth__(reload, state) {
         this.CookieService.remove('auth');
+        this.CookieService.remove('refresh');
         this.$rootScope.authStatus.sign = false;
 
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);

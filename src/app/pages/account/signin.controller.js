@@ -44,7 +44,7 @@ export class SigninController {
         .then(res => {
             /*@LOG*/ this.$log.debug(res);
 
-            this.__resolve__(res.result.token).then(res => {
+            this.__resolve__(res.result).then(res => {
                 let state = this.$rootScope.member.status === 'active' ?
                     'common.jumbo.main' :
                     'common.default.auth-signup';
@@ -59,7 +59,8 @@ export class SigninController {
     /* @PRIVATE METHOD */
     __resolve__(token) {
         return this.AuthenticationService.set({
-            token,
+            accessToken: token.access_token,
+            refreshToken: token.refresh_token,
             state: null
         });
     }
