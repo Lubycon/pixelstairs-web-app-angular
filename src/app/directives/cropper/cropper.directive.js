@@ -34,11 +34,11 @@ export function CropperDirective() {
             return $element[0].currentSrc;
         }, function(newValue, oldValue) {
             console.log(oldValue, newValue);
-            if(!oldValue || oldValue.length === 0) {
-                $scope.cropping = true;
-                $element.cropper();
-            }
-            else if(newValue !== oldValue) {
+            // if(!oldValue || oldValue.length === 0) {
+            //     $scope.cropping = true;
+            //     $element.cropper();
+            // }
+            if(newValue !== oldValue) {
                 $scope.cropping = true;
                 $element.cropper("replace", newValue);
             }
