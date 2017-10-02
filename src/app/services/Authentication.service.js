@@ -153,7 +153,7 @@ export class AuthenticationService {
         let tmp = {},
             defaultHeaders = this.Restangular.defaultHeaders;
 
-        tmp[`${this.CUSTOM_HEADER_PREFIX}token`] = token;
+        tmp[`Authorization`] = `Bearer ${token}`;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
@@ -162,8 +162,8 @@ export class AuthenticationService {
     __removeTokenFromHeader__() {
         let defaultHeaders = this.Restangular.defaultHeaders;
 
-        if(defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`]) {
-            delete defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`];
+        if(defaultHeaders[`Authorization`]) {
+            delete defaultHeaders[`Authorization`];
             this.Restangular.setDefaultHeaders(defaultHeaders);
 
             return true;
