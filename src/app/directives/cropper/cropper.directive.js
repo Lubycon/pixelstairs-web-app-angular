@@ -31,7 +31,7 @@ export function CropperDirective() {
         });
 
         $scope.$watch(function() {
-            return $element[0].currentSrc;
+            return $element[0].src;
         }, function(newValue, oldValue) {
             console.log('$element => ', $element[0]);
             console.log('$element src => ', $element[0].currentSrc);
