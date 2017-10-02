@@ -33,10 +33,14 @@ export class AuthenticationService {
         let defer = this.$q.defer();
 
         if(this.__isSigned__()) {
-            let token = this.CookieService.getDecrypt('auth'),
+            let accessToken = this.CookieService.getDecrypt('auth'),
+                refreshToken = this.CookieService.getDecrypt('refresh'),
                 authStatus = this.CookieService.getDecrypt('authStatus');
 
-            this.__setTokenToHeader__(token);
+            this.__setTokenToHeader__({
+                accessToken,
+                refreshToken
+            });
             this.$rootScope.authStatus = authStatus;
 
             this.__getUser__().then(res => {
@@ -74,7 +78,10 @@ export class AuthenticationService {
             refreshToken,
             state: this.$rootScope.authStatus
         });
-        this.__setTokenToHeader__(accessToken);
+        this.__setTokenToHeader__({
+            accessToken,
+            refreshToken
+        });
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
@@ -103,7 +110,15 @@ export class AuthenticationService {
 
     reissuance() {
         // REISSUANCE AUTH TOKEN USING REFRESH TOKEN
-        console.log('[Error] need refresh token!');
+        this.APIService.resource('users.refreshToken').get().then(res => {
+            this.__setAuthCookies__({
+                accessToken: res.result
+            });
+
+            this.$location.reload();
+        }, err => {
+            this.clear('reload');
+        });
     }
 
     clear(reload, state = 'common.jumbo.main') {
@@ -150,11 +165,12 @@ export class AuthenticationService {
         }
     }
 
-    __setTokenToHeader__(accessToken) {
+    __setTokenToHeader__({ accessToken, refreshToken }) {
         let tmp = {},
             defaultHeaders = this.Restangular.defaultHeaders;
 
         tmp[`Authorization`] = `Bearer ${accessToken}`;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}refresh-token`] = refreshToken;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
@@ -165,6 +181,7 @@ export class AuthenticationService {
 
         if(defaultHeaders[`Authorization`]) {
             delete defaultHeaders[`Authorization`];
+            delete defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}refresh-token`];
             this.Restangular.setDefaultHeaders(defaultHeaders);
 
             return true;
