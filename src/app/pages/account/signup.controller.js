@@ -57,7 +57,8 @@ export class SignupController {
 
         this.APIService.resource('users.signup').post(data).then(res => {
             this.AuthenticationService.set({
-                token: res.result.token,
+                accessToken: res.result.token.access_token,
+                refreshToken: res.result.token.refresh_token,
                 state: null
             }).then(res => {
                 this.isBusy = false;

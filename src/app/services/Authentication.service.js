@@ -33,24 +33,22 @@ export class AuthenticationService {
         let defer = this.$q.defer();
 
         if(this.__isSigned__()) {
-            let token = this.CookieService.getDecrypt('auth'),
+            let accessToken = this.CookieService.getDecrypt('auth'),
+                refreshToken = this.CookieService.getDecrypt('refresh'),
                 authStatus = this.CookieService.getDecrypt('authStatus');
 
-            this.__setTokenToHeader__(token);
+            this.__setTokenToHeader__({
+                accessToken,
+                refreshToken
+            });
             this.$rootScope.authStatus = authStatus;
 
-            this.APIService.resource('users.me').get()
-            .then(res => {
-                /*@LOG*/ this.$log.debug('MEMBER INFO IS LOADED');
-
-                this.$rootScope.member = res.result;
-                this.CookieService.put('member', this.$rootScope.member);
-
+            this.__getUser__().then(res => {
+                console.log('GET USER');
                 defer.resolve();
             }, err => {
-                /*@LOG*/ this.$log.debug('AUTHENTICATE ERROR CATCH => ', err);
-                this.clear('reload');
-                defer.reject('Authentication init Error!');
+                console.error('GET USER ERROR');
+                defer.reject();
             });
         }
         else {
@@ -63,10 +61,10 @@ export class AuthenticationService {
         return defer.promise;
     }
 
-    set(params = {}) {
+    set({ accessToken, refreshToken, state }) {
         let defer = this.$q.defer();
 
-        if(!params.token) {
+        if(!accessToken) {
             this.$log.error('There is no token :: AuthenticationService');
             return false;
         }
@@ -75,39 +73,50 @@ export class AuthenticationService {
             sign: true
         };
 
-        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
-        this.__setTokenToHeader__(params.token);
+        this.__setAuthCookies__({
+            accessToken,
+            refreshToken,
+            state: this.$rootScope.authStatus
+        });
+        this.__setTokenToHeader__({
+            accessToken,
+            refreshToken
+        });
         /*@LOG*/ this.$log.debug(this.Restangular.defaultHeaders);
 
         // GET MEMBER DATA
-        this.APIService.resource('users.me').get().then(res => {
-            this.$rootScope.member = res.result;
-            this.$rootScope.authStatus.status = res.result.status;
-
-            this.CookieService.put('member', this.$rootScope.member);
-
+        this.__getUser__().then(res => {
             defer.resolve();
         }, err => {
-            /*LOG*/ this.$log.debug(err);
             defer.reject();
-            this.clear('reload');
         });
 
         // REFRESH COOKIE
-        this.__setAuthCookies__(params.token, this.$rootScope.authStatus);
+        this.__setAuthCookies__({
+            accessToken,
+            refreshToken,
+            state: this.$rootScope.authStatus
+        });
 
         return defer.promise;
     }
 
     update(state = { name: 'common.jumbo.main', param: null }) {
-        this.APIService.resource('users.me').get().then(res => {
-            this.$rootScope.member = res.result;
-            this.CookieService.put('member', this.$rootScope.member);
-
+        this.__getUser__().then(res => {
             if(state) this.$state.go(state.name, state.params);
             else return false;
+        });
+    }
+
+    reissuance() {
+        // REISSUANCE AUTH TOKEN USING REFRESH TOKEN
+        this.APIService.resource('users.refreshToken').get().then(res => {
+            this.__setAuthCookies__({
+                accessToken: res.result
+            });
+
+            this.$window.location.reload();
         }, err => {
-            /*LOG*/ this.$log.debug(err);
             this.clear('reload');
         });
     }
@@ -144,16 +153,24 @@ export class AuthenticationService {
         return !!AUTH_COOKIE && !!AUTH_STATUS_COOKIE.sign;
     }
 
-    __setAuthCookies__(token, authStatus) {
-        this.CookieService.putEncrypt('auth', token);
-        this.CookieService.putEncrypt('authStatus', authStatus);
+    __setAuthCookies__({ accessToken, refreshToken, state }) {
+        if (accessToken) {
+            this.CookieService.putEncrypt('auth', accessToken);
+        }
+        if (refreshToken) {
+            this.CookieService.putEncrypt('refresh', refreshToken);
+        }
+        if (state) {
+            this.CookieService.putEncrypt('authStatus', state);
+        }
     }
 
-    __setTokenToHeader__(token) {
+    __setTokenToHeader__({ accessToken, refreshToken }) {
         let tmp = {},
             defaultHeaders = this.Restangular.defaultHeaders;
 
-        tmp[`${this.CUSTOM_HEADER_PREFIX}token`] = token;
+        tmp[`Authorization`] = `Bearer ${accessToken}`;
+        tmp[`${this.CUSTOM_HEADER_PREFIX}refresh-token`] = refreshToken;
         defaultHeaders = angular.extend({}, defaultHeaders, tmp);
 
         this.Restangular.setDefaultHeaders(defaultHeaders);
@@ -162,8 +179,9 @@ export class AuthenticationService {
     __removeTokenFromHeader__() {
         let defaultHeaders = this.Restangular.defaultHeaders;
 
-        if(defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`]) {
-            delete defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}token`];
+        if(defaultHeaders[`Authorization`]) {
+            delete defaultHeaders[`Authorization`];
+            delete defaultHeaders[`${this.CUSTOM_HEADER_PREFIX}refresh-token`];
             this.Restangular.setDefaultHeaders(defaultHeaders);
 
             return true;
@@ -175,6 +193,7 @@ export class AuthenticationService {
 
     __clearAuth__(reload, state) {
         this.CookieService.remove('auth');
+        this.CookieService.remove('refresh');
         this.$rootScope.authStatus.sign = false;
 
         this.CookieService.putEncrypt('authStatus', this.$rootScope.authStatus);
@@ -186,5 +205,27 @@ export class AuthenticationService {
                 this.$window.location.reload();
             });
         });
+    }
+
+    __getUser__ () {
+        let defer = this.$q.defer();
+        this.APIService.resource('users.me').get()
+        .then(res => {
+            this.$rootScope.member = res.result;
+            this.CookieService.put('member', this.$rootScope.member);
+
+            defer.resolve();
+        }, err => {
+            this.$log.debug('AUTHENTICATE ERROR CATCH => ', err.status);
+            if (err.status && err.status === 419) {
+                this.reissuance();
+            }
+            else {
+                defer.reject(err);
+                this.clear('reload');
+            }
+        });
+
+        return defer.promise;
     }
 }
