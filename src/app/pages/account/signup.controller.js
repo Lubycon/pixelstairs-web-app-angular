@@ -57,8 +57,7 @@ export class SignupController {
 
         this.APIService.resource('users.signup').post(data).then(res => {
             this.AuthenticationService.set({
-                accessToken: res.result.token.access_token,
-                refreshToken: res.result.token.refresh_token,
+                token: res.result.token,
                 state: null
             }).then(res => {
                 this.isBusy = false;
@@ -100,7 +99,7 @@ export class SignupController {
         let data = {};
         data[prop] = this.signData[prop];
 
-        this.APIService.resource(`members.exists.${prop}`).post(data)
+        this.APIService.resource(`users.exists.${prop}`).post(data)
         .then(res => {
             this.form[prop].$setValidity('exist', !res.result);
         }, err => {
