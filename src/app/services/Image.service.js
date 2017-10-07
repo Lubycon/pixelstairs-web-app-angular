@@ -13,8 +13,6 @@ export class ImageService {
     setResolution(img, resolution = '1920') {
         if(!img) return false;
 
-        console.log(this.USER_AGENT.isMobileScreen, resolution);
-
         if(this.USER_AGENT.isMobileScreen && resolution === '1920') {
             resolution = '640';
         }
