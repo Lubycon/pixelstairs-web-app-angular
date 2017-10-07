@@ -31,13 +31,9 @@ export function CropperDirective() {
         });
 
         $scope.$watch(function() {
-            return $element[0].currentSrc;
+            return $element[0].src;
         }, function(newValue, oldValue) {
-            if(oldValue.legnth === 0) {
-                $scope.cropping = true;
-                $element.cropper();
-            }
-            else if(newValue !== oldValue) {
+            if(newValue !== oldValue) {
                 $scope.cropping = true;
                 $element.cropper("replace", newValue);
             }
