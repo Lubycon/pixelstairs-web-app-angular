@@ -25,7 +25,8 @@ export const API_LIST = {
                 mail: `${prefix}/password/mail`,
                 reset: `${prefix}/password/reset`,
                 token: `${prefix}/password/token`
-            }
+            },
+            refreshToken: `${prefix}/token/refresh`
         };
     },
     contents: () => {

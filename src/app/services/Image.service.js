@@ -1,16 +1,21 @@
 export class ImageService {
     constructor(
         $q,
-        USER_DEFAULT_PROFILE_IMG
+        USER_DEFAULT_PROFILE_IMG, USER_AGENT
     ) {
         'ngInject';
 
         this.$q = $q;
         this.USER_DEFAULT_PROFILE_IMG = USER_DEFAULT_PROFILE_IMG;
+        this.USER_AGENT = USER_AGENT;
     }
 
-    setResolution(img, resolution = 1920) {
+    setResolution(img, resolution = '1920') {
         if(!img) return false;
+
+        if(this.USER_AGENT.isMobileScreen && resolution === '1920') {
+            resolution = '640';
+        }
         return !!img.isPixelOwn ? img.file + resolution : img.file;
     }
 
