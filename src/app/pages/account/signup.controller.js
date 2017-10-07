@@ -100,7 +100,7 @@ export class SignupController {
         let data = {};
         data[prop] = this.signData[prop];
 
-        this.APIService.resource(`members.exists.${prop}`).post(data)
+        this.APIService.resource(`users.exists.${prop}`).post(data)
         .then(res => {
             this.form[prop].$setValidity('exist', !res.result);
         }, err => {
