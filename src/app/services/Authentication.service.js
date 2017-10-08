@@ -111,11 +111,16 @@ export class AuthenticationService {
     reissuance() {
         // REISSUANCE AUTH TOKEN USING REFRESH TOKEN
         this.APIService.resource('users.refreshToken').get().then(res => {
-            this.__setAuthCookies__({
-                accessToken: res.result
-            });
+            if (res.result) {
+                this.__setAuthCookies__({
+                    accessToken: res.result
+                });
 
-            this.$window.location.reload();
+                this.$window.location.reload();
+            }
+            else {
+                this.clear('reload');
+            }
         }, err => {
             this.clear('reload');
         });
