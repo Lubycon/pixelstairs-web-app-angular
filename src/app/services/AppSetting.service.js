@@ -48,10 +48,7 @@ export class AppSettingService {
             let headerKey = this.CUSTOM_HEADER_PREFIX + key;
             tmp[headerKey] = value;
 
-            if(key === 'country') {
-                tmp[this.CUSTOM_HEADER_PREFIX + 'language'] = this.__setLanguage__(value);
-            }
-            else if(key === 'language') $translate.use(value);
+            if(key === 'language') $translate.use(value);
 
             defaultHeaders = angular.extend({}, defaultHeaders, tmp);
         }
@@ -138,13 +135,6 @@ export class AppSettingService {
     __setStoredData__(setting, reload) {
         this.CookieService.put('setting', setting);
         if(reload === 'reload') this.$window.location.reload();
-    }
-
-    __setLanguage__(country) {
-        switch(country) {
-            case 'KR': return 'ko-KR';
-            default: return 'en-US';
-        }
     }
 
     __setHTTPHeader__(setting) {
